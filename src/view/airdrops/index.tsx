@@ -131,7 +131,7 @@ export default function Airdrops() {
               copyText: `https://pi.space-pi.com/${user?.id}`,
             }}
           />
-          <div className="card p-4 grid gap-3 w-100 binding-card-bg bg-transparent">
+          <div className="card !p-4 !pt-6 !pb-6 grid gap-3 w-100 binding-card-bg bg-transparent">
             <Segmented
               value={bindingMethod}
               onChange={(e) => setBindingMethod(e)}

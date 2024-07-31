@@ -32,6 +32,7 @@ export default function Input({
         gridAutoFlow: 'column',
         gridAutoColumns: '1fr auto',
         background: background,
+        gap:'1rem'
       }}
     >
       <input
