@@ -1,0 +1,110 @@
+@keyframes home-bg-1 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.5rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes home-bg-2 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(0.5rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes home-bg {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes rotate-a {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-b {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.home-bg {
+    @apply relative;
+}
+
+.home-bg::after {
+    @apply content-[''] absolute top-[-4rem] sm:top-[-2rem] left-[-2rem] bg-[url(/home/bg.png)] bg-no-repeat bg-center bg-cover w-[calc(100%+4rem)] h-[25rem] opacity-50;
+    animation: home-bg 3s ease-in-out infinite;
+}
+
+.home-bg .home-bg-1 {
+    @apply absolute top-0 left-0 bg-[url(/home/bg-1.png)] bg-no-repeat bg-cover w-20 h-20 z-[1];
+    animation: home-bg-1 2s ease-in-out infinite;
+}
+
+.home-bg .home-bg-2 {
+    @apply absolute top-16 left-0 bg-[url(/home/bg-2.png)] bg-no-repeat bg-cover w-36 h-52 z-0;
+}
+
+.home-bg .home-bg-3 {
+    @apply absolute top-24 right-0 bg-[url(/home/bg-3.png)] bg-no-repeat bg-cover w-44 h-36 z-[1];
+    animation: home-bg-2 2s ease-in-out infinite;
+}
+
+.pi-war-home-logo {
+    @apply relative;
+}
+
+.pi-war-home-logo::after {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-[url(/home/PiWarBg/PiwarLOGO1.png)] bg-contain bg-no-repeat;
+    animation: rotate-a 5s linear infinite;
+}
+
+.pi-war-home-logo::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-[url(/home/PiWarBg/PiwarLOGO2.png)] bg-contain bg-no-repeat;
+    animation: rotate-b 5s linear infinite;
+}
+
+.pi-war-home-logo .logo-1 {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-[url(/home/PiWarBg/PiwarLOGO3.png)] bg-contain bg-no-repeat;
+}
+
+.pi-war-home-logo .logo-2 {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-[url(/home/PiWarBg/PiwarLOGO4.png)] bg-contain bg-no-repeat;
+}
+
+.pi-war-home-logo .logo-3 {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-[url(/home/PiWarBg/PiwarLOGO5.png)] bg-contain bg-no-repeat;
+}

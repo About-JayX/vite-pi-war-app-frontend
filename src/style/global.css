@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    @apply overflow-hidden h-[calc(100vh-env(safe-area-inset-bottom))] !bg-black !text-white pt-[env(safe-area-inset-bottom)];
+}
+
+body {
+    @apply grid grid-flow-row grid-rows-[calc(100%-56px),auto];
+}
+
+.pi-war-text-color{
+    background: linear-gradient(90deg, #18acde 0%, #ef45b8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card{
+    @apply !bg-[#172136] !text-white border-[1px] border-[#172136] backdrop-blur-[1rem] p-4
+}
+
+.MuiCardHeader-action{
+    @apply !self-center !m-0
+}

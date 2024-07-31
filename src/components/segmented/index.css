@@ -1,0 +1,38 @@
+.segmented-box {
+    width: 100%;
+    border-radius: 0.3rem;
+    border-top: 1px solid #09518A;
+    border-bottom: 1px solid #09518A;
+    background: rgba(4, 96, 178, 0.10);
+    padding: 0.5rem;
+    display: grid;
+    gap: 0.3rem;
+    grid-auto-flow: column;
+    justify-items: center;
+    color: #48B7F2;
+    font-size: 0.85rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+
+.segmented-box span {
+    width: 100%;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+.segmented-box .a {
+    width: 100%;
+    border-radius: 0.3rem;
+    border-top: 1px solid #48B7F2;
+    border-bottom: 1px solid #48B7F2;
+    background: #0460B2;
+    color: #FFF;
+
+}

@@ -1,0 +1,111 @@
+// import {
+//   SDKProvider,
+//   useMiniAppRaw,
+//   useViewportRaw,
+// } from "@telegram-apps/sdk-react";
+import { createContext, Fragment } from "preact";
+import { useContext, useEffect, useMemo, useState } from "preact/hooks";
+import type { ITelegramUser, IWebApp } from "@/provider/telegram/type";
+
+export const TelegramContext = createContext<{
+  webApp?: IWebApp;
+  user?: ITelegramUser;
+  postData?: {
+    initData: string;
+    initDataUnsafe: {
+      query_id: string;
+      user: ITelegramUser;
+      auth_date: string;
+      hash: string;
+    };
+  };
+}>({});
+
+const initInfo = import.meta.env.DEV
+  ? {
+      initData:
+        "user=%7B%22id%22%3A6350461487%2C%22first_name%22%3A%22Jay%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22About_JayX%22%2C%22language_code%22%3A%22zh-hans%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-1457959087454848207&chat_type=private&auth_date=1721978899&hash=bfbab6bebc78b9dc242504945f348b6c7cd8239583bb539c71d84dd2fdc7729b",
+      initDataUnsafe: {
+        user: {
+          id: 6350461487,
+          first_name: "Jay",
+          last_name: "",
+          username: "About_JayX",
+          language_code: "zh-hans",
+          allows_write_to_pm: true,
+        },
+        chat_instance: "-1457959087454848207",
+        chat_type: "private",
+        auth_date: "1721978899",
+        hash: "bfbab6bebc78b9dc242504945f348b6c7cd8239583bb539c71d84dd2fdc7729b",
+      },
+      type: "solana",
+    }
+  : {};
+
+export const Telegram = ({ children }: { children?: React.ReactNode }) => {
+  // const useViewport = useViewportRaw(true)?.result;
+  // const useMiniApp = useMiniAppRaw(true)?.result;
+
+  const [webApp, setWebApp] = useState<IWebApp | null>(null);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+
+  // useEffect(() => {
+  //   if (useViewport) {
+  //     useMiniApp?.setHeaderColor("#000000");
+  //     useMiniApp?.setBgColor("#000000");
+  //   }
+  // }, [useViewport, useMiniApp]);
+
+  useEffect(() => {
+    let app = (window as any).Telegram?.WebApp;
+
+    app = { ...app, ...initInfo }; //测试
+
+    if (app) {
+      app.ready();
+      app.expand();
+      setWebApp(app);
+    }
+  }, [scriptLoaded]);
+
+  const value = useMemo(() => {
+    return webApp
+      ? {
+          webApp,
+          user: webApp.initDataUnsafe.user,
+          postData: {
+            initData: webApp.initData,
+            initDataUnsafe: webApp.initDataUnsafe,
+          },
+        }
+      : {};
+  }, [webApp]);
+
+  return (
+    <Fragment>
+      <TelegramContext.Provider value={value}>
+        <script
+          src="https://telegram.org/js/telegram-web-app.js"
+          async={true}
+          onLoad={() => setScriptLoaded(true)}
+        />
+        {webApp ? children : <Fragment />}
+      </TelegramContext.Provider>
+    </Fragment>
+  );
+};
+
+export default function TelegramProvider({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
+  return (
+    <Telegram >
+      {children}
+      </Telegram>
+  );
+}
+
+export const useTelegram = () => useContext(TelegramContext)

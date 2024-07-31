@@ -1,0 +1,40 @@
+.input-group {
+    padding-left: 0;
+    padding-right: 0.5rem;
+}
+
+.input-group input {
+    outline: none;
+    margin: 0 !important;
+    margin: -0.3rem !important;
+    margin-left: 0 !important;
+    padding: 0rem !important;
+
+}
+
+.input-group button {
+    border-radius: 0.3rem !important;
+    border: 1px solid #48B7F2;
+    background: rgba(4, 96, 178, 0.30);
+    color: #48B7F2;
+    font-size: 0.8rem !important;
+    font-weight: 400 !important;
+    padding: 0 1rem !important;
+}
+
+.form-control {
+    background: #172136 !important;
+    border: 1px solid rgba(78, 151, 196, 0.1) !important;
+    background: #172136 !important;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+    backdrop-filter: blur(0.1rem) !important;
+    -webkit-backdrop-filter: blur(0.1rem) !important;
+    border-end-end-radius: 0 !important;
+    border-end-start-radius: 0 !important;
+    border-top: 1px solid rgba(38, 99, 149, 0.5) !important;
+    border-right: 1px solid rgba(38, 99, 149, 0.5) !important;
+    border-bottom: 4px solid rgba(38, 99, 149, 0.5) !important;
+    border-left: 1px solid rgba(38, 99, 149, 0.5) !important;
+    background: #0d1d36 !important;
+    height: 3rem !important;
+}
