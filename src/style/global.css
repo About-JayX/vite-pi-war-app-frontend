@@ -8,7 +8,7 @@ body {
 }
 
 body {
-    @apply grid grid-flow-row grid-rows-[calc(100%-3.5rem),auto];
+    @apply grid grid-flow-row grid-rows-[calc(100%-5rem),auto];
 }
 
 .pi-war-text-color{
@@ -28,4 +28,7 @@ body {
 
 .MuiCardHeader-action{
     @apply !self-center !m-0
+}
+.MuiBottomNavigation-root{
+    @apply !h-[5rem]
 }
