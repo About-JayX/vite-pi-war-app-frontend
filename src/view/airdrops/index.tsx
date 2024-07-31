@@ -16,6 +16,7 @@ import Button from "@/components/button";
 import Icon from "@/components/icon";
 import SuccessPng from "@/assets/icon/success.png";
 import SuccessaPng from "@/assets/icon/success-a.png";
+import { FaRegPaste } from "react-icons/fa6";
 
 export default function Airdrops() {
   const { t } = useTranslation();
@@ -179,7 +180,7 @@ export default function Airdrops() {
                     setInput(event.target.value);
                   }}
                   button={{
-                    text: t("public.paste"),
+                    text: <FaRegPaste />,
                     onClick: () => onPaste(),
                     show: !(bindStatus.pid && bindStatus.pid.pId),
                   }}

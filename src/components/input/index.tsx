@@ -1,38 +1,38 @@
-import { MessageSuccess } from '../message'
-import { Text } from '../text'
-import './index.css'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { useTranslation } from 'react-i18next'
+import { MessageSuccess } from "../message";
+import { Text } from "../text";
+import "./index.css";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useTranslation } from "react-i18next";
 export default function Input({
   button = { show: true },
   value,
   placeholder,
   disabled = false,
-  background = '',
+  background = "",
   onChange = () => {},
 }: {
-  value?: string
-  placeholder?: string
-  disabled?: boolean
-  background?: string
-  onChange?: (event: any) => void
+  value?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  background?: string;
+  onChange?: (event: any) => void;
   button?: {
-    text?: string
-    copy?: boolean
-    copyText?: string
-    onClick?: () => void
-    show?: boolean
-  }
+    text?: React.ReactNode;
+    copy?: boolean;
+    copyText?: string;
+    onClick?: () => void;
+    show?: boolean;
+  };
 }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <div
       className="input-group relative form-control !grid"
       style={{
-        gridAutoFlow: 'column',
-        gridAutoColumns: '1fr auto',
+        gridAutoFlow: "column",
+        gridAutoColumns: "1fr auto",
         background: background,
-        gap:'1rem'
+        gap: "1rem",
       }}
     >
       <input
@@ -41,15 +41,15 @@ export default function Input({
         type="text"
         value={value}
         placeholder={placeholder}
-        onChange={event => {
-          onChange(event)
+        onChange={(event) => {
+          onChange(event);
         }}
       />
       {button && button.show ? (
         button.copy ? (
           <CopyToClipboard
-            text={button?.copyText || ''}
-            onCopy={() => MessageSuccess(t('message.copy.success'))}
+            text={button?.copyText || ""}
+            onCopy={() => MessageSuccess(t("message.copy.success"))}
           >
             <button>
               <Text>{button?.text}</Text>
@@ -61,8 +61,8 @@ export default function Input({
           </button>
         )
       ) : (
-        ''
+        ""
       )}
     </div>
-  )
+  );
 }
