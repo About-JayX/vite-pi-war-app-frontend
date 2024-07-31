@@ -27,6 +27,7 @@ import {
   predictRegistrationDate,
 } from "@/utils/registrationPredictor";
 import Message from "@/components/message";
+import Header from "./components/header";
 // import SEO from "@/components/seo";
 
 const Progress = ({
@@ -410,42 +411,23 @@ export function App() {
       return () => clearTimeout(timer);
     }
   }, [transitionAnimation]);
-  
 
   return (
     <Fragment>
-      {/* <SEO
-        title={`${t("seo./.title")} ${
-          (router[0].path !== "/" && router[0].path
-            ? `- ${t("seo." + router[0].path + ".title")}`
-            : "") || ""
-        }`}
-        icon={t("seo./.icon")}
-        description={t("seo./.description")}
-        keywords={t("seo./.keywords")}
-        author={t("seo./.author")}
-        opengraph={opengraph.map((item: any) => ({
-          ...item,
-          title: t("seo./.title"),
-          description: t("seo./.description"),
-        }))}
-        twitter={twitter.map((item: any) => ({
-          ...item,
-          title: t("seo./.title"),
-          description: t("seo./.description"),
-        }))}
-      /> */}
       {!isNewUser ? (
         <>
-          <Box
-            className={`overflow-hidden overflow-y-auto ${
-              transitionAnimation
-                ? "transition-opacity duration-500 ease-in-out opacity-100"
-                : "opacity-0"
-            }`}
-          >
+          <Box className={`overflow-hidden overflow-y-auto`}>
+            <Header />
             <Message />
-            <RouterProvider />
+            <div
+              className={`${
+                transitionAnimation
+                  ? "transition-opacity duration-500 ease-in-out opacity-100"
+                  : "opacity-0"
+              }`}
+            >
+              <RouterProvider />
+            </div>
           </Box>
           <Navigation onClick={() => setTransitionAnimation(false)} />
         </>

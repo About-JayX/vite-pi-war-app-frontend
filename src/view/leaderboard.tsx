@@ -9,7 +9,7 @@ export default function Leaderboard() {
   const { t } = useTranslation();
   const { userRank, inviteRank } = useAppSelector((state) => state.user);
   return (
-    <Container maxWidth="sm" className="p-4">
+    <Container maxWidth="xl" className="p-4">
       <div className="grid gap-6 w-100 justify-items-center">
         <Title>{t("public.leaderboard")}</Title>
         <Card className="w-full card">

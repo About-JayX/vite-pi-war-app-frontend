@@ -111,7 +111,7 @@ export default function Airdrops() {
   return (
     <>
       <Wallet open={walletOpen} setWalletOpen={setWalletOpen} getUrl={getUrl} />
-      <Container maxWidth="sm" className="p-4">
+      <Container maxWidth="xl" className="p-4">
         <div className="grid gap-6 w-100 justify-items-center text-center">
           <Title>{t("public.airdrops")}</Title>
           <Text className="text-color mt-[-1rem]">{t("binding.text")}</Text>

@@ -61,25 +61,30 @@
 }
 
 .home-bg {
-    @apply relative;
+    @apply relative pt-[4rem];
 }
 
-.home-bg::after {
+/* .home-bg::after {
     @apply content-[''] absolute top-[-4rem] sm:top-[-2rem] left-[-2rem] bg-[url(/home/bg.png)] bg-no-repeat bg-center bg-cover w-[calc(100%+4rem)] h-[25rem] opacity-50;
+    animation: home-bg 3s ease-in-out infinite;
+} */
+
+.home-bg .bg{
+    @apply absolute top-[-2rem] sm:top-[-12rem] left-[-2rem] bg-[url(/home/bg.png)] bg-no-repeat bg-center bg-cover w-[calc(100%+4rem)] h-[30rem] sm:h-[40rem] opacity-50;
     animation: home-bg 3s ease-in-out infinite;
 }
 
 .home-bg .home-bg-1 {
-    @apply absolute top-0 left-0 bg-[url(/home/bg-1.png)] bg-no-repeat bg-cover w-20 h-20 z-[1];
+    @apply absolute top-[4rem] left-0 bg-[url(/home/bg-1.png)] bg-no-repeat bg-cover w-20 h-20 z-[1];
     animation: home-bg-1 2s ease-in-out infinite;
 }
 
 .home-bg .home-bg-2 {
-    @apply absolute top-16 left-0 bg-[url(/home/bg-2.png)] bg-no-repeat bg-cover w-36 h-52 z-0;
+    @apply absolute top-[8rem] left-0 bg-[url(/home/bg-2.png)] bg-no-repeat bg-cover w-36 h-52 z-0;
 }
 
 .home-bg .home-bg-3 {
-    @apply absolute top-24 right-0 bg-[url(/home/bg-3.png)] bg-no-repeat bg-cover w-44 h-36 z-[1];
+    @apply absolute top-[10rem] right-0 bg-[url(/home/bg-3.png)] bg-no-repeat bg-cover w-44 h-36 z-[1];
     animation: home-bg-2 2s ease-in-out infinite;
 }
 

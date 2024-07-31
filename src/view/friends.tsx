@@ -25,9 +25,9 @@ export default function Friends() {
     // window.open(shareUrl, '_blank');
   };
   return (
-    <Container maxWidth="sm" className="p-4 pb-0">
+    <Container maxWidth="xl" className="p-4 pb-0">
       <div className="grid grid-flow-row grid-rows-[1fr,auto] h-full relative">
-        <div class="min-h-[calc(100vh-160px)]">
+        <div class="min-h-[calc(100vh-14rem)]">
           <div className="grid w-full gap-6 overflow-hidden h-fit">
             <Title className="whitespace-pre-line text-center">
               {t("friends.title")}

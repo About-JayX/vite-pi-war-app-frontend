@@ -4,8 +4,9 @@ import { useAppSelector } from "@/store/hook";
 import "@/style/home.css";
 import { semicolon } from "@/utils";
 import { useTranslation } from "react-i18next";
-import { Card, CardActions, CardContent, Container } from "@material-ui/core";
+import { CardActions, CardContent, Container } from "@material-ui/core";
 import Button from "@/components/button";
+import { Card } from "react-bootstrap";
 
 export default function Home() {
   const { userReward } = useAppSelector((state) => state.user);
@@ -38,8 +39,9 @@ export default function Home() {
     );
   };
   return (
-    <Container maxWidth="sm" className="p-4">
+    <Container maxWidth="xl" className="p-4 container">
       <div className="grid gap-6 w-100 justify-items-center home-bg">
+        <div className="bg"/>
         <div className="home-bg-1" />
         <div className="home-bg-2" />
         <div className="home-bg-3" />

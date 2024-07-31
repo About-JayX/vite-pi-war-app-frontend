@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { route, useRouter } from "preact-router";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -10,7 +10,7 @@ import lang from "@/config/locale";
 
 export default function Navigation({ onClick }: { onClick?: () => void }) {
   const { t } = useTranslation();
-  const router = useRouter()
+  const router = useRouter();
   const navs: any = t("nav", { returnObjects: true });
   const data = [
     {
@@ -32,18 +32,26 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
   ];
 
   // 生成多语言支持的路由
-const localizedRoutes = data.map((route) => ({
-  ...route,
-  path: `/:lang(${Object.keys(lang).join("|")})${route.path}`,
-}));
-  const [value, setValue] = React.useState(router[0].path);
+  const localizedRoutes = data.map((route) => ({
+    ...route,
+    path: `/:lang(${Object.keys(lang).join("|")})${route.path}`,
+  }));
+
+  const [value, setValue] = useState(getPathWithoutLang(router[0].path));
+
+  // 获取路径中的语言部分
+  function getPathWithoutLang(path:any) {
+    const parts = path.split('/');
+    return '/' + parts.slice(2).join('/');
+  }
 
   return (
     <BottomNavigation
       value={value}
       onChange={(_event, newValue) => {
-        route(newValue, true);
-        setValue(newValue);
+        const filteredValue = getPathWithoutLang(newValue);
+        route(filteredValue, true);
+        setValue(filteredValue);
         onClick && onClick();
       }}
       showLabels
@@ -56,7 +64,7 @@ const localizedRoutes = data.map((route) => ({
           value={itme.path}
           icon={itme.icon}
           className={`${
-            value === itme.path ? "!text-white" : "!text-white/50"
+            value === getPathWithoutLang(itme.path) ? "!text-white" : "!text-white/50"
           }`}
         />
       ))}

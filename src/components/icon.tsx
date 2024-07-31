@@ -1,12 +1,14 @@
 export default function Icon({
   name = "",
+  className = ""
 }: {
   prefix?: string;
   name: string;
   color?: string;
+  className?:string
 }) {
   return (
-    <svg class="w-4 h-4" aria-hidden={true}>
+    <svg className={`w-4 h-4 ${className}`} aria-hidden={true}>
       <use xlinkHref={`#icon-${name}`} />
     </svg>
   );
