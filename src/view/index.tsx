@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { CardActions, CardContent, Container } from "@material-ui/core";
 import Button from "@/components/button";
 import { Card } from "react-bootstrap";
+import Loader from "@/components/loader";
 
 export default function Home() {
   const { userReward } = useAppSelector((state) => state.user);
@@ -95,6 +96,7 @@ export default function Home() {
               </div>
             ))
           : ""}
+          <Loader />
       </div>
     </Container>
   );

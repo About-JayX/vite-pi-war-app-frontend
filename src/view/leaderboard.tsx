@@ -1,3 +1,4 @@
+import Loader from "@/components/loader";
 import { Text } from "@/components/text";
 import { HeaderTitle, Title } from "@/components/title";
 import { useAppSelector } from "@/store/hook";
@@ -78,6 +79,7 @@ export default function Leaderboard() {
               }
             />
           ))}
+        <Loader />
       </div>
     </Container>
   );

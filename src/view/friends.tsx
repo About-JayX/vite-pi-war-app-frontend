@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import invite from "@/config/invite";
 import { getTextColorForBackground, semicolon, stringToColor } from "@/utils";
 import { Text } from "@/components/text";
+import Loader from "@/components/loader";
 
 export default function Friends() {
   const { t } = useTranslation();
@@ -63,6 +64,7 @@ export default function Friends() {
                 />
               ))}
           </div>
+          <Loader />
         </div>
 
         <div className="w-full bg-black sticky bottom-[0] z-1">
@@ -71,6 +73,7 @@ export default function Friends() {
           </Button>
         </div>
       </div>
+     
     </Container>
   );
 }
