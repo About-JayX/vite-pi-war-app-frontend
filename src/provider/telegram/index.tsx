@@ -61,10 +61,19 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
     let app = (window as any).Telegram?.WebApp;
 
     app = { ...app, ...initInfo }; //测试
-
+    
+    
     if (app) {
+      // app.requestWriteAccess()
+      app.setBackgroundColor('#000000')
+      app.setHeaderColor('#000000')
       app.ready();
       app.expand();
+
+      const container:any = document.querySelector('.html');
+      container.addEventListener('scroll', () => {
+        app.expand(); // 确保窗口始终固定
+      });
       setWebApp(app);
     }
   }, [scriptLoaded]);

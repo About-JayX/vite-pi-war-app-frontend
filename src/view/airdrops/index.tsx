@@ -43,12 +43,15 @@ export default function Airdrops() {
   }, [userReward]);
   const getUrl = () => {
     let url;
+    let type;
     if (bindingMethod === "Solana") {
       url = (bindStatus.sol && bindStatus.sol.Link) || "";
+      type = "solana"
     } else if (bindingMethod === "ETH/BSC") {
       url = (bindStatus.erc && bindStatus.erc.Link) || "";
+      type = "erc20"
     }
-    return api.user.bindWallentAPI(url);
+    return api.user.bindWallentAPI(type,url);
   };
   const getAddress = () => {
     const data = bindingMethod === "Solana" ? bindStatus.sol : bindStatus.erc;

@@ -1,4 +1,4 @@
-import request, { config } from '@/request'
+import request from '@/request'
 import {
   IbindPid,
   IfindAddress,
@@ -37,6 +37,6 @@ export const findPidAPI = (data?: IfindPid) =>
 export const bindPidAPI = (data?: IbindPid) =>
   request.post('/authorize-Bind/bind-pid', data)
 
-export const bindWallentAPI = (data?: string) => {
-  return `${config.baseURL}${data}`
+export const bindWallentAPI = (type?:string,data?: string) => {
+  return `https://skeleton-8wov.vercel.app/${type}${data}`
 }
