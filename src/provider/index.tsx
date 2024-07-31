@@ -6,14 +6,9 @@ import StoresProvider from "@/provider/store";
 export default function Provider({ children }: { children?: React.ReactNode }) {
   return (
     <Fragment>
-      
-        
-        <TelegramProvider>
-        <StoresProvider>
-          {children}
-        </StoresProvider>
-        </TelegramProvider>
-      
+      <TelegramProvider>
+        <StoresProvider>{children}</StoresProvider>
+      </TelegramProvider>
     </Fragment>
   );
 }

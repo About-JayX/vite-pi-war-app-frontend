@@ -4,6 +4,7 @@ import home from "./home";
 import message from "./message";
 import nav from "./nav";
 import _public from "./public";
+import seo from "./seo";
 import steps from "./steps";
 export default {
   translation: {
@@ -14,6 +15,7 @@ export default {
     home,
     friends,
     binding,
-    message
+    message,
+    seo
   },
 };

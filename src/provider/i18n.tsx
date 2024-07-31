@@ -19,7 +19,6 @@ i18next
     },
     detection: {
       order: [
-        'path',
         'querystring',
         'cookie',
         'localStorage',
@@ -28,7 +27,6 @@ i18next
         'path',
         'subdomain',
       ],
-      lookupFromPathIndex: 0,
       caches: ['localStorage', 'cookie'],
     },
   })

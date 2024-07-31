@@ -1,8 +1,9 @@
 import { render } from "preact";
 import { App } from "@/app";
 import Provider from "@/provider";
-import "@/style/global.css";
+
 import "bootstrap/scss/bootstrap.scss";
+import "@/style/global.css";
 import "virtual:svg-icons-register";
 
 render(

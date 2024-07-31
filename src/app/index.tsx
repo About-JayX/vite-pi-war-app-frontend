@@ -410,12 +410,13 @@ export function App() {
       return () => clearTimeout(timer);
     }
   }, [transitionAnimation]);
+  
 
   return (
     <Fragment>
       {/* <SEO
         title={`${t("seo./.title")} ${
-          (router[0].path !== "/" && GetSeoPathname
+          (router[0].path !== "/" && router[0].path
             ? `- ${t("seo." + router[0].path + ".title")}`
             : "") || ""
         }`}
