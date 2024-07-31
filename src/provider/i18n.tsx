@@ -1,10 +1,10 @@
-import i18next from 'i18next'
-import LanguageDetector from 'i18next-browser-languagedetector/cjs'
-import Backend from 'i18next-chained-backend'
-import HttpApi from 'i18next-http-backend'
-import { initReactI18next } from 'react-i18next'
+import i18next from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector/cjs";
+import Backend from "i18next-chained-backend";
+import HttpApi from "i18next-http-backend";
+import { initReactI18next } from "react-i18next";
 
-import locales from '@/config/locale'
+import locales from "@/config/locale";
 
 i18next
   .use(HttpApi)
@@ -13,22 +13,23 @@ i18next
   .use(initReactI18next)
   .init({
     resources: locales,
-    fallbackLng: 'en',
+    fallbackLng: "en",
     react: {
       useSuspense: true,
     },
     detection: {
       order: [
-        'querystring',
-        'cookie',
-        'localStorage',
-        'navigator',
-        'htmlTag',
-        'path',
-        'subdomain',
-      ],
-      caches: ['localStorage', 'cookie'],
-    },
-  })
+        "path",
+        "navigator",
+        "querystring",
+        "cookie",
+        "localStorage",
+        "htmlTag",
 
-export default i18next
+        "subdomain",
+      ],
+      caches: ["localStorage", "cookie"],
+    },
+  });
+
+export default i18next;

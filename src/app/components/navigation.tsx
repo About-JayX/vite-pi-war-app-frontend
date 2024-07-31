@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { RiHomeLine } from "react-icons/ri";
 import { LuUsers } from "react-icons/lu";
 import Icon from "@/components/icon";
+import lang from "@/config/locale";
 
 export default function Navigation({ onClick }: { onClick?: () => void }) {
   const { t } = useTranslation();
@@ -29,6 +30,12 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
       path: "/airdrops",
     },
   ];
+
+  // 生成多语言支持的路由
+const localizedRoutes = data.map((route) => ({
+  ...route,
+  path: `/:lang(${Object.keys(lang).join("|")})${route.path}`,
+}));
   const [value, setValue] = React.useState(router[0].path);
 
   return (
@@ -42,7 +49,7 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
       showLabels
       className="!bg-black"
     >
-      {data.map((itme, index) => (
+      {localizedRoutes.map((itme, index) => (
         <BottomNavigationAction
           key={index}
           label={itme.name}
