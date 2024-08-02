@@ -65,8 +65,8 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
     
     if (app) {
       // app.requestWriteAccess()
-      app.setBackgroundColor('#000000')
-      app.setHeaderColor('#000000')
+      // app.setBackgroundColor('#000000')
+      // app.setHeaderColor('#000000')
       app.ready();
       app.expand();
 
