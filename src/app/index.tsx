@@ -9,7 +9,6 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { semicolon } from '@/utils'
 import Button from '@/components/button'
 import {
-  updateAuthToken,
   updateBindStatus,
   updateFriendRank,
   updateInviteRank,

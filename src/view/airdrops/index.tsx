@@ -21,7 +21,7 @@ import { FaRegPaste } from 'react-icons/fa6'
 export default function Airdrops() {
   const { t } = useTranslation()
   // const { uid } = props?.searchParams
-  const { user, postData } = useTelegram()
+  const {  postData } = useTelegram()
   const [bindingMethod, setBindingMethod] = useState<string>('Solana')
   const [input, setInput] = useState<string>('')
   const { bindStatus, userReward } = useAppSelector(state => state.user)

@@ -1,4 +1,3 @@
-import { useAppSelector } from '@/store/hook'
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
