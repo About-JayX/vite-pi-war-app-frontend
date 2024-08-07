@@ -3,52 +3,52 @@
 //   useMiniAppRaw,
 //   useViewportRaw,
 // } from "@telegram-apps/sdk-react";
-import { createContext, Fragment } from "preact";
-import { useContext, useEffect, useMemo, useState } from "preact/hooks";
-import type { ITelegramUser, IWebApp } from "@/provider/telegram/type";
+import { createContext, Fragment } from 'preact'
+import { useContext, useEffect, useMemo, useState } from 'preact/hooks'
+import type { ITelegramUser, IWebApp } from '@/provider/telegram/type'
 
 export const TelegramContext = createContext<{
-  webApp?: IWebApp;
-  user?: ITelegramUser;
+  webApp?: IWebApp
+  user?: ITelegramUser
   postData?: {
-    initData: string;
+    initData: string
     initDataUnsafe: {
-      query_id: string;
-      user: ITelegramUser;
-      auth_date: string;
-      hash: string;
-    };
-  };
-}>({});
+      query_id: string
+      user: ITelegramUser
+      auth_date: string
+      hash: string
+    }
+  }
+}>({})
 
 const initInfo = import.meta.env.DEV
   ? {
       initData:
-        "user=%7B%22id%22%3A6350461487%2C%22first_name%22%3A%22Jay%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22About_JayX%22%2C%22language_code%22%3A%22zh-hans%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-1457959087454848207&chat_type=private&auth_date=1721978899&hash=bfbab6bebc78b9dc242504945f348b6c7cd8239583bb539c71d84dd2fdc7729b",
+        'user=%7B%22id%22%3A6350461487%2C%22first_name%22%3A%22Jay%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22About_JayX%22%2C%22language_code%22%3A%22zh-hans%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-7615271304887599165&chat_type=sender&start_param=1WHXKECNH4A&auth_date=1723017581&hash=8d916059080873bc272d05270f233f60c70d442a1d514189875f47f120398085',
       initDataUnsafe: {
         user: {
           id: 6350461487,
-          first_name: "Jay",
-          last_name: "",
-          username: "About_JayX",
-          language_code: "zh-hans",
+          first_name: 'Jay',
+          last_name: '',
+          username: 'About_JayX',
+          language_code: 'zh-hans',
           allows_write_to_pm: true,
         },
-        chat_instance: "-1457959087454848207",
-        chat_type: "private",
-        auth_date: "1721978899",
-        hash: "bfbab6bebc78b9dc242504945f348b6c7cd8239583bb539c71d84dd2fdc7729b",
+        chat_instance: '-7615271304887599165',
+        chat_type: 'sender',
+        start_param: '1WHXKECNH4A',
+        auth_date: '1723017581',
+        hash: '8d916059080873bc272d05270f233f60c70d442a1d514189875f47f120398085',
       },
-      type: "solana",
     }
-  : {};
+  : {}
 
 export const Telegram = ({ children }: { children?: React.ReactNode }) => {
   // const useViewport = useViewportRaw(true)?.result;
   // const useMiniApp = useMiniAppRaw(true)?.result;
 
-  const [webApp, setWebApp] = useState<IWebApp | null>(null);
-  const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [webApp, setWebApp] = useState<IWebApp | null>(null)
+  const [scriptLoaded, setScriptLoaded] = useState(false)
 
   // useEffect(() => {
   //   if (useViewport) {
@@ -58,25 +58,24 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
   // }, [useViewport, useMiniApp]);
 
   useEffect(() => {
-    let app = (window as any).Telegram?.WebApp;
+    let app = (window as any).Telegram?.WebApp
 
-    app = { ...app, ...initInfo }; //测试
-    
-    
+    app = { ...app, ...initInfo } //测试
+
     if (app) {
       // app.requestWriteAccess()
       // app.setBackgroundColor('#000000')
       // app.setHeaderColor('#000000')
-      app.ready();
-      app.expand();
+      app.ready()
+      app.expand()
 
-      const container:any = document.querySelector('.html');
+      const container: any = document.querySelector('.html')
       container.addEventListener('scroll', () => {
-        app.expand(); // 确保窗口始终固定
-      });
-      setWebApp(app);
+        app.expand() // 确保窗口始终固定
+      })
+      setWebApp(app)
     }
-  }, [scriptLoaded]);
+  }, [scriptLoaded])
 
   const value = useMemo(() => {
     return webApp
@@ -88,8 +87,8 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
             initDataUnsafe: webApp.initDataUnsafe,
           },
         }
-      : {};
-  }, [webApp]);
+      : {}
+  }, [webApp])
 
   return (
     <Fragment>
@@ -102,19 +101,15 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
         {webApp ? children : <Fragment />}
       </TelegramContext.Provider>
     </Fragment>
-  );
-};
+  )
+}
 
 export default function TelegramProvider({
   children,
 }: {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }) {
-  return (
-    <Telegram >
-      {children}
-      </Telegram>
-  );
+  return <Telegram>{children}</Telegram>
 }
 
 export const useTelegram = () => useContext(TelegramContext)

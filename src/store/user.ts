@@ -10,6 +10,7 @@ export const user = createSlice({
     userReward: {} as any,
     friendRank: {} as any,
     bindStatus: {} as any,
+    authToken: '' as string,
   },
   reducers: {
     updateNewUser(stores, actions) {
@@ -33,6 +34,9 @@ export const user = createSlice({
     updateBindStatus(stores, actions) {
       stores.bindStatus = { ...actions.payload }
     },
+    updateAuthToken(stores, actions) {
+      stores.authToken = actions.payload
+    },
   },
 })
 
@@ -44,6 +48,7 @@ export const {
   updateUserReward,
   updateFriendRank,
   updateBindStatus,
+  updateAuthToken,
 } = user.actions
 
 export default user.reducer

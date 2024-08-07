@@ -1,3 +1,4 @@
+import { useAppSelector } from '@/store/hook'
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
@@ -17,6 +18,8 @@ export class HttpRequest {
 
     this.service.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
+        const token = sessionStorage.getItem('token') || ''
+        token && (config.headers['authorization'] = token)
         return config
       }
     )

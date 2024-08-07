@@ -126,14 +126,18 @@ export default function Airdrops() {
             {t('binding.bindingTipsText')}
           </Text>
           <Input
-            placeholder={`https://pi.space-pi.com/${user?.id}`}
+            placeholder={`192.168.1.116:3000/${
+              sessionStorage.getItem('token') || ''
+            }`}
             disabled
             background="#030915"
             button={{
               text: t('public.copy'),
               copy: true,
               show: true,
-              copyText: `https://pi.space-pi.com/${user?.id}`,
+              copyText: `192.168.1.116:3000/${
+                sessionStorage.getItem('token') || ''
+              }`,
             }}
           />
           <div className="card !p-4 !pt-6 !pb-6 grid gap-3 w-100 binding-card-bg bg-transparent">
