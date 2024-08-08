@@ -1,31 +1,24 @@
 import Input from '@/components/input'
 import { Text } from '@/components/text'
 import { Title } from '@/components/title'
-import { useTelegram } from '@/provider/telegram'
-import { useAppDispatch, useAppSelector } from '@/store/hook'
+import { useAppSelector } from '@/store/hook'
 import { Container } from '@material-ui/core'
 import { useEffect, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
 import api from '@/api'
-import { updateBindStatus } from '@/store/user'
-import { MessageSuccess } from '@/components/message'
 import './index.css'
 import Wallet from './wallet'
 import Segmented from '@/components/segmented'
-import Button from '@/components/button'
 import Icon from '@/components/icon'
 import SuccessPng from '@/assets/icon/success.png'
 import SuccessaPng from '@/assets/icon/success-a.png'
-import { FaRegPaste } from 'react-icons/fa6'
 
 export default function Airdrops() {
   const { t } = useTranslation()
   // const { uid } = props?.searchParams
-  const { postData } = useTelegram()
   const [bindingMethod, setBindingMethod] = useState<string>('Solana')
-  const [input, setInput] = useState<string>('')
+  // const [_, setInput] = useState<string>('')
   const { bindStatus, userReward } = useAppSelector(state => state.user)
-  const dispatch = useAppDispatch()
   const [walletOpen, setWalletOpen] = useState(false)
 
   const [_bdLog, setBdLog] = useState([])
@@ -58,45 +51,45 @@ export default function Airdrops() {
 
     return data && data.Address ? data.Address : {}
   }
-  const onPaste = async () => {
-    try {
-      const pastedText = await navigator.clipboard.readText()
+  // const onPaste = async () => {
+  //   try {
+  //     const pastedText = await navigator.clipboard.readText()
 
-      setInput(pastedText)
+  //     setInput(pastedText)
 
-      // if (!tSolAddress.test(pastedText)) {
-      //   MessageError("Binding Success");
-      // }
-      // 进行你需要的操作，例如更新状态或执行其他逻辑
-    } catch (err) {
-      console.error('Failed to read clipboard contents:', err)
-      // 处理错误情况，例如显示用户提示或执行备用方案
-    }
-  }
-  const bindPid = async () => {
-    if (!postData) return
-    const data = {
-      pid: input,
-      ...postData,
-    }
-    await api.user.bindPidAPI(data)
-    const bindPid = await api.user.findPidAPI(postData)
-    const ercAddress = await api.user.findAddressAPI({
-      ...postData,
-      type: 'erc20',
-    })
-    const solAddress = await api.user.findAddressAPI({
-      ...postData,
-      type: 'solana',
-    })
-    const bindStatus = {
-      pid: bindPid.data || null,
-      erc: ercAddress.data || null,
-      sol: solAddress.data || null,
-    }
-    dispatch(updateBindStatus(bindStatus))
-    MessageSuccess('Bind Success')
-  }
+  //     // if (!tSolAddress.test(pastedText)) {
+  //     //   MessageError("Binding Success");
+  //     // }
+  //     // 进行你需要的操作，例如更新状态或执行其他逻辑
+  //   } catch (err) {
+  //     console.error('Failed to read clipboard contents:', err)
+  //     // 处理错误情况，例如显示用户提示或执行备用方案
+  //   }
+  // }
+  // const bindPid = async () => {
+  //   if (!postData) return
+  //   const data = {
+  //     pid: input,
+  //     ...postData,
+  //   }
+  //   await api.user.bindPidAPI(data)
+  //   const bindPid = await api.user.findPidAPI(postData)
+  //   const ercAddress = await api.user.findAddressAPI({
+  //     ...postData,
+  //     type: 'erc20',
+  //   })
+  //   const solAddress = await api.user.findAddressAPI({
+  //     ...postData,
+  //     type: 'solana',
+  //   })
+  //   const bindStatus = {
+  //     pid: bindPid.data || null,
+  //     erc: ercAddress.data || null,
+  //     sol: solAddress.data || null,
+  //   }
+  //   dispatch(updateBindStatus(bindStatus))
+  //   MessageSuccess('Bind Success')
+  // }
   const ellipsisMiddle = (
     text: string,
     maxLength: number,
