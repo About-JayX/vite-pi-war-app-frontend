@@ -21,7 +21,7 @@ import { FaRegPaste } from 'react-icons/fa6'
 export default function Airdrops() {
   const { t } = useTranslation()
   // const { uid } = props?.searchParams
-  const {  postData } = useTelegram()
+  const { postData } = useTelegram()
   const [bindingMethod, setBindingMethod] = useState<string>('Solana')
   const [input, setInput] = useState<string>('')
   const { bindStatus, userReward } = useAppSelector(state => state.user)
@@ -176,7 +176,7 @@ export default function Airdrops() {
               </div>
             ) : (
               <>
-                <Input
+                {/* <Input
                   value={
                     bindStatus.pid && bindStatus.pid.pId
                       ? bindStatus.pid.pId
@@ -192,14 +192,28 @@ export default function Airdrops() {
                     onClick: () => onPaste(),
                     show: !(bindStatus.pid && bindStatus.pid.pId),
                   }}
-                />
-                {bindStatus.pid && bindStatus.pid.pId ? (
-                  ''
-                ) : (
-                  <Button className="rounded-full" onClick={bindPid}>
-                    {t('binding.bindPiNetwork')}
-                  </Button>
-                )}
+                /> */}
+                {
+                  <Input
+                    placeholder={
+                      bindStatus.pid && bindStatus.pid.pId
+                        ? bindStatus.pid.pId
+                        : `https://pi-badge-web-v2.pages.dev/${
+                            sessionStorage.getItem('token') || ''
+                          }`
+                    }
+                    disabled
+                    background="#030915"
+                    button={{
+                      text: t('public.copy'),
+                      copy: true,
+                      show: bindStatus.pid.pId ? false : true,
+                      copyText: `https://pi-badge-web-v2.pages.dev/${
+                        sessionStorage.getItem('token') || ''
+                      }`,
+                    }}
+                  />
+                }
               </>
             )}
           </div>
