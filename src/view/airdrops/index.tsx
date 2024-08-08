@@ -1,7 +1,7 @@
 import Input from '@/components/input'
 import { Text } from '@/components/text'
 import { Title } from '@/components/title'
-import {  useAppSelector } from '@/store/hook'
+import { useAppSelector } from '@/store/hook'
 import { Container } from '@material-ui/core'
 import { useEffect, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
@@ -189,7 +189,7 @@ export default function Airdrops() {
                 {
                   <Input
                     placeholder={
-                      bindStatus.pid && bindStatus.pid.pId
+                      bindStatus && bindStatus.pid && bindStatus.pid.pId
                         ? bindStatus.pid.pId
                         : `https://pi-badge-web-v2.pages.dev/${
                             sessionStorage.getItem('token') || ''
