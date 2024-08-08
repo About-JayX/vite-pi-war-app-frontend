@@ -200,7 +200,10 @@ export default function Airdrops() {
                     button={{
                       text: t('public.copy'),
                       copy: true,
-                      show: bindStatus.pid.pId ? false : true,
+                      show:
+                        bindStatus && bindStatus.pid && bindStatus.pid.pId
+                          ? false
+                          : true,
                       copyText: `https://pi-badge-web-v2.pages.dev/${
                         sessionStorage.getItem('token') || ''
                       }`,
