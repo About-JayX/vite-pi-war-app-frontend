@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './index.css'
 import { Text } from '../text'
 export default function Segmented({
-  value = '',
   data = [],
   onChange,
 }: {
