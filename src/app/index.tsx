@@ -250,7 +250,14 @@ const Steps = ({
           className="vh-100 grid gap-10 text-center p-4 justify-items-center w-full"
           style={{ gridAutoRows: '1fr auto auto' }}
         >
-          <div className="self-center ">
+          <div
+            className="self-center "
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
             <img src="/piwar.png" className="w-[20rem] h-[20rem]" />
             {user?.username ? (
               <Text className="text-color">{t('steps.steps1.text1')}</Text>

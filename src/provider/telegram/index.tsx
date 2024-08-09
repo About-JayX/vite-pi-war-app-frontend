@@ -30,7 +30,7 @@ const initInfo = import.meta.env.DEV
           id: 6350461487,
           first_name: 'Jay',
           last_name: '',
-          username: 'About_JayX',
+          username: '',
           language_code: 'zh-hans',
           allows_write_to_pm: true,
         },
