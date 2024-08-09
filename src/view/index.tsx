@@ -40,7 +40,6 @@ export default function Home() {
         break
       }
     }
-    console.log(index, '??')
 
     return (
       <img src={`/home/${index}.svg`} alt="" className="w-[3rem] h-[3rem]" />
