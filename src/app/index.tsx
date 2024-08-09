@@ -279,20 +279,14 @@ const Steps = ({
             <Progress text="Telegram Premium Checked" value={premiumProgress} />
             <Progress text="Reply Permission Confirmed" value={ogProgress} />
           </div>
-          <Button
-            className="w-100"
-            onClick={() => onChange && onChange(2)}
-            disabled={
-              !(
-                ageProgress === 100 &&
-                premiumProgress === 100 &&
-                activeProgress === 100 &&
-                ogProgress === 100
-              )
-            }
-          >
-            Continue
-          </Button>
+          {ageProgress === 100 &&
+            premiumProgress === 100 &&
+            activeProgress === 100 &&
+            ogProgress === 100 && (
+              <Button className="w-100" onClick={() => onChange && onChange(2)}>
+                Continue
+              </Button>
+            )}
         </div>
       )}
       {status === 2 && (

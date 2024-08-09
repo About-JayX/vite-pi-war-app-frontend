@@ -38,5 +38,5 @@ export const bindPidAPI = (data?: IbindPid) =>
   request.post('/authorize-Bind/bind-pid', data)
 
 export const bindWallentAPI = (type?:string,data?: string) => {
-  return `https://skeleton-8wov.vercel.app/${type}${data}`
+  return `https://skeleton-8wov.vercel.app/${type}/${data}`
 }
