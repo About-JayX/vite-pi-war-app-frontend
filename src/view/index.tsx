@@ -16,18 +16,23 @@ export default function Home() {
 
   const getIcon = (key: any) => {
     let index
+    if (key.includes('Binding')) key = 'Binding'
 
     switch (key) {
       case 'Telegram Premium': {
         index = 1
         break
       }
-      case 'Account age': {
+      case 'Account Age': {
         index = 2
         break
       }
-      case 'Invited friends': {
+      case 'Invited Friends': {
         index = 3
+        break
+      }
+      case 'Binding': {
+        index = 4
         break
       }
       default: {
@@ -35,6 +40,8 @@ export default function Home() {
         break
       }
     }
+    console.log(index, '??')
+
     return (
       <img src={`/home/${index}.svg`} alt="" className="w-[3rem] h-[3rem]" />
     )
