@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "APP_ENV=development vite",
     "build": "APP_ENV=production tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "remote":"./remote.sh"
   },
   "dependencies": {
     "preact": "^10.22.1"
