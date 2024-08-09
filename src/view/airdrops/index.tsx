@@ -44,7 +44,9 @@ export default function Airdrops() {
       url = (bindStatus.erc && bindStatus.erc.Link) || ''
       type = 'erc20'
     }
-    return api.user.bindWallentAPI(type, url)
+    let token = sessionStorage.getItem('token') || ''
+
+    return api.user.bindWallentAPI(type, url, token)
   }
   const getAddress = () => {
     const data = bindingMethod === 'Solana' ? bindStatus.sol : bindStatus.erc
@@ -119,7 +121,7 @@ export default function Airdrops() {
             {t('binding.bindingTipsText')}
           </Text>
           <Input
-            placeholder={`192.168.1.116:3000/${
+            placeholder={`https://pi-badge-web-v2.pages.dev/${
               sessionStorage.getItem('token') || ''
             }`}
             disabled
@@ -128,7 +130,7 @@ export default function Airdrops() {
               text: t('public.copy'),
               copy: true,
               show: true,
-              copyText: `192.168.1.116:3000/${
+              copyText: `https://pi-badge-web-v2.pages.dev/${
                 sessionStorage.getItem('token') || ''
               }`,
             }}
