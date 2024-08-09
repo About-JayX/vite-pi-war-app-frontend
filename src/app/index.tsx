@@ -188,6 +188,7 @@ const Steps = ({
         newArr.push(item)
       } else {
         let obj = newArr.find((child: any) => child.key === item.key)
+
         if (!obj) {
           newArr.push(item)
         } else {

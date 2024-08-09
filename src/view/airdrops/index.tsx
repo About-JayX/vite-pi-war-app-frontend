@@ -1,6 +1,6 @@
 import Input from '@/components/input'
 import { Text } from '@/components/text'
-import { Title } from '@/components/title'
+import { HeaderTitle, Title } from '@/components/title'
 import { useAppSelector } from '@/store/hook'
 import { Container } from '@material-ui/core'
 import { useEffect, useState } from 'preact/hooks'
@@ -12,6 +12,7 @@ import Segmented from '@/components/segmented'
 import Icon from '@/components/icon'
 import SuccessPng from '@/assets/icon/success.png'
 import SuccessaPng from '@/assets/icon/success-a.png'
+import { semicolon } from '@/utils'
 
 export default function Airdrops() {
   const { t } = useTranslation()
@@ -20,8 +21,7 @@ export default function Airdrops() {
   // const [_, setInput] = useState<string>('')
   const { bindStatus, userReward } = useAppSelector(state => state.user)
   const [walletOpen, setWalletOpen] = useState(false)
-
-  const [_bdLog, setBdLog] = useState([])
+  const [bdLog, setBdLog] = useState([])
 
   useEffect(() => {
     if (Object.keys(userReward).length) {
@@ -215,6 +215,23 @@ export default function Airdrops() {
               </>
             )}
           </div>
+          <HeaderTitle className="text-left w-100">
+            {t('public.tasks')}
+          </HeaderTitle>
+          {bdLog.length
+            ? bdLog.map((item: any) => (
+                <div className="flex w-100 justify-between mt-[-1rem]">
+                  <div className="self-center flex gap-3">
+                    <div className="grid self-center">
+                      <Text>{item.key}</Text>
+                    </div>
+                  </div>
+                  <Text className="self-center">
+                    +{semicolon(item.value)} PIS
+                  </Text>
+                </div>
+              ))
+            : ''}
         </div>
       </Container>
     </>
