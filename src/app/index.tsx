@@ -28,7 +28,6 @@ import {
 } from "@/utils/registrationPredictor";
 import Message from "@/components/message";
 import Header from "./components/header";
-import Modal from "@/components/modal";
 // import SEO from "@/components/seo";
 
 const Progress = ({
@@ -426,8 +425,7 @@ export function App() {
 
   return (
     <Fragment>
-      <Modal />
-      {/* {!isNewUser ? (
+      {!isNewUser ? (
         <>
           <Box className={`overflow-hidden overflow-y-auto`}>
             <Header />
@@ -446,7 +444,7 @@ export function App() {
         </>
       ) : (
         <Steps status={stepsm} onChange={(e) => setSteps(e)} />
-      )} */}
+      )}
     </Fragment>
   );
 }
