@@ -179,10 +179,10 @@ const Steps = ({
       const result = await getUserFun()
       dispatch(updateTelegramUserData(result.data))
 
-      const userRank = await api.user.userRankAPI(postData)
+      const userRank = await api.user.userRankAPI()
       dispatch(updateUserRank(userRank.data))
 
-      const userReward = await api.user.userRewardAPI(postData)
+      const userReward = await api.user.userRewardAPI()
       let newArr: any = []
       userReward.data.activityLogs.forEach((item: any) => {
         if (!newArr.length) {
@@ -211,17 +211,14 @@ const Steps = ({
       const friendRank = await api.user.friendRankAPI({
         page: 1,
         pageSize: 500,
-        ...postData,
       })
       dispatch(updateFriendRank(friendRank.data))
 
-      const bindPid = await api.user.findPidAPI(postData)
+      const bindPid = await api.user.findPidAPI()
       const ercAddress = await api.user.findAddressAPI({
-        ...postData,
         type: 'erc20',
       })
       const solAddress = await api.user.findAddressAPI({
-        ...postData,
         type: 'solana',
       })
       const bindStatus = {
@@ -236,7 +233,7 @@ const Steps = ({
   }
 
   const getUserFun = async () => {
-    let result = await api.user.getUserAPI(postData)
+    let result = await api.user.getUserAPI()
     if (result.data && result.data.predict_time === null) {
       result = await new Promise(reslove => {
         setTimeout(async () => {
