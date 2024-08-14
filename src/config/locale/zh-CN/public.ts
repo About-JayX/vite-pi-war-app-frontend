@@ -10,5 +10,7 @@ export default {
   airdrops: "空投",
   tasks: "任務",
   copy: "複製",
-  paste: "貼上"
+  paste: "貼上",
+  update:"Update",
+  updateText:'The app mini program is being updated'
 };

@@ -10,5 +10,7 @@ export default {
   airdrops: "Airdrops",
   tasks: "Tasks",
   copy:"Copy",
-  paste:"Paste"
+  paste:"Paste",
+  update:"Update",
+  updateText:'The app mini program is being updated'
 };
