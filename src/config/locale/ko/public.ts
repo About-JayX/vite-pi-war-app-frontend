@@ -12,5 +12,10 @@ export default {
   copy: "복사",
   paste: "붙여넣기",
   update:"Update",
-  updateText:'The app mini program is being updated'
+  updateText:'The app mini program is being updated',
+  telegram:{
+    text:"请到电报小程序打开",
+    url:"",
+    bntText:"电报"
+  }
 };
