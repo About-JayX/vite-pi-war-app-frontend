@@ -315,7 +315,7 @@ const Steps = ({
               onClick={() => onChange && onChange(3)}
             />
           </div>
-          <Title>{t("steps.steps3.title")}</Title>
+          <Title className="!text-[2rem]">{t("steps.steps3.title")}</Title>
           <Text>{t("steps.steps3.text1")}</Text>
           <div
             className="grid gap-0 self-center steps-3 w-full"
@@ -344,7 +344,7 @@ const Steps = ({
                 : "85"
             )}
           </Text>
-          <Button className="w-100" onClick={() => onChange && onChange(3)}>
+          <Button className="w-100 sticky bottom-0" onClick={() => onChange && onChange(3)}>
             {t("steps.continue")}
           </Button>
         </div>
@@ -364,7 +364,7 @@ const Steps = ({
               onClick={() => onChange && onChange(3)}
             />
           </div>
-          <Title>{t("steps.steps4.title")}</Title>
+          <Title className="!text-[2rem]">{t("steps.steps4.title")}</Title>
           <Text>{t("steps.steps4.text1")}</Text>
           <div
             className="grid gap-0 self-center steps-3 w-full justify-items-center"
@@ -379,7 +379,7 @@ const Steps = ({
           </div>
           <div className="whitespace-pre-line">{t("steps.steps4.text2")}</div>
           <Button
-            className="w-100"
+            className="w-100 sticky bottom-0"
             onClick={() => {
               onChange && onChange(4);
               dispatch(updateNewUser(false));
