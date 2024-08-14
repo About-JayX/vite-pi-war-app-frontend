@@ -10,5 +10,7 @@ export default {
   airdrops: "에어드랍",
   tasks: "작업",
   copy: "복사",
-  paste: "붙여넣기"
+  paste: "붙여넣기",
+  update:"Update",
+  updateText:'The app mini program is being updated'
 };

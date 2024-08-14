@@ -16,18 +16,19 @@ import {
   updateTelegramUserData,
   updateUserRank,
   updateUserReward,
-} from '@/store/user'
-import { Title } from '@/components/title'
-import { useTranslation } from 'react-i18next'
-import { useTelegram } from '@/provider/telegram'
-import { useAppDispatch, useAppSelector } from '@/store/hook'
-import api from '@/api'
+} from "@/store/user";
+import { HeaderTitle, Title } from "@/components/title";
+import { useTranslation } from "react-i18next";
+import { useTelegram } from "@/provider/telegram";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
+import api from "@/api";
 import {
   getYearFromTimestamp,
   predictRegistrationDate,
-} from '@/utils/registrationPredictor'
-import Message from '@/components/message'
-import Header from './components/header'
+} from "@/utils/registrationPredictor";
+import Message from "@/components/message";
+import Header from "./components/header";
+import Modals from "@/components/modal";
 // import SEO from "@/components/seo";
 
 const Progress = ({
@@ -320,7 +321,7 @@ const Steps = ({
             className="grid gap-0 self-center steps-3 w-full"
             style={{ gridAutoRows: '1fr auto' }}
           >
-            <Title className=" !text-[12rem] self-center">
+            <Title className=" !text-[9rem] self-center">
               {telegramUserData.predict_year ||
                 getYearFromTimestamp(predictRegistrationDate(user?.id || 0))}
             </Title>
@@ -343,12 +344,11 @@ const Steps = ({
                 : '85'
             )}
           </Text>
-          <Button
-            className="w-100 sticky bottom-0"
-            onClick={() => onChange && onChange(3)}
-          >
-            {t('steps.continue')}
-          </Button>
+          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
+            <Button className="w-100" onClick={() => onChange && onChange(3)}>
+              {t("steps.continue")}
+            </Button>
+          </div>
         </div>
       )}
       {status === 3 && (
@@ -373,22 +373,24 @@ const Steps = ({
             style={{ gridAutoRows: '1fr auto' }}
           >
             <div className="self-end z-1">
-              <img src="/piwar.png" className="w-[16rem] h-[16rem]" />
+              <img src="/piwar.png" className="w-[13rem] h-[13rem]" />
             </div>
             <Text className="!text-[1.6rem]">
               {semicolon(telegramUserData.gold) || 0} PIS
             </Text>
           </div>
-          <div className="whitespace-pre-line">{t('steps.steps4.text2')}</div>
-          <Button
-            className="w-100 sticky bottom-0"
-            onClick={() => {
-              onChange && onChange(4)
-              dispatch(updateNewUser(false))
-            }}
-          >
-            Continue
-          </Button>
+          <div className="whitespace-pre-line">{t("steps.steps4.text2")}</div>
+          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
+            <Button
+              className="w-100"
+              onClick={() => {
+                onChange && onChange(4);
+                dispatch(updateNewUser(false));
+              }}
+            >
+              Continue
+            </Button>
+          </div>
         </div>
       )}
     </>
@@ -396,12 +398,12 @@ const Steps = ({
 }
 
 export function App() {
-  const [transitionAnimation, setTransitionAnimation] = useState(true)
-  const [currentPath, setCurrentPath] = useState('')
-  const router = useRouter()
-  const { isNewUser } = useAppSelector(state => state.user)
-  const [stepsm, setSteps] = useState<number>(0)
-  // const { t } = useTranslation()
+  const [transitionAnimation, setTransitionAnimation] = useState(true);
+  const [currentPath, setCurrentPath] = useState("");
+  const router = useRouter();
+  const { isNewUser } = useAppSelector((state) => state.user);
+  const [stepsm, setSteps] = useState<number>(0);
+  const { t } = useTranslation()
 
   // const opengraph: any = t('seo./.opengraph', { returnObjects: true })
   // const twitter: any = t('seo./.twitter', { returnObjects: true })
@@ -424,6 +426,7 @@ export function App() {
 
   return (
     <Fragment>
+      <Modals open body={<Text>{t("public.updateText")}</Text>} title={<HeaderTitle>{t("public.update")}</HeaderTitle>}/>
       {!isNewUser ? (
         <>
           <Box className={`overflow-hidden overflow-y-auto`}>
@@ -432,8 +435,8 @@ export function App() {
             <div
               className={`${
                 transitionAnimation
-                  ? 'transition-opacity duration-500 ease-in-out opacity-100'
-                  : 'opacity-0'
+                  ? "transition-opacity duration-500 ease-in-out opacity-100"
+                  : "opacity-0"
               }`}
             >
               <RouterProvider />
@@ -442,7 +445,7 @@ export function App() {
           <Navigation onClick={() => setTransitionAnimation(false)} />
         </>
       ) : (
-        <Steps status={stepsm} onChange={e => setSteps(e)} />
+        <Steps status={stepsm} onChange={(e) => setSteps(e)} />
       )}
     </Fragment>
   )
