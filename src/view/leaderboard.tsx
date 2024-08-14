@@ -1,18 +1,18 @@
-import Loader from "@/components/loader";
-import { Text } from "@/components/text";
-import { HeaderTitle, Title } from "@/components/title";
-import { useAppSelector } from "@/store/hook";
-import { getTextColorForBackground, semicolon, stringToColor } from "@/utils";
-import { Avatar, Card, CardHeader, Container } from "@material-ui/core";
-import { useTranslation } from "react-i18next";
+import Loader from '@/components/loader'
+import { Text } from '@/components/text'
+import { HeaderTitle, Title } from '@/components/title'
+import { useAppSelector } from '@/store/hook'
+import { getTextColorForBackground, semicolon, stringToColor } from '@/utils'
+import { Avatar, Card, CardHeader, Container } from '@material-ui/core'
+import { useTranslation } from 'react-i18next'
 
 export default function Leaderboard() {
-  const { t } = useTranslation();
-  const { userRank, inviteRank } = useAppSelector((state) => state.user);
+  const { t } = useTranslation()
+  const { userRank, inviteRank } = useAppSelector(state => state.user)
   return (
     <Container maxWidth="xl" className="p-4">
       <div className="grid gap-6 w-100 justify-items-center">
-        <Title>{t("public.leaderboard")}</Title>
+        <Title>{t('public.leaderboard')}</Title>
         <Card className="w-full card">
           <CardHeader
             className=""
@@ -20,19 +20,19 @@ export default function Leaderboard() {
               <Avatar
                 aria-label="recipe"
                 style={{
-                  background: stringToColor(userRank.username || ""),
+                  background: stringToColor(userRank.username || ''),
                   color:
                     getTextColorForBackground(userRank.username).textColor ||
-                    "",
+                    '',
                 }}
               >
                 {(userRank.username &&
                   userRank.username.slice(0, 2).toUpperCase()) ||
-                  ""}
+                  ''}
               </Avatar>
             }
             action={`#${userRank.rank || 1}`}
-            title={<Text>{userRank.username || ""}</Text>}
+            title={<Text>{userRank.username || ''}</Text>}
             subheader={
               <Text className="text-white/50">
                 {semicolon(userRank.score || 0)} PIS
@@ -41,7 +41,7 @@ export default function Leaderboard() {
           />
         </Card>
         <HeaderTitle className="w-full">
-          {inviteRank.total || 0} {t("public.holders")}
+          {inviteRank.total || 0} {t('public.holders')}
         </HeaderTitle>
         {inviteRank.data &&
           inviteRank.data.length &&
@@ -58,7 +58,7 @@ export default function Leaderboard() {
                   }}
                 >
                   {(item.username && item.username.slice(0, 2).toUpperCase()) ||
-                    ""}
+                    ''}
                 </Avatar>
               }
               action={
@@ -71,7 +71,7 @@ export default function Leaderboard() {
                   item.rank || index + 1
                 )
               }
-              title={<Text>{item.username || ""}</Text>}
+              title={<Text>{item.username || ''}</Text>}
               subheader={
                 <Text className="text-white/50">
                   {semicolon(item.score || 0)} PIS
@@ -82,5 +82,5 @@ export default function Leaderboard() {
         <Loader />
       </div>
     </Container>
-  );
+  )
 }

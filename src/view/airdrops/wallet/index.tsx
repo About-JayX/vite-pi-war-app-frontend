@@ -58,8 +58,15 @@ export default function Wallet({
       text: 'phantom',
       src: '/phantom.png',
       click: () => {
+        console.log(
+          encodeURIComponent(getUrl()),
+          'encodeURIComponent(getUrl())'
+        )
+
         window.open(
-          `https://phantom.app/ul/browse/${encodeURIComponent(getUrl())}`
+          `https://phantom.app/ul/browse/${encodeURIComponent(
+            getUrl()
+          )}?ref=${encodeURIComponent(getUrl())}`
         )
       },
     },

@@ -24,7 +24,7 @@ export const TelegramContext = createContext<{
 const initInfo = import.meta.env.DEV
   ? {
       initData:
-        'user=%7B%22id%22%3A6350461487%2C%22first_name%22%3A%22Jay%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22About_JayX%22%2C%22language_code%22%3A%22zh-hans%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-7615271304887599165&chat_type=sender&start_param=1WHXKECNH4A&auth_date=1723106952&hash=637507b425c4f956c555f7a8914be69aa519a3bc8e5bc7fd9c8c6700cced1d3b',
+        'user=%7B%22id%22%3A6350461487%2C%22first_name%22%3A%22Jay%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22About_JayX%22%2C%22language_code%22%3A%22zh-hans%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=8248443441125941218&chat_type=supergroup&auth_date=1723621428&hash=d32b5e3fc73f6dd69099e97d3abd80e9571d294d1184416c14e6e5417a4c3fcc',
       initDataUnsafe: {
         user: {
           id: 6350461487,
@@ -34,11 +34,10 @@ const initInfo = import.meta.env.DEV
           language_code: 'zh-hans',
           allows_write_to_pm: true,
         },
-        chat_instance: '-7615271304887599165',
-        chat_type: 'sender',
-        start_param: '1WHXKECNH4A',
-        auth_date: '1723106952',
-        hash: '637507b425c4f956c555f7a8914be69aa519a3bc8e5bc7fd9c8c6700cced1d3b',
+        chat_instance: '8248443441125941218',
+        chat_type: 'supergroup',
+        auth_date: '1723621428',
+        hash: 'd32b5e3fc73f6dd69099e97d3abd80e9571d294d1184416c14e6e5417a4c3fcc',
       },
     }
   : {}
