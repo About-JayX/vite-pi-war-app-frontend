@@ -28,6 +28,7 @@ import {
 } from "@/utils/registrationPredictor";
 import Message from "@/components/message";
 import Header from "./components/header";
+import Modal from "@/components/modal";
 // import SEO from "@/components/seo";
 
 const Progress = ({
@@ -344,7 +345,10 @@ const Steps = ({
                 : "85"
             )}
           </Text>
-          <Button className="w-100 sticky bottom-0" onClick={() => onChange && onChange(3)}>
+          <Button
+            className="w-100 sticky bottom-0"
+            onClick={() => onChange && onChange(3)}
+          >
             {t("steps.continue")}
           </Button>
         </div>
@@ -422,7 +426,8 @@ export function App() {
 
   return (
     <Fragment>
-      {!isNewUser ? (
+      <Modal />
+      {/* {!isNewUser ? (
         <>
           <Box className={`overflow-hidden overflow-y-auto`}>
             <Header />
@@ -430,8 +435,8 @@ export function App() {
             <div
               className={`${
                 transitionAnimation
-                  ? 'transition-opacity duration-500 ease-in-out opacity-100'
-                  : 'opacity-0'
+                  ? "transition-opacity duration-500 ease-in-out opacity-100"
+                  : "opacity-0"
               }`}
             >
               <RouterProvider />
@@ -440,8 +445,8 @@ export function App() {
           <Navigation onClick={() => setTransitionAnimation(false)} />
         </>
       ) : (
-        <Steps status={stepsm} onChange={e => setSteps(e)} />
-      )}
+        <Steps status={stepsm} onChange={(e) => setSteps(e)} />
+      )} */}
     </Fragment>
   );
 }
