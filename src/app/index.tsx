@@ -30,6 +30,7 @@ import Message from "@/components/message";
 import Header from "./components/header";
 import Wallet from "@/view/airdrops/wallet";
 import Modals from "@/components/modal";
+import Loader from "./components/loader";
 // import SEO from "@/components/seo";
 
 const Progress = ({
@@ -263,7 +264,8 @@ const Steps = ({
               justifyItems: "center",
             }}
           >
-            <img src="/piwar.png" className="w-[20rem] h-[20rem]" />
+            {/* <img src="/piwar.png" className="w-[20rem] h-[20rem]" /> */}
+            <Loader/>
             {user?.username ? (
               <Text className="text-color">{t("steps.steps1.text1")}</Text>
             ) : (
