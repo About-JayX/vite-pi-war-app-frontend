@@ -22,6 +22,8 @@ export default function Wallet({
       click: () => {
         const urlData = {
           url: getUrl(),
+          chain: '',
+          source: '',
         }
         const url = encodeURIComponent(JSON.stringify(urlData))
         window.open(`tpdapp://open?params=${url}`)
