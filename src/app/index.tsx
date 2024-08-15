@@ -244,9 +244,9 @@ const Steps = ({
       dispatch(updateBindStatus(bindStatus))
     } catch (error) {
       console.log(error, 'error_')
+    } finally {
+      setInitLock(false)
     }
-
-    setInitLock(false)
   }
 
   const getUserFun = async () => {
