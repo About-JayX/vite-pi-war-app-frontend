@@ -188,6 +188,8 @@ const Steps = ({
 
   const initData = async () => {
     if (!postData) return
+    console.log('init_demo')
+
     try {
       const result = await getUserFun()
       dispatch(updateTelegramUserData(result.data))
@@ -244,11 +246,13 @@ const Steps = ({
       dispatch(updateBindStatus(bindStatus))
     } catch (error) {
       console.log(error, 'error_')
-    } finally {
-      setInitLock(false)
     }
+    setInitLock(false)
   }
 
+  useEffect(() => {
+    console.log(initLock, 'lock_')
+  }, [initLock])
   const getUserFun = async () => {
     let result = await api.user.getUserAPI()
     if (result.data && result.data.predict_time === null) {
