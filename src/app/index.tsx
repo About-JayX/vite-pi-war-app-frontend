@@ -16,12 +16,12 @@ import {
   updateTelegramUserData,
   updateUserRank,
   updateUserReward,
-} from '@/store/user'
-import { HeaderTitle, Title } from '@/components/title'
-import { useTranslation } from 'react-i18next'
-import { useTelegram } from '@/provider/telegram'
-import { useAppDispatch, useAppSelector } from '@/store/hook'
-import api from '@/api'
+} from "@/store/user";
+import { HeaderTitle, Title } from "@/components/title";
+import { useTranslation } from "react-i18next";
+import { useTelegram } from "@/provider/telegram";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
+import api from "@/api";
 import {
   getYearFromTimestamp,
   predictRegistrationDate,
@@ -305,21 +305,26 @@ const Steps = ({
           className="vh-100 grid gap-10 text-center p-4 justify-items-center w-full"
           style={{ gridAutoRows: 'auto 1fr auto' }}
         >
-          <Title>{t('steps.steps2.title')}</Title>
+          <Title className="!text-[2rem]">{t("steps.steps2.title")}</Title>
           <div className="grid gap-8 h-min w-full">
             <Progress text="Account Age Verified" value={ageProgress} />
             <Progress text="Activity Level Analyzed" value={activeProgress} />
             <Progress text="Telegram Premium Checked" value={premiumProgress} />
             <Progress text="Reply Permission Confirmed" value={ogProgress} />
           </div>
-          {ageProgress === 100 &&
-            premiumProgress === 100 &&
-            activeProgress === 100 &&
-            ogProgress === 100 && (
-              <Button className="w-100" onClick={() => onChange && onChange(2)}>
-                {t('steps.continue')}
-              </Button>
-            )}
+          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
+            {ageProgress === 100 &&
+              premiumProgress === 100 &&
+              activeProgress === 100 &&
+              ogProgress === 100 && (
+                <Button
+                  className="w-100"
+                  onClick={() => onChange && onChange(2)}
+                >
+                  Continue
+                </Button>
+              )}
+          </div>
         </div>
       )}
       {status === 2 && (
@@ -368,7 +373,7 @@ const Steps = ({
           </Text>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
             <Button className="w-100" onClick={() => onChange && onChange(3)}>
-              {t('steps.continue')}
+              {t("steps.continue")}
             </Button>
           </div>
         </div>
@@ -401,13 +406,13 @@ const Steps = ({
               {semicolon(telegramUserData.gold) || 0} PIS
             </Text>
           </div>
-          <div className="whitespace-pre-line">{t('steps.steps4.text2')}</div>
+          <div className="whitespace-pre-line">{t("steps.steps4.text2")}</div>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
             <Button
               className="w-100"
               onClick={() => {
-                onChange && onChange(4)
-                dispatch(updateNewUser(false))
+                onChange && onChange(4);
+                dispatch(updateNewUser(false));
               }}
             >
               {t('steps.continue')}
@@ -461,8 +466,8 @@ export function App() {
             <div
               className={`${
                 transitionAnimation
-                  ? 'transition-opacity duration-500 ease-in-out opacity-100'
-                  : 'opacity-0'
+                  ? "transition-opacity duration-500 ease-in-out opacity-100"
+                  : "opacity-0"
               }`}
             >
               <RouterProvider />
@@ -471,7 +476,7 @@ export function App() {
           <Navigation onClick={() => setTransitionAnimation(false)} />
         </>
       ) : (
-        <Steps status={stepsm} onChange={e => setSteps(e)} />
+        <Steps status={stepsm} onChange={(e) => setSteps(e)} />
       )}
     </Fragment>
   )

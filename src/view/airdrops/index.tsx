@@ -1,58 +1,59 @@
-import Input from '@/components/input'
-import { Text } from '@/components/text'
-import { HeaderTitle, Title } from '@/components/title'
-import { useAppSelector } from '@/store/hook'
-import { Container } from '@material-ui/core'
-import { useEffect, useState } from 'preact/hooks'
-import { useTranslation } from 'react-i18next'
-import api from '@/api'
-import './index.css'
-import Wallet from './wallet'
-import Segmented from '@/components/segmented'
-import Icon from '@/components/icon'
-import SuccessPng from '@/assets/icon/success.png'
-import SuccessaPng from '@/assets/icon/success-a.png'
-import { semicolon } from '@/utils'
+import Input from "@/components/input";
+import { Text } from "@/components/text";
+import { HeaderTitle, Title } from "@/components/title";
+import { useAppSelector } from "@/store/hook";
+import { Container } from "@material-ui/core";
+import { useEffect, useState } from "preact/hooks";
+import { useTranslation } from "react-i18next";
+import api from "@/api";
+import "./index.css";
+import Wallet from "./wallet";
+import Segmented from "@/components/segmented";
+import Icon from "@/components/icon";
+import SuccessPng from "@/assets/icon/success.png";
+import SuccessaPng from "@/assets/icon/success-a.png";
+import { semicolon } from "@/utils";
+import Button from "@/components/button";
 
 export default function Airdrops() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   // const { uid } = props?.searchParams
-  const [bindingMethod, setBindingMethod] = useState<string>('Solana')
+  const [bindingMethod, setBindingMethod] = useState<string>("Solana");
   // const [_, setInput] = useState<string>('')
-  const { bindStatus, userReward } = useAppSelector(state => state.user)
-  const [walletOpen, setWalletOpen] = useState(false)
-  const [bdLog, setBdLog] = useState([])
+  const { bindStatus, userReward } = useAppSelector((state) => state.user);
+  const [walletOpen, setWalletOpen] = useState(false);
+  const [bdLog, setBdLog] = useState([]);
 
   useEffect(() => {
     if (Object.keys(userReward).length) {
-      console.log(userReward.activityLogs)
+      console.log(userReward.activityLogs);
 
       setBdLog(
         userReward.activityLogs.filter((item: any) =>
-          item.key.includes('Binding')
+          item.key.includes("Binding")
         )
-      )
+      );
     }
-  }, [userReward])
+  }, [userReward]);
   const getUrl = () => {
-    let url
-    let type
-    if (bindingMethod === 'Solana') {
-      url = (bindStatus.sol && bindStatus.sol.Link) || ''
-      type = 'solana'
-    } else if (bindingMethod === 'ETH/BSC') {
-      url = (bindStatus.erc && bindStatus.erc.Link) || ''
-      type = 'erc20'
+    let url;
+    let type;
+    if (bindingMethod === "Solana") {
+      url = (bindStatus.sol && bindStatus.sol.Link) || "";
+      type = "solana";
+    } else if (bindingMethod === "ETH/BSC") {
+      url = (bindStatus.erc && bindStatus.erc.Link) || "";
+      type = "erc20";
     }
-    let token = sessionStorage.getItem('token') || ''
+    let token = sessionStorage.getItem("token") || "";
 
-    return api.user.bindWallentAPI(type, url, token)
-  }
+    return api.user.bindWallentAPI(type, url, token);
+  };
   const getAddress = () => {
-    const data = bindingMethod === 'Solana' ? bindStatus.sol : bindStatus.erc
+    const data = bindingMethod === "Solana" ? bindStatus.sol : bindStatus.erc;
 
-    return data && data.Address ? data.Address : {}
-  }
+    return data && data.Address ? data.Address : {};
+  };
   // const onPaste = async () => {
   //   try {
   //     const pastedText = await navigator.clipboard.readText()
@@ -100,75 +101,76 @@ export default function Airdrops() {
     if (text?.length > maxLength + 6) {
       return (
         text?.slice(0, maxLength) +
-        '...' +
+        "..." +
         text?.slice(text?.length - (mimLength || maxLength))
-      )
+      );
     } else {
-      return text
+      return text;
     }
-  }
+  };
   return (
     <>
       <Wallet open={walletOpen} setWalletOpen={setWalletOpen} getUrl={getUrl} />
       <Container maxWidth="xl" className="p-4">
         <div className="grid gap-6 w-100 justify-items-center text-center">
-          <Title>{t('public.airdrops')}</Title>
-          <Text className="text-color mt-[-1rem]">{t('binding.text')}</Text>
+          <Title>{t("public.airdrops")}</Title>
+          <Text className="text-color mt-[-1rem]">{t("binding.text")}</Text>
           <Text
             className="mt-[-1rem] mb-[-1rem] text-[1rem]"
-            style={{ color: '#0E8EF4' }}
+            style={{ color: "#0E8EF4" }}
           >
-            {t('binding.bindingTipsText')}
+            {t("binding.bindingTipsText")}
           </Text>
           <Input
             placeholder={`https://pi-badge-web-v2.pages.dev/${
-              sessionStorage.getItem('token') || ''
+              sessionStorage.getItem("token") || ""
             }`}
             disabled
             background="#030915"
             button={{
-              text: t('public.copy'),
+              text: t("public.copy"),
               copy: true,
               show: true,
               copyText: `https://pi-badge-web-v2.pages.dev/${
-                sessionStorage.getItem('token') || ''
+                sessionStorage.getItem("token") || ""
               }`,
             }}
           />
           <div className="card !p-4 !pt-6 !pb-6 grid gap-3 w-100 binding-card-bg bg-transparent">
             <Segmented
               value={bindingMethod}
-              onChange={e => setBindingMethod(e)}
+              onChange={(e) => setBindingMethod(e)}
               data={[
-                { label: 'SOL', value: 'Solana' },
-                { label: 'ETH/BSC', value: 'ETH/BSC' },
-                { label: 'Pi NET', value: 'PiBrowser' },
+                { label: "SOL", value: "Solana" },
+                { label: "ETH/BSC", value: "ETH/BSC" },
+                { label: "Pi NET", value: "PiBrowser" },
               ]}
             />
-            {bindingMethod === 'Solana' || bindingMethod === 'ETH/BSC' ? (
-              <div className="bind-wallet">
-                <div className="bind-wallet-container">
-                  {bindingMethod === 'Solana' ? (
-                    <Icon name="sol" />
-                  ) : (
-                    <Icon name="wallet" />
-                  )}
-                  <Text
-                    click={() => {
-                      getAddress().address ? null : setWalletOpen(true)
-                    }}
-                  >
-                    {getAddress().address
-                      ? ellipsisMiddle(getAddress().address, 9)
-                      : '绑定钱包'}
-                  </Text>
-                  {getAddress().address ? (
-                    <img src={SuccessaPng} alt="" />
-                  ) : (
-                    <img src={SuccessPng} alt="" />
-                  )}
+            {bindingMethod === "Solana" || bindingMethod === "ETH/BSC" ? (
+              getAddress().address ? (
+                <div className="bind-wallet">
+                  <div className="bind-wallet-container">
+                    {bindingMethod === "Solana" ? (
+                      <Icon name="sol" />
+                    ) : (
+                      <Icon name="wallet" />
+                    )}
+                    <Text>
+                      {getAddress().address &&
+                        ellipsisMiddle(getAddress().address, 9)}
+                    </Text>
+                    {getAddress().address ? (
+                      <img src={SuccessaPng} alt="" />
+                    ) : (
+                      <img src={SuccessPng} alt="" />
+                    )}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <Button onClick={() => setWalletOpen(true)}>
+                  {t("public.bindWallet")}
+                </Button>
+              )
             ) : (
               <>
                 {/* <Input
@@ -194,20 +196,20 @@ export default function Airdrops() {
                       bindStatus && bindStatus.pid && bindStatus.pid.pId
                         ? bindStatus.pid.pId
                         : `https://pi-badge-web-v2.pages.dev/${
-                            sessionStorage.getItem('token') || ''
+                            sessionStorage.getItem("token") || ""
                           }`
                     }
                     disabled
                     background="#030915"
                     button={{
-                      text: t('public.copy'),
+                      text: t("public.copy"),
                       copy: true,
                       show:
                         bindStatus && bindStatus.pid && bindStatus.pid.pId
                           ? false
                           : true,
                       copyText: `https://pi-badge-web-v2.pages.dev/${
-                        sessionStorage.getItem('token') || ''
+                        sessionStorage.getItem("token") || ""
                       }`,
                     }}
                   />
@@ -216,7 +218,7 @@ export default function Airdrops() {
             )}
           </div>
           <HeaderTitle className="text-left w-100">
-            {t('public.tasks')}
+            {t("public.tasks")}
           </HeaderTitle>
           {bdLog.length
             ? bdLog.map((item: any) => (
@@ -231,9 +233,9 @@ export default function Airdrops() {
                   </Text>
                 </div>
               ))
-            : ''}
+            : ""}
         </div>
       </Container>
     </>
-  )
+  );
 }

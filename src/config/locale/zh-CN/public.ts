@@ -18,4 +18,5 @@ export default {
     url: "",
     bntText: "电报",
   },
+  bindWallet:"Bind Wallet"
 };
