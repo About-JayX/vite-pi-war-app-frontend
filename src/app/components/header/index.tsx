@@ -44,7 +44,7 @@ export default function Header() {
           </HeaderTitle>
         </Modal.Header>
         <Modal.Body>
-          <div className="grid grid-flow-row gap-4 text-center">
+          <div className="grid grid-flow-col grid-cols-[repeat(3,1fr)] gap-4 text-center">
             {Object.entries(locales).map(([key, value]: any) => (
               <a
                 key={key}
@@ -59,7 +59,7 @@ export default function Header() {
           </div>
         </Modal.Body>
       </Modal>
-      <div className="!flex !flex-row !h-[4rem] !bg-transparent !backdrop-blur-[0.36rem] sticky top-0 z-[9] !transition-none !opacity-100">
+      <div className="!flex !flex-row !h-[4rem] !bg-transparent !backdrop-blur-[0] sticky top-0 z-[9] !transition-none !opacity-100">
         <Container
           maxWidth="xl"
           className="p-4 pt-0 pb-0 !flex !flex-row self-center"

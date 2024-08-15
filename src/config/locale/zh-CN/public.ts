@@ -11,6 +11,11 @@ export default {
   tasks: "任務",
   copy: "複製",
   paste: "貼上",
-  update:"Update",
-  updateText:'The app mini program is being updated'
+  update: "Update",
+  updateText: "The app mini program is being updated",
+  telegram: {
+    text: "请到电报小程序打开",
+    url: "",
+    bntText: "电报",
+  },
 };
