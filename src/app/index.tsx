@@ -146,6 +146,8 @@ const Steps = ({
           timer.current = null
           value = 100
         } else {
+          console.log(initLock, 'initLock_')
+
           if (initLock) {
             value >= 99 && (value = 99)
           } else {
@@ -243,6 +245,7 @@ const Steps = ({
     } catch (error) {
       console.log(error, 'error_')
     }
+
     setInitLock(false)
   }
 
