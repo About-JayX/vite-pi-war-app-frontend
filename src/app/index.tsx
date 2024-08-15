@@ -270,18 +270,24 @@ const Steps = ({
           >
             {/* <img src="/piwar.png" className="w-[20rem] h-[20rem]" /> */}
             <Loader />
-            {user?.username ? (
+
+            {!(postData && postData.initData) ? (
+              <Text className="mt-4">{t('public.telegram.text')}</Text>
+            ) : user?.username ? (
               <Text className="text-color">{t('steps.steps1.text1')}</Text>
             ) : (
               <Text className="text-color">{t('steps.steps1.text2')}</Text>
             )}
-            <Text className="mt-4">{t('public.telegram.text')}</Text>
             <a
               className="w-full"
               href={t('public.telegram.url')}
               target="_blank"
             >
-              <Button>{t('public.telegram.bntText')}</Button>
+              {!(postData && postData.initData) ? (
+                <Button>{t('public.telegram.bntText')}</Button>
+              ) : (
+                ''
+              )}
             </a>
           </div>
 
@@ -311,7 +317,7 @@ const Steps = ({
             activeProgress === 100 &&
             ogProgress === 100 && (
               <Button className="w-100" onClick={() => onChange && onChange(2)}>
-                Continue
+                {t('steps.continue')}
               </Button>
             )}
         </div>
@@ -404,7 +410,7 @@ const Steps = ({
                 dispatch(updateNewUser(false))
               }}
             >
-              Continue
+              {t('steps.continue')}
             </Button>
           </div>
         </div>
@@ -443,7 +449,7 @@ export function App() {
   return (
     <Fragment>
       <Modals
-        open
+        open={false}
         body={<Text>{t('public.updateText')}</Text>}
         title={<HeaderTitle>{t('public.update')}</HeaderTitle>}
       />
