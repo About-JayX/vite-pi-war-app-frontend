@@ -34,7 +34,7 @@ export default function Leaderboard() {
             action={
               <div className="w-[2.6rem] h-[2.6rem] relative flex items-center justify-center">
                 <img
-                  src={`/ranking/${userRank.rank <= 3 ? userRank.rank : 4}.png`}
+                  src={`/ranking/${userRank.rank <= 2 ? userRank.rank : 4}.png`}
                   className="absolute top-0 left-0 w-full h-full"
                 />
                 <Text
