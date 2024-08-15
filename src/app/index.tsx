@@ -146,7 +146,7 @@ const Steps = ({
           timer.current = null
           value = 100
         } else {
-          console.log(initLock, 'initLock_')
+          console.log(initLock, 'initLockinitLock')
 
           if (initLock) {
             value >= 99 && (value = 99)
@@ -173,7 +173,7 @@ const Steps = ({
       if (activeProgress === 100 && !premiumProgress) {
         loadPrigress(premiumProgress, setPremiumProgress)
       }
-      if (premiumProgress === 100 && !ogProgress) {
+      if (premiumProgress === 100 && !ogProgress && !initLock) {
         loadPrigress(ogProgress, setOgProgress, true)
       }
     }
@@ -188,7 +188,6 @@ const Steps = ({
 
   const initData = async () => {
     if (!postData) return
-    console.log('init_demo')
 
     try {
       const result = await getUserFun()
@@ -250,9 +249,6 @@ const Steps = ({
     setInitLock(false)
   }
 
-  useEffect(() => {
-    console.log(initLock, 'lock_')
-  }, [initLock])
   const getUserFun = async () => {
     let result = await api.user.getUserAPI()
     if (result.data && result.data.predict_time === null) {
