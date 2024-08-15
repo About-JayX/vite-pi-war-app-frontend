@@ -81,6 +81,7 @@ const Steps = ({
   const timer = useRef<any>(null)
   const homeTimer = useRef<any>(null)
   const dispatch = useAppDispatch()
+  const [initLock, setInitLock] = useState(true)
   const lock = useRef<boolean>(false)
   const { telegramUserData, friendRank } = useAppSelector(state => state.user)
   const login = async () => {
@@ -88,8 +89,6 @@ const Steps = ({
     lock.current = true
     try {
       let result = await api.user.loginAPI(postData)
-
-      console.log(result, 'login_')
 
       dispatch(updateNewUser(result.data && result.data.isNewUser))
 
@@ -147,9 +146,7 @@ const Steps = ({
           timer.current = null
           value = 100
         } else {
-          console.log(Object.keys(friendRank), 'Object.keys(friendRank)')
-
-          if (!Object.keys(friendRank).length) {
+          if (initLock) {
             value >= 99 && (value = 99)
           } else {
             clearInterval(timer.current)
@@ -158,7 +155,6 @@ const Steps = ({
           }
         }
       }
-      console.log(value, '??')
 
       setProgress(value)
     }, 50)
@@ -187,15 +183,11 @@ const Steps = ({
       const result = await getUserFun()
       dispatch(updateTelegramUserData(result.data))
 
-      console.log(result, 'result_')
-
       const userRank = await api.user.userRankAPI()
       dispatch(updateUserRank(userRank.data))
 
-      console.log(userRank, 'userRank_')
       const userReward = await api.user.userRewardAPI()
 
-      console.log(userReward, 'userReward_')
       let newArr: any = []
       userReward.data.activityLogs.forEach((item: any) => {
         if (!newArr.length) {
@@ -219,33 +211,30 @@ const Steps = ({
         page: 1,
         pageSize: 500,
       })
-      console.log(inviteRank, 'inviteRank_')
       dispatch(updateInviteRank(inviteRank.data))
 
       const friendRank = await api.user.friendRankAPI({
         page: 1,
         pageSize: 500,
       })
-      console.log(friendRank, 'friendRank_')
       dispatch(updateFriendRank(friendRank.data))
 
       const bindPid = await api.user.findPidAPI()
-      console.log(bindPid, 'bindPid_')
       const ercAddress = await api.user.findAddressAPI({
         type: 'erc20',
       })
-      console.log(ercAddress, 'ercAddress')
 
       const solAddress = await api.user.findAddressAPI({
         type: 'solana',
       })
-      console.log(solAddress, 'solAddress')
       const bindStatus = {
         pid: bindPid.data || null,
         erc: ercAddress.data || null,
         sol: solAddress.data || null,
       }
       dispatch(updateBindStatus(bindStatus))
+
+      setInitLock(false)
     } catch (error) {
       console.log(error, 'error_')
     }
