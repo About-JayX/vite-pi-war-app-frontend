@@ -191,30 +191,6 @@ export default function Airdrops() {
                     show: !(bindStatus.pid && bindStatus.pid.pId),
                   }}
                 />
-                {
-                  <Input
-                    placeholder={
-                      bindStatus && bindStatus.pid && bindStatus.pid.pId
-                        ? bindStatus.pid.pId
-                        : `https://pi-badge-web-v2.pages.dev/${
-                            sessionStorage.getItem("token") || ""
-                          }`
-                    }
-                    disabled
-                    background="#030915"
-                    button={{
-                      text: t("public.copy"),
-                      copy: true,
-                      show:
-                        bindStatus && bindStatus.pid && bindStatus.pid.pId
-                          ? false
-                          : true,
-                      copyText: `https://pi-badge-web-v2.pages.dev/${
-                        sessionStorage.getItem("token") || ""
-                      }`,
-                    }}
-                  />
-                }
               </>
             )}
           </div>
