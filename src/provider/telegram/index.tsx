@@ -23,7 +23,22 @@ export const TelegramContext = createContext<{
 
 const initInfo = import.meta.env.DEV
   ? {
-      
+      initData:
+        'user=%7B%22id%22%3A6350461487%2C%22first_name%22%3A%22Jay%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22About_JayX%22%2C%22language_code%22%3A%22zh-hans%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-7615271304887599165&chat_type=sender&auth_date=1723706846&hash=796d844f636d8cd5dcb4a3e5108e51ba200b30b309b1f619c3cc30579bfcb897',
+      initDataUnsafe: {
+        user: {
+          id: 6350461487,
+          first_name: 'Jay',
+          last_name: '',
+          username: 'About_JayX',
+          language_code: 'zh-hans',
+          allows_write_to_pm: true,
+        },
+        chat_instance: '-7615271304887599165',
+        chat_type: 'sender',
+        auth_date: '1723706846',
+        hash: '796d844f636d8cd5dcb4a3e5108e51ba200b30b309b1f619c3cc30579bfcb897',
+      },
     }
   : {}
 
