@@ -17,5 +17,6 @@ export default {
     text:"请到电报小程序打开",
     url:"",
     bntText:"电报"
-  }
+  },
+  bindWallet:"Bind Wallet"
 };
