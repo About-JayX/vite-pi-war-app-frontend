@@ -16,19 +16,19 @@ import {
   updateTelegramUserData,
   updateUserRank,
   updateUserReward,
-} from "@/store/user";
-import { HeaderTitle, Title } from "@/components/title";
-import { useTranslation } from "react-i18next";
-import { useTelegram } from "@/provider/telegram";
-import { useAppDispatch, useAppSelector } from "@/store/hook";
-import api from "@/api";
+} from '@/store/user'
+import { HeaderTitle, Title } from '@/components/title'
+import { useTranslation } from 'react-i18next'
+import { useTelegram } from '@/provider/telegram'
+import { useAppDispatch, useAppSelector } from '@/store/hook'
+import api from '@/api'
 import {
   getYearFromTimestamp,
   predictRegistrationDate,
-} from "@/utils/registrationPredictor";
-import Message from "@/components/message";
-import Header from "./components/header";
-import Modals from "@/components/modal";
+} from '@/utils/registrationPredictor'
+import Message from '@/components/message'
+import Header from './components/header'
+import Modals from '@/components/modal'
 // import SEO from "@/components/seo";
 
 const Progress = ({
@@ -201,6 +201,7 @@ const Steps = ({
       userReward.data.activityLogs = newArr.filter((item: any) =>
         Number(item.value)
       )
+
       dispatch(updateUserReward(userReward.data))
 
       const inviteRank = await api.user.inviteRankAPI({
@@ -346,7 +347,7 @@ const Steps = ({
           </Text>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
             <Button className="w-100" onClick={() => onChange && onChange(3)}>
-              {t("steps.continue")}
+              {t('steps.continue')}
             </Button>
           </div>
         </div>
@@ -379,13 +380,13 @@ const Steps = ({
               {semicolon(telegramUserData.gold) || 0} PIS
             </Text>
           </div>
-          <div className="whitespace-pre-line">{t("steps.steps4.text2")}</div>
+          <div className="whitespace-pre-line">{t('steps.steps4.text2')}</div>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
             <Button
               className="w-100"
               onClick={() => {
-                onChange && onChange(4);
-                dispatch(updateNewUser(false));
+                onChange && onChange(4)
+                dispatch(updateNewUser(false))
               }}
             >
               Continue
@@ -398,11 +399,11 @@ const Steps = ({
 }
 
 export function App() {
-  const [transitionAnimation, setTransitionAnimation] = useState(true);
-  const [currentPath, setCurrentPath] = useState("");
-  const router = useRouter();
-  const { isNewUser } = useAppSelector((state) => state.user);
-  const [stepsm, setSteps] = useState<number>(0);
+  const [transitionAnimation, setTransitionAnimation] = useState(true)
+  const [currentPath, setCurrentPath] = useState('')
+  const router = useRouter()
+  const { isNewUser } = useAppSelector(state => state.user)
+  const [stepsm, setSteps] = useState<number>(0)
   const { t } = useTranslation()
 
   // const opengraph: any = t('seo./.opengraph', { returnObjects: true })
@@ -426,7 +427,11 @@ export function App() {
 
   return (
     <Fragment>
-      <Modals open body={<Text>{t("public.updateText")}</Text>} title={<HeaderTitle>{t("public.update")}</HeaderTitle>}/>
+      <Modals
+        open
+        body={<Text>{t('public.updateText')}</Text>}
+        title={<HeaderTitle>{t('public.update')}</HeaderTitle>}
+      />
       {!isNewUser ? (
         <>
           <Box className={`overflow-hidden overflow-y-auto`}>
@@ -435,8 +440,8 @@ export function App() {
             <div
               className={`${
                 transitionAnimation
-                  ? "transition-opacity duration-500 ease-in-out opacity-100"
-                  : "opacity-0"
+                  ? 'transition-opacity duration-500 ease-in-out opacity-100'
+                  : 'opacity-0'
               }`}
             >
               <RouterProvider />
@@ -445,7 +450,7 @@ export function App() {
           <Navigation onClick={() => setTransitionAnimation(false)} />
         </>
       ) : (
-        <Steps status={stepsm} onChange={(e) => setSteps(e)} />
+        <Steps status={stepsm} onChange={e => setSteps(e)} />
       )}
     </Fragment>
   )
