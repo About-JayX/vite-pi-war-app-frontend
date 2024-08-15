@@ -1,94 +1,90 @@
-import { Text } from '@/components/text'
-import { HeaderTitle } from '@/components/title'
-import Modal from 'react-bootstrap/Modal'
-import './index.css'
-import { MessageSuccess } from '@/components/message'
-import { useTranslation } from 'react-i18next'
+import { Text } from "@/components/text";
+import { HeaderTitle } from "@/components/title";
+// import Modal from 'react-bootstrap/Modal'
+// import './index.css'
+import { MessageSuccess } from "@/components/message";
+import { useTranslation } from "react-i18next";
+import Modal from "@/components/modal";
 export default function Wallet({
   open = false,
   setWalletOpen,
   getUrl,
 }: {
-  open?: boolean
-  setWalletOpen: (status: boolean) => void
-  getUrl: () => string
+  open?: boolean;
+  setWalletOpen: (status: boolean) => void;
+  getUrl: () => string;
 }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const swapList = [
     {
-      text: 'TP',
-      src: '/tp.png',
+      text: "TP",
+      src: "/tp.png",
       click: () => {
         const urlData = {
           url: getUrl(),
-        }
-        const url = encodeURIComponent(JSON.stringify(urlData))
-        window.open(`tpdapp://open?params=${url}`)
+        };
+        const url = encodeURIComponent(JSON.stringify(urlData));
+        window.open(`tpdapp://open?params=${url}`);
       },
     },
     {
-      text: 'OKX',
-      src: '/okx.png',
+      text: "OKX",
+      src: "/okx.png",
       click: () => {
         const deepLink =
-          'okx://wallet/dapp/url?dappUrl=' + encodeURIComponent(getUrl())
+          "okx://wallet/dapp/url?dappUrl=" + encodeURIComponent(getUrl());
         const encodedUrl =
-          'https://www.okx.com/download?deeplink=' +
-          encodeURIComponent(deepLink)
-        window.open(encodedUrl)
+          "https://www.okx.com/download?deeplink=" +
+          encodeURIComponent(deepLink);
+        window.open(encodedUrl);
       },
     },
     {
-      text: 'MateMask',
-      src: '/metamask.png',
+      text: "MateMask",
+      src: "/metamask.png",
       click: () => {
         window.open(
-          `https://metamask.app.link/dapp/${getUrl().replace('https://', '')}`
-        )
+          `https://metamask.app.link/dapp/${getUrl().replace("https://", "")}`
+        );
       },
     },
     {
-      text: 'Bitget',
-      src: '/bitget.png',
+      text: "Bitget",
+      src: "/bitget.png",
       click: () => {
-        window.open(`https://bkcode.vip?action=dapp&url=${getUrl()}`)
+        window.open(`https://bkcode.vip?action=dapp&url=${getUrl()}`);
       },
     },
     {
-      text: 'phantom',
-      src: '/phantom.png',
+      text: "phantom",
+      src: "/phantom.png",
       click: () => {
         console.log(
           encodeURIComponent(getUrl()),
-          'encodeURIComponent(getUrl())'
-        )
+          "encodeURIComponent(getUrl())"
+        );
 
         window.open(
           `https://phantom.app/ul/browse/${encodeURIComponent(
             getUrl()
           )}?ref=${encodeURIComponent(getUrl())}`
-        )
+        );
       },
     },
     {
-      text: 'copy',
-      src: '/copy.png',
+      text: "copy",
+      src: "/copy.png",
       click: () => {
-        navigator.clipboard.writeText(getUrl())
-        MessageSuccess(t('message.copy.success'))
+        navigator.clipboard.writeText(getUrl());
+        MessageSuccess(t("message.copy.success"));
       },
     },
-  ]
+  ];
   return (
     <Modal
-      show={open}
-      onHide={() => setWalletOpen(false)}
-      centered
-      // fullscreen
-      dialogClassName="modal-animation"
-    >
-      <Modal.Header closeButton />
-      <Modal.Body>
+      open={open}
+      onHide={()=>setWalletOpen(false)}
+      body={
         <div className="grid w-full text-center gap-6">
           <HeaderTitle>Connect your wallet</HeaderTitle>
           <Text className="mt-[-1rem]">
@@ -111,7 +107,7 @@ export default function Wallet({
             ))}
           </div>
         </div>
-      </Modal.Body>
-    </Modal>
-  )
+      }
+    />
+  );
 }

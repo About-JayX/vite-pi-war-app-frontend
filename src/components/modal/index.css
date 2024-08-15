@@ -1,7 +1,7 @@
 .modal {
-    height: auto !important;
+    /* height: auto !important;
     bottom: 0 !important;
-    top: auto !important;
+    top: auto !important; */
 }
 
 .modal-header {
@@ -32,10 +32,10 @@
     }
 }
 
-.modal.fade .modal-dialog {
+/* .modal.fade .modal-dialog {
     animation: slideOutDown 0.5s forwards;
 }
 
 .modal.show .modal-dialog {
     animation: slideInUp 0.5s forwards;
-}
+} */
