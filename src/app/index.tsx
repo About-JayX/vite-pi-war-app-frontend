@@ -147,7 +147,9 @@ const Steps = ({
           timer.current = null
           value = 100
         } else {
-          if (Object.keys(friendRank).length === 0) {
+          console.log(Object.keys(friendRank), 'Object.keys(friendRank)')
+
+          if (!Object.keys(friendRank).length) {
             value >= 99 && (value = 99)
           } else {
             clearInterval(timer.current)
@@ -156,6 +158,8 @@ const Steps = ({
           }
         }
       }
+      console.log(value, '??')
+
       setProgress(value)
     }, 50)
   }
