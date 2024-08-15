@@ -13,13 +13,14 @@ import Icon from "@/components/icon";
 import SuccessPng from "@/assets/icon/success.png";
 import SuccessaPng from "@/assets/icon/success-a.png";
 import { semicolon } from "@/utils";
+import { FaRegPaste } from "react-icons/fa6";
 import Button from "@/components/button";
 
 export default function Airdrops() {
   const { t } = useTranslation();
   // const { uid } = props?.searchParams
   const [bindingMethod, setBindingMethod] = useState<string>("Solana");
-  // const [_, setInput] = useState<string>('')
+  const [input, setInput] = useState<string>('')
   const { bindStatus, userReward } = useAppSelector((state) => state.user);
   const [walletOpen, setWalletOpen] = useState(false);
   const [bdLog, setBdLog] = useState([]);
@@ -54,21 +55,21 @@ export default function Airdrops() {
 
     return data && data.Address ? data.Address : {};
   };
-  // const onPaste = async () => {
-  //   try {
-  //     const pastedText = await navigator.clipboard.readText()
+  const onPaste = async () => {
+    try {
+      const pastedText = await navigator.clipboard.readText()
 
-  //     setInput(pastedText)
+      setInput(pastedText)
 
-  //     // if (!tSolAddress.test(pastedText)) {
-  //     //   MessageError("Binding Success");
-  //     // }
-  //     // 进行你需要的操作，例如更新状态或执行其他逻辑
-  //   } catch (err) {
-  //     console.error('Failed to read clipboard contents:', err)
-  //     // 处理错误情况，例如显示用户提示或执行备用方案
-  //   }
-  // }
+      // if (!tSolAddress.test(pastedText)) {
+      //   MessageError("Binding Success");
+      // }
+      // 进行你需要的操作，例如更新状态或执行其他逻辑
+    } catch (err) {
+      console.error('Failed to read clipboard contents:', err)
+      // 处理错误情况，例如显示用户提示或执行备用方案
+    }
+  }
   // const bindPid = async () => {
   //   if (!postData) return
   //   const data = {
@@ -173,7 +174,7 @@ export default function Airdrops() {
               )
             ) : (
               <>
-                {/* <Input
+                <Input
                   value={
                     bindStatus.pid && bindStatus.pid.pId
                       ? bindStatus.pid.pId
@@ -189,7 +190,7 @@ export default function Airdrops() {
                     onClick: () => onPaste(),
                     show: !(bindStatus.pid && bindStatus.pid.pId),
                   }}
-                /> */}
+                />
                 {
                   <Input
                     placeholder={
