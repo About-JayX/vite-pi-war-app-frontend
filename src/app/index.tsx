@@ -90,8 +90,6 @@ const Steps = ({
     try {
       let result = await api.user.loginAPI(postData)
 
-      dispatch(updateNewUser(result.data && result.data.isNewUser))
-
       sessionStorage.setItem(
         'token',
         (result.data && result.data.authToken) || ''
@@ -100,6 +98,7 @@ const Steps = ({
       !result.data.isNewUser && (await initData())
 
       result.data.isNewUser && onChange && onChange(1)
+      dispatch(updateNewUser(result.data && result.data.isNewUser))
     } catch (error) {
       console.log(error, 'error_')
     }
