@@ -187,64 +187,124 @@ const Steps = ({
 
   const initData = async () => {
     if (!postData) return
+    const reqls = [
+      { name: 'userFun', callback: getUserFun, params: '' },
+      { name: 'userRank', callback: api.user.userRankAPI, params: '' },
+      { name: 'userReward', callback: api.user.userRewardAPI, params: '' },
+      {
+        name: 'inviteRank',
+        callback: api.user.inviteRankAPI,
+        params: {
+          page: 1,
+          pageSize: 500,
+        },
+      },
+      {
+        name: 'friendRank',
+        callback: api.user.friendRankAPI,
+        params: {
+          page: 1,
+          pageSize: 500,
+        },
+      },
+      {
+        name: 'bindPid',
+        callback: api.user.findPidAPI,
+        params: '',
+      },
+      {
+        name: 'ercAddress',
+        callback: api.user.findAddressAPI,
+        params: {
+          type: 'erc20',
+        },
+      },
+      {
+        name: 'solAddress',
+        callback: api.user.findAddressAPI,
+        params: {
+          type: 'solana',
+        },
+      },
+    ]
 
-    try {
-      const result = await getUserFun()
-      dispatch(updateTelegramUserData(result.data))
+    const pReqls = reqls.map(item => {
+      return new Promise(async (re, rj) => {
+        const result = item.params
+          ? await item.callback(item.params as any)
+          : await item.callback()
 
-      const userRank = await api.user.userRankAPI()
-      dispatch(updateUserRank(userRank.data))
-
-      const userReward = await api.user.userRewardAPI()
-
-      let newArr: any = []
-      userReward.data.activityLogs.forEach((item: any) => {
-        if (!newArr.length) {
-          newArr.push(item)
+        if (result.success) {
+          re({ name: item.name, result: result.data })
         } else {
-          let obj = newArr.find((child: any) => child.key === item.key)
-
-          if (!obj) {
-            newArr.push(item)
-          } else {
-            obj.value = String(Number(obj.value) + Number(item.value))
-          }
+          re({ name: item.name, result: null })
         }
       })
-      userReward.data.activityLogs = newArr.filter((item: any) =>
-        Number(item.value)
-      )
-      dispatch(updateUserReward(userReward.data))
+    })
 
-      const inviteRank = await api.user.inviteRankAPI({
-        page: 1,
-        pageSize: 500,
-      })
-      dispatch(updateInviteRank(inviteRank.data))
+    const results = await Promise.all(pReqls)
+    const bindStatus: any = {}
+    results.forEach((item: any) => {
+      switch (item.name) {
+        case 'userFun': {
+          dispatch(updateTelegramUserData(item.result))
+          break
+        }
+        case 'userRank': {
+          dispatch(updateUserRank(item.result))
+          break
+        }
+        case 'userReward': {
+          const userReward = item.result
+          let newArr: any = []
+          userReward.activityLogs.forEach((item: any) => {
+            if (!newArr.length) {
+              newArr.push(item)
+            } else {
+              let obj = newArr.find((child: any) => child.key === item.key)
+              if (!obj) {
+                newArr.push(item)
+              } else {
+                obj.value = String(Number(obj.value) + Number(item.value))
+              }
+            }
+          })
+          userReward.activityLogs = newArr.filter((item: any) =>
+            Number(item.value)
+          )
+          dispatch(updateUserReward(userReward))
+          break
+        }
+        case 'inviteRank': {
+          dispatch(updateInviteRank(item.result))
+          break
+        }
+        case 'friendRank': {
+          dispatch(updateFriendRank(item.result))
+          break
+        }
+        case 'bindPid': {
+          bindStatus.pid = item.result || null
+          break
+        }
+        case 'ercAddress': {
+          bindStatus.erc = item.result || null
+          break
+        }
+        case 'solAddress': {
+          bindStatus.sol = item.result || null
+          break
+        }
 
-      const friendRank = await api.user.friendRankAPI({
-        page: 1,
-        pageSize: 500,
-      })
-      dispatch(updateFriendRank(friendRank.data))
+        default: {
+          console.log('not found')
 
-      const bindPid = await api.user.findPidAPI()
-      const ercAddress = await api.user.findAddressAPI({
-        type: 'erc20',
-      })
-
-      const solAddress = await api.user.findAddressAPI({
-        type: 'solana',
-      })
-      const bindStatus = {
-        pid: bindPid.data || null,
-        erc: ercAddress.data || null,
-        sol: solAddress.data || null,
+          break
+        }
       }
-      dispatch(updateBindStatus(bindStatus))
-    } catch (error) {
-      console.log(error, 'error_')
-    }
+    })
+    dispatch(updateBindStatus(bindStatus))
+
     setInitLock(false)
   }
 
