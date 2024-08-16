@@ -145,8 +145,6 @@ const Steps = ({
           timer.current = null
           value = 100
         } else {
-          console.log(initLock, 'initLockinitLock')
-
           if (initLock) {
             value >= 99 && (value = 99)
           } else {
@@ -187,10 +185,33 @@ const Steps = ({
 
   const initData = async () => {
     if (!postData) return
-    const reqls = [
-      { name: 'userFun', callback: getUserFun, params: '' },
-      { name: 'userRank', callback: api.user.userRankAPI, params: '' },
-      { name: 'userReward', callback: api.user.userRewardAPI, params: '' },
+
+    const reqls: Array<{
+      name: string
+      callback: any
+      params: any
+    }> = [
+      {
+        name: 'userFun',
+        callback: () => {
+          return callbackFun(api.user.getUserAPI, 'userFun')
+        },
+        params: '',
+      },
+      {
+        name: 'userRank',
+        callback: () => {
+          return callbackFun(api.user.userRankAPI, 'userRank')
+        },
+        params: '',
+      },
+      {
+        name: 'userReward',
+        callback: () => {
+          return callbackFun(api.user.userRewardAPI, 'userReward')
+        },
+        params: '',
+      },
       {
         name: 'inviteRank',
         callback: api.user.inviteRankAPI,
@@ -233,6 +254,8 @@ const Steps = ({
         const result = item.params
           ? await item.callback(item.params as any)
           : await item.callback()
+
+        console.log(result, '???')
 
         if (result.success) {
           re({ name: item.name, result: result.data })
@@ -308,17 +331,49 @@ const Steps = ({
     setInitLock(false)
   }
 
-  const getUserFun = async () => {
-    let result = await api.user.getUserAPI()
-    if (result.data && result.data.predict_time === null) {
-      result = await new Promise(reslove => {
-        setTimeout(async () => {
-          reslove(await getUserFun())
-        }, 2000)
-      })
-    }
+  const callbackFun = async (callback: Function, methodName: string) => {
+    let result = await callback()
 
-    return result
+    switch (methodName) {
+      case 'userFun': {
+        if (result.data && result.data.predict_time === null) {
+          result = await new Promise(reslove => {
+            setTimeout(async () => {
+              reslove(await callbackFun(callback, 'userFun'))
+            }, 2000)
+          })
+        }
+        return result
+      }
+      case 'userRank': {
+        if (result.data && result.data.username === '未知') {
+          result = await new Promise(reslove => {
+            setTimeout(async () => {
+              reslove(await callbackFun(callback, 'userRank'))
+            }, 2000)
+          })
+        }
+        return result
+      }
+      case 'userReward': {
+        if (
+          result.data &&
+          result.data.activityLogs &&
+          !result.data.activityLogs.length
+        ) {
+          result = await new Promise(reslove => {
+            setTimeout(async () => {
+              reslove(await callbackFun(callback, 'userReward'))
+            }, 2000)
+          })
+        }
+        return result
+      }
+      default: {
+        console.log('not found')
+        break
+      }
+    }
   }
   return (
     <>

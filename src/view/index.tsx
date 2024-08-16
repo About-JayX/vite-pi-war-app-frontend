@@ -8,12 +8,16 @@ import { CardActions, CardContent, Container } from '@material-ui/core'
 import Button from '@/components/button'
 import { Card } from 'react-bootstrap'
 import Loader from '@/components/loader'
+import { useEffect } from 'preact/hooks'
 
 export default function Home() {
   const { userReward } = useAppSelector(state => state.user)
   const { t } = useTranslation()
   const homeBntLang: any = t('home.bnt', { returnObjects: true })
 
+  useEffect(() => {
+    console.log(userReward, 'userReward')
+  }, [userReward])
   const getIcon = (key: any) => {
     let index
     if (key.includes('Binding')) key = 'Binding'
