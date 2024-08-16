@@ -17,19 +17,6 @@ export default function Wallet({
   const { t } = useTranslation()
   const swapList = [
     {
-      text: 'TP',
-      src: '/tp.png',
-      click: () => {
-        const urlData = {
-          url: getUrl(),
-          chain: '',
-          source: '',
-        }
-        const url = encodeURIComponent(JSON.stringify(urlData))
-        window.open(`tpdapp://open?params=${url}`)
-      },
-    },
-    {
       text: 'OKX',
       src: '/okx.png',
       click: () => {
@@ -71,6 +58,19 @@ export default function Wallet({
             getUrl()
           )}?ref=${encodeURIComponent(getUrl())}`
         )
+      },
+    },
+    {
+      text: 'TP',
+      src: '/tp.png',
+      click: () => {
+        const urlData = {
+          url: getUrl(),
+          chain: '',
+          source: '',
+        }
+        const url = encodeURIComponent(JSON.stringify(urlData))
+        window.open(`tpdapp://open?params=${url}`)
       },
     },
     {
