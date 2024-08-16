@@ -229,7 +229,7 @@ const Steps = ({
     ]
 
     const pReqls = reqls.map(item => {
-      return new Promise(async (re, rj) => {
+      return new Promise(async (re, _) => {
         const result = item.params
           ? await item.callback(item.params as any)
           : await item.callback()
