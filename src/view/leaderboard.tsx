@@ -44,7 +44,7 @@ export default function Leaderboard() {
                     className="!text-[0.86rem]"
                     style={{ textShadow: " 2px 2px 4px rgba(0, 0, 0, 0.5)" }}
                   >
-                    {userRank.rank | 1}
+                    {userRank.rank-1 | 0}
                   </Text>
                 </div>
               ) : (
