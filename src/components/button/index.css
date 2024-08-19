@@ -7,7 +7,9 @@
     -webkit-transition: all 0.5s;
     transform: scale(1);
     position: relative;
-
+    margin: 0 !important;
+    border: 0 !important;
+    display: flex !important;
     span {
         font-size: 1rem;
     }
@@ -21,8 +23,8 @@
 .bnt-box::after {
     content: '';
     position: absolute;
-    left: 0.1842rem;
-    bottom: 0.1842rem;
+    left: 0.19rem;
+    bottom: 0.19rem;
     width: 1.6rem;
     height: 1.6rem;
     background: #48b7f2;
@@ -34,8 +36,8 @@
 .bnt-box::before {
     content: '';
     position: absolute;
-    right: 0.1842rem;
-    top: 0.1842rem;
+    right: 0.19rem;
+    top: 0.19rem;
     width: 1.6rem;
     height: 1.6rem;
     background: #48b7f2;
@@ -73,8 +75,8 @@
 .bnt-box .button::after {
     content: '';
     position: absolute;
-    left: 0.3442rem;
-    bottom: 0.3442rem;
+    left: 0.355rem;
+    bottom: 0.355rem;
     width: 1.6rem;
     height: 1.6rem;
     background: rgba(3, 92, 171, 1);
@@ -86,8 +88,8 @@
 .bnt-box .button::before {
     content: '';
     position: absolute;
-    right: 0.3442rem;
-    top: 0.3442rem;
+    right: 0.355rem;
+    top: 0.355rem;
     width: 1.6rem;
     height: 1.6rem;
     background: rgba(3, 92, 171, 1);

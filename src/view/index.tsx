@@ -117,11 +117,11 @@ export default function Home() {
           <CardContent className="text-center !pb-0">
             <Text className="whitespace-pre-line">{t('home.text')}</Text>
           </CardContent>
-          <CardActions>
+          <CardActions className="gap-2">
             {homeBntLang.map((item: any, index: number) => (
               <Button
                 key={index}
-                className="rounded-full"
+                className="!m-0"
                 onClick={() => {
                   window.open(item.url)
                 }}
