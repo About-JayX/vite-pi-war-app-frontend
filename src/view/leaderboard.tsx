@@ -91,7 +91,7 @@ export default function Leaderboard() {
                       className="!text-[0.86rem]"
                       style={{ textShadow: ' 2px 2px 4px rgba(0, 0, 0, 0.5)' }}
                     >
-                      {item.rank  || index + 1}
+                      {item.rank || index + 1}
                     </Text>
                   </div>
                 ) : (
