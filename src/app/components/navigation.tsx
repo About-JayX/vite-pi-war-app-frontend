@@ -72,7 +72,7 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
             value === getPathWithoutLang(itme.path)
               ? "!text-white"
               : "!text-white/50"
-          } !min-w-[auto]`}
+          } !min-w-[auto] p-0`}
         />
       ))}
     </BottomNavigation>

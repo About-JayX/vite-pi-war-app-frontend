@@ -3,6 +3,9 @@ import { Text } from "@/components/text";
 import { Container } from "@material-ui/core";
 import { useState } from "preact/hooks";
 import { checkInText } from "./checkIn";
+import { HeaderTitle } from "@/components/title";
+import Button from "@/components/button";
+import CheckIn from "./checkIns";
 
 const UserBox = () => {
   const Crystal = () => {
@@ -67,11 +70,62 @@ const UserBox = () => {
       </svg>
     );
   };
+
+  const Experience = ({ value = 0 }: { value?: number }) => {
+    return (
+      <svg width="124" height="9" viewBox="0 0 124 9" className="mt-[1px]">
+        <rect
+          x="0.5"
+          y="0.5"
+          width="123"
+          height="8"
+          rx="1.5"
+          stroke="#266395"
+        />
+        <rect
+          x="0.5"
+          y="0.5"
+          width="123"
+          height="8"
+          rx="1.5"
+          stroke="#266395"
+        />
+        <rect
+          x="0.5"
+          y="0.5"
+          width="123"
+          height="8"
+          rx="1.5"
+          stroke="#266395"
+        />
+        <rect
+          x="2"
+          y="2"
+          width={`calc(${value}% - 4px)`}
+          height="5"
+          rx="1"
+          fill="url(#paint0_linear_1282_1393)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_1282_1393"
+            x1="2"
+            y1="4.5"
+            x2={`calc(${value}% - 4px)`}
+            y2="4.5"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.9" stop-color="#48B7F2" />
+            <stop offset="1" stop-color="white" />
+          </linearGradient>
+        </defs>
+      </svg>
+    );
+  };
   return (
     <div className="grid grid-flow-col justify-between gap-4 items-center">
       <div className="grid grid-flow-col gap-3 grid-cols-[50px,auto]">
         <div className="w-[50px] h-[50px] bg-[#091939] border-[1px] border-[#266395] rounded relative p-[2px]">
-          {/* <img className="w-full h-full"/> */}
           <div className="w-[20px] h-[20px] bg-[url(/game/a.png)] bg-no-repeat  bg-contain absolute bottom-[-6px] right-[-6px]" />
         </div>
 
@@ -79,6 +133,7 @@ const UserBox = () => {
           <Text className="text-white/50 font-medium">
             Player Name Player Name
           </Text>
+          <Experience value={50} />
         </div>
       </div>
       <Crystal />
@@ -120,13 +175,7 @@ const GameBox = ({
           />
         )}
 
-        <image
-          x="32"
-          y="8"
-          className="w-[28px] h-[28px]"
-          preserveAspectRatio="xMidYMid slice"
-          xlinkHref={image}
-        />
+        <image x="32" y="8" className="w-[28px] h-[28px]" xlinkHref={image} />
         <foreignObject
           x="0"
           y="41"
@@ -187,7 +236,7 @@ const GameBox = ({
   };
   return (
     <div className="!p-0 !pt-6 !pb-6 grid gap-6 w-100 binding-card-bg bg-transparent">
-      <div className="grid grid-flow-col grid-cols-[repeat(4,1fr)] gap-[6px]">
+      <div className="grid grid-flow-col grid-cols-[repeat(4,1fr)] gap-2">
         <GameItem
           image="/game/1.png"
           text="签到"
@@ -220,6 +269,7 @@ const GameBox = ({
 };
 
 const SignIn = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const CheckInRules = () => {
     return (
       <svg
@@ -340,13 +390,21 @@ const SignIn = () => {
     receive = false,
     dateStatus = false,
     day = "1",
+    onClick,
   }: {
     receive?: boolean;
     dateStatus?: boolean;
     day?: string;
+    onClick?: () => void;
   }) => {
     return (
-      <svg viewBox="0 0 91 91" fill="none">
+      <svg
+        viewBox="0 0 91 91"
+        fill="none"
+        onClick={() => {
+          !receive && dateStatus && onClick && onClick();
+        }}
+      >
         <foreignObject x="0" y="0" width="100%" height="100%">
           {dateStatus ? (
             <img src="/game/itSTime.png" />
@@ -439,17 +497,108 @@ const SignIn = () => {
     { receive: false, dateStatus: false, day: "12" },
   ];
   return (
-    <div className="grid gap-6 w-full">
-      <CheckInRules />
-      <div className="!p-0 !pt-6 !pb-6 grid gap-[12px] w-100 binding-card-bg bg-transparent  grid-cols-[repeat(4,1fr)]">
-        {data.map((item, index) => (
-          <CheckInRulesItem
-            receive={item.receive}
-            dateStatus={item.dateStatus}
-            day={item.day}
-            key={index}
+    <>
+      <CheckIn open={open} onHide={() => setOpen(false)} />
+      <div className="grid gap-6 w-full">
+        <CheckInRules />
+        <div className="!p-0 !pt-6 !pb-6 grid gap-[12px] w-100 binding-card-bg bg-transparent  grid-cols-[repeat(4,1fr)]">
+          {data.map((item, index) => (
+            <CheckInRulesItem
+              receive={item.receive}
+              dateStatus={item.dateStatus}
+              day={item.day}
+              key={index}
+              onClick={() => setOpen(true)}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+const Task = () => {
+  const TaskItem = ({ status = false }: { status?: boolean }) => {
+    return (
+      <div className="grid grid-flow-col grid-cols-[65px,1fr] gap-2 items-center">
+        <svg viewBox="0 0 65 65" fill="none">
+          <foreignObject
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            className="relative"
+          >
+            <img src={status ? "/game/received-task.png" : "/game/task.png"} />
+            <div
+              className={`w-full h-full absolute top-0 left-0 flex items-center justify-center ${
+                status ? "opacity-50" : "opacity-100"
+              }`}
+            >
+              <img src="/game/vector.svg" className="w-[30px] h-[19px]" />
+            </div>
+          </foreignObject>
+        </svg>
+        <svg
+          width="100%"
+          height={65}
+          viewBox="0 0 315 75"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <image
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="xMidYMid meet"
+            xlinkHref={`/game/task-bg.png`}
           />
-        ))}
+          <foreignObject
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            className={`${status ? "opacity-50" : "opacity-100"}`}
+          >
+            <div className="grid grid-flow-col grid-cols-[190px,auto] justify-between items-center w-full h-full px-3 gap-1">
+              <Text className="text-[14px] font-normal">
+                The first Ethereum ETF to hit $1 billion in netinflows
+              </Text>
+
+              {status ? (
+                <div className="grid justify-items-center text-[#A7BCC2]">
+                  <Text className="font-normal">已完成</Text>
+                  <Text className="font-normal text-[12px]">+100</Text>
+                </div>
+              ) : (
+                <Button className="text-[#4EFCFB]">
+                  <img
+                    src="/game/crystal.png"
+                    className="w-[20px] h-[20px] object-contain mr-1"
+                  />
+                  +100
+                </Button>
+              )}
+            </div>
+          </foreignObject>
+        </svg>
+      </div>
+    );
+  };
+  return (
+    <div className="grid gap-6">
+      <div className="grid gap-0 justify-items-center">
+        <img
+          src="/game/crystal.png"
+          className="w-[90px] h-[90px] object-contain"
+        />
+        <Text className="text-[30px] font-bold">Earn more coins</Text>
+      </div>
+      <div className="grid gap-3">
+        <HeaderTitle className="">Title - 001</HeaderTitle>
+        <TaskItem />
+        <TaskItem status={true} />
       </div>
     </div>
   );
@@ -465,6 +614,7 @@ export default function Game() {
       {status !== 2 && <UserBox />}
       {status === 0 && <GameBox status={status} setStatus={setStatus} />}
       {status === 1 && <SignIn />}
+      {status === 2 && <Task />}
     </Container>
   );
 }
