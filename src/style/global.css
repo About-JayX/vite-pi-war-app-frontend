@@ -37,3 +37,11 @@ body {
 .MuiBottomNavigation-root {
     @apply !h-[5rem]
 }
+
+.hide-scrollbar{
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

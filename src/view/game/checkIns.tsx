@@ -21,11 +21,11 @@ export default function CheckIn({
               src="/game/crystal.png"
               className="w-[40px] h-[40px] object-contain"
             />
-            <Text className="text-[30px] font-bold truncate">
+            <Text className="!text-[30px] font-bold truncate">
               9,941,999,999
             </Text>
           </div>
-          <Text className="text-[20px] text-center font-normal text-[#5FB1F5] max-w-[250px]">
+          <Text className="!text-[20px] text-center font-normal text-[#5FB1F5] max-w-[250px]">
             The exchange has started workingfor you
           </Text>
           <Button className="text-[#4EFCFB]" onClick={()=>onHide && onHide()}>OK</Button>

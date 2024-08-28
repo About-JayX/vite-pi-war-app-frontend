@@ -6,8 +6,10 @@ import { checkInText } from "./checkIn";
 import { HeaderTitle } from "@/components/title";
 import Button from "@/components/button";
 import CheckIn from "./checkIns";
+import { CiLock } from "react-icons/ci";
+import { AiFillCheckCircle } from "react-icons/ai";
 
-const UserBox = () => {
+const UserBox = ({ setStatus }: { setStatus: (e: number) => void }) => {
   const Crystal = () => {
     return (
       <svg
@@ -124,16 +126,55 @@ const UserBox = () => {
   };
   return (
     <div className="grid grid-flow-col justify-between gap-4 items-center">
-      <div className="grid grid-flow-col gap-3 grid-cols-[50px,auto]">
+      <div className="grid grid-flow-col gap-3 grid-cols-[50px,auto] items-center">
         <div className="w-[50px] h-[50px] bg-[#091939] border-[1px] border-[#266395] rounded relative p-[2px]">
           <div className="w-[20px] h-[20px] bg-[url(/game/a.png)] bg-no-repeat  bg-contain absolute bottom-[-6px] right-[-6px]" />
         </div>
 
-        <div className="truncate">
-          <Text className="text-white/50 font-medium">
-            Player Name Player Name
+        <div className="truncate" onClick={() => setStatus(4)}>
+          <Text className="text-white/50 font-medium !text-[12px]">
+            Player Name
           </Text>
           <Experience value={50} />
+          <svg
+            className="mt-[5px]"
+            width="133"
+            height="18"
+            viewBox="0 0 133 18"
+            fill="none"
+          >
+            <rect width="133" height="19" fill="url(#pattern0_1240_1234)" />
+            <defs>
+              <pattern
+                id="pattern0_1240_1234"
+                patternContentUnits="objectBoundingBox"
+                width="1"
+                height="1"
+              >
+                <use
+                  xlinkHref="#image0_1240_1234"
+                  transform="matrix(0.00253881 0 0 0.012987 -0.00395469 0)"
+                />
+              </pattern>
+              <image
+                id="image0_1240_1234"
+                width="397"
+                height="77"
+                preserveAspectRatio="xMidYMid slice"
+                xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAY0AAABNCAYAAABaODjRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAUDklEQVR4nO2dzW9dSVbAf3VtJ+2kO3E+uvPRH+npmSYzzEc3MBI9SLABZhYjLLZI8xcAGxaIFRISEmvWiAUrNkggeQMSSHwM7KDFNMyInmGGTidxnI6D7dixY8fvFov7rl2v3jlVde97jkl8fpLld6tOnXOq7ntVt07dutd53ifmFn7Owy/Pwjdm4R0H54CZMUHDMAzjqNir4VEN9wfwYQ3/+DZu5bidcvGgcQv/K6fhOxVcOh6XDMMwjBgPg334t3348xu4Hx+XHweDxjJ+ZgC/eRp+9bicMQzDMLIM9uCvK/iz67i9Z238YNC4g//tU/DNNqOGvXX492347hb+++uwtkg1eNYOGkaOJeo5YB64ALwO3ADOHqtThjEhFVRnYf4i7tXzcO0MXAZcmz+AW9vwh5/HffYs/XKe97mF/+Y8/BbgAfcY7n6C/5NN+N4ilX+WDhnGpCxRV8A7wHvAQpTdfp9dcOyivDg/Tov1+ChPo1ROktfKtuldZDVbLSkfYx2SXclO3zbSdHXxM+VPzi/Jn5Tt3PmI84v9uAALb+G+PN8MHgC+ho1d+P0buE8TZaeK+4T35k7Dn1bNYjePYfkH+D/6NtXdZ+WEYRwFw8HjPeBrQHXM7hjGxDhwN3A3rsBX3PA7XcPDHfi9z+EePgsfZn6Hq9+ag28Mje/9CP/H36L672dh3DCOkps4fxO38jF+GXgTmD1unwxjQvw6rD/FrS3ANQfOwfwM/PQruL97Fg7M/C5Xf6OCK4DfgA+X4S9vdppBG8b/b27itj/GfwK8AcwNk8NwjA/+S3+pvJx8if4+NkrL9NHbxXbftplWexxV/aZ9Hqaq4zFsD3AbC3AVoIILa1Cfw/2AI6aq4K3WkW34Z1vDMF5EFqm2gL8FdoCa5jtfR5+1H6mUVypfR3ZSZXIymp3YXkqvlK/pKql/ie5cuS51i89dSfum/Mq1h9aG4fGg8Nxq5yL3PZTqV6/g763CD9u0U/Drt/ELHDFVBWdapzbxRz5KGcZxsUi1CfwTeqcu/Yi1DgjGf/hSR1APZVN2JDlNl6bfRzq0Tjb2O66b5APIfpS0XapjTOnQyqLoz3Xukg6pviWdP4qO3GAWt6N0zqR6x/YO5H6C/3gPNobpcw5+jSOmotnpXQN+DdaP2qBhHCeLVPeB/6L5zg/IX4XWguwgSCu56tU6hFSnKl15alejqQ43VSdNNuVbrlMt/awNWoNMmVz9Yj05Hblzo53PXJtLf1rdcnbVwbCGwYNgtjFcnz7S9YVZDkcyv0hVp4QN4wXhI5q9HKeGxz4hG+KFz7m0nJ6crlzZUqRyKV3TtDMNHbk2Kqlf1zYoketa39JzXfpdYhl/5xruSxWcdrBwG//VN3EfdfSrmIrRUc0wXngWqZ4CP0K/WteunnNXuyVX2qkrR81+7kpfm+WUzA5SdS3N0+qoXel38SmnI9VmXfzvqis3G8np6TJLSc4aB7D/CO62xzPwSxwh4UzDME4SPwFuom8cK02L83zB565pJXklPnQt29V+qi3C464+5XRo+nL+lJRJpU+qP65LaduPya3CpwvNTU3MwNeW8aeO6hEjs5IDhvGis0j1eIl6FXswp/ECsIp/eAO3OQdnHZyu4eeB7x6FrVkPtbOBwziZ3AIuJvI9+cdhSDJdKC2fspv6DGWPrQj7gNL6hbq0cjm7sZ+p8rGM5nvpOdLaLWUfoUyXcxiW12S0x5Akv48b8Okl+KJrQlQfcFSDBjAYWrUdfcZJ4w7wVQ4fMZLq0KTOOJbpS5+wU3ws+Rnn1Yx2gNMI66TCJlr4pcSu1t6psnHdSjr1WE7TJfmZ8rF0gO5SB62sB7iPv30J964HKnj3Dv7cG7hHiq3ezDpb0zBOKItUT5eo7wHXguRprCkcNy9CHWA66zGl6yh9LwRyA2DXdZyStRORTdjahdWXhrNnB78A/E2h3WJmvQ0axsnmU5rH6LTEoRDpM5E8Sp5EV3mpfIlPqXQtX5InKlPqf4mNnE4pLNSlnXN1lfKkUFiXc5V7sq1mt0Rfzie3BrevDp/sPANf5ygGDYJ9GtNWbhjPAQ+AXZo9G6lOpsuagVQ2zC/pHCXijqMOjrt0QnE5rXMO/4ehLa3ekr5Up5+rRy6kk1rzkPwN80vOQR0da35oZXL+5gYSqR2T60Ir+DtXcF9y4Bxcu4u//jpuOeFTZ8J9GjZoGCeO4YbWZfL3y3fZSSyVlcrF+bGt1P6LvvsxSvzW9hCU7jVI7aTW2jTXDrl2LTlPXc9BSblUmZy/pftNtDYfy9+FvW24F8h/wJSZpdnabhgnmbs0T8A1jOeeNbh9Fl4DmGneJ/NXTHFSYJv7jBPPItX6EvUWzcM7DeO55h5+5TruSQWnHJy7g/+pN3AfT0u/rWkYRsMy8PngWIo9p+LhUplYVywTk9oPEB7HaPbicuFxqn6a3jA99if2O3VMlKfplGxKdjUfU4vIqXpJdjQ/Ut8LTUdOtuR8qjI1uE24e364Q7xqFsSnOmjso1fMME4KK8DbpH+c4YItjP6Y4x92bkE0ROuIvCKj+RBSI3dmWgeUGgi0NqkV+dg/Sa82YNVCmtRBhnqlMqHt1HlK+Sih6Zf0lAzMsa3UQBSmaYO8B9wq3D4/DLnOwM1V/Oxl3L5Sp044z/vT0GMYzz1L1D8DnD9uPwxjGvws7hfnhiHXffiL13EfTkOvvTPZMA5ZAV45bicMYxpswu2L8AWAqlkQt0HDMKbMA+AdLFxrvACs4O9exL0DUMGNZfzL13Fbk+qd+YPmveSGceK5ias/xp/h8C4qLa4dp4f31qfkJZm4rBRrl8pIOkp8yfmh2dV8yaXldJX4qbWRlp/SJZVL+ZvzO9XuuXbpcn41PVK6B/we7L+KuzALp4cZ26/gbivlirGZhmGM8hlwAXnRUVt0DindZU1wDOM2WtpFXmkRXlrUjnVJx1IZAtnWbizbHpcugKfu0oo7V2kRO7VjWpsNxg9l1BaLwzzpQY6SXa394rrk7GvnTPq+tJ/j3enxd1Bs9w2489ow5FrBl4F/YUJs0DCMUdaBp4z/NlJX2iVyJVeVXWRyeX3lYkrrkdKdunovsZXLK/Ghr1zuKv8o8nMypTr9Pfz9V3Hv0jz94/Iy/tXruAeKzSJs0DCMgEUqP3w502vH7YthTMoT2N2G+2cOv89fAf5+Ep02aBjGOKvA5eN2wjCmwTosnxm+obJqXnH8D+RnmCo2aBhGxPBVsDvAS8MkLX5dklayUS0sF8qUrEVo+nI+5EjZz/kZ+qfZ09Z8YplU+TAvt2Na0pPbgKih+VXSZpI9ydcwvWsHP+LHPfzDq7jdCuaA+WX8m9dxn3bUeYANGoYh85DDlzNpi7fSImmL1oHA+MJrKJ/rYLt24tJO6JIOPu4YNd25x6zHPqfqFPsU76pPdaCpQSQ1WGgXBNK50dq+5DxqvqcW1fvIjp2TAdSP4d45uD5M/yLNe2R6YYOGYcisMfpyptzio5ZXugDdZ8E2ZaMkL2U7ldZFd0lanzK5vC6ypfJ927I0PTejKJEVZVabQeMKQAVvT/JYERs0DENgkWrPnnxrvCg8wG+8iducgzMOqt1mE+sP++iyQcMwdNY4XNcwjOeaLVi50Dz51s00T3S2QcMwpswjmlsV2xi4Fr/OLTSn4s8xJQuwrVxuoVfyQfIxtVhfKhfKahvvNJkSe1J66jhlS9If+qGt62gL7LFuSUcok8qPfdT8iHVpdg7K3cd/toB7Y5h+ZRk/fx23o9RFxQYNw1BYpBosUW9y+BBDLX6diufH6fGPOdVZ5zotLTYvdSTS4nucJz1OPdYn/Zdsa/6kOtM4T9qpLdUh9lsakLTBB8b9lT6Hx/Hu/JjwvEq+pdpZ04cil1pbGdG3ATt7sHZ6+H12TYjq+4pNFRs0DCPNBnB2yjpTi6clnVbpgmmfxeEuC+BdF7BLF31L2qBPmS7tUUKf89C17frYVeUewf3Lw++za0JVNmgYxpTZpnmsyIyQl7sFVApXlJbXKL2ltbRsiVxJuT51mcSnUtmj9isug1Kurx9ddSRllvGrl3Fvukbu/DL+/HXcRhcnbNAwjATDx4psAueiLO1+/FLG7qenvLPW5FO2QH8rXqmfpX5og1pXv1M2JJnwOPSjtK6xzraMtnbUpRPv4lOXc9Ple8MT8DuwOj/cIe6at1V+L2NnBBs0DCPPFuMvZ5pmaKNr+KQ0TNXFVknZvn6UhLUmsZFrtz7nqiSUVqJ3klDhkeheawaNBQDXbPj7qINNGzQMI8ci1e4S9R72ezFeAJbx69dwT6rm+3xqGX+5y5Nv7UdgGGVsMRqiKo2bl9yxU7Lmod2BlPtcQt8wWGl+zjYJuVwdc+E2LXST861LnaW7wjSbKJ+nsbZV5HcNfhsevgyXPLgKXqd5a2URNmgYRhnbjIaoSsIXUl6Xu2ZyYaWSzyX0DYOV5vexLeWn2qPUh64hNS29S9v3KZOja5uP+LAKD882LxvDNU90rtDXrkZwnvfL3TSME8wS9SXgFM/+rqcuOkvzp3E3T1dK26DP3Vt9bE+qv+8dXZPalcp3Xuz/Ou7dmeGrYIH/uIJbKSlnMw3DKGeb0d+MdldNmyeFTaSOg0g21plLj2XikIeWnztO2ZB80cIu8d1bIdIdZKnXyWo+h3JSWS1MKOmXOuLSO8C0Notf19rm585vKqwV6vPIdVXP2RY8XIArvpG5AtigYRhT5gnwMs2PTOqUw/8l4Yf4dlatUygJpUgdWexP7HPrA4x33lLdcmE4qT5d6hLbjYk7+lQoJtUWmoykp4t/kq3YTtxG8XGbRpAutV88yErlNHkPcB+/fh53yYHzcH4d5haaPUlJbNAwjEKGezZ2aab08Q9f6yC1q8iwrJYnoc1epE6yJHShXaGmfCqpVwqp/tqsaFr623RtYC61nZIpkddmNVpaqq0l3blzc/B/Dfaewtap5sm37OJfA3dXKDuCDRqG0Y0nNG9AC+lytdo1v7TMJD708aWP36V6pqW7j/4S2139m7Q+Xf0tPt+bsH7pcF3jIpAdNGwh3DA6skS9QHO3iWE817wE1Xu4t93w++zhP6/gtlNlbKZhGN3Zpez94W06Ql6crt33H8um9gdIoYmUzlz4Slv87XoXVMmdS6lF55y/uTbR/NTaJOcvQr4Wgup6h1SuHTSdJXbG9DyB/V3YnG/W6qia23Bt0DCMKbNHc+ttSGpRtiRdWuzM5Umfp2FP05mykUorCa/k6jJp+3TR0yd81TW9RL/mT9+QlKhnHTbmYX6Ydh5YTumz8JRh9GCJ+izyk28N47liDtzP4V53w++zg/+5jNvS5G2mYRj9eMrhrbctqau9UjmtbJcwjxYm00JeUlou3NElJNTFfqnNHKV+dNFRWraPnBZqnLQ9sjJPgSeweebg5UzuFZrH5ojYoGEY/XhKcxdV8Z0qE9jqG+ZJ2e8auimVnZb9Eh19ZCfRMe1z3TfU2MVOkS+rsPUWnGkK+LPg1MHGwlOG0ZMl6tP0C1Fpi7ypPQLTyovTcuVbtMXneHYSy0jHk/om6UvpbJFme9qiu6RX8i+U12YNkn+pmVlJm2q+5dpQO2d8gHtt+ORbKtz9i7CJgM00DKM/+/S/9bbrleU08/pcQZcsGuf09pltTFq3UvncbCl1jlI+T9oGXeQ1H4v8ewyPz+FeBqib2YYNGoYxTRapBkvU0vOUSq4cY/lUeumVO4J87iq5RK+mJ5UW1yPnT2yvRJdUlxBtBiXpyV2xS7akuku2S85vanYR+xnajm2lfNX88QArsH0BXqrBzeDmUJ58a4OGYUzGgCZEleq4pOdLlV5Rh/JS2TgtNYPRQiIpHSk9uTQJj25HKl/SLilbJTJd/ZPk40487my1C4mS50tJaSn5ku/XWN0e4J9+AXZncacq8P8LZ6UQlQ0ahjEZA8quaHNpKbROtEvnlrPfVUcfpm2jtFOfpj5NvnTQnFSmZADs3c47sHMOZmqgah4vMjZo2KMQDGMCFqnaqz7pClW6ItSu2rUr3pycpqt0tpDyOzdrKfE95YukWytb6mMfe1paiWxM6pynfJTkU3KabM6+pONA7sf4XQ/18G8G4UYPm2kYxuS06xou+Cz9eON0n8gLY9hxyCF+jHmoK9QnvZci1yFK/mjhsbBM6q1vWrhGit2Hx1J7xW0sHUu+SvWSbISyof7Yt1QbS3alOocyWlvA+KPPtfOQ0i3VL24rNhtbO3PDJx48gpfOweOwoM00DGNCFqnaH3VN8wOsGe9otKtnLS/U0er06B1YWC6UqxnXXwd/OX9COzBePx99zukKCe1r9YvL1tH/uHxoX/Mx1l8LOjS9YdnY/9C3uH1jG0T/JfuxjpRfmv+x/lCnqHsH/2QGBjMwmBUmFjZoGMZ0iDsl9UeZkJc6BKmTkTogyHcwWqeY8yfVqac6w7htJD9in1q5WF+NXP9YTtMptYs04GmdNUJa7txJbZGyH9chJjXohPmp+mq+Hfj9r/inNQz8Yf7IwGGDhmFMgUUqH8w4fJsGHKQvUtVB2oj88LMf5iP81zojP9Q70smEdmKf2r9QLpAZ8TnQPyIX24zs+JS/UVvE/taCLu14xG7kY5tftzqDzwe+x+0U2g//R+c2tDFmU8iL6xZ+B8baKq6vUD5uzxEfpDYUfPRhm7TlWjkHe2dgf7YZTEYGDdsRbhiGYcRUNI//b9c9dob/baZhGIZhjBGvfxyMFTZoGIZhGBL7HIa2Dm69tUHDMAzDkBhwOGi0t5TboGEYhmGIeA4HjoP9KLa5zzAMw9AI78qzQcMwDMNIEu94dzZoGIZhGClG9njYoGEYhmGkGJlt/B8TbX76YlNorgAAAABJRU5ErkJggg=="
+              />
+            </defs>
+            <foreignObject x={0} y={0} width="100%" height="100%">
+              <div className="grid w-full h-full grid-flow-col justify-items-center items-center">
+                <Text className="font-normal text-[#900025] !text-[14px]">
+                  SKIN
+                </Text>
+                <Text className="font-normal text-[#FF0A38] !text-[14px]">
+                  BUY
+                </Text>
+              </div>
+            </foreignObject>
+          </svg>
         </div>
       </div>
       <Crystal />
@@ -144,18 +185,20 @@ const UserBox = () => {
 const GameBox = ({
   setStatus,
 }: {
-  status?: number; // 0初始化 1签到 2任务 cipher 3Daily combo 4Mini game
+  status?: number; // 0初始化 1签到 2任务 3技能 4个人页面
   setStatus: (e: number) => void;
 }) => {
   const GameItem = ({
     image,
     text = "",
     status = false,
+    date = "",
     onClick,
   }: {
     image: string;
     text: string;
     status?: boolean;
+    date?: string;
     onClick?: () => void;
   }) => {
     return (
@@ -183,9 +226,9 @@ const GameBox = ({
           height="40"
           className="text-center grid"
         >
-          <Text className="text-[12px] h-[20px] font-medium">{text}</Text>
-          <Text className="text-[10px] h-[18px] font-normal text-white/50">
-            12:01
+          <Text className="!text-[12px] !h-[20px] font-medium">{text}</Text>
+          <Text className="!text-[10px] !h-[18px] font-normal text-white/50">
+            {date}
           </Text>
         </foreignObject>
       </svg>
@@ -206,7 +249,7 @@ const GameBox = ({
   const Figure = () => {
     return (
       <div className="max-w-[200px] min-h-[200px]">
-        <img src="/game/figure.png" />
+        <img src="/game/skin/default.png" />
       </div>
     );
   };
@@ -241,23 +284,22 @@ const GameBox = ({
           image="/game/1.png"
           text="签到"
           status={true}
+          date="17:59"
           onClick={() => setStatus(1)}
         />
         <GameItem
           image="/game/2.png"
           text="任务"
           onClick={() => setStatus(2)}
+          date="12:59"
         />
         <GameItem
           image="/game/3.png"
-          text="Daily combo"
+          text="技能"
           onClick={() => setStatus(3)}
+          date="05:59"
         />
-        <GameItem
-          image="/game/4.png"
-          text="Mini game"
-          onClick={() => setStatus(4)}
-        />
+        <GameItem image="/game/4.png" text="Mini game" date="13:59" />
       </div>
       <div className="grid gap-4 justify-items-center">
         <Crystal />
@@ -595,7 +637,7 @@ const Task = () => {
         />
         <Text className="text-[30px] font-bold">Earn more coins</Text>
       </div>
-      <div className="grid gap-3">
+      <div className="grid gap-2">
         <HeaderTitle className="">Title - 001</HeaderTitle>
         <TaskItem />
         <TaskItem status={true} />
@@ -604,17 +646,232 @@ const Task = () => {
   );
 };
 
+const Skill = () => {
+  const data = [
+    { name: "CEO", amount: "100", price: "1K", lvl: 0, unlockLvl: 0 },
+    { name: "Marketing", amount: "70", price: "1K", lvl: 1, unlockLvl: 5 },
+    { name: "IT team", amount: "240", price: "2K", lvl: 2, unlockLvl: 2 },
+    { name: "X", amount: "80", price: "550", lvl: 3, unlockLvl: 5 },
+    { name: "Support team", amount: "70", price: "750", lvl: 4, unlockLvl: 4 },
+    { name: "TikTok", amount: "100", price: "1K", lvl: 5, unlockLvl: 3 },
+  ];
+
+  const SkillItem = ({
+    name = "",
+    amount = "",
+    price = "",
+    lvl = 0,
+    unlockLvl = 0,
+    grade = 0,
+  }: {
+    name?: string;
+    amount?: string;
+    price?: string;
+    lvl?: number;
+    unlockLvl?: number;
+    grade?: number;
+  }) => {
+    return (
+      <div className="card">
+        <div className="p-2 grid grid-flow-col grid-cols-[48px,1fr] gap-2">
+          <div className="relative w-[48px] h-[48px] rounded-full overflow-hidden">
+            <img src="" className="w-full h-full" />
+            {unlockLvl >= grade && (
+              <div className="absolute top-0 left-0 bg-black/50 w-full h-full flex justify-center items-center">
+                <CiLock size={20} />
+              </div>
+            )}
+          </div>
+
+          <div className="grid gap-[6px] h-fit">
+            <Text className="!text-[10px] font-normal">{name}</Text>
+            <div className="grid">
+              <Text className="!text-[8px] font-normal text-white/50">
+                Profit per hour
+              </Text>
+              <div className="grid grid-flow-col grid-cols-[14px,auto] items-center gap-[2px]">
+                <img
+                  src="/game/crystal.png"
+                  className="w-[14px] h-[14px] object-contain"
+                />
+                <Text className="!text-[10px] font-bold">{amount}</Text>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-[#19263C]" />
+        <div className="px-2 py-1 grid grid-flow-col grid-cols-[30px,2px,1fr] gap-2 items-center">
+          <Text className="!text-[10px] font-bold">lvl {lvl}</Text>
+          <div className="border-r border-[#19263C] h-full w-[2px]" />
+          {unlockLvl >= grade ? (
+            <Text className="!text-[8px] font-normal">
+              {name} lvl {unlockLvl}
+            </Text>
+          ) : (
+            <div className="grid grid-flow-col grid-cols-[14px,auto] items-center gap-[2px]">
+              <img
+                src="/game/crystal.png"
+                className="w-[14px] h-[14px] object-contain"
+              />
+              <Text className="!text-[10px] font-bold">{price}</Text>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      {data.map((itme, index) => (
+        <SkillItem key={index} {...itme} grade={1} />
+      ))}
+    </div>
+  );
+};
+
+const Profile = () => {
+  const Skin = () => {
+    const data = [
+      {
+        image: "/game/skin/default.png",
+        name: "Default",
+        text: "Your league s dafault skin",
+        unlockLvl: 0,
+        value: "default",
+        price: "0",
+      },
+      {
+        image: "/game/skin/default.png",
+        name: "Crypty",
+        text: "Your league s dafault skin,Your league s dafault skin,Your league s dafault skin,Your league s dafault skin",
+        unlockLvl: 1,
+        value: "crypty",
+        price: "2,500,000",
+      },
+      {
+        image: "/game/skin/default.png",
+        name: "Crypty3",
+        text: "Your league s dafault skin,Your league s dafault skin,Your league s dafault skin,Your league s dafault skin",
+        unlockLvl: 2,
+        value: "crypty3",
+        price: "9,500,000",
+      },
+    ];
+
+    const [dafault, setDafault] = useState<string>("default");
+    const [application, setApplication] = useState<string>("default");
+
+    const item: any = data.find((item) => item.value === dafault);
+
+    const SkinItem = ({
+      image,
+      name,
+      value,
+      application,
+      dafault,
+      setDafault,
+    }: {
+      image?: string;
+      name?: string;
+      value?: string;
+      application?: string;
+      dafault?: string;
+      setDafault?: (e: string) => void;
+    }) => {
+      return (
+        <div
+          className={`card p-2 grid justify-items-center gap-1 relative ${
+            value === dafault ? "!border-[#48B7F2]/50" : ""
+          }`}
+          onClick={() => setDafault && value && setDafault(value)}
+        >
+          <img src={image} className="w-full h-[60px] object-contain" />
+          <Text className="text-[8px] font-normal">{name}</Text>
+          {value === application && (
+            <div className="absolute right-1 top-1">
+              <AiFillCheckCircle size={12} color="#16D5B6" />
+            </div>
+          )}
+        </div>
+      );
+    };
+    return (
+      <div className="grid grid-flow-col grid-cols-2 gap-2">
+        <div className="grid gap-1">
+          <img
+            src="/game/skin/default.png"
+            className="w-full h-[160px] object-contain"
+          />
+          <div className="card py-2 px-3 grid gap-2 justify-items-center text-center">
+            <div className="grid gap-1 justify-items-center text-center">
+              <Text className="text-[10px] font-normal">{item.name}</Text>
+              <Text className="text-[8px] font-normal">{item.text}</Text>
+            </div>
+
+            {item.value === application || item.price === "0" ? (
+              <Text className="text-[10px] font-normal text-[#4EFCFB]">
+                Purchased
+              </Text>
+            ) : (
+              <div className="grid grid-flow-col grid-cols-[20px,auto] items-center gap-[2px]">
+                <img
+                  src="/game/crystal.png"
+                  className="w-[20px] h-[20px] object-contain"
+                />
+                <Text className="text-[10px] font-bold">{item.price}</Text>
+              </div>
+            )}
+
+            <Button
+              onClick={() => setApplication(item.value)}
+              className={`${item.value === application ? "opacity-50" : ""}`}
+            >
+              Choose
+            </Button>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-1 h-fit max-h-[304px] overflow-y-auto hide-scrollbar">
+          {data.map((itme, index) => (
+            <SkinItem
+              key={index}
+              {...itme}
+              application={application}
+              dafault={dafault}
+              setDafault={setDafault}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      <div className="p-3 !bg-[#141c2ddb] rounded-md">
+        <Skin />
+      </div>
+    </div>
+  );
+};
+
 export default function Game() {
-  const [status, setStatus] = useState<number>(0); // 0初始化 1签到 2任务 cipher 3Daily combo 4Mini game
+  const [status, setStatus] = useState<number>(0); // 0初始化 1签到 2任务 3技能 4个人页面
   return (
     <Container maxWidth="xl" className="p-4 !grid !gap-6">
       {status !== 0 && (
         <Icon name="return" className="w-6 h-6" onClick={() => setStatus(0)} />
       )}
-      {status !== 2 && <UserBox />}
+      {(status && status === 2) || status === 4 ? (
+        ""
+      ) : (
+        <UserBox setStatus={setStatus} />
+      )}
       {status === 0 && <GameBox status={status} setStatus={setStatus} />}
       {status === 1 && <SignIn />}
       {status === 2 && <Task />}
+      {status === 3 && <Skill />}
+      {status === 4 && <Profile />}
     </Container>
   );
 }
