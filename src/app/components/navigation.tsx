@@ -23,11 +23,11 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
       name: navs[1],
       path: "/leaderboard",
     },
-    {
-      icon: <Icon name="game" />,
-      name: navs[4],
-      path: "/game",
-    },
+    // {
+    //   icon: <Icon name="game" />,
+    //   name: navs[4],
+    //   path: "/game",
+    // },
     { icon: <LuUsers />, name: navs[2], path: "/friends" },
     {
       icon: <Icon name="rocket" />,
