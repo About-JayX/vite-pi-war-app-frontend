@@ -583,7 +583,7 @@ export function App() {
         body={<Text>{t("public.updateText")}</Text>}
         title={<HeaderTitle>{t("public.update")}</HeaderTitle>}
       />
-      {/* {!isNewUser ? (
+      {!isNewUser ? (
         <>
           <Box className={`overflow-hidden overflow-y-auto`}>
             <Header />
@@ -602,21 +602,7 @@ export function App() {
         </>
       ) : (
         <Steps status={stepsm} onChange={e => setSteps(e)} />
-      )} */}
-      <Box className={`overflow-hidden overflow-y-auto`}>
-        <Header />
-        <Message />
-        <div
-          className={`${
-            transitionAnimation
-              ? "transition-opacity duration-500 ease-in-out opacity-100"
-              : "opacity-0"
-          }`}
-        >
-          <RouterProvider />
-        </div>
-      </Box>
-      <Navigation onClick={() => setTransitionAnimation(false)} />
+      )}
     </Fragment>
   );
 }
