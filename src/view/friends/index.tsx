@@ -57,7 +57,9 @@ export default function Friends() {
                         }}
                       >
                         {(item.invited_by_userName &&
-                          item.invited_by_userName.slice(0, 2).toUpperCase()) ||
+                          item.invited_by_userName
+                            .slice(0, 2)
+                            .toUpperCase()) ||
                           ""}
                       </Avatar>
                     }
