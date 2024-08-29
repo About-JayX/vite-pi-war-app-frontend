@@ -69,6 +69,17 @@ export default function Wallet({
       },
     },
     {
+      text: 'Solflare',
+      src: '/solflare.png',
+      click: () => {
+        window.open(
+          `https://solflare.com/ul/v1/browse/${encodeURIComponent(
+            getUrl()
+          )}?ref=${encodeURIComponent(getUrl())}`
+        )
+      },
+    },
+    {
       text: 'copy',
       src: '/copy.png',
       click: () => {
