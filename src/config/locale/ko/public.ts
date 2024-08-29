@@ -22,4 +22,5 @@ export default {
   copyInviteLink: "초대 링크 복사",
   shareInviteLink: "초대 링크 공유",
   bindingRewards: "Binding Rewards",
+  bindingCode: "Binding Code",
 };

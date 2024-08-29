@@ -21,5 +21,6 @@ export default {
   bindWallet: "綁定錢包",
   copyInviteLink: "複製邀請連結",
   shareInviteLink: "分享邀請連結",
-   bindingRewards:'Binding Rewards'
+  bindingRewards: "Binding Rewards",
+  bindingCode: "Binding Code",
 };

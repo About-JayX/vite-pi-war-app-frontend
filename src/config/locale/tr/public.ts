@@ -22,4 +22,5 @@ export default {
   copyInviteLink: "Davet Bağlantısını Kopyala",
   shareInviteLink: "Davet Bağlantısını Paylaş",
   bindingRewards: "Binding Rewards",
+  bindingCode: "Binding Code",
 };

@@ -22,4 +22,5 @@ export default {
   copyInviteLink: "Salin Pautan Jemputan",
   shareInviteLink: "Kongsi Pautan Jemputan",
   bindingRewards: "Binding Rewards",
+  bindingCode: "Binding Code",
 };

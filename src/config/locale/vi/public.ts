@@ -22,4 +22,5 @@ export default {
   copyInviteLink: "Sao Chép Liên Kết Mời",
   shareInviteLink: "Chia Sẻ Liên Kết Mời",
   bindingRewards: "Binding Rewards",
+  bindingCode: "Binding Code",
 };

@@ -22,4 +22,5 @@ export default {
   copyInviteLink: "คัดลอกลิงก์เชิญ",
   shareInviteLink: "แชร์ลิงก์เชิญ",
   bindingRewards: "Binding Rewards",
+  bindingCode: "Binding Code",
 };

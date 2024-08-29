@@ -22,4 +22,5 @@ export default {
   copyInviteLink: "招待リンクをコピー",
   shareInviteLink: "招待リンクを共有",
   bindingRewards: "Binding Rewards",
+  bindingCode: "Binding Code",
 };
