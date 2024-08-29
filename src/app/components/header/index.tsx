@@ -44,7 +44,7 @@ export default function Header() {
           </HeaderTitle>
         </Modal.Header>
         <Modal.Body>
-          <div className="grid grid-flow-col grid-cols-[repeat(3,1fr)] gap-4 text-center">
+          <div className="grid  grid-cols-[repeat(3,1fr)] gap-4 text-center">
             {Object.entries(locales).map(([key, value]: any) => (
               <a
                 key={key}

@@ -8,8 +8,8 @@ import steps from "./steps";
 import wallet from "./wallet";
 export default {
   translation: {
-    language: "English",
-    lang:"Language",
+    language: "Tiếng Anh",
+    lang: "Ngôn Ngữ",
     nav,
     steps,
     public: _public,

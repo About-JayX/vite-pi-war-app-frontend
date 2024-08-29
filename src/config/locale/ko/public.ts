@@ -11,12 +11,14 @@ export default {
   tasks: "작업",
   copy: "복사",
   paste: "붙여넣기",
-  update:"Update",
-  updateText:'The app mini program is being updated',
-  telegram:{
-    text:"请到电报小程序打开",
-    url:"",
-    bntText:"电报"
+  update: "업데이트",
+  updateText: "앱 미니 프로그램이 업데이트 중입니다",
+  telegram: {
+    text: "텔레그램 미니 프로그램에서 열어주세요",
+    url: "",
+    bntText: "텔레그램",
   },
-  bindWallet:"Bind Wallet"
+  bindWallet: "지갑 연결",
+  copyInviteLink: "초대 링크 복사",
+  shareInviteLink: "초대 링크 공유",
 };

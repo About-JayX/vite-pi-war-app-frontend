@@ -6,26 +6,31 @@ import Airdrops from "@/view/airdrops";
 import lang from "@/config/locale";
 
 // 基本路由配置
-const baseRoutes = [
+export const baseRoutes = [
   {
     path: "/",
     component: Home,
+    status: true,
   },
   {
     path: "/leaderboard",
     component: Leaderboard,
+    status: true,
   },
   {
     path: "/game",
     component: Game,
+    status: false,
   },
   {
     path: "/friends",
     component: Friends,
+    status: true,
   },
   {
     path: "/airdrops",
     component: Airdrops,
+    status: true,
   },
 ];
 

@@ -9,14 +9,16 @@ export default {
   inviteFriends: "Invite Friends",
   airdrops: "Airdrops",
   tasks: "Tasks",
-  copy:"Copy",
-  paste:"Paste",
-  update:"Update",
-  updateText:'The app mini program is being updated',
-  telegram:{
-    text:"请到电报小程序打开",
-    url:"",
-    bntText:"电报"
+  copy: "Copy",
+  paste: "Paste",
+  update: "Update",
+  updateText: "The app mini program is being updated",
+  telegram: {
+    text: "Please open in the Telegram mini program",
+    url: "",
+    bntText: "Telegram",
   },
-  bindWallet:"Bind Wallet"
+  bindWallet: "Bind Wallet",
+  copyInviteLink: "Copy Invite Link",
+  shareInviteLink: "Share Invite Link",
 };

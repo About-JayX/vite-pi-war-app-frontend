@@ -1,7 +1,7 @@
 export default {
-  myRewards: "我的獎勵",
+  myRewards: "我的獎勳",
   telegramPremium: "Telegram 高級版",
-  accountAge: "賬戶年齡",
+  accountAge: "帳戶年齡",
   invitedFriends: "邀請的朋友",
   leaderboard: "排行榜",
   holders: "持有者",
@@ -12,11 +12,13 @@ export default {
   copy: "複製",
   paste: "貼上",
   update: "更新",
-  updateText: "小程序正在更新中",
+  updateText: "應用小程序正在更新中",
   telegram: {
     text: "請到 Telegram 小程序打開",
     url: "",
     bntText: "Telegram",
   },
-  bindWallet: "綁定錢包"
+  bindWallet: "綁定錢包",
+  copyInviteLink: "複製邀請連結",
+  shareInviteLink: "分享邀請連結"
 };

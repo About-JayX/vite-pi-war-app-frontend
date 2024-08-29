@@ -7,6 +7,7 @@ import { RiHomeLine } from "react-icons/ri";
 import { LuUsers } from "react-icons/lu";
 import Icon from "@/components/icon";
 import lang from "@/config/locale";
+import { baseRoutes } from "@/config/route";
 
 export default function Navigation({ onClick }: { onClick?: () => void }) {
   const { t } = useTranslation();
@@ -23,11 +24,11 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
       name: navs[1],
       path: "/leaderboard",
     },
-    // {
-    //   icon: <Icon name="game" />,
-    //   name: navs[4],
-    //   path: "/game",
-    // },
+    {
+      icon: <Icon name="game" />,
+      name: navs[4],
+      path: "/game",
+    },
     { icon: <LuUsers />, name: navs[2], path: "/friends" },
     {
       icon: <Icon name="rocket" />,
@@ -62,19 +63,23 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
       showLabels
       className="!bg-black"
     >
-      {localizedRoutes.map((itme, index) => (
-        <BottomNavigationAction
-          key={index}
-          label={itme.name}
-          value={itme.path}
-          icon={itme.icon}
-          className={`${
-            value === getPathWithoutLang(itme.path)
-              ? "!text-white"
-              : "!text-white/50"
-          } !min-w-[auto] p-0`}
-        />
-      ))}
+      {localizedRoutes.map((itme, index) => {
+        return (
+          baseRoutes[index].status && (
+            <BottomNavigationAction
+              key={index}
+              label={itme.name}
+              value={itme.path}
+              icon={itme.icon}
+              className={`${
+                value === getPathWithoutLang(itme.path)
+                  ? "!text-white"
+                  : "!text-white/50"
+              } !min-w-[auto] p-0`}
+            />
+          )
+        );
+      })}
     </BottomNavigation>
   );
 }
