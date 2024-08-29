@@ -1,17 +1,16 @@
-"use client";
-import { Text } from "../text";
-import "./index.css";
+'use client'
+import './index.css'
 
 const BntBox = ({
   children,
   onClick,
-  className = "",
+  className = '',
   disabled = false,
 }: {
-  children?: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
-  disabled?: boolean;
+  children?: React.ReactNode
+  onClick?: () => void
+  className?: string
+  disabled?: boolean
 }) => {
   return (
     <div
@@ -144,23 +143,23 @@ const BntBox = ({
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default function Button({
   children,
   onClick,
-  className = "",
+  className = '',
   disabled = false,
 }: {
-  children?: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
-  disabled?: boolean;
+  children?: React.ReactNode
+  onClick?: () => void
+  className?: string
+  disabled?: boolean
 }) {
   return (
     <BntBox onClick={onClick} className={className} disabled={disabled}>
       {children}
     </BntBox>
-  );
+  )
 }
