@@ -1,6 +1,7 @@
 import Home from "@/view";
 import Leaderboard from "@/view/leaderboard";
 import Friends from "@/view/friends";
+import Game from "@/view/game";
 import Airdrops from "@/view/airdrops";
 import lang from "@/config/locale";
 
@@ -13,6 +14,10 @@ const baseRoutes = [
   {
     path: "/leaderboard",
     component: Leaderboard,
+  },
+  {
+    path: "/game",
+    component: Game,
   },
   {
     path: "/friends",

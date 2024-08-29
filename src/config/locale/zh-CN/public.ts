@@ -3,20 +3,20 @@ export default {
   telegramPremium: "Telegram 高級版",
   accountAge: "賬戶年齡",
   invitedFriends: "邀請的朋友",
-  leaderboard: "領導榜",
-  holders: "個持有者",
-  friends: "個朋友",
+  leaderboard: "排行榜",
+  holders: "持有者",
+  friends: "朋友",
   inviteFriends: "邀請朋友",
   airdrops: "空投",
   tasks: "任務",
   copy: "複製",
   paste: "貼上",
-  update: "Update",
-  updateText: "The app mini program is being updated",
+  update: "更新",
+  updateText: "小程序正在更新中",
   telegram: {
-    text: "请到电报小程序打开",
+    text: "請到 Telegram 小程序打開",
     url: "",
-    bntText: "电报",
+    bntText: "Telegram",
   },
-  bindWallet:"Bind Wallet"
+  bindWallet: "綁定錢包"
 };

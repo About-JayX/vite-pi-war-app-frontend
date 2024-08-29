@@ -13,22 +13,22 @@ export default function Modals({
   onHide?: () => void;
 }) {
   const [opens, setOpens] = useState<boolean>(false);
-  
-  useEffect(()=>{
-    setOpens(open)
-  },[open])
-  
+
+  useEffect(() => {
+    setOpens(open);
+  }, [open]);
+
   return (
     <Modal
       show={opens}
       onHide={() => {
-        onHide && onHide()
+        onHide && onHide();
         setOpens(false);
       }}
       centered
     >
       <Modal.Header closeButton>{title}</Modal.Header>
-      <Modal.Body>{body}</Modal.Body>
+      <Modal.Body className="grid justify-items-center">{body}</Modal.Body>
     </Modal>
   );
 }

@@ -23,6 +23,11 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
       name: navs[1],
       path: "/leaderboard",
     },
+    // {
+    //   icon: <Icon name="game" />,
+    //   name: navs[4],
+    //   path: "/game",
+    // },
     { icon: <LuUsers />, name: navs[2], path: "/friends" },
     {
       icon: <Icon name="rocket" />,
@@ -40,9 +45,9 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
   const [value, setValue] = useState(getPathWithoutLang(router[0].path));
 
   // 获取路径中的语言部分
-  function getPathWithoutLang(path:any) {
-    const parts = path.split('/');
-    return '/' + parts.slice(2).join('/');
+  function getPathWithoutLang(path: any) {
+    const parts = path.split("/");
+    return "/" + parts.slice(2).join("/");
   }
 
   return (
@@ -64,8 +69,10 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
           value={itme.path}
           icon={itme.icon}
           className={`${
-            value === getPathWithoutLang(itme.path) ? "!text-white" : "!text-white/50"
-          }`}
+            value === getPathWithoutLang(itme.path)
+              ? "!text-white"
+              : "!text-white/50"
+          } !min-w-[auto] p-0`}
         />
       ))}
     </BottomNavigation>

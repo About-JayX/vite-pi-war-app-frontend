@@ -11,24 +11,37 @@ body {
     @apply grid grid-flow-row grid-rows-[calc(100%-5rem),auto];
 }
 
-.pi-war-text-color{
+.pi-war-text-color {
     background: linear-gradient(90deg, #18acde 0%, #ef45b8 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.card{
-    @apply !bg-[#172136] !text-white border-[1px] border-[#172136] backdrop-blur-[1rem] p-4
+.card {
+    @apply !bg-[#172136] !text-white border-[1px] border-[#172136] backdrop-blur-[1rem] p-0
 }
 
-.container{
-    @apply  mt-[-4rem]
+.MuiCardActions-spacing {
+    @apply m-4 !p-0
 }
 
-.MuiCardHeader-action{
+.container {
+    @apply mt-[-4rem]
+}
+
+.MuiCardHeader-action {
     @apply !self-center !m-0
 }
-.MuiBottomNavigation-root{
+
+.MuiBottomNavigation-root {
     @apply !h-[5rem]
+}
+
+.hide-scrollbar{
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
