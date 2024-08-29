@@ -21,4 +21,5 @@ export default {
   bindWallet: "Bind Wallet",
   copyInviteLink: "Copy Invite Link",
   shareInviteLink: "Share Invite Link",
+  bindingRewards:'Binding Rewards'
 };

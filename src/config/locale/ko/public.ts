@@ -21,4 +21,5 @@ export default {
   bindWallet: "지갑 연결",
   copyInviteLink: "초대 링크 복사",
   shareInviteLink: "초대 링크 공유",
+  bindingRewards: "Binding Rewards",
 };

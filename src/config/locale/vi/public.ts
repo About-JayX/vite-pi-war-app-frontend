@@ -20,5 +20,6 @@ export default {
   },
   bindWallet: "Liên Kết Ví",
   copyInviteLink: "Sao Chép Liên Kết Mời",
-  shareInviteLink: "Chia Sẻ Liên Kết Mời"
+  shareInviteLink: "Chia Sẻ Liên Kết Mời",
+  bindingRewards: "Binding Rewards",
 };

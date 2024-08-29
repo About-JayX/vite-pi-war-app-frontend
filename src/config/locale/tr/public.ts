@@ -21,4 +21,5 @@ export default {
   bindWallet: "Cüzdanı Bağla",
   copyInviteLink: "Davet Bağlantısını Kopyala",
   shareInviteLink: "Davet Bağlantısını Paylaş",
+  bindingRewards: "Binding Rewards",
 };

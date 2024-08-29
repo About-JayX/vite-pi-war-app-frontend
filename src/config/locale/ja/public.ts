@@ -16,9 +16,10 @@ export default {
   telegram: {
     text: "テレグラムのミニプログラムを開いてください",
     url: "",
-    bntText: "テレグラム"
+    bntText: "テレグラム",
   },
   bindWallet: "ウォレットをバインド",
   copyInviteLink: "招待リンクをコピー",
-  shareInviteLink: "招待リンクを共有"
+  shareInviteLink: "招待リンクを共有",
+  bindingRewards: "Binding Rewards",
 };

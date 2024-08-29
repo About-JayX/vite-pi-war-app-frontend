@@ -20,5 +20,6 @@ export default {
   },
   bindWallet: "Sambungkan Wallet",
   copyInviteLink: "Salin Pautan Jemputan",
-  shareInviteLink: "Kongsi Pautan Jemputan"
+  shareInviteLink: "Kongsi Pautan Jemputan",
+  bindingRewards: "Binding Rewards",
 };

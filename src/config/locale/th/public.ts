@@ -20,5 +20,6 @@ export default {
   },
   bindWallet: "เชื่อมต่อกระเป๋าเงิน",
   copyInviteLink: "คัดลอกลิงก์เชิญ",
-  shareInviteLink: "แชร์ลิงก์เชิญ"
+  shareInviteLink: "แชร์ลิงก์เชิญ",
+  bindingRewards: "Binding Rewards",
 };
