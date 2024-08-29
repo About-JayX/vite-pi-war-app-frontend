@@ -5,6 +5,7 @@ import message from "./message";
 import nav from "./nav";
 import _public from "./public";
 import steps from "./steps";
+import wallet from "./wallet";
 export default {
   translation: {
     language: "한국인",
@@ -15,6 +16,7 @@ export default {
     home,
     friends,
     binding,
-    message
+    message,
+    wallet
   },
 };

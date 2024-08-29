@@ -5,6 +5,7 @@ import message from "./message";
 import nav from "./nav";
 import _public from "./public";
 import steps from "./steps";
+import wallet from "./wallet";
 export default {
   translation: {
     language: "中文",
@@ -16,5 +17,6 @@ export default {
     friends,
     binding,
     message,
+    wallet
   },
 };

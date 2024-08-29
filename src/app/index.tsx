@@ -1,7 +1,7 @@
 import { Text } from "@/components/text";
 import Navigation from "./components/navigation";
 import RouterProvider from "@/provider/router";
-import { Box } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import { useRouter } from "preact-router";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { Fragment } from "preact/jsx-runtime";
@@ -577,32 +577,34 @@ export function App() {
   }, [transitionAnimation]);
 
   return (
-    <Fragment>
-      <Modals
-        open={false}
-        body={<Text>{t("public.updateText")}</Text>}
-        title={<HeaderTitle>{t("public.update")}</HeaderTitle>}
-      />
-      {!isNewUser ? (
-        <>
-          <Box className={`overflow-hidden overflow-y-auto`}>
-            <Header />
-            <Message />
-            <div
-              className={`${
-                transitionAnimation
-                  ? 'transition-opacity duration-500 ease-in-out opacity-100'
-                  : 'opacity-0'
-              }`}
-            >
-              <RouterProvider />
-            </div>
-          </Box>
-          <Navigation onClick={() => setTransitionAnimation(false)} />
-        </>
-      ) : (
-        <Steps status={stepsm} onChange={e => setSteps(e)} />
-      )}
-    </Fragment>
+    <Container maxWidth="xs" className="p-0">
+      <Fragment>
+        <Modals
+          open={false}
+          body={<Text>{t("public.updateText")}</Text>}
+          title={<HeaderTitle>{t("public.update")}</HeaderTitle>}
+        />
+        {!isNewUser ? (
+          <>
+            <Box className={`overflow-hidden overflow-y-auto h-full`}>
+              <Header />
+              <Message />
+              <div
+                className={`${
+                  transitionAnimation
+                    ? "transition-opacity duration-500 ease-in-out opacity-100"
+                    : "opacity-0"
+                }`}
+              >
+                <RouterProvider />
+              </div>
+            </Box>
+            <Navigation onClick={() => setTransitionAnimation(false)} />
+          </>
+        ) : (
+          <Steps status={stepsm} onChange={(e) => setSteps(e)} />
+        )}
+      </Fragment>
+    </Container>
   );
 }

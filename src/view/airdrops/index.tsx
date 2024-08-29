@@ -181,7 +181,7 @@ export default function Airdrops() {
                       : input
                   }
                   disabled={(bindStatus.pid && bindStatus.pid.pId) || false}
-                  placeholder="Binding Code"
+                  placeholder={t("public.bindingCode")}
                   onChange={event => {
                     setInput(event.target.value)
                   }}
