@@ -1,6 +1,6 @@
 export default {
-  text: "Hoàn Thành Nhiệm Vụ Để Nhận Thêm Phần Thưởng",
-  bindingTipsText: "Sao chép liên kết đến ví/trình duyệt Pi để ký.",
-  SOLAddressBound: "Địa Chỉ SOL Đã Liên Kết",
-  bindPiNetwork: "Liên Kết Mạng Pi"
+  text: "Hoàn thành Nhiệm vụ, Nhận Thưởng PIS",
+  bindingTipsText: "Sao chép liên kết vào Wallet/Pi để liên kết.",
+  SOLAddressBound: "Địa chỉ SOL đã liên kết",
+  bindPiNetwork: "Liên kết Mạng Pi"
 };

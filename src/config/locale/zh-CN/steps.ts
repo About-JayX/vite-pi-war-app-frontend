@@ -1,10 +1,10 @@
 export default {
-  openPiWar: "打開 Pi War",
+  openPiWar: "打開 Pi War 𝜋",
   yearAgo: "年前",
   continue: "繼續",
   steps1: {
-    text1: "Pi War 𝜋：一個基於 Web3 的 Telegram 遊戲。",
-    text2: "請在 Telegram 設置中編輯你的用戶名",
+    text1: "Pi War 𝜋: A Web3-Powered Telegram Game.",
+    text2: "請設置你的用戶名",
   },
   steps2: {
     title: "正在檢查你的賬戶",
@@ -16,7 +16,7 @@ export default {
   },
   steps4: {
     title: "歡迎加入 Pi War 𝜋",
-    text1: "這是你的 𝜋PIS 獎勵",
+    text1: "這是你的 PIS 獎勵",
     text2: "感謝你使用 Telegram",
   },
 };

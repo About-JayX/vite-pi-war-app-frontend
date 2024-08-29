@@ -45,7 +45,7 @@ export default function Wallet({
       },
     },
     {
-      text: "phantom",
+      text: "Phantom",
       src: "/phantom.png",
       click: () => {
         window.open(

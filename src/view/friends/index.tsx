@@ -19,16 +19,7 @@ export default function Friends() {
 
   const [open, setOpen] = useState<boolean>(false);
 
-  const shareUrl = `https://t.me/share/url?url=https://t.me/${invite.botName}/pidWar?startapp=${telegramUserData.Invitation_code}&text=${invite.text}`;
-
-  const invited = () => {
-    // const shareUrl = `https://t.me/share/url?url=https://t.me/${invite.botName}/pidWar?startapp=${telegramUserData.Invitation_code}&text=${invite.text}`;
-    // window.open(shareUrl, "_blank");
-    // const shareUrl = `https://t.me/share/url?url=https://t.me/${invite.botName}/join?t=${telegramUserData.Invitation_code}&text=${invite.text}`
-    // window.open(shareUrl, '_blank');
-    // const shareUrl = `https://t.me/share/url?url=https://t.me/${invite.botName}/app?t=${telegramUserData.Invitation_code}&text=${invite.text}`
-    // window.open(shareUrl, '_blank');
-  };
+  const shareUrl = `https://t.me/share/url?url=https://t.me/${invite.botName}/join?startapp=${telegramUserData.Invitation_code}&text=${invite.text}`;
 
   const nav: string[] = t("nav", { returnObjects: true });
   return (

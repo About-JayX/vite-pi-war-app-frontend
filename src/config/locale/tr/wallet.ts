@@ -1,4 +1,4 @@
 export default {
-    title: 'Cüzdanınızı Bağlayın',
-    text: "Telegram'da Cüzdanı açın veya bağlamak için cüzdanınızı seçin"
+    title: 'Cüzdan Bağla',
+    text: 'Bağlamak ve bağlamak için bir cüzdan seçin'
 };

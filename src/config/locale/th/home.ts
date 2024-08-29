@@ -1,7 +1,7 @@
 export default {
-  text: "Pi War 𝜋：X/Twitter & ชุมชน \n ติดตามข่าวสารล่าสุดเกี่ยวกับ Pi War.",
+  text: "Pi War 𝜋\n ติดตามข่าวสารล่าสุด",
   bnt: [
     { name: "X/TWITTER", url: "https://x.com/Space_Pi_War" },
-    { name: "ชุมชน", url: "https://t.me/pi_war" },
+    { name: "COMMUNITY", url: "https://t.me/pi_war" },
   ],
 };
