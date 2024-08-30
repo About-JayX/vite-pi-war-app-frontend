@@ -53,7 +53,7 @@ export default function Loader({ onClick }: { onClick?: () => void }) {
       scrollHandlers.push(() =>
         element.removeEventListener("scroll", debouncedScrollHandler)
       );
-      console.log("已附加滚动事件监听器");
+      // console.log("已附加滚动事件监听器");
     });
 
     return () => {

@@ -596,7 +596,7 @@ export function App() {
 
   return (
     <Container maxWidth="xs" className="p-0 relative">
-      <Animation />
+     
       <Fragment>
         <Modals
           open={false}
@@ -606,7 +606,7 @@ export function App() {
         {!isNewUser ? (
           <>
             <Box
-              className={`overflow-hidden overflow-y-auto h-full`}
+              className={`overflow-hidden overflow-y-auto h-full z-1`}
               style={{
                 background: 'linear-gradient(180deg, #141C2D 0%, #0B1319 100%)',
               }}
@@ -629,6 +629,7 @@ export function App() {
           <Steps status={stepsm} onChange={e => setSteps(e)} />
         )}
       </Fragment>
+      <Animation />
     </Container>
   )
 }
