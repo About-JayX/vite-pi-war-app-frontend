@@ -1,12 +1,12 @@
-import Icon from '@/components/icon'
-import locales from '@/config/locale'
-import i18n from 'i18next'
-import { Text } from '@/components/text'
-import { Container } from '@material-ui/core'
-import styled from 'styled-components'
-import { useState } from 'preact/hooks'
-import Modal from 'react-bootstrap/Modal'
-import { Title } from '@/components/title'
+import Icon from "@/components/icon";
+import locales from "@/config/locale";
+import i18n from "i18next";
+import { Text } from "@/components/text";
+import { Container } from "@material-ui/core";
+import styled from "styled-components";
+import { useState } from "preact/hooks";
+import Modal from "react-bootstrap/Modal";
+import { Title } from "@/components/title";
 
 export const HeaderBox = styled.div`
   height: 100vh;
@@ -28,15 +28,15 @@ export const HeaderBox = styled.div`
   .Collapse {
     width: 100%;
   }
-`
+`;
 
 export default function Header() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   return (
     <>
       <Modal show={open} centered onHide={() => setOpen(false)}>
         <Modal.Header closeButton>
-          <Title className="text-[16px]">
+          <Title className="!text-[16px]">
             {Object.entries(locales).map(
               ([key, value]: any) =>
                 key === i18n.language && value.translation.lang
@@ -49,13 +49,13 @@ export default function Header() {
               <a
                 key={key}
                 onClick={() => {
-                  i18n.changeLanguage(key)
-                  setOpen(false)
+                  i18n.changeLanguage(key);
+                  setOpen(false);
                 }}
               >
                 <Text
                   className={`${
-                    key === i18n.language ? 'text-white' : 'text-white/50'
+                    key === i18n.language ? "text-white" : "text-white/50"
                   }`}
                 >
                   {value.translation.language}
@@ -73,17 +73,19 @@ export default function Header() {
           <div className="flex-grow" />
           <div
             className="flex gap-1"
-            style={{ alignItems: 'center' }}
+            style={{ alignItems: "center" }}
             onClick={() => setOpen(true)}
           >
             <Icon name="lang" className="w-5 h-5" />
             <Text className="!text-[14px]">
-              {' '}
-              {i18n.language.split('-')[0].toLocaleUpperCase()}
+              {Object.entries(locales).map(
+                ([key, value]: any) =>
+                  key === i18n.language && value.translation.lang
+              )}
             </Text>
           </div>
         </Container>
       </div>
     </>
-  )
+  );
 }
