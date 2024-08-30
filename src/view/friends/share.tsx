@@ -5,6 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { MessageSuccess } from '@/components/message'
 import invite from '@/config/invite'
 import { useAppSelector } from '@/store/hook'
+import { useTelegram } from '@/provider/telegram'
 
 export default function Share({
   url = '',
@@ -17,6 +18,7 @@ export default function Share({
 }) {
   const { t } = useTranslation()
   const { telegramUserData } = useAppSelector(state => state.user)
+  const {webApp} = useTelegram()
   return (
     <Modals
       title={t('public.invitedFriends')}
@@ -36,7 +38,13 @@ export default function Share({
           </CopyToClipboard>
 
           <a href={url} target="_blank">
-            <Button onClick={() => onHide && onHide()}>
+            <Button
+              onClick={() => {
+               console.log(webApp,"??");
+               
+                // onHide && onHide()
+              }}
+            >
               {t('public.shareInviteLink')}
             </Button>
           </a>
