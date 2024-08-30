@@ -6,13 +6,13 @@ import "./index.css";
 const BntBox = ({
   children,
   onClick,
-  className = "",
+  className = '',
   disabled = false,
 }: {
-  children?: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
-  disabled?: boolean;
+  children?: React.ReactNode
+  onClick?: () => void
+  className?: string
+  disabled?: boolean
 }) => {
   return (
     <div
@@ -143,23 +143,23 @@ const BntBox = ({
         <Text className="!text-[14px]">{children}</Text>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default function Button({
   children,
   onClick,
-  className = "",
+  className = '',
   disabled = false,
 }: {
-  children?: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
-  disabled?: boolean;
+  children?: React.ReactNode
+  onClick?: () => void
+  className?: string
+  disabled?: boolean
 }) {
   return (
     <BntBox onClick={onClick} className={className} disabled={disabled}>
       {children}
     </BntBox>
-  );
+  )
 }
