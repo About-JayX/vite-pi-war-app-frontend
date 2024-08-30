@@ -1,7 +1,7 @@
 export default {
-  text: "En Son Haberleri Takip Edin.",
+  text: "Pi War 𝜋 hakkındaki en son güncellemeleri takip edin",
   bnt: [
-    { name: "X/TWITTER", url: "https://x.com/Space_Pi_War" },
-    { name: "TOPLULUK", url: "https://t.me/pi_war" },
+    { name: "X/Twitter", url: "https://x.com/Space_Pi_War" },
+    { name: "Topluluk", url: "https://t.me/pi_war" },
   ],
 };
