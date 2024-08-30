@@ -3,8 +3,46 @@ import { Text } from "@/components/text";
 import { HeaderTitle, Title } from "@/components/title";
 import { useAppSelector } from "@/store/hook";
 import { getTextColorForBackground, semicolon, stringToColor } from "@/utils";
-import { Avatar, Card, CardHeader, Container } from "@material-ui/core";
+import { Card, CardHeader, Container } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
+
+export const Avatar = ({
+  name = "",
+  bg = "",
+  color = "",
+}: {
+  name?: string;
+  bg?: string;
+  color?: string;
+}) => {
+  return (
+    <svg
+      width="48"
+      height="48"
+      viewBox="0 0 55 55"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="0.5"
+        y="0.5"
+        width="54"
+        height="54"
+        rx="3.5"
+        fill={bg || "#091939"}
+        stroke="#266395"
+      />
+      <foreignObject x="0" y="0" width="100%" height="100%">
+        <Text
+          className={`flex justify-center items-center w-full h-full text-[16px] font-bold`}
+          style={{ color: color }}
+        >
+          {name}
+        </Text>
+      </foreignObject>
+    </svg>
+  );
+};
 
 export default function Leaderboard() {
   const { t } = useTranslation();
@@ -13,23 +51,35 @@ export default function Leaderboard() {
     <Container maxWidth="xl" className="p-4">
       <div className="grid gap-6 w-100 justify-items-center">
         <Title>{t("public.leaderboard")}</Title>
-        <Card className="w-full card">
+        <Card className="w-full card binding-card-bg">
           <CardHeader
-            className=""
+            className="text-white"
             avatar={
+              // <Avatar
+              //   aria-label="recipe"
+              //   className="!text-[14px]"
+              //   style={{
+              //     background: stringToColor(userRank.username || ""),
+              //     color:
+              //       getTextColorForBackground(userRank.username).textColor ||
+              //       "",
+              //   }}
+              // >
+              //   {(userRank.username &&
+              //     userRank.username.slice(0, 2).toUpperCase()) ||
+              //     ""}
+              // </Avatar>
               <Avatar
-                aria-label="recipe"
-                style={{
-                  background: stringToColor(userRank.username || ""),
-                  color:
-                    getTextColorForBackground(userRank.username).textColor ||
-                    "",
-                }}
-              >
-                {(userRank.username &&
-                  userRank.username.slice(0, 2).toUpperCase()) ||
-                  ""}
-              </Avatar>
+                name={
+                  (userRank.username &&
+                    userRank.username.slice(0, 2).toUpperCase()) ||
+                  ""
+                }
+                bg={stringToColor(userRank.username || "")}
+                color={
+                  getTextColorForBackground(userRank.username).textColor || ""
+                }
+              />
             }
             action={
               userRank.rank ? (
@@ -73,15 +123,16 @@ export default function Leaderboard() {
               className="w-full !p-0"
               avatar={
                 <Avatar
-                  aria-label="recipe"
-                  style={{
-                    background: stringToColor(item.username),
-                    color: getTextColorForBackground(item.username).textColor,
-                  }}
-                >
-                  {(item.username && item.username.slice(0, 2).toUpperCase()) ||
-                    ""}
-                </Avatar>
+                  name={
+                    (item.username &&
+                      item.username.slice(0, 2).toUpperCase()) ||
+                    ""
+                  }
+                  bg={stringToColor(item.username || "")}
+                  color={
+                    getTextColorForBackground(item.username).textColor || ""
+                  }
+                />
               }
               action={
                 index <= 10 ? (

@@ -1,4 +1,4 @@
 export default {
-  title: "Arkadaşları Davet Et \n Daha Fazla 𝜋PIS İçin",
-  text: "Arkadaşlarınızı davet etmek için düğmeye dokunun",
+  title: "Arkadaşları Davet Et, Daha Fazla PIS Kazan",
+  text: "Arkadaşlarını davet et",
 };

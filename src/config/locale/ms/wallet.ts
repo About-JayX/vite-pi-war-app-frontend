@@ -1,4 +1,4 @@
 export default {
-    title: 'Sambungkan Wallet Anda',
-    text: 'Buka Wallet dalam Telegram atau pilih wallet anda untuk disambungkan'
+    title: 'Sambung Wallet',
+    text: 'Pilih wallet untuk disambungkan & diikat'
 };

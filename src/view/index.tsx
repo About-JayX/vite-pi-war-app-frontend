@@ -118,7 +118,7 @@ export default function Home() {
             &nbsp;PIS
           </Title>
         </div>
-        <Card className="w-full card">
+        <Card className="w-full card binding-card-bg">
           <CardContent className="text-center !pb-0">
             <Text className="whitespace-pre-line">{t("home.text")}</Text>
           </CardContent>

@@ -1,1 +1,1 @@
-export default ["Halaman Utama", "Penarafan", "Rakan", "Airdrop", "Permainan"];
+export default ["Utama", "Kedudukan", "Rakan", "Airdrop", "Permainan"];

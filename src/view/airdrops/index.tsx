@@ -123,7 +123,7 @@ export default function Airdrops() {
             {t("binding.bindingTipsText")}
           </Text>
           <Input
-            placeholder={`https://pi-badge-web-v2.pages.dev/${
+            placeholder={`https://pit.space-pi.com/${
               sessionStorage.getItem("token") || ""
             }`}
             disabled
@@ -132,7 +132,7 @@ export default function Airdrops() {
               text: t("public.copy"),
               copy: true,
               show: true,
-              copyText: `https://pi-badge-web-v2.pages.dev/${
+              copyText: `https://pit.space-pi.com/${
                 sessionStorage.getItem("token") || ""
               }`,
             }}

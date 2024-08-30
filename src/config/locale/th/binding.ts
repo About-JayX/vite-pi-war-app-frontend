@@ -1,6 +1,6 @@
 export default {
-  text: "ทำภารกิจให้เสร็จเพื่อรับรางวัลเพิ่มเติม",
-  bindingTipsText: "คัดลอกลิงก์ไปยัง Wallet/Pi เบราว์เซอร์เพื่อเซ็นชื่อ",
-  SOLAddressBound: "ที่อยู่ SOL ถูกเชื่อมโยง",
-  bindPiNetwork: "เชื่อมต่อกับ Pi Network"
+  text: "ทำภารกิจให้เสร็จ รับรางวัล PIS เพิ่มเติม",
+  bindingTipsText: "คัดลอกลิงก์ไปยัง Wallet/Pi browser เพื่อทำการเชื่อมโยง",
+  SOLAddressBound: "ที่อยู่ SOL เชื่อมโยงแล้ว",
+  bindPiNetwork: "เชื่อมโยง Pi Network"
 };

@@ -1,7 +1,6 @@
 export default {
-  text: "タスクを完了して、さらに報酬を獲得しましょう",
-  bindingTipsText:
-    "リンクをウォレット/Piブラウザにコピーして署名してください。",
+  text: "タスクを完了して、より多くのPIS報酬を得ましょう",
+  bindingTipsText: "リンクをウォレット/Piブラウザにコピーしてバインドします。",
   SOLAddressBound: "SOLアドレスがバインドされました",
-  bindPiNetwork: "Piネットワークをバインド",
+  bindPiNetwork: "Piネットワークをバインド"
 };

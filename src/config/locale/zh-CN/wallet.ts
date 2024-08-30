@@ -1,4 +1,4 @@
 export default {
-    title: '連接你的錢包',
-    text: '在 Telegram 中打開錢包或選擇你的錢包進行連接'
+    title: '连接钱包',
+    text: '選擇錢包，進行連接并绑定'
 };

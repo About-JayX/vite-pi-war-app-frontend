@@ -12,10 +12,10 @@ export default {
   steps3: {
     title: "Terokai alam semesta!",
     text1: "Anda telah menyertai Telegram",
-    text2: ["Nombor akaun anda adalah #", "Anda berada dalam 85% teratas pengguna Telegram"],
+    text2: ["Nombor akaun anda adalah #", "Anda berada dalam 85% pengguna Telegram teratas"],
   },
   steps4: {
-    title: "Selamat Datang ke Pi War 𝜋!",
+    title: "Selamat datang ke Pi War 𝜋!",
     text1: "Ini adalah ganjaran 𝜋PIS anda",
     text2: "Terima kasih kerana menggunakan Telegram",
   },

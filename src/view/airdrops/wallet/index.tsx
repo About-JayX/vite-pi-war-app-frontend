@@ -1,5 +1,5 @@
 import { Text } from "@/components/text";
-import { HeaderTitle } from "@/components/title";
+import { HeaderTitle, Title } from "@/components/title";
 // import Modal from 'react-bootstrap/Modal'
 // import './index.css'
 import { MessageSuccess } from "@/components/message";
@@ -45,7 +45,7 @@ export default function Wallet({
       },
     },
     {
-      text: "phantom",
+      text: "Phantom",
       src: "/phantom.png",
       click: () => {
         window.open(
@@ -94,19 +94,19 @@ export default function Wallet({
       onHide={() => setWalletOpen(false)}
       body={
         <div className="grid w-full text-center gap-6">
-          <HeaderTitle>{t("wallet.title")}</HeaderTitle>
+          <Title className="!text-[1.26rem]">{t("wallet.title")}</Title>
           <Text className="mt-[-1rem]">{t("wallet.text")}</Text>
-          <div className="flex w-full gap-6 overflow-x-auto">
+          <div className="grid w-full gap-4 grid-cols-4 sm:grid-cols-5">
             {swapList.map((item, index) => (
               <div
                 key={index}
-                className="grid gap-1 w-min"
+                className="grid gap-1  justify-items-center"
                 onClick={() => item.click && item.click()}
               >
-                <div className="w-[3.75rem] h-[3.75rem]">
-                  <img src={item.src} alt="" className=" rounded" />
+                <div className="w-[3.26rem] h-[3.26rem] sm:w-[3.6rem] sm:h-[3.6rem]">
+                  <img src={item.src} alt="" className="rounded" />
                 </div>
-                <Text className="overflow-hidden overflow-ellipsis whitespace-nowrap">
+                <Text className="overflow-hidden overflow-ellipsis whitespace-nowrap !text-[14px]">
                   {item.text}
                 </Text>
               </div>
