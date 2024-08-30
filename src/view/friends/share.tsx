@@ -3,6 +3,8 @@ import Modals from '@/components/modal'
 import { useTranslation } from 'react-i18next'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { MessageSuccess } from '@/components/message'
+import invite from '@/config/invite'
+import { useAppSelector } from '@/store/hook'
 
 export default function Share({
   url = '',
@@ -14,6 +16,7 @@ export default function Share({
   onHide: () => void
 }) {
   const { t } = useTranslation()
+  const { telegramUserData } = useAppSelector(state => state.user)
   return (
     <Modals
       title={t('public.invitedFriends')}
@@ -22,7 +25,9 @@ export default function Share({
       body={
         <div className="grid w-full gap-2">
           <CopyToClipboard
-            text={url.replace('https://t.me/share/url?url=', '')}
+            text={`https://t.me/${invite.botName}/join?startapp=${
+              telegramUserData.Invitation_code
+            }\n\n${t('friends.inviteText')}`}
             onCopy={() => MessageSuccess(t('message.copy.success'))}
           >
             <Button onClick={() => onHide && onHide()}>
