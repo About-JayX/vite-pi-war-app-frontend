@@ -96,17 +96,17 @@ export default function Wallet({
         <div className="grid w-full text-center gap-6">
           <HeaderTitle>{t("wallet.title")}</HeaderTitle>
           <Text className="mt-[-1rem]">{t("wallet.text")}</Text>
-          <div className="flex w-full gap-6 overflow-x-auto">
+          <div className="grid w-full gap-4 grid-cols-4 sm:grid-cols-5">
             {swapList.map((item, index) => (
               <div
                 key={index}
-                className="grid gap-1 w-min"
+                className="grid gap-1  justify-items-center"
                 onClick={() => item.click && item.click()}
               >
-                <div className="w-[3.75rem] h-[3.75rem]">
-                  <img src={item.src} alt="" className=" rounded" />
+                <div className="w-[3.26rem] h-[3.26rem] sm:w-[3.6rem] sm:h-[3.6rem]">
+                  <img src={item.src} alt="" className="rounded" />
                 </div>
-                <Text className="overflow-hidden overflow-ellipsis whitespace-nowrap">
+                <Text className="overflow-hidden overflow-ellipsis whitespace-nowrap !text-[14px]">
                   {item.text}
                 </Text>
               </div>

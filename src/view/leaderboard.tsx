@@ -19,6 +19,7 @@ export default function Leaderboard() {
             avatar={
               <Avatar
                 aria-label="recipe"
+                className="!text-[14px]"
                 style={{
                   background: stringToColor(userRank.username || ""),
                   color:
@@ -73,6 +74,7 @@ export default function Leaderboard() {
               className="w-full !p-0"
               avatar={
                 <Avatar
+                  className="!text-[14px]"
                   aria-label="recipe"
                   style={{
                     background: stringToColor(item.username),

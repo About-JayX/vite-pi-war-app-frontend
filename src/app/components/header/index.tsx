@@ -71,7 +71,7 @@ export default function Header() {
             onClick={() => setOpen(true)}
           >
             <Icon name="lang" className="w-5 h-5" />
-           
+            <Text className="!text-[14px]"> {i18n.language.split("-")[0].toLocaleUpperCase()}</Text>
           </div>
         </Container>
       </div>
