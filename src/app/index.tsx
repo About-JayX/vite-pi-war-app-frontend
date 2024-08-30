@@ -377,6 +377,8 @@ const Steps = ({
       }
     }
   };
+
+  const steps:any =  t("steps.text",{returnObjects:true})
   return (
     <>
       {status === 0 && (
@@ -434,10 +436,10 @@ const Steps = ({
         >
           <Title className="!text-[2rem]">{t("steps.steps2.title")}</Title>
           <div className="grid gap-8 h-min w-full">
-            <Progress text={t("steps.text")[0]} value={ageProgress} />
-            <Progress text={t("steps.text")[1]} value={activeProgress} />
-            <Progress text={t("steps.text")[2]} value={premiumProgress} />
-            <Progress text={t("steps.text")[3]} value={ogProgress} />
+            <Progress text={steps[0]} value={ageProgress} />
+            <Progress text={steps[1]} value={activeProgress} />
+            <Progress text={steps[2]} value={premiumProgress} />
+            <Progress text={steps[3]} value={ogProgress} />
           </div>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
             {ageProgress === 100 &&
