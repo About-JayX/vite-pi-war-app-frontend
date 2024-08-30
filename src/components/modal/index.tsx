@@ -27,7 +27,7 @@ export default function Modals({
       }}
       centered
     >
-      <Modal.Header closeButton>{title}</Modal.Header>
+      <Modal.Header closeButton className="text-[16px]">{title}</Modal.Header>
       <Modal.Body className="grid justify-items-center">{body}</Modal.Body>
     </Modal>
   );
