@@ -14,6 +14,7 @@ export default function Share({
   onHide: () => void
 }) {
   const { t } = useTranslation()
+  
   return (
     <Modals
       title={t('public.invitedFriends')}
@@ -22,7 +23,7 @@ export default function Share({
       body={
         <div className="grid w-full gap-2">
           <CopyToClipboard
-            text={url.replace('https://t.me/share/url?url=', '')}
+            text={url}
             onCopy={() => MessageSuccess(t('message.copy.success'))}
           >
             <Button onClick={() => onHide && onHide()}>
