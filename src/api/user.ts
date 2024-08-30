@@ -42,8 +42,5 @@ export const bindWallentAPI = (
   data?: string,
   token?: string
 ) => {
-
-  // return `https://skeleton-8wov.vercel.app/${type}/${data}/${token}`
-
-  return `https://test.pi.sale/${type}/${data}/${token}`
+  return `https://skeleton-8wov.vercel.app/${type}/${data}/${token}`
 }
