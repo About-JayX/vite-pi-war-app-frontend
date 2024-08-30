@@ -1,7 +1,7 @@
 import Button from "@/components/button";
 import { HeaderTitle, Title } from "@/components/title";
 import { useAppSelector } from "@/store/hook";
-import { Avatar, CardHeader, Container } from "@material-ui/core";
+import { CardHeader, Container } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import invite from "@/config/invite";
 import { getTextColorForBackground, semicolon, stringToColor } from "@/utils";
@@ -9,6 +9,7 @@ import { Text } from "@/components/text";
 import Loader from "@/components/loader";
 import Share from "./share";
 import { useState } from "preact/hooks";
+import { Avatar } from "../leaderboard";
 
 export default function Friends() {
   const { t } = useTranslation();
@@ -48,20 +49,19 @@ export default function Friends() {
                     className="w-full !p-0"
                     avatar={
                       <Avatar
-                        aria-label="recipe"
-                        style={{
-                          background: stringToColor(item.invited_by_userName),
-                          color: getTextColorForBackground(
+                        name={
+                          (item.invited_by_userName &&
                             item.invited_by_userName
-                          ).textColor,
-                        }}
-                      >
-                        {(item.invited_by_userName &&
-                          item.invited_by_userName
-                            .slice(0, 2)
-                            .toUpperCase()) ||
-                          ""}
-                      </Avatar>
+                              .slice(0, 2)
+                              .toUpperCase()) ||
+                          ""
+                        }
+                        bg={stringToColor(item.invited_by_userName)}
+                        color={
+                          getTextColorForBackground(item.invited_by_userName)
+                            .textColor
+                        }
+                      />
                     }
                     action={
                       <Text>
@@ -75,8 +75,8 @@ export default function Friends() {
             <Loader />
           </div>
 
-          <div className="w-full bg-black sticky bottom-[0] z-1">
-            <Button onClick={()=>setOpen(true)} className="w-full">
+          <div className="w-full bg-[#0b141a] sticky bottom-[0] z-1 h-[70px] flex items-center">
+            <Button onClick={() => setOpen(true)} className="w-full">
               {t("public.inviteFriends")}
             </Button>
           </div>

@@ -61,7 +61,7 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
         onClick && onClick();
       }}
       showLabels
-      className="!bg-black"
+      className="!bg-[#16213C]"
     >
       {localizedRoutes.map((itme, index) => {
         return (

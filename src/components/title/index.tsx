@@ -20,8 +20,9 @@ export const HeaderTitle = ({
   className?: string;
 }) => {
   return (
-    <Title className={`!text-[1.36rem] ${className}`}>
+    <Title className={`!text-[1.26rem] ${className} relative pl-[10px]`}>
       {children}
+      <img src="/HeaderTitle.png" className="absolute bottom-[-8px] left-0"/>
     </Title>
   );
 };

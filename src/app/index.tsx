@@ -586,7 +586,7 @@ export function App() {
         />
         {!isNewUser ? (
           <>
-            <Box className={`overflow-hidden overflow-y-auto h-full`}>
+            <Box className={`overflow-hidden overflow-y-auto h-full`} style={{background:"linear-gradient(180deg, #141C2D 0%, #0B1319 100%)"}}>
               <Header />
               <Message />
               <div

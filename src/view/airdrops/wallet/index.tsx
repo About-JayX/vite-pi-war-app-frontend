@@ -1,5 +1,5 @@
 import { Text } from "@/components/text";
-import { HeaderTitle } from "@/components/title";
+import { HeaderTitle, Title } from "@/components/title";
 // import Modal from 'react-bootstrap/Modal'
 // import './index.css'
 import { MessageSuccess } from "@/components/message";
@@ -94,7 +94,7 @@ export default function Wallet({
       onHide={() => setWalletOpen(false)}
       body={
         <div className="grid w-full text-center gap-6">
-          <HeaderTitle>{t("wallet.title")}</HeaderTitle>
+          <Title className="!text-[1.26rem]">{t("wallet.title")}</Title>
           <Text className="mt-[-1rem]">{t("wallet.text")}</Text>
           <div className="grid w-full gap-4 grid-cols-4 sm:grid-cols-5">
             {swapList.map((item, index) => (
