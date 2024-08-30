@@ -6,7 +6,7 @@ import { Container } from "@material-ui/core";
 import styled from "styled-components";
 import { useState } from "preact/hooks";
 import Modal from "react-bootstrap/Modal";
-import { HeaderTitle } from "@/components/title";
+import { HeaderTitle, Title } from "@/components/title";
 
 export const HeaderBox = styled.div`
   height: 100vh;
@@ -36,12 +36,12 @@ export default function Header() {
     <>
       <Modal show={open} centered onHide={() => setOpen(false)}>
         <Modal.Header closeButton>
-          <HeaderTitle>
+          <Title className="text-[16px]">
             {Object.entries(locales).map(
               ([key, value]: any) =>
                 key === i18n.language && value.translation.lang
             )}
-          </HeaderTitle>
+          </Title>
         </Modal.Header>
         <Modal.Body>
           <div className="grid  grid-cols-[repeat(3,1fr)] gap-4 text-center">
