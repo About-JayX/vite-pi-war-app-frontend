@@ -3,26 +3,26 @@ export default {
   yearAgo: "Yıl Önce",
   continue: "Devam Et",
   steps1: {
-    text1: "Web3 Güçlü bir Telegram Oyunu.",
-    text2: "Lütfen Telegram ayarlarında kullanıcı adınızı düzenleyin",
+    text1: "Web3 Destekli Telegram Oyunu",
+    text2: "Telegram ayarlarında kullanıcı adınızı düzenleyin",
   },
   steps2: {
-    title: "Hesabınızı kontrol ediyoruz",
+    title: "Hesabınız kontrol ediliyor",
   },
   steps3: {
-    title: "Evreni keşfedin!",
+    title: "Evreni keşfet!",
     text1: "Telegram'a katıldınız",
-    text2: ["Hesap numaranız #", "Telegram kullanıcılarının ilk %85'lik dilimindesiniz"],
+    text2: ["Hesap numaranız #", "Telegram kullanıcılarının ilk %85'indesiniz"],
   },
   steps4: {
     title: "Pi War 𝜋'e Hoş Geldiniz!",
-    text1: "İşte 𝜋PIS ödülleriniz",
-    text2: "Telegram'ı kullandığınız için teşekkür ederiz",
+    text1: "İşte 𝜋PIS ödülünüz",
+    text2: "Pi War 𝜋 kullandığınız için teşekkürler",
   },
   text: [
     "Hesap Yaşı Doğrulandı",
-    "Etkinlik Seviyesi Analiz Edildi",
-    "Telegram Premium Kontrol Edildi",
-    "Yanıt İzni Onaylandı",
+    "Aktivite Seviyesi Analiz Edildi",
+    "Premium Hesap Kontrol Edildi",
+    "Yanıtlama İzni Onaylandı",
   ],
 };

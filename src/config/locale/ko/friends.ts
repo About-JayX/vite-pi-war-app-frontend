@@ -1,5 +1,5 @@
 export default {
-  title: "친구를 초대하고 더 많은 PIS 얻기",
+  title: "친구를 초대하고 더 많은 PIS를 받으세요",
   text: "친구를 초대하세요",
-  inviteText: '우주의 파이 전쟁에 오신 것을 환영합니다! #PIS 𝜋PIS',
+  inviteText: 'Pi War 𝜋: Web3 기반의 텔레그램 게임',
 };
