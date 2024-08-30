@@ -1,13 +1,13 @@
-import { Text } from '@/components/text'
-import Navigation from './components/navigation'
-import RouterProvider from '@/provider/router'
-import { Box, Container } from '@material-ui/core'
-import { useRouter } from 'preact-router'
-import { useEffect, useRef, useState } from 'preact/hooks'
-import { Fragment } from 'preact/jsx-runtime'
-import { AiOutlineCheckCircle } from 'react-icons/ai'
-import { semicolon } from '@/utils'
-import Button from '@/components/button'
+import { Text } from "@/components/text";
+import Navigation from "./components/navigation";
+import RouterProvider from "@/provider/router";
+import { Box, Container } from "@material-ui/core";
+import { useRouter } from "preact-router";
+import { useEffect, useRef, useState } from "preact/hooks";
+import { Fragment } from "preact/jsx-runtime";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import { semicolon } from "@/utils";
+import Button from "@/components/button";
 import {
   updateBindStatus,
   updateFriendRank,
@@ -16,20 +16,21 @@ import {
   updateTelegramUserData,
   updateUserRank,
   updateUserReward,
-} from '@/store/user'
-import { HeaderTitle, Title } from '@/components/title'
-import { useTranslation } from 'react-i18next'
-import { useTelegram } from '@/provider/telegram'
-import { useAppDispatch, useAppSelector } from '@/store/hook'
-import api from '@/api'
+} from "@/store/user";
+import { HeaderTitle, Title } from "@/components/title";
+import { useTranslation } from "react-i18next";
+import { useTelegram } from "@/provider/telegram";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
+import api from "@/api";
 import {
   getYearFromTimestamp,
   predictRegistrationDate,
-} from '@/utils/registrationPredictor'
-import Message from '@/components/message'
-import Header from './components/header'
-import Modals from '@/components/modal'
-import Loader from './components/loader'
+} from "@/utils/registrationPredictor";
+import Message from "@/components/message";
+import Header from "./components/header";
+import Modals from "@/components/modal";
+import Loader from "./components/loader";
+import Animation from "./components/animation";
 // import SEO from "@/components/seo";
 
 const Progress = ({
@@ -37,9 +38,9 @@ const Progress = ({
   value = 0,
   icon = true,
 }: {
-  text?: string
-  value?: number
-  icon?: boolean
+  text?: string;
+  value?: number;
+  icon?: boolean;
 }) => {
   return (
     <div className="grid gap-1 h-min">
@@ -50,10 +51,10 @@ const Progress = ({
             <AiOutlineCheckCircle
               // @ts-ignore
               className="icon"
-              style={{ color: value === 100 ? '#0d6efd' : '' }}
+              style={{ color: value === 100 ? "#0d6efd" : "" }}
             />
           ) : (
-            ''
+            ""
           )}
         </span>
       </div>
@@ -61,118 +62,120 @@ const Progress = ({
         <div className="progress-bar" style={{ width: `${value}%` }}></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Steps = ({
   status,
   onChange,
 }: {
-  status: number
-  onChange?: (e: number) => void
+  status: number;
+  onChange?: (e: number) => void;
 }) => {
-  const { t } = useTranslation()
-  const { user, postData } = useTelegram()
-  const [ageProgress, setAgeProgress] = useState(0)
-  const [activeProgress, setActiveProgress] = useState(0)
-  const [premiumProgress, setPremiumProgress] = useState(0)
-  const [ogProgress, setOgProgress] = useState(0)
-  const [homeProgress, setHomeProgress] = useState(0)
-  const timer = useRef<any>(null)
-  const homeTimer = useRef<any>(null)
-  const dispatch = useAppDispatch()
-  const [initLock, setInitLock] = useState(true)
-  const lock = useRef<boolean>(false)
-  const { telegramUserData, friendRank } = useAppSelector(state => state.user)
+  const { t } = useTranslation();
+  const { user, postData } = useTelegram();
+  const [ageProgress, setAgeProgress] = useState(0);
+  const [activeProgress, setActiveProgress] = useState(0);
+  const [premiumProgress, setPremiumProgress] = useState(0);
+  const [ogProgress, setOgProgress] = useState(0);
+  const [homeProgress, setHomeProgress] = useState(0);
+  const timer = useRef<any>(null);
+  const homeTimer = useRef<any>(null);
+  const dispatch = useAppDispatch();
+  const [initLock, setInitLock] = useState(true);
+  const lock = useRef<boolean>(false);
+  const { telegramUserData, friendRank } = useAppSelector(
+    (state) => state.user
+  );
 
   const login = async () => {
-    if (lock.current || !postData) return
-    lock.current = true
+    if (lock.current || !postData) return;
+    lock.current = true;
     try {
-      let result = await api.user.loginAPI(postData)
+      let result = await api.user.loginAPI(postData);
 
       sessionStorage.setItem(
-        'token',
-        (result.data && result.data.authToken) || ''
-      )
+        "token",
+        (result.data && result.data.authToken) || ""
+      );
 
-      !result.data.isNewUser && (await initData())
+      !result.data.isNewUser && (await initData());
 
-      result.data.isNewUser && onChange && onChange(1)
-      dispatch(updateNewUser(result.data && result.data.isNewUser))
+      result.data.isNewUser && onChange && onChange(1);
+      dispatch(updateNewUser(result.data && result.data.isNewUser));
     } catch (error) {
-      console.log(error, 'error_')
+      console.log(error, "error_");
     }
-  }
+  };
 
   const homeProgressLoading = () => {
-    if (homeTimer.current) return
-    let value = homeProgress
+    if (homeTimer.current) return;
+    let value = homeProgress;
 
     homeTimer.current = setInterval(() => {
       if (Object.keys(friendRank).length) {
-        value = 100
-        clearInterval(homeTimer.current)
+        value = 100;
+        clearInterval(homeTimer.current);
       } else {
         if (value >= 99) {
-          value = 99
+          value = 99;
         } else {
-          value += 5
+          value += 5;
         }
       }
-      setHomeProgress(value)
-    }, 50)
-  }
+      setHomeProgress(value);
+    }, 50);
+  };
   useEffect(() => {
-    homeProgressLoading()
-  }, [])
+    homeProgressLoading();
+  }, []);
   useEffect(() => {
-    login()
-  }, [])
+    login();
+  }, []);
   const loadPrigress = (
     progress: number,
     setProgress: (value: number) => void,
     isLast = false
   ) => {
-    if (timer.current) return
+    if (timer.current) return;
 
-    let value = progress
+    let value = progress;
 
     timer.current = setInterval(() => {
-      value += 3
+      value += 3;
       if (value >= 100) {
         if (!isLast) {
-          clearInterval(timer.current)
-          timer.current = null
-          value = 100
+          clearInterval(timer.current);
+          timer.current = null;
+          value = 100;
         } else {
           if (initLock) {
-            value >= 99 && (value = 99)
+            value >= 99 && (value = 99);
           } else {
-            clearInterval(timer.current)
-            timer.current = null
-            value = 100
+            clearInterval(timer.current);
+            timer.current = null;
+            value = 100;
           }
         }
       }
 
-      setProgress(value)
-    }, 50)
-  }
+      setProgress(value);
+    }, 50);
+  };
   useEffect(() => {
     if (status === 1) {
       if (!ageProgress) {
-        initData()
-        loadPrigress(ageProgress, setAgeProgress)
+        initData();
+        loadPrigress(ageProgress, setAgeProgress);
       }
       if (ageProgress === 100 && !activeProgress) {
-        loadPrigress(activeProgress, setActiveProgress)
+        loadPrigress(activeProgress, setActiveProgress);
       }
       if (activeProgress === 100 && !premiumProgress) {
-        loadPrigress(premiumProgress, setPremiumProgress)
+        loadPrigress(premiumProgress, setPremiumProgress);
       }
       if (premiumProgress === 100 && !ogProgress && !initLock) {
-        loadPrigress(ogProgress, setOgProgress, true)
+        loadPrigress(ogProgress, setOgProgress, true);
       }
     }
   }, [
@@ -182,39 +185,39 @@ const Steps = ({
     premiumProgress,
     ogProgress,
     initLock,
-  ])
+  ]);
 
   const initData = async () => {
-    if (!postData) return
+    if (!postData) return;
 
     const reqls: Array<{
-      name: string
-      callback: any
-      params: any
+      name: string;
+      callback: any;
+      params: any;
     }> = [
       {
-        name: 'userFun',
+        name: "userFun",
         callback: () => {
-          return callbackFun(api.user.getUserAPI, 'userFun')
+          return callbackFun(api.user.getUserAPI, "userFun");
         },
-        params: '',
+        params: "",
       },
       {
-        name: 'userRank',
+        name: "userRank",
         callback: () => {
-          return callbackFun(api.user.userRankAPI, 'userRank')
+          return callbackFun(api.user.userRankAPI, "userRank");
         },
-        params: '',
+        params: "",
       },
       {
-        name: 'userReward',
+        name: "userReward",
         callback: () => {
-          return callbackFun(api.user.userRewardAPI, 'userReward')
+          return callbackFun(api.user.userRewardAPI, "userReward");
         },
-        params: '',
+        params: "",
       },
       {
-        name: 'inviteRank',
+        name: "inviteRank",
         callback: api.user.inviteRankAPI,
         params: {
           page: 1,
@@ -222,7 +225,7 @@ const Steps = ({
         },
       },
       {
-        name: 'friendRank',
+        name: "friendRank",
         callback: api.user.friendRankAPI,
         params: {
           page: 1,
@@ -230,179 +233,179 @@ const Steps = ({
         },
       },
       {
-        name: 'bindPid',
+        name: "bindPid",
         callback: api.user.findPidAPI,
-        params: '',
+        params: "",
       },
       {
-        name: 'ercAddress',
+        name: "ercAddress",
         callback: api.user.findAddressAPI,
         params: {
-          type: 'erc20',
+          type: "erc20",
         },
       },
       {
-        name: 'solAddress',
+        name: "solAddress",
         callback: api.user.findAddressAPI,
         params: {
-          type: 'solana',
+          type: "solana",
         },
       },
-    ]
+    ];
 
-    const pReqls = reqls.map(item => {
+    const pReqls = reqls.map((item) => {
       return new Promise(async (re, _) => {
         const result = item.params
           ? await item.callback(item.params as any)
-          : await item.callback()
+          : await item.callback();
 
         if (result.success) {
-          re({ name: item.name, result: result.data })
+          re({ name: item.name, result: result.data });
         } else {
-          re({ name: item.name, result: null })
+          re({ name: item.name, result: null });
         }
-      })
-    })
+      });
+    });
 
-    const results = await Promise.all(pReqls)
-    const bindStatus: any = {}
+    const results = await Promise.all(pReqls);
+    const bindStatus: any = {};
     results.forEach((item: any) => {
       switch (item.name) {
-        case 'userFun': {
-          dispatch(updateTelegramUserData(item.result))
-          break
+        case "userFun": {
+          dispatch(updateTelegramUserData(item.result));
+          break;
         }
-        case 'userRank': {
-          dispatch(updateUserRank(item.result))
-          break
+        case "userRank": {
+          dispatch(updateUserRank(item.result));
+          break;
         }
-        case 'userReward': {
-          const userReward = item.result
-          let newArr: any = []
+        case "userReward": {
+          const userReward = item.result;
+          let newArr: any = [];
           userReward.activityLogs.forEach((item: any) => {
             if (!newArr.length) {
-              newArr.push(item)
+              newArr.push(item);
             } else {
-              let obj = newArr.find((child: any) => child.key === item.key)
+              let obj = newArr.find((child: any) => child.key === item.key);
               if (!obj) {
-                newArr.push(item)
+                newArr.push(item);
               } else {
-                obj.value = String(Number(obj.value) + Number(item.value))
+                obj.value = String(Number(obj.value) + Number(item.value));
               }
             }
-          })
+          });
           userReward.activityLogs = newArr.filter((item: any) =>
             Number(item.value)
-          )
-          dispatch(updateUserReward(userReward))
-          break
+          );
+          dispatch(updateUserReward(userReward));
+          break;
         }
-        case 'inviteRank': {
-          dispatch(updateInviteRank(item.result))
-          break
+        case "inviteRank": {
+          dispatch(updateInviteRank(item.result));
+          break;
         }
-        case 'friendRank': {
-          dispatch(updateFriendRank(item.result))
-          break
+        case "friendRank": {
+          dispatch(updateFriendRank(item.result));
+          break;
         }
-        case 'bindPid': {
-          bindStatus.pid = item.result || null
-          break
+        case "bindPid": {
+          bindStatus.pid = item.result || null;
+          break;
         }
-        case 'ercAddress': {
-          bindStatus.erc = item.result || null
-          break
+        case "ercAddress": {
+          bindStatus.erc = item.result || null;
+          break;
         }
-        case 'solAddress': {
-          bindStatus.sol = item.result || null
-          break
+        case "solAddress": {
+          bindStatus.sol = item.result || null;
+          break;
         }
 
         default: {
-          console.log('not found')
+          console.log("not found");
 
-          break
+          break;
         }
       }
-    })
-    dispatch(updateBindStatus(bindStatus))
+    });
+    dispatch(updateBindStatus(bindStatus));
 
-    setInitLock(false)
-  }
+    setInitLock(false);
+  };
 
   const callbackFun = async (callback: Function, methodName: string) => {
-    let result = await callback()
+    let result = await callback();
 
     switch (methodName) {
-      case 'userFun': {
+      case "userFun": {
         if (result.data && result.data.predict_time === null) {
-          result = await new Promise(reslove => {
+          result = await new Promise((reslove) => {
             setTimeout(async () => {
-              reslove(await callbackFun(callback, 'userFun'))
-            }, 2000)
-          })
+              reslove(await callbackFun(callback, "userFun"));
+            }, 2000);
+          });
         }
-        return result
+        return result;
       }
-      case 'userRank': {
-        if (result.data && result.data.username === '未知') {
-          result = await new Promise(reslove => {
+      case "userRank": {
+        if (result.data && result.data.username === "未知") {
+          result = await new Promise((reslove) => {
             setTimeout(async () => {
-              reslove(await callbackFun(callback, 'userRank'))
-            }, 2000)
-          })
+              reslove(await callbackFun(callback, "userRank"));
+            }, 2000);
+          });
         }
-        return result
+        return result;
       }
-      case 'userReward': {
+      case "userReward": {
         if (
           result.data &&
           result.data.activityLogs &&
           !result.data.activityLogs.length
         ) {
-          result = await new Promise(reslove => {
+          result = await new Promise((reslove) => {
             setTimeout(async () => {
-              reslove(await callbackFun(callback, 'userReward'))
-            }, 2000)
-          })
+              reslove(await callbackFun(callback, "userReward"));
+            }, 2000);
+          });
         }
-        return result
+        return result;
       }
       default: {
-        console.log('not found')
-        break
+        console.log("not found");
+        break;
       }
     }
-  }
+  };
   return (
     <>
       {status === 0 && (
         <div
           className="vh-100 grid gap-10 text-center p-4 justify-items-center w-full"
-          style={{ gridAutoRows: '1fr auto auto' }}
+          style={{ gridAutoRows: "1fr auto auto" }}
         >
           <div
             className="self-center "
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyItems: "center",
             }}
           >
             {/* <img src="/piwar.png" className="w-[20rem] h-[20rem]" /> */}
             <Loader />
 
             {!(postData && postData.initData) ? (
-              <Text className="mt-4">{t('public.telegram.text')}</Text>
+              <Text className="mt-4">{t("public.telegram.text")}</Text>
             ) : user?.username ? (
-              <Text className="text-color">{t('steps.steps1.text1')}</Text>
+              <Text className="text-color">{t("steps.steps1.text1")}</Text>
             ) : (
-              <Text className="text-color">{t('steps.steps1.text2')}</Text>
+              <Text className="text-color">{t("steps.steps1.text2")}</Text>
             )}
             <a
               className="w-full"
-              href={t('public.telegram.url')}
+              href={t("public.telegram.url")}
               target="_blank"
             >
               {!(postData && postData.initData) ? (
@@ -410,31 +413,31 @@ const Steps = ({
                   {t('public.telegram.bntText')}
                 </Button>
               ) : (
-                ''
+                ""
               )}
             </a>
           </div>
 
           {user?.username ? (
-            <div style={{ width: '100%' }}>
+            <div style={{ width: "100%" }}>
               <Progress value={homeProgress} icon={false} />
             </div>
           ) : (
-            ''
+            ""
           )}
         </div>
       )}
       {status === 1 && (
         <div
           className="vh-100 grid gap-10 text-center p-4 justify-items-center w-full"
-          style={{ gridAutoRows: 'auto 1fr auto' }}
+          style={{ gridAutoRows: "auto 1fr auto" }}
         >
-          <Title className="!text-[2rem]">{t('steps.steps2.title')}</Title>
+          <Title className="!text-[2rem]">{t("steps.steps2.title")}</Title>
           <div className="grid gap-8 h-min w-full">
-            <Progress text="Account Age Verified" value={ageProgress} />
-            <Progress text="Activity Level Analyzed" value={activeProgress} />
-            <Progress text="Telegram Premium Checked" value={premiumProgress} />
-            <Progress text="Reply Permission Confirmed" value={ogProgress} />
+            <Progress text={t("steps.text")[0]} value={ageProgress} />
+            <Progress text={t("steps.text")[1]} value={activeProgress} />
+            <Progress text={t("steps.text")[2]} value={premiumProgress} />
+            <Progress text={t("steps.text")[3]} value={ogProgress} />
           </div>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
             {ageProgress === 100 &&
@@ -454,7 +457,7 @@ const Steps = ({
       {status === 2 && (
         <div
           className="vh-100 grid gap-6 text-center p-4 justify-items-center"
-          style={{ gridAutoRows: 'auto auto auto 1fr auto auto' }}
+          style={{ gridAutoRows: "auto auto auto 1fr auto auto" }}
         >
           <div className="grid grid-cols-12 gap-3">
             <div
@@ -466,34 +469,34 @@ const Steps = ({
               onClick={() => onChange && onChange(3)}
             />
           </div>
-          <Title className="!text-[2rem]">{t('steps.steps3.title')}</Title>
-          <Text>{t('steps.steps3.text1')}</Text>
+          <Title className="!text-[2rem]">{t("steps.steps3.title")}</Title>
+          <Text>{t("steps.steps3.text1")}</Text>
           <div
             className="grid gap-0 self-center steps-3 w-full"
-            style={{ gridAutoRows: '1fr auto' }}
+            style={{ gridAutoRows: "1fr auto" }}
           >
             <Title className=" !text-[9rem] self-center">
               {telegramUserData.predict_year ||
                 getYearFromTimestamp(predictRegistrationDate(user?.id || 0))}
             </Title>
             <Text className="!text-[1.6rem] mt-[-1rem]">
-              {t('steps.yearAgo')}
+              {t("steps.yearAgo")}
             </Text>
           </div>
           <Text className="whitespace-pre-line">
             {/* @ts-ignore */}
-            {t('steps.steps3.text2', { returnObjects: true })?.[0]}{' '}
-            {user?.id || ''}. {'\n'} {/* @ts-ignore */}
-            {t('steps.steps3.text2', { returnObjects: true })?.[1].replace(
-              '85',
+            {t("steps.steps3.text2", { returnObjects: true })?.[0]}{" "}
+            {user?.id || ""}. {"\n"} {/* @ts-ignore */}
+            {t("steps.steps3.text2", { returnObjects: true })?.[1].replace(
+              "85",
               telegramUserData.userRank
                 ? Math.floor(telegramUserData.userRank)
-                : '85'
+                : "85"
             )}
           </Text>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
             <Button className="w-100" onClick={() => onChange && onChange(3)}>
-              {t('steps.continue')}
+              {t("steps.continue")}
             </Button>
           </div>
         </div>
@@ -501,7 +504,7 @@ const Steps = ({
       {status === 3 && (
         <div
           className="vh-100 grid gap-6 text-center p-4 justify-items-center"
-          style={{ gridAutoRows: 'auto auto auto 1fr auto auto' }}
+          style={{ gridAutoRows: "auto auto auto 1fr auto auto" }}
         >
           <div className="grid grid-cols-12 gap-3">
             <div
@@ -513,11 +516,11 @@ const Steps = ({
               onClick={() => onChange && onChange(3)}
             />
           </div>
-          <Title className="!text-[2rem]">{t('steps.steps4.title')}</Title>
-          <Text>{t('steps.steps4.text1')}</Text>
+          <Title className="!text-[2rem]">{t("steps.steps4.title")}</Title>
+          <Text>{t("steps.steps4.text1")}</Text>
           <div
             className="grid gap-0 self-center steps-3 w-full justify-items-center"
-            style={{ gridAutoRows: '1fr auto' }}
+            style={{ gridAutoRows: "1fr auto" }}
           >
             <div className="self-end z-1">
               <img src="/piwar.png" className="w-[13rem] h-[13rem]" />
@@ -526,65 +529,66 @@ const Steps = ({
               {semicolon(telegramUserData.gold) || 0} PIS
             </Text>
           </div>
-          <div className="whitespace-pre-line">{t('steps.steps4.text2')}</div>
+          <div className="whitespace-pre-line">{t("steps.steps4.text2")}</div>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
             <Button
               className="w-100"
               onClick={() => {
-                onChange && onChange(4)
-                dispatch(updateNewUser(false))
+                onChange && onChange(4);
+                dispatch(updateNewUser(false));
               }}
             >
-              {t('steps.continue')}
+              {t("steps.continue")}
             </Button>
           </div>
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
 export function App() {
-  const [transitionAnimation, setTransitionAnimation] = useState(true)
-  const [currentPath, setCurrentPath] = useState('')
-  const router = useRouter()
-  const { isNewUser } = useAppSelector(state => state.user)
-  const [stepsm, setSteps] = useState<number>(0)
-  const { t } = useTranslation()
+  const [transitionAnimation, setTransitionAnimation] = useState(true);
+  const [currentPath, setCurrentPath] = useState("");
+  const router = useRouter();
+  const { isNewUser } = useAppSelector((state) => state.user);
+  const [stepsm, setSteps] = useState<number>(0);
+  const { t } = useTranslation();
 
   // const opengraph: any = t('seo./.opengraph', { returnObjects: true })
   // const twitter: any = t('seo./.twitter', { returnObjects: true })
 
   useEffect(() => {
     if (router[0].path && router[0].path !== currentPath) {
-      setCurrentPath(router[0].path)
-      setTransitionAnimation(false)
+      setCurrentPath(router[0].path);
+      setTransitionAnimation(false);
     }
-  }, [router, currentPath])
+  }, [router, currentPath]);
 
   useEffect(() => {
     if (!transitionAnimation) {
       const timer = setTimeout(() => {
-        setTransitionAnimation(true)
-      }, 0)
-      return () => clearTimeout(timer)
+        setTransitionAnimation(true);
+      }, 0);
+      return () => clearTimeout(timer);
     }
-  }, [transitionAnimation])
+  }, [transitionAnimation]);
 
   return (
-    <Container maxWidth="xs" className="p-0">
+    <Container maxWidth="xs" className="p-0 relative">
+      <Animation />
       <Fragment>
         <Modals
           open={false}
-          body={<Text>{t('public.updateText')}</Text>}
-          title={<HeaderTitle>{t('public.update')}</HeaderTitle>}
+          body={<Text>{t("public.updateText")}</Text>}
+          title={<HeaderTitle>{t("public.update")}</HeaderTitle>}
         />
         {!isNewUser ? (
           <>
             <Box
               className={`overflow-hidden overflow-y-auto h-full`}
               style={{
-                background: 'linear-gradient(180deg, #141C2D 0%, #0B1319 100%)',
+                background: "linear-gradient(180deg, #141C2D 0%, #0B1319 100%)",
               }}
             >
               <Header />
@@ -592,8 +596,8 @@ export function App() {
               <div
                 className={`${
                   transitionAnimation
-                    ? 'transition-opacity duration-500 ease-in-out opacity-100'
-                    : 'opacity-0'
+                    ? "transition-opacity duration-500 ease-in-out opacity-100"
+                    : "opacity-0"
                 }`}
               >
                 <RouterProvider />
@@ -602,9 +606,9 @@ export function App() {
             <Navigation onClick={() => setTransitionAnimation(false)} />
           </>
         ) : (
-          <Steps status={stepsm} onChange={e => setSteps(e)} />
+          <Steps status={stepsm} onChange={(e) => setSteps(e)} />
         )}
       </Fragment>
     </Container>
-  )
+  );
 }

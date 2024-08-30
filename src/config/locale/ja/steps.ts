@@ -19,4 +19,10 @@ export default {
     text1: "こちらがあなたの𝜋PIS報酬です",
     text2: "Telegramをご利用いただきありがとうございます",
   },
+  text: [
+    "Account Age Verified",
+    "Activity Level Analyzed",
+    "Telegram Premium Checked",
+    "Reply Permission Confirmed",
+  ],
 };

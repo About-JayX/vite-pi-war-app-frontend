@@ -1,0 +1,40 @@
+.animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.star {
+    fill: white;
+    opacity: 0;
+    transform-origin: center;
+    animation: fly 2s linear infinite;
+}
+
+@keyframes fly {
+    0% {
+        transform: scale(0.1) translateZ(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) translateZ(3000px);
+        opacity: 0;
+    }
+}
+
+.star:nth-child(odd) {
+    animation-duration: 2s;
+    animation-delay: calc(-1s * var(--i));
+}
+
+.star:nth-child(even) {
+    animation-duration: 3s;
+    animation-delay: calc(-2s * var(--i));
+}
