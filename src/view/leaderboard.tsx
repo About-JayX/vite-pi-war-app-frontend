@@ -15,6 +15,9 @@ export const Avatar = ({
   bg?: string;
   color?: string;
 }) => {
+  const isAppleDevice =
+    // @ts-ignore
+    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   return (
     <svg
       width="48"
@@ -32,9 +35,15 @@ export const Avatar = ({
         fill={bg || "#091939"}
         stroke="#266395"
       />
-      <foreignObject x="0" y="0" width="100%" height="100%">
+      <foreignObject
+        x="0"
+        y="0"
+        width={isAppleDevice ? "48" : "100%"}
+        height={isAppleDevice ? "48" : "100%"}
+        className="flex justify-center"
+      >
         <Text
-          className={`flex justify-center items-center w-full h-full text-[16px] font-bold`}
+          className={`flex justify-center items-center w-full h-full text-[18px] font-bold`}
           style={{ color: color }}
         >
           {name}
