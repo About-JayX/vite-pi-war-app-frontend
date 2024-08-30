@@ -3,7 +3,7 @@ export default {
   yearAgo: "Năm trước",
   continue: "Tiếp tục",
   steps1: {
-    text1: "Một trò chơi Telegram được hỗ trợ bởi Web3.",
+    text1: "Trò chơi Telegram được hỗ trợ bởi Web3",
     text2: "Vui lòng chỉnh sửa tên người dùng của bạn trong cài đặt Telegram",
   },
   steps2: {
@@ -12,17 +12,17 @@ export default {
   steps3: {
     title: "Khám phá vũ trụ!",
     text1: "Bạn đã tham gia Telegram",
-    text2: ["Số tài khoản của bạn là #", "Bạn nằm trong top 85% người dùng Telegram"],
+    text2: ["ID tài khoản của bạn là #", "Bạn nằm trong top 85% người dùng Telegram"],
   },
   steps4: {
     title: "Chào mừng đến với Pi War 𝜋!",
     text1: "Đây là phần thưởng 𝜋PIS của bạn",
-    text2: "Cảm ơn bạn đã sử dụng Telegram",
+    text2: "Cảm ơn bạn đã sử dụng Pi War 𝜋",
   },
   text: [
-    "Tuổi tài khoản đã được xác minh",
-    "Mức độ hoạt động đã được phân tích",
-    "Telegram Premium đã được kiểm tra",
-    "Quyền trả lời đã được xác nhận",
+    "Xác minh tuổi tài khoản",
+    "Phân tích mức độ hoạt động",
+    "Kiểm tra tài khoản cao cấp",
+    "Xác nhận quyền trả lời",
   ],
 };
