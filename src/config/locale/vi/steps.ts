@@ -3,7 +3,7 @@ export default {
   yearAgo: "Năm trước",
   continue: "Tiếp tục",
   steps1: {
-    text1: "Pi War 𝜋\n Một trò chơi Telegram được hỗ trợ bởi Web3.",
+    text1: "Một trò chơi Telegram được hỗ trợ bởi Web3.",
     text2: "Vui lòng chỉnh sửa tên người dùng của bạn trong cài đặt Telegram",
   },
   steps2: {

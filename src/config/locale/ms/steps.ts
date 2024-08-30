@@ -3,7 +3,7 @@ export default {
   yearAgo: "Tahun Lalu",
   continue: "Teruskan",
   steps1: {
-    text1: "Pi War 𝜋\n Permainan Telegram yang Dikuasakan oleh Web3.",
+    text1: "Permainan Telegram yang Dikuasakan oleh Web3.",
     text2: "Sila edit nama pengguna anda dalam tetapan Telegram",
   },
   steps2: {

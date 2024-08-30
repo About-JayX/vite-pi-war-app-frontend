@@ -378,7 +378,7 @@ const Steps = ({
     }
   };
 
-  const steps:any =  t("steps.text",{returnObjects:true})
+  const steps: any = t("steps.text", { returnObjects: true });
   return (
     <>
       {status === 0 && (
@@ -401,7 +401,10 @@ const Steps = ({
             {!(postData && postData.initData) ? (
               <Text className="mt-4">{t("public.telegram.text")}</Text>
             ) : user?.username ? (
-              <Text className="text-color">{t("steps.steps1.text1")}</Text>
+              <>
+                <Title>Pi War 𝜋</Title>
+                <Text className="text-color mt-[6px]">{t("steps.steps1.text1")}</Text>
+              </>
             ) : (
               <Text className="text-color">{t("steps.steps1.text2")}</Text>
             )}
@@ -412,7 +415,7 @@ const Steps = ({
             >
               {!(postData && postData.initData) ? (
                 <Button className="not-app-btn">
-                  {t('public.telegram.bntText')}
+                  {t("public.telegram.bntText")}
                 </Button>
               ) : (
                 ""

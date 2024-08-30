@@ -64,20 +64,6 @@ export default function Leaderboard() {
           <CardHeader
             className="text-white"
             avatar={
-              // <Avatar
-              //   aria-label="recipe"
-              //   className="!text-[14px]"
-              //   style={{
-              //     background: stringToColor(userRank.username || ""),
-              //     color:
-              //       getTextColorForBackground(userRank.username).textColor ||
-              //       "",
-              //   }}
-              // >
-              //   {(userRank.username &&
-              //     userRank.username.slice(0, 2).toUpperCase()) ||
-              //     ""}
-              // </Avatar>
               <Avatar
                 name={
                   (userRank.username &&

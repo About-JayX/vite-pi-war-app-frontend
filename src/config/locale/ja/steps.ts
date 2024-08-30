@@ -3,7 +3,7 @@ export default {
   yearAgo: "年前",
   continue: "続ける",
   steps1: {
-    text1: "Pi War 𝜋\n Web3で動作するTelegramゲーム。",
+    text1: "Web3で動作するTelegramゲーム。",
     text2: "Telegramの設定でユーザー名を編集してください",
   },
   steps2: {
