@@ -1,7 +1,7 @@
 export default {
-  text: "최신 뉴스 팔로우하기.",
+  text: "Pi War 𝜋 최신 소식을 팔로우하세요",
   bnt: [
-    { name: "X/TWITTER", url: "https://x.com/Space_Pi_War" },
-    { name: "COMMUNITY", url: "https://t.me/pi_war" },
+    { name: "X/트위터", url: "https://x.com/Space_Pi_War" },
+    { name: "커뮤니티", url: "https://t.me/pi_war" },
   ],
 };

@@ -1,5 +1,5 @@
 export default {
-  title: '友達を招待して、もっと多くのPISを獲得しよう',
-  text: '友達を招待してください',
-  inviteText: '宇宙のπ戦争へようこそ！ #PIS 𝜋PIS',
-}
+  title: "友達を招待して、より多くのPISを獲得しましょう",
+  text: "友達を招待する",
+  inviteText: 'Pi War 𝜋：Web3で動作するTelegramゲーム',
+};

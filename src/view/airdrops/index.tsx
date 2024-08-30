@@ -15,6 +15,7 @@ import SuccessaPng from "@/assets/icon/success-a.png";
 import { semicolon } from "@/utils";
 import { FaRegPaste } from "react-icons/fa6";
 import Button from "@/components/button";
+import Loader from "@/components/loader";
 
 export default function Airdrops() {
   const { t } = useTranslation();
@@ -212,6 +213,7 @@ export default function Airdrops() {
               ))
             : ""}
         </div>
+        <Loader />
       </Container>
     </>
   );
