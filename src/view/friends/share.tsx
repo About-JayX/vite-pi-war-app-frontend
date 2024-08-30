@@ -27,7 +27,7 @@ export default function Share({
           <CopyToClipboard
             text={`https://t.me/${invite.botName}/join?startapp=${
               telegramUserData.Invitation_code
-            }&text=${encodeURIComponent(t('friends.inviteText'))}`}
+            }\n\nt('friends.inviteText')`}
             onCopy={() => MessageSuccess(t('message.copy.success'))}
           >
             <Button onClick={() => onHide && onHide()}>
