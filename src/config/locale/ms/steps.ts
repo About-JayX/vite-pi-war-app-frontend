@@ -3,7 +3,7 @@ export default {
   yearAgo: "Tahun Lalu",
   continue: "Teruskan",
   steps1: {
-    text1: "Pi War 𝜋: Permainan Telegram Berkuasa Web3.",
+    text1: "Permainan Telegram yang Dikuasakan oleh Web3.",
     text2: "Sila edit nama pengguna anda dalam tetapan Telegram",
   },
   steps2: {
@@ -12,7 +12,7 @@ export default {
   steps3: {
     title: "Terokai alam semesta!",
     text1: "Anda telah menyertai Telegram",
-    text2: ["Nombor akaun anda adalah #", "Anda berada dalam 85% pengguna Telegram teratas"],
+    text2: ["Nombor akaun anda ialah #", "Anda berada dalam 85% pengguna Telegram teratas"],
   },
   steps4: {
     title: "Selamat datang ke Pi War 𝜋!",
@@ -20,9 +20,9 @@ export default {
     text2: "Terima kasih kerana menggunakan Telegram",
   },
   text: [
-    "Account Age Verified",
-    "Activity Level Analyzed",
-    "Telegram Premium Checked",
-    "Reply Permission Confirmed",
+    "Umur Akaun Disahkan",
+    "Tahap Aktiviti Dianalisis",
+    "Telegram Premium Diperiksa",
+    "Kebenaran Balasan Disahkan",
   ],
 };

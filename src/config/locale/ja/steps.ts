@@ -1,9 +1,9 @@
 export default {
-  openPiWar: "Pi Warを開く",
+  openPiWar: "Pi War を開く",
   yearAgo: "年前",
   continue: "続ける",
   steps1: {
-    text1: "Pi War 𝜋: Web3ベースのTelegramゲーム。",
+    text1: "Web3で動作するTelegramゲーム。",
     text2: "Telegramの設定でユーザー名を編集してください",
   },
   steps2: {
@@ -12,7 +12,7 @@ export default {
   steps3: {
     title: "宇宙を探検しよう！",
     text1: "Telegramに参加しました",
-    text2: ["あなたのアカウント番号は#", "あなたはTelegramユーザーの上位85%にいます"],
+    text2: ["あなたのアカウント番号は #", "あなたはTelegramユーザーの上位85％にいます"],
   },
   steps4: {
     title: "Pi War 𝜋へようこそ！",
@@ -20,9 +20,9 @@ export default {
     text2: "Telegramをご利用いただきありがとうございます",
   },
   text: [
-    "Account Age Verified",
-    "Activity Level Analyzed",
-    "Telegram Premium Checked",
-    "Reply Permission Confirmed",
+    "アカウントの年齢を確認",
+    "活動レベルを分析",
+    "Telegram Premiumを確認",
+    "返信許可を確認",
   ],
 };

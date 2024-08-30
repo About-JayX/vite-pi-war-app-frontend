@@ -28,18 +28,20 @@ export const Avatar = ({
         y="0.5"
         width="54"
         height="54"
-        rx="3.5"
+        rx="54"
         fill={bg || "#091939"}
         stroke="#266395"
       />
-      <foreignObject x="0" y="0" width="100%" height="100%">
-        <Text
-          className={`flex justify-center items-center w-full h-full text-[16px] font-bold`}
-          style={{ color: color }}
-        >
-          {name}
-        </Text>
-      </foreignObject>
+      <text
+        x="50%"
+        y="50%"
+        dominantBaseline="middle"
+        textAnchor="middle"
+        className="text-[18px] font-bold"
+        fill={color}
+      >
+        {name}
+      </text>
     </svg>
   );
 };
@@ -55,20 +57,6 @@ export default function Leaderboard() {
           <CardHeader
             className="text-white"
             avatar={
-              // <Avatar
-              //   aria-label="recipe"
-              //   className="!text-[14px]"
-              //   style={{
-              //     background: stringToColor(userRank.username || ""),
-              //     color:
-              //       getTextColorForBackground(userRank.username).textColor ||
-              //       "",
-              //   }}
-              // >
-              //   {(userRank.username &&
-              //     userRank.username.slice(0, 2).toUpperCase()) ||
-              //     ""}
-              // </Avatar>
               <Avatar
                 name={
                   (userRank.username &&

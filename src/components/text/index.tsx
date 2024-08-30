@@ -12,7 +12,7 @@ export const Text = ({
   return (
     <span
       onClick={click}
-      className={`text-[1rem] z-1 font-bold break-words ${className}`}
+      className={`text-[1rem] z-1 font-bold break-words whitespace-pre-wrap ${className}`}
       style={style}
     >
       {children}
