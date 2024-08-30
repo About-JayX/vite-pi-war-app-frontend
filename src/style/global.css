@@ -45,3 +45,6 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+.not-app-btn{
+    margin-top: 20px;
+}
