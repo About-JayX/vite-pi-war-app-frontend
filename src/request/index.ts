@@ -6,8 +6,8 @@ import axios, {
 } from 'axios'
 
 export const config: AxiosRequestConfig = {
-  baseURL: 'https://piwartest.spiapi.top',
-  // baseURL: 'https://tbotapi.xdex.cc',
+  // baseURL: 'https://piwartest.spiapi.top',
+  baseURL: 'https://tbotapi.xdex.cc',
   timeout: 50000,
   withCredentials: true,
 }
