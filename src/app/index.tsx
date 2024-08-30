@@ -409,7 +409,9 @@ const Steps = ({
               target="_blank"
             >
               {!(postData && postData.initData) ? (
-                <Button>{t("public.telegram.bntText")}</Button>
+                <Button className="not-app-btn">
+                  {t('public.telegram.bntText')}
+                </Button>
               ) : (
                 ""
               )}

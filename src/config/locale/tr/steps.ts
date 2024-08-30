@@ -3,26 +3,26 @@ export default {
   yearAgo: "Yıl Önce",
   continue: "Devam Et",
   steps1: {
-    text1: "Pi War 𝜋: Web3 Destekli Bir Telegram Oyunu.",
-    text2: "Lütfen Telegram ayarlarında kullanıcı adınızı düzenleyin.",
+    text1: "Pi War 𝜋\n Web3 Güçlü bir Telegram Oyunu.",
+    text2: "Lütfen Telegram ayarlarında kullanıcı adınızı düzenleyin",
   },
   steps2: {
-    title: "Hesabınızı Kontrol Ediyoruz",
+    title: "Hesabınızı kontrol ediyoruz",
   },
   steps3: {
-    title: "Evreni Keşfedin!",
+    title: "Evreni keşfedin!",
     text1: "Telegram'a katıldınız",
-    text2: ["Hesap numaranız #", "Telegram kullanıcılarının %85'indesiniz"],
+    text2: ["Hesap numaranız #", "Telegram kullanıcılarının ilk %85'lik dilimindesiniz"],
   },
   steps4: {
-    title: "Pi War 𝜋'ya Hoşgeldiniz!",
+    title: "Pi War 𝜋'e Hoş Geldiniz!",
     text1: "İşte 𝜋PIS ödülleriniz",
-    text2: "Telegram'ı kullandığınız için teşekkürler",
+    text2: "Telegram'ı kullandığınız için teşekkür ederiz",
   },
   text: [
-    "Account Age Verified",
-    "Activity Level Analyzed",
-    "Telegram Premium Checked",
-    "Reply Permission Confirmed",
+    "Hesap Yaşı Doğrulandı",
+    "Etkinlik Seviyesi Analiz Edildi",
+    "Telegram Premium Kontrol Edildi",
+    "Yanıt İzni Onaylandı",
   ],
 };

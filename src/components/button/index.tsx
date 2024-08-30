@@ -1,7 +1,7 @@
-"use client";
-import { Text } from "../text";
+'use client'
+import { Text } from '../text'
 // import { Text } from "../text";
-import "./index.css";
+import './index.css'
 
 const BntBox = ({
   children,
