@@ -19,4 +19,10 @@ export default {
     text1: "這是你的 PIS 獎勵",
     text2: "感謝你使用 Telegram",
   },
+  text: [
+    "Account Age Verified",
+    "Activity Level Analyzed",
+    "Telegram Premium Checked",
+    "Reply Permission Confirmed",
+  ],
 };

@@ -19,4 +19,10 @@ export default {
     text1: "İşte 𝜋PIS ödülleriniz",
     text2: "Telegram'ı kullandığınız için teşekkürler",
   },
+  text: [
+    "Account Age Verified",
+    "Activity Level Analyzed",
+    "Telegram Premium Checked",
+    "Reply Permission Confirmed",
+  ],
 };

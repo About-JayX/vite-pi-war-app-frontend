@@ -1,6 +1,6 @@
 export default {
   openPiWar: "Open Pi War",
-  yearAgo:"Years Ago",
+  yearAgo: "Years Ago",
   continue: "Continue",
   steps1: {
     text1: "Pi War 𝜋: A Web3-Powered Telegram Game.",
@@ -19,4 +19,10 @@ export default {
     text1: "Here is your 𝜋PIS rewards",
     text2: "Thanks for your using Telegram",
   },
+  text: [
+    "Account Age Verified",
+    "Activity Level Analyzed",
+    "Telegram Premium Checked",
+    "Reply Permission Confirmed",
+  ],
 };
