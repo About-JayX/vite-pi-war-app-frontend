@@ -402,7 +402,7 @@ const Steps = ({
               <Text className="mt-4">{t("public.telegram.text")}</Text>
             ) : user?.username ? (
               <>
-                <Title>Pi War 𝜋</Title>
+                <Title className="text-[1.86rem]">Pi War 𝜋</Title>
                 <Text className="text-color mt-[6px]">{t("steps.steps1.text1")}</Text>
               </>
             ) : (
