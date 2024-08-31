@@ -624,7 +624,7 @@ export function App() {
   const [currentPath, setCurrentPath] = useState("");
   const router = useRouter();
   const { isNewUser } = useAppSelector((state) => state.user);
-  const [stepsm, setSteps] = useState<number>(2);
+  const [stepsm, setSteps] = useState<number>(0);
   const { t } = useTranslation();
 
   // const opengraph: any = t('seo./.opengraph', { returnObjects: true })
