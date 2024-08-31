@@ -22,7 +22,7 @@ export const HeaderTitle = ({
   return (
     <Title className={`!text-[18px] ${className} relative pl-[10px] text-[#48B7F2] font-normal`}>
       {children}
-      <img src="/HeaderTitle.png" className="absolute bottom-[-8px] left-0"/>
+      <img src="/HeaderTitle.png" className="ml-[-10px]"/>
     </Title>
   );
 };

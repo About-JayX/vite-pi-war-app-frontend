@@ -2,9 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
 html,
 body {
     @apply overflow-hidden h-[calc(100vh-env(safe-area-inset-bottom))] !bg-black !text-white pb-[env(safe-area-inset-bottom)];
+
 }
 
 body {
@@ -38,13 +48,15 @@ body {
     @apply !h-[5rem]
 }
 
-.hide-scrollbar{
-    &::-webkit-scrollbar{
+.hide-scrollbar {
+    &::-webkit-scrollbar {
         display: none;
     }
+
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-.not-app-btn{
+
+.not-app-btn {
     margin-top: 20px;
 }
