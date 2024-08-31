@@ -19,15 +19,12 @@ i18next
     },
     detection: {
       order: [
-        "cookie",
-        "localStorage",
-        "path",
         "navigator",
+        "path",
         "querystring",
         "htmlTag",
         "subdomain",
-      ],
-      caches: ["localStorage", "cookie"],
+      ]
     },
   });
 

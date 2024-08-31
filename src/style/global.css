@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    @apply select-none touch-none;
+}
+
 html,
 body {
     @apply overflow-hidden h-[calc(100vh-env(safe-area-inset-bottom))] !bg-black !text-white pb-[env(safe-area-inset-bottom)];
+
 }
 
 body {
@@ -38,13 +43,19 @@ body {
     @apply !h-[5rem]
 }
 
-.hide-scrollbar{
-    &::-webkit-scrollbar{
+.hide-scrollbar {
+    &::-webkit-scrollbar {
         display: none;
     }
+
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-.not-app-btn{
+
+.not-app-btn {
     margin-top: 20px;
+}
+
+.MuiBottomNavigationAction-label{
+    font-size: 12px !important;
 }
