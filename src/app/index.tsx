@@ -461,7 +461,7 @@ const Steps = ({
             <Progress text={steps[2]} value={premiumProgress} />
             <Progress text={steps[3]} value={ogProgress} />
           </div>
-          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
+          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1 !mb-2">
             {ageProgress === 100 &&
               premiumProgress === 100 &&
               activeProgress === 100 &&
@@ -516,7 +516,7 @@ const Steps = ({
                 : "85"
             )}
           </Text>
-          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
+          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1 !mb-2">
             <Button className="w-100" onClick={() => onChange && onChange(3)}>
               {t("steps.continue")}
             </Button>
@@ -602,7 +602,7 @@ const Steps = ({
             </Text>
           </div>
           <div className="whitespace-pre-line">{t("steps.steps4.text2")}</div>
-          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1">
+          <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1 !mb-2">
             <Button
               className="w-100"
               onClick={() => {
@@ -624,7 +624,7 @@ export function App() {
   const [currentPath, setCurrentPath] = useState("");
   const router = useRouter();
   const { isNewUser } = useAppSelector((state) => state.user);
-  const [stepsm, setSteps] = useState<number>(0);
+  const [stepsm, setSteps] = useState<number>(2);
   const { t } = useTranslation();
 
   // const opengraph: any = t('seo./.opengraph', { returnObjects: true })
