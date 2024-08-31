@@ -3,12 +3,7 @@
 @tailwind utilities;
 
 * {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
+    @apply select-none;
 }
 
 html,
