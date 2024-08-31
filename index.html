@@ -1,65 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" class="dark html" data-bs-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- {/* 网站标题 */} -->
-    <title>Pi War 𝜋 - A Web3-Powered Telegram Game.</title>
-    <!-- {/*  Open Graph Tags */} -->
-    <meta property="og:title" content="Pi War 𝜋" />
-    <meta
-      property="og:description"
-      content="Pi War 𝜋: A Web3-Powered Telegram Game."
-    />
-    <meta property="og:image" content="https://imgs.pi.sale/banner.png" />
-    <meta property="og:url" content="https://war.pi.sale" />
-    <meta property="og:type" content="website" />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- {/* Twitter Card Tags */} -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Pi War 𝜋" />
-    <meta
-      name="twitter:description"
-      content="Pi War 𝜋: A Web3-Powered Telegram Game."
-    />
-    <meta name="twitter:image" content="https://imgs.pi.sale/banner.png" />
+  <!-- {/* 网站标题 */} -->
+  <title>Pi War 𝜋 - A Web3-Powered Telegram Game.</title>
+  <!-- {/*  Open Graph Tags */} -->
+  <meta property="og:title" content="Pi War 𝜋" />
+  <meta property="og:description" content="Pi War 𝜋: A Web3-Powered Telegram Game." />
+  <meta property="og:image" content="https://imgs.pi.sale/banner.png" />
+  <meta property="og:url" content="https://war.pi.sale" />
+  <meta property="og:type" content="website" />
 
-    <script
-      src="https://www.googletagmanager.com/gtag/js?id=G-T6SYBLLPEV"
-      id="_next-ga"
-      data-nscript="afterInteractive"
-    ></script>
-    <style>
-      * {
-        -webkit-user-select: none !important;
-        -moz-user-select: none !important;
-        -ms-user-select: none !important;
-        user-select: none !important;
-        touch-action: none !important;
-      }
-    </style>
-    <script>
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
+  <!-- {/* Twitter Card Tags */} -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pi War 𝜋" />
+  <meta name="twitter:description" content="Pi War 𝜋: A Web3-Powered Telegram Game." />
+  <meta name="twitter:image" content="https://imgs.pi.sale/banner.png" />
 
-      document.addEventListener(
-        "touchstart",
-        function (e) {
-          if (e.touches.length > 1) {
-            e.preventDefault();
-          }
-        },
-        { passive: false }
-      );
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-T6SYBLLPEV" id="_next-ga"
+    data-nscript="afterInteractive"></script>
+  <style>
+    * {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      touch-action: none !important;
+    }
+  </style>
+  <script>
+    // document.addEventListener("contextmenu", function (e) {
+    //   e.preventDefault();
+    // });
 
-      document.addEventListener("selectstart", function (e) {
-        e.preventDefault();
-      });
-    </script>
-    <script type="module" src="/src/main.tsx"></script>
-  </head>
-  <body id="app"></body>
+    document.addEventListener(
+      "touchstart",
+      function (e) {
+        if (e.touches.length > 1) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+
+    document.addEventListener("selectstart", function (e) {
+      e.preventDefault();
+    });
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</head>
+
+<body id="app"></body>
+
 </html>
