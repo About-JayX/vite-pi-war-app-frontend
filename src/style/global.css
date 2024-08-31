@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-    @apply select-none;
+    @apply select-none touch-none;
 }
 
 html,
