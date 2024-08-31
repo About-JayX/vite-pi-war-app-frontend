@@ -55,3 +55,7 @@ body {
 .not-app-btn {
     margin-top: 20px;
 }
+
+.MuiBottomNavigationAction-label{
+    font-size: 12px !important;
+}
