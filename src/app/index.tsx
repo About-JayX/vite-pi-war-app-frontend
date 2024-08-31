@@ -401,7 +401,7 @@ const Steps = ({
               <Text className="mt-4">{t('public.telegram.text')}</Text>
             ) : user?.username ? (
               <>
-                <Title className="text-[1.6rem] flex items-center gap-2">
+                <Title className="!text-[1.6rem] flex items-center gap-2">
                   Pi War
                   <svg
                     width="22"
