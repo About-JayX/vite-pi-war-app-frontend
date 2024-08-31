@@ -9,8 +9,10 @@ import Button from "@/components/button";
 import { Card } from "react-bootstrap";
 import Loader from "@/components/loader";
 import { useState } from "preact/hooks";
+import Icon from "@/components/icon";
 
 export default function Home() {
+  // @ts-ignore
   const [loaderStatus, setLoaderStatus] = useState<boolean>(false);
   const { userReward } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
@@ -22,30 +24,27 @@ export default function Home() {
 
     switch (key) {
       case "Telegram Premium": {
-        index = 1;
+        index = "home/telegramPremium";
         break;
       }
       case "Account Age": {
-        index = 2;
+        index = "home/accountAge";
         break;
       }
       case "Invited Friends": {
-        index = 3;
+        index = "home/invitedFriends";
         break;
       }
       case "Binding": {
-        index = 4;
+        index = "home/binding";
         break;
       }
       default: {
-        index = 1;
+        index = "home/telegramPremium";;
         break;
       }
     }
-
-    return (
-      <img src={`/home/${index}.svg`} alt="" className="w-[3rem] h-[3rem]" />
-    );
+    return <Icon name={index} className="w-[3rem] h-[3rem]" />;
   };
   const rewardLogs = () => {
     setLoaderStatus(true);
