@@ -4,7 +4,9 @@ import { HeaderTitle, Title } from "@/components/title";
 import { useAppSelector } from "@/store/hook";
 import { getTextColorForBackground, semicolon, stringToColor } from "@/utils";
 import { Card, CardHeader, Container } from "@material-ui/core";
+import { useState } from "preact/hooks";
 import { useTranslation } from "react-i18next";
+import PullToRefresh from "react-pull-to-refresh";
 
 export const Avatar = ({
   name = "",
@@ -134,7 +136,23 @@ const getNameIcon = (index: number) => {
 export default function Leaderboard() {
   const { t } = useTranslation();
   const { userRank, inviteRank } = useAppSelector((state) => state.user);
+
+  const [loading, setLoading] = useState(false);
   return (
+    <PullToRefresh
+      loading={
+        loading && (
+          <div className="fixed flex justify-center w-full my-4">
+            <div className="loader" />
+          </div>
+        )
+      }
+      onRefresh={async () => {
+        console.log("获取数据");
+        setLoading(true)
+        setTimeout(()=>setLoading(false),1000)
+      }}
+    >
     <Container maxWidth="xl" className="p-4">
       <div className="grid gap-6 w-100 justify-items-center">
         <Title>{t("public.leaderboard")}</Title>
@@ -235,5 +253,6 @@ export default function Leaderboard() {
         <Loader />
       </div>
     </Container>
+    </PullToRefresh>
   );
 }
