@@ -1,9 +1,0 @@
-.bnt-box {
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transform: scale(1);
-    &:active {
-        transform: scale(1.03);
-    }
-
-}
