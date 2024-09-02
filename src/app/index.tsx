@@ -343,7 +343,7 @@ const Steps = ({
           result = await new Promise(reslove => {
             setTimeout(async () => {
               reslove(await callbackFun(callback, 'userFun'))
-            }, 2000)
+            }, 3000)
           })
         }
         return result
