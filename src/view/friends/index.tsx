@@ -29,6 +29,7 @@ export default function Friends() {
   const [loading, setLoading] = useState(false)
   return (
     <>
+
       <Share open={open} onHide={() => setOpen(false)} url={shareUrl} />
       <Container maxWidth="xl" className="p-4 pb-0">
         <div className="grid grid-flow-row grid-rows-[1fr,auto] h-full relative">
