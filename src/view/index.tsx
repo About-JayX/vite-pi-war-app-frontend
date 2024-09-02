@@ -97,7 +97,7 @@ export default function Home() {
   const hammerConfig = {
     touchAction: 'pan-y', // 允许在垂直方向上滑动
     direction: Hammer.DIRECTION_ALL, // 允许所有方向滑动
-    threshold: 0, // 滑动识别的阈值，越小越灵敏
+    threshold: 10, // 滑动识别的阈值，越小越灵敏
     // 你可以根据需求添加其他 Hammer.js 的配置选项
   }
   const [loading, setLoading] = useState(false)
