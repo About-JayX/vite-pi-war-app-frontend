@@ -86,9 +86,7 @@ const Steps = ({
   const lock = useRef<boolean>(false)
   const { telegramUserData, friendRank } = useAppSelector(state => state.user)
   const { webApp } = useTelegram() as any
-  useEffect(() => {
-    webApp && webApp.disableVerticalSwipes && webApp.disableVerticalSwipes()
-  }, [webApp])
+
   const login = async () => {
     if (lock.current || !postData) return
     lock.current = true
