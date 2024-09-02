@@ -77,7 +77,7 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
                 value === getPathWithoutLang(itme.path)
                   ? "opacity-100"
                   : "opacity-50"
-              } !min-w-[auto] p-0`}
+              } !min-w-[auto] p-0 !transition-transform !duration-150 active:scale-95`}
             />
           )
         );
