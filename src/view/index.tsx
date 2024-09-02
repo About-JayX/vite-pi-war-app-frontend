@@ -98,7 +98,7 @@ export default function Home() {
   return (
     <>
       <PullToRefresh
-        hammerOptions={{ touchAction: 'pan-y' }}
+        hammerOptions={{ touchAction: 'auto' }}
         loading={
           loading && (
             <div className="fixed flex justify-center w-full">
