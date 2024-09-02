@@ -654,7 +654,7 @@ export function App() {
           body={<Text>{t("public.updateText")}</Text>}
           title={<HeaderTitle>{t("public.update")}</HeaderTitle>}
         />
-        {/* {!isNewUser ? (
+        {!isNewUser ? (
           <>
             <Box
               className={`overflow-hidden overflow-y-scroll h-full z-1`}
@@ -678,28 +678,7 @@ export function App() {
           </>
         ) : (
           <Steps status={stepsm} onChange={(e) => setSteps(e)} />
-        )} */}
-        <>
-            <Box
-              className={`overflow-hidden overflow-y-scroll h-full z-1`}
-              style={{
-                background: "linear-gradient(180deg, #141C2D 0%, #0B1319 100%)",
-              }}
-            >
-              <Header />
-              <Message />
-              <div
-                className={`${
-                  transitionAnimation
-                    ? "transition-opacity duration-500 ease-in-out opacity-100"
-                    : "opacity-0"
-                }`}
-              >
-                <RouterProvider />
-              </div>
-            </Box>
-            <Navigation onClick={() => setTransitionAnimation(false)} />
-          </>
+        )}
       </Fragment>
       <Animation />
     </Container>
