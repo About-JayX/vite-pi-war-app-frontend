@@ -7,8 +7,12 @@
     "module": "ESNext",
     "baseUrl": "./",
     "paths": {
-      "@": ["./src"],
-      "@/*": ["./src/*"],
+      "@": [
+        "./src"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
       "react": [
         "./node_modules/preact/compat/"
       ],
@@ -33,8 +37,8 @@
     "jsxImportSource": "preact",
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false, /* 检查未使用的变量 */
+    "noUnusedParameters": false, /* 检查未使用的函数参数 */
     "noFallthroughCasesInSwitch": true
   },
   "include": [
