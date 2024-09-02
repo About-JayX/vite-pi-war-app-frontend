@@ -39,7 +39,7 @@ export default function Share({
                 .writeText(
                   `https://t.me/${
                     import.meta.env.VITE_BOOTNAME
-                  }/join?startapp=${telegramUserData.Invitation_code}\n\n${t(
+                  }/?startapp=${telegramUserData.Invitation_code}\n\n${t(
                     'friends.inviteText'
                   )}`
                 )
