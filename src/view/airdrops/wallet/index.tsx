@@ -101,7 +101,9 @@ export default function Wallet({
           <div className="grid w-full gap-4 grid-cols-4 sm:grid-cols-5">
             {swapList
               .filter((item) =>
-                bindingMethod === "ETH/BSC" ? item.text !== "Phantom" : item
+                bindingMethod === "ETH/BSC"
+                  ? item.text !== "Phantom" && item.text !== "Solflare"
+                  : item
               )
               .map((item, index) => (
                 <div
