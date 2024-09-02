@@ -16,7 +16,7 @@ import { semicolon } from '@/utils'
 import { FaRegPaste } from 'react-icons/fa6'
 import Button from '@/components/button'
 import Loader from '@/components/loader'
-import PullToRefresh from "react-pull-to-refresh";
+import PullToRefresh from 'react-pull-to-refresh'
 
 export default function Airdrops() {
   const { t } = useTranslation()
@@ -112,22 +112,9 @@ export default function Airdrops() {
     }
   }
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   return (
-    <PullToRefresh
-    loading={
-      loading && (
-        <div className="fixed flex justify-center w-full my-4">
-          <div className="loader" />
-        </div>
-      )
-    }
-    onRefresh={async () => {
-      console.log("获取数据");
-      setLoading(true)
-      setTimeout(()=>setLoading(false),1000)
-    }}
-  >
+    <>
       <Wallet
         open={walletOpen}
         setWalletOpen={setWalletOpen}
@@ -236,6 +223,6 @@ export default function Airdrops() {
         </div>
         <Loader />
       </Container>
-    </PullToRefresh>
+    </>
   )
 }

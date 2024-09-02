@@ -102,72 +102,54 @@ export default function Home() {
   }
   const [loading, setLoading] = useState(false)
   return (
-    <PullToRefresh
-      hammerOptions={hammerConfig}
-      loading={
-        loading && (
-          <div className="fixed flex justify-center w-full">
-            <div className="loader" />
+    <Container maxWidth="xl" className="p-4">
+      <div className="grid gap-6 w-100 justify-items-center home-bg">
+        <div className="bg" />
+        <div className="home-bg-1" />
+        <div className="home-bg-2" />
+        <div className="home-bg-3" />
+        <div className="grid gap-6 justify-items-center z-[1]">
+          <div className="pi-war-home-logo w-[14rem] h-[14rem]">
+            <div className="logo-1" />
+            <div className="logo-2" />
+            <div className="logo-3" />
           </div>
-        )
-      }
-      onRefresh={async () => {
-        console.log('获取数据')
-        setLoading(true)
-        setTimeout(() => setLoading(false), 1000)
-      }}
-    >
-      <Container maxWidth="xl" className="p-4">
-        <div className="grid gap-6 w-100 justify-items-center home-bg">
-          <div className="bg" />
-          <div className="home-bg-1" />
-          <div className="home-bg-2" />
-          <div className="home-bg-3" />
-          <div className="grid gap-6 justify-items-center z-[1]">
-            <div className="pi-war-home-logo w-[14rem] h-[14rem]">
-              <div className="logo-1" />
-              <div className="logo-2" />
-              <div className="logo-3" />
-            </div>
-            <Title className="pi-war-text-color mt-[-1rem]">
-              {semicolon(
-                (userReward &&
-                  userReward.userAccountInfo &&
-                  userReward.userAccountInfo.gold) ||
-                  0
-              )}
-              &nbsp;PIS
-            </Title>
-          </div>
-          <Card className="w-full card binding-card-bg">
-            <CardContent className="text-center !pb-0">
-              <Text className="whitespace-pre-line">{t('home.text')}</Text>
-            </CardContent>
-            <CardActions className="gap-2">
-              {homeBntLang.map((item: any, index: number) => (
-                <Button
-                  key={index}
-                  className="!m-0"
-                  onClick={() => {
-                    window.open(item.url)
-                  }}
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </CardActions>
-          </Card>
-          <HeaderTitle className="text-left w-full">
-            {t('public.myRewards')}
-          </HeaderTitle>
-          {userReward &&
-          userReward.activityLogs &&
-          userReward.activityLogs.length
-            ? rewardLogs()
-            : ''}
-          <Loader />
+          <Title className="pi-war-text-color mt-[-1rem]">
+            {semicolon(
+              (userReward &&
+                userReward.userAccountInfo &&
+                userReward.userAccountInfo.gold) ||
+                0
+            )}
+            &nbsp;PIS
+          </Title>
         </div>
-      </Container>
-    </PullToRefresh>
+        <Card className="w-full card binding-card-bg">
+          <CardContent className="text-center !pb-0">
+            <Text className="whitespace-pre-line">{t('home.text')}</Text>
+          </CardContent>
+          <CardActions className="gap-2">
+            {homeBntLang.map((item: any, index: number) => (
+              <Button
+                key={index}
+                className="!m-0"
+                onClick={() => {
+                  window.open(item.url)
+                }}
+              >
+                {item.name}
+              </Button>
+            ))}
+          </CardActions>
+        </Card>
+        <HeaderTitle className="text-left w-full">
+          {t('public.myRewards')}
+        </HeaderTitle>
+        {userReward && userReward.activityLogs && userReward.activityLogs.length
+          ? rewardLogs()
+          : ''}
+        <Loader />
+      </div>
+    </Container>
   )
 }
