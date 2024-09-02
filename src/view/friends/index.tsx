@@ -9,7 +9,7 @@ import Loader from '@/components/loader'
 import Share from './share'
 import { useState } from 'preact/hooks'
 import { Avatar } from '../leaderboard'
-import PullToRefresh from "react-pull-to-refresh";
+import PullToRefresh from 'react-pull-to-refresh'
 
 export default function Friends() {
   const { t } = useTranslation()
@@ -26,22 +26,22 @@ export default function Friends() {
 
   const nav: string[] = t('nav', { returnObjects: true })
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   return (
     <PullToRefresh
-    loading={
-      loading && (
-        <div className="fixed flex justify-center w-full my-4">
-          <div className="loader" />
-        </div>
-      )
-    }
-    onRefresh={async () => {
-      console.log("获取数据");
-      setLoading(true)
-      setTimeout(()=>setLoading(false),1000)
-    }}
-  >
+      loading={
+        loading && (
+          <div className="fixed flex justify-center w-full my-4">
+            <div className="loader" />
+          </div>
+        )
+      }
+      onRefresh={async () => {
+        console.log('获取数据')
+        setLoading(true)
+        setTimeout(() => setLoading(false), 1000)
+      }}
+    >
       <Share open={open} onHide={() => setOpen(false)} url={shareUrl} />
       <Container maxWidth="xl" className="p-4 pb-0">
         <div className="grid grid-flow-row grid-rows-[1fr,auto] h-full relative">

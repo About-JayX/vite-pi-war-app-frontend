@@ -11,6 +11,7 @@
     "remote": "./remote.sh"
   },
   "dependencies": {
+    "@types/hammerjs": "^2.0.45",
     "preact": "^10.22.1"
   },
   "devDependencies": {
