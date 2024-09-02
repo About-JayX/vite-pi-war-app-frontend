@@ -117,7 +117,7 @@ export default function Home() {
         setTimeout(() => setLoading(false), 1000)
       }}
     >
-      <Container maxWidth="xl" className="p-4 container">
+      <Container maxWidth="xl" className="p-4">
         <div className="grid gap-6 w-100 justify-items-center home-bg">
           <div className="bg" />
           <div className="home-bg-1" />

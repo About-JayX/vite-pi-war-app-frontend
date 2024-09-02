@@ -61,7 +61,7 @@
 }
 
 .home-bg {
-    @apply relative pt-[4rem];
+    @apply relative;
 }
 
 /* .home-bg::after {
