@@ -69,11 +69,13 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
 
       app.ready()
       app.expand()
+      app.isVerticalSwipesEnabled = false
+      app.disableVerticalSwipes()
       const container: any = document.querySelector('.html')
 
-      container.addEventListener('scroll', () => {
-        app.expand() // 确保窗口始终固定
-      })
+      // container.addEventListener('scroll', () => {
+      //   app.expand() // 确保窗口始终固定
+      // })
       setWebApp(app)
     }
   }, [scriptLoaded])
