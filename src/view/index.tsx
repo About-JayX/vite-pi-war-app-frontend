@@ -106,7 +106,7 @@ export default function Home() {
       hammerOptions={hammerConfig}
       loading={
         loading && (
-          <div className="fixed flex justify-center w-full my-4">
+          <div className="fixed flex justify-center w-full">
             <div className="loader" />
           </div>
         )
