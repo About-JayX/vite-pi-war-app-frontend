@@ -61,7 +61,7 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
 
     app = { ...app, ...initInfo } //测试
 
-    if (app) {
+    if (app && app.ready) {
       // app.requestWriteAccess()
       // app.setBackgroundColor('#000000')
       // app.setHeaderColor('#000000')
@@ -69,7 +69,7 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
 
       app.ready()
       app.expand()
-
+      app.isVerticalSwipesEnabled = false
       const container: any = document.querySelector('.html')
 
       container.addEventListener('scroll', () => {
