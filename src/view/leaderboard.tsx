@@ -140,6 +140,7 @@ export default function Leaderboard() {
   const [loading, setLoading] = useState(false);
   return (
     <PullToRefresh
+    style={{"overflowY":"scroll"}}
       loading={
         loading && (
           <div className="fixed flex justify-center w-full my-4">
