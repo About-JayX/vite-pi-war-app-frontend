@@ -11,7 +11,6 @@ import Loader from '@/components/loader'
 import { useState } from 'preact/hooks'
 import Icon from '@/components/icon'
 import PullToRefresh from 'react-pull-to-refresh'
-import Hammer from 'hammerjs'
 
 export default function Home() {
   // @ts-ignore
@@ -94,12 +93,7 @@ export default function Home() {
       )
     })
   }
-  const hammerConfig = {
-    touchAction: 'pan-y', // 允许在垂直方向上滑动
-    direction: Hammer.DIRECTION_ALL, // 允许所有方向滑动
-    threshold: 10, // 滑动识别的阈值，越小越灵敏
-    // 你可以根据需求添加其他 Hammer.js 的配置选项
-  }
+
   const [loading, setLoading] = useState(false)
   return (
     <PullToRefresh
