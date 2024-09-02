@@ -61,7 +61,7 @@
 }
 
 .home-bg {
-    @apply relative;
+    @apply relative mt-[-4rem] pt-[4rem];
 }
 
 /* .home-bg::after {
@@ -112,4 +112,36 @@
 
 .pi-war-home-logo .logo-3 {
     @apply content-[''] absolute top-0 left-0 w-full h-full bg-[url(/home/PiWarBg/PiwarLOGO5.png)] bg-contain bg-no-repeat;
+}
+
+.loader {
+    width: 100%;
+    border: 4px solid rgba(255, 255, 255, .5);
+    border-left-color: transparent;
+    border-radius: 50%;
+}
+
+.loader {
+    border: 4px solid rgba(255, 255, 255, .5);
+    border-left-color: transparent;
+    width: 36px;
+    height: 36px;
+}
+
+.loader {
+    border: 4px solid rgba(255, 255, 255, .5);
+    border-left-color: transparent;
+    width: 36px;
+    height: 36px;
+    animation: spin89345 1s linear infinite;
+}
+
+@keyframes spin89345 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
