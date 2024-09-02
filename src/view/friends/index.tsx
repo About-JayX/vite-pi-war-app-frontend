@@ -18,7 +18,11 @@ export default function Friends() {
 
   const [open, setOpen] = useState<boolean>(false)
 
-  const shareUrl = `https://t.me/share/url?url=https://t.me/${invite.botName}/join?startapp%3D${telegramUserData.Invitation_code}&text=%0A${encodeURIComponent(t('friends.inviteText'))}`;
+  const shareUrl = `https://t.me/share/url?url=https://t.me/${
+    import.meta.env.VITE_BOOTNAME
+  }/join?startapp%3D${
+    telegramUserData.Invitation_code
+  }&text=%0A${encodeURIComponent(t('friends.inviteText'))}`
 
   const nav: string[] = t('nav', { returnObjects: true })
   return (
