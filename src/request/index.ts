@@ -6,8 +6,7 @@ import axios, {
 } from 'axios'
 
 export const config: AxiosRequestConfig = {
-  // baseURL: 'https://piwartest.spiapi.top',
-  baseURL: 'https://piwar.dexcc.cc',
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 50000,
   withCredentials: true,
 }

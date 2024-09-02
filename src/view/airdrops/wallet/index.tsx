@@ -43,7 +43,7 @@ export default function Wallet({
       text: "Bitget",
       src: "/bitget.png",
       click: () => {
-        window.open(`https://bkcode.vip?action=dapp&url=${getUrl()}`);
+        window.open(`https://bkcode.vip?action=dapp&url=${encodeURIComponent(getUrl())}`);
       },
     },
     {

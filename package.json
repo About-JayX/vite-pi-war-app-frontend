@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "APP_ENV=development vite --mode development",
-    "dev2": "APP_ENV=developments vite --mode developments",
+    "devz": "APP_ENV=developments vite --mode developmentz",
     "build": "APP_ENV=production tsc -b && vite build",
     "preview": "vite preview",
     "remote": "./remote.sh"
