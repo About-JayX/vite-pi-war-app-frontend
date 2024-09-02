@@ -29,6 +29,7 @@ export default function Friends() {
   const [loading, setLoading] = useState(false)
   return (
     <PullToRefresh
+      hammerOptions={{ touchAction: 'pan-y' }}
       loading={
         loading && (
           <div className="fixed flex justify-center w-full my-4">
