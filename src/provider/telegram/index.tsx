@@ -69,7 +69,6 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
 
       app.ready()
       app.expand()
-      app.disableVerticalSwipes()
       const container: any = document.querySelector('.html')
 
       container.addEventListener('scroll', () => {
