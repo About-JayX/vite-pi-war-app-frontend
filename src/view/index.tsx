@@ -96,20 +96,7 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false)
   return (
-    <PullToRefresh
-      loading={
-        loading && (
-          <div className="fixed flex justify-center w-full">
-            <div className="loader" />
-          </div>
-        )
-      }
-      onRefresh={async () => {
-        console.log('获取数据')
-        setLoading(true)
-        setTimeout(() => setLoading(false), 1000)
-      }}
-    >
+    <>
       <Container maxWidth="xl" className="p-4">
         <div className="grid gap-6 w-100 justify-items-center home-bg">
           <div className="bg" />
@@ -161,6 +148,6 @@ export default function Home() {
           <Loader />
         </div>
       </Container>
-    </PullToRefresh>
+    </>
   )
 }
