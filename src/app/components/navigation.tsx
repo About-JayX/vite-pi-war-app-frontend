@@ -13,27 +13,27 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
   const navs: any = t("nav", { returnObjects: true });
   const data = [
     {
-      icon: <Icon name="home" className="!w-5 !h-5 mb-1" />,
+      icon: <Icon name="home" className="!w-4 !h-4 mb-1" />,
       name: navs[0],
       path: "/",
     },
     {
-      icon: <Icon name="ranking" className="!w-5 !h-5 mb-1" />,
+      icon: <Icon name="ranking" className="!w-4 !h-4 mb-1" />,
       name: navs[1],
       path: "/leaderboard",
     },
     {
-      icon: <Icon name="game" className="!w-5 !h-5 mb-1" />,
+      icon: <Icon name="game" className="!w-4 !h-4 mb-1" />,
       name: navs[4],
       path: "/game",
     },
     {
-      icon: <Icon name="friends" className="!w-5 !h-5 mb-1" />,
+      icon: <Icon name="friends" className="!w-4 !h-4 mb-1" />,
       name: navs[2],
       path: "/friends",
     },
     {
-      icon: <Icon name="rocket" className="!w-5 !h-5 mb-1" />,
+      icon: <Icon name="rocket" className="!w-4 !h-4 mb-1" />,
       name: navs[3],
       path: "/airdrops",
     },
@@ -77,7 +77,7 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
                 value === getPathWithoutLang(itme.path)
                   ? "opacity-100"
                   : "opacity-50"
-              } !min-w-[auto] p-0 !transition-transform !duration-150 active:scale-95`}
+              } !min-w-[auto] p-0 !transition-transform !duration-150 active:scale-110`}
             />
           )
         );
