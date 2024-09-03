@@ -20,9 +20,7 @@ export const TelegramContext = createContext<{
     }
   }
 }>({})
-
-const initInfo = JSON.parse(import.meta.env.VITE_TELEGRAM_INFO || {})
-
+const initInfo = JSON.parse(import.meta.env.VITE_TELEGRAM_INFO || '{}')
 export const Telegram = ({ children }: { children?: React.ReactNode }) => {
   // const useViewport = useViewportRaw(true)?.result;
   // const useMiniApp = useMiniAppRaw(true)?.result;
