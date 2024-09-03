@@ -1,3 +1,4 @@
+import Box from "@/components/box";
 import Icon from "@/components/icon";
 import Loader from "@/components/loader";
 import { Text } from "@/components/text";
@@ -7,7 +8,6 @@ import { getTextColorForBackground, semicolon, stringToColor } from "@/utils";
 import { Card, CardHeader, Container } from "@material-ui/core";
 import { useState } from "preact/hooks";
 import { useTranslation } from "react-i18next";
-import { PullRefresh } from "react-vant";
 
 export const Avatar = ({
   name = "",
@@ -78,34 +78,80 @@ export default function Leaderboard() {
 
   const [loading, setLoading] = useState(false);
   return (
-    <PullRefresh
-      onRefresh={() => onRefresh(true)}
-      onRefreshEnd={() => console.log("onRefreshEnd")}
-    >
-      <Container maxWidth="xl" className="p-4 mt-20">
-        <div className="grid gap-6 w-100 justify-items-center">
-          <Title>{t("public.leaderboard")}</Title>
-          <Card className="w-full card binding-card-bg">
+    <Box>
+      <div className="grid gap-6 w-100 justify-items-center">
+        <Title>{t("public.leaderboard")}</Title>
+        <Card className="w-full card binding-card-bg">
+          <CardHeader
+            className="text-white"
+            avatar={
+              <Avatar
+                name={
+                  (userRank.username &&
+                    userRank.username.slice(0, 2).toUpperCase()) ||
+                  ""
+                }
+                bg={stringToColor(userRank.username || "")}
+                color={
+                  getTextColorForBackground(userRank.username).textColor || ""
+                }
+              />
+            }
+            action={
+              userRank.rank ? (
+                <div className="w-[30px] h-[45px] relative flex items-center justify-center">
+                  {userRank.rank <= 3 ? (
+                    getNameIcon(userRank.rank)
+                  ) : (
+                    <Text
+                      className="!text-[0.86rem]"
+                      style={{
+                        textShadow: " 2px 2px 4px rgba(0, 0, 0, 0.5)",
+                      }}
+                    >
+                      {"#" + (userRank.rank || 0)}
+                    </Text>
+                  )}
+                </div>
+              ) : (
+                ""
+              )
+            }
+            title={<Text>{userRank.username || ""}</Text>}
+            subheader={
+              <Text className="text-white/50">
+                {semicolon(userRank.score || 0)} PIS
+              </Text>
+            }
+          />
+        </Card>
+        <HeaderTitle className="w-full">
+          {inviteRank.total || 0} {t("public.holders")}
+        </HeaderTitle>
+        {inviteRank.data &&
+          inviteRank.data.length &&
+          inviteRank.data.map((item: any, index: number) => (
             <CardHeader
-              className="text-white"
+              key={index}
+              className="w-full !p-0"
               avatar={
                 <Avatar
                   name={
-                    (userRank.username &&
-                      userRank.username.slice(0, 2).toUpperCase()) ||
+                    (item.username &&
+                      item.username.slice(0, 2).toUpperCase()) ||
                     ""
                   }
-                  bg={stringToColor(userRank.username || "")}
+                  bg={stringToColor(item.username || "")}
                   color={
-                    getTextColorForBackground(userRank.username).textColor || ""
+                    getTextColorForBackground(item.username).textColor || ""
                   }
                 />
               }
               action={
-                userRank.rank ? (
+                index <= 10 ? (
                   <div className="w-[30px] h-[45px] relative flex items-center justify-center">
-                    {userRank.rank <= 3 ? (
-                      getNameIcon(userRank.rank)
+                    {(item.rank || index + 1) <= 3 ? (
+                      getNameIcon(item.rank || index + 1)
                     ) : (
                       <Text
                         className="!text-[0.86rem]"
@@ -113,75 +159,24 @@ export default function Leaderboard() {
                           textShadow: " 2px 2px 4px rgba(0, 0, 0, 0.5)",
                         }}
                       >
-                        {"#" + (userRank.rank || 0)}
+                        {"#" + (item.rank || index + 1)}
                       </Text>
                     )}
                   </div>
                 ) : (
-                  ""
+                  item.rank || index + 1
                 )
               }
-              title={<Text>{userRank.username || ""}</Text>}
+              title={<Text>{item.username || ""}</Text>}
               subheader={
                 <Text className="text-white/50">
-                  {semicolon(userRank.score || 0)} PIS
+                  {semicolon(item.score || 0)} PIS
                 </Text>
               }
             />
-          </Card>
-          <HeaderTitle className="w-full">
-            {inviteRank.total || 0} {t("public.holders")}
-          </HeaderTitle>
-          {inviteRank.data &&
-            inviteRank.data.length &&
-            inviteRank.data.map((item: any, index: number) => (
-              <CardHeader
-                key={index}
-                className="w-full !p-0"
-                avatar={
-                  <Avatar
-                    name={
-                      (item.username &&
-                        item.username.slice(0, 2).toUpperCase()) ||
-                      ""
-                    }
-                    bg={stringToColor(item.username || "")}
-                    color={
-                      getTextColorForBackground(item.username).textColor || ""
-                    }
-                  />
-                }
-                action={
-                  index <= 10 ? (
-                    <div className="w-[30px] h-[45px] relative flex items-center justify-center">
-                      {(item.rank || index + 1) <= 3 ? (
-                        getNameIcon(item.rank || index + 1)
-                      ) : (
-                        <Text
-                          className="!text-[0.86rem]"
-                          style={{
-                            textShadow: " 2px 2px 4px rgba(0, 0, 0, 0.5)",
-                          }}
-                        >
-                          {"#" + (item.rank || index + 1)}
-                        </Text>
-                      )}
-                    </div>
-                  ) : (
-                    item.rank || index + 1
-                  )
-                }
-                title={<Text>{item.username || ""}</Text>}
-                subheader={
-                  <Text className="text-white/50">
-                    {semicolon(item.score || 0)} PIS
-                  </Text>
-                }
-              />
-            ))}
-          <Loader />
-        </div>
-      </Container>
-    </PullRefresh>
+          ))}
+        <Loader />
+      </div>
+    </Box>
   );
 }

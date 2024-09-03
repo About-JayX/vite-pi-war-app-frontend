@@ -469,7 +469,7 @@ export function App() {
                 background: 'linear-gradient(180deg, #141C2D 0%, #0B1319 100%)',
               }}
             >
-              <Header />
+              {/* <Header /> */}
               <Message />
               <div
                 className={`${
@@ -492,7 +492,7 @@ export function App() {
             background: 'linear-gradient(180deg, #141C2D 0%, #0B1319 100%)',
           }}
         >
-          <Header />
+          {/* <Header /> */}
           <Message />
           <div
             className={`${

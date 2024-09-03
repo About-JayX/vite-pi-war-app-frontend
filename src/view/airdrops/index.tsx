@@ -16,6 +16,7 @@ import { semicolon } from '@/utils'
 import { FaRegPaste } from 'react-icons/fa6'
 import Button from '@/components/button'
 import Loader from '@/components/loader'
+import Box from '@/components/box'
 
 export default function Airdrops() {
   const { t } = useTranslation()
@@ -120,8 +121,8 @@ export default function Airdrops() {
         getUrl={getUrl}
         bindingMethod={bindingMethod}
       />
-      <Container maxWidth="xl" className="p-4">
-        <div className="grid gap-6 w-100 justify-items-center text-center">
+      <Box>
+      <div className="grid gap-6 w-100 justify-items-center text-center">
           <Title>{t('public.airdrops')}</Title>
           <Text className="text-color mt-[-1rem]">{t('binding.text')}</Text>
           <Text
@@ -221,7 +222,7 @@ export default function Airdrops() {
             : ''}
         </div>
         <Loader />
-      </Container>
+      </Box>
     </>
   )
 }
