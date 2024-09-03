@@ -1,7 +1,12 @@
-$#!/bin/zsh
+#!/bin/zsh
 
-# 提示用户输入远程仓库名称
-read -p "远程仓库url: " remote_url
+remote_url=$1
+
+if [ -z "$remote_url" ]; then
+echo "请携带仓库地址"
+exit 1
+  # 当 $remote_url 为空时，将执行此处的代码
+fi
 
 git remote remove origin
 
