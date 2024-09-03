@@ -17,7 +17,7 @@ export default function Share({
   const { telegramUserData } = useAppSelector((state) => state.user)
 
   const handleCopyInviteLink = async () => {
-    const inviteLink = `https://t.me/${import.meta.env.VITE_BOOTNAME}/?startapp=${telegramUserData.Invitation_code}\n\n${t('friends.inviteText')}`
+    const inviteLink = `https://t.me/${import.meta.env.VITE_BOOTNAME}/?startapp=${telegramUserData.Invitation_code}\n${t('friends.inviteText')}`
 
     try {
       await navigator.clipboard.writeText(inviteLink)

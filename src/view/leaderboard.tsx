@@ -1,22 +1,22 @@
-import Box from "@/components/box";
-import Icon from "@/components/icon";
-import Loader from "@/components/loader";
-import { Text } from "@/components/text";
-import { HeaderTitle, Title } from "@/components/title";
-import { useAppSelector } from "@/store/hook";
-import { getTextColorForBackground, semicolon, stringToColor } from "@/utils";
-import { Card, CardHeader, Container } from "@material-ui/core";
-import { useState } from "preact/hooks";
-import { useTranslation } from "react-i18next";
+import Box from '@/components/box'
+import Icon from '@/components/icon'
+import Loader from '@/components/loader'
+import { Text } from '@/components/text'
+import { HeaderTitle, Title } from '@/components/title'
+import { useAppSelector } from '@/store/hook'
+import { getTextColorForBackground, semicolon, stringToColor } from '@/utils'
+import { Card, CardHeader, Container } from '@material-ui/core'
+import { useState } from 'preact/hooks'
+import { useTranslation } from 'react-i18next'
 
 export const Avatar = ({
-  name = "",
-  bg = "",
-  color = "",
+  name = '',
+  bg = '',
+  color = '',
 }: {
-  name?: string;
-  bg?: string;
-  color?: string;
+  name?: string
+  bg?: string
+  color?: string
 }) => {
   return (
     <svg
@@ -32,7 +32,7 @@ export const Avatar = ({
         width="54"
         height="54"
         rx="54"
-        fill={bg || "#091939"}
+        fill={bg || '#091939'}
         stroke="#266395"
       />
       <text
@@ -46,41 +46,40 @@ export const Avatar = ({
         {name}
       </text>
     </svg>
-  );
-};
+  )
+}
 
 const getNameIcon = (index: number) => {
-  console.log(index);
+  console.log(index)
   switch (index) {
     case 1:
-      return <Icon name="leaderBoard1" className="!w-8 !h-8"></Icon>;
+      return <Icon name="leaderBoard1" className="!w-8 !h-8"></Icon>
     case 2:
-      return <Icon name="leaderBoard2" className="!w-8 !h-8"></Icon>;
+      return <Icon name="leaderBoard2" className="!w-8 !h-8"></Icon>
     case 3:
-      return <Icon name="leaderBoard3" className="!w-8 !h-8"></Icon>;
+      return <Icon name="leaderBoard3" className="!w-8 !h-8"></Icon>
 
     default:
-      return index;
+      return index
   }
-};
+}
 const onRefresh = (showToast: any) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       if (showToast) {
       }
-      resolve(true);
-    }, 1000);
-  });
-};
+      resolve(true)
+    }, 1000)
+  })
+}
 export default function Leaderboard() {
-  const { t } = useTranslation();
-  const { userRank, inviteRank } = useAppSelector((state) => state.user);
+  const { t } = useTranslation()
+  const { userRank, inviteRank } = useAppSelector(state => state.user)
 
-  const [loading, setLoading] = useState(false);
   return (
     <Box>
       <div className="grid gap-6 w-100 justify-items-center">
-        <Title>{t("public.leaderboard")}</Title>
+        <Title>{t('public.leaderboard')}</Title>
         <Card className="w-full card binding-card-bg">
           <CardHeader
             className="text-white"
@@ -89,11 +88,11 @@ export default function Leaderboard() {
                 name={
                   (userRank.username &&
                     userRank.username.slice(0, 2).toUpperCase()) ||
-                  ""
+                  ''
                 }
-                bg={stringToColor(userRank.username || "")}
+                bg={stringToColor(userRank.username || '')}
                 color={
-                  getTextColorForBackground(userRank.username).textColor || ""
+                  getTextColorForBackground(userRank.username).textColor || ''
                 }
               />
             }
@@ -106,18 +105,18 @@ export default function Leaderboard() {
                     <Text
                       className="!text-[0.86rem]"
                       style={{
-                        textShadow: " 2px 2px 4px rgba(0, 0, 0, 0.5)",
+                        textShadow: ' 2px 2px 4px rgba(0, 0, 0, 0.5)',
                       }}
                     >
-                      {"#" + (userRank.rank || 0)}
+                      {'#' + (userRank.rank || 0)}
                     </Text>
                   )}
                 </div>
               ) : (
-                ""
+                ''
               )
             }
-            title={<Text>{userRank.username || ""}</Text>}
+            title={<Text>{userRank.username || ''}</Text>}
             subheader={
               <Text className="text-white/50">
                 {semicolon(userRank.score || 0)} PIS
@@ -126,7 +125,7 @@ export default function Leaderboard() {
           />
         </Card>
         <HeaderTitle className="w-full">
-          {inviteRank.total || 0} {t("public.holders")}
+          {inviteRank.total || 0} {t('public.holders')}
         </HeaderTitle>
         {inviteRank.data &&
           inviteRank.data.length &&
@@ -139,11 +138,11 @@ export default function Leaderboard() {
                   name={
                     (item.username &&
                       item.username.slice(0, 2).toUpperCase()) ||
-                    ""
+                    ''
                   }
-                  bg={stringToColor(item.username || "")}
+                  bg={stringToColor(item.username || '')}
                   color={
-                    getTextColorForBackground(item.username).textColor || ""
+                    getTextColorForBackground(item.username).textColor || ''
                   }
                 />
               }
@@ -156,10 +155,10 @@ export default function Leaderboard() {
                       <Text
                         className="!text-[0.86rem]"
                         style={{
-                          textShadow: " 2px 2px 4px rgba(0, 0, 0, 0.5)",
+                          textShadow: ' 2px 2px 4px rgba(0, 0, 0, 0.5)',
                         }}
                       >
-                        {"#" + (item.rank || index + 1)}
+                        {'#' + (item.rank || index + 1)}
                       </Text>
                     )}
                   </div>
@@ -167,7 +166,7 @@ export default function Leaderboard() {
                   item.rank || index + 1
                 )
               }
-              title={<Text>{item.username || ""}</Text>}
+              title={<Text>{item.username || ''}</Text>}
               subheader={
                 <Text className="text-white/50">
                   {semicolon(item.score || 0)} PIS
@@ -178,5 +177,5 @@ export default function Leaderboard() {
         <Loader />
       </div>
     </Box>
-  );
+  )
 }
