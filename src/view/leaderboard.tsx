@@ -53,11 +53,11 @@ const getNameIcon = (index: number) => {
   console.log(index);
   switch (index) {
     case 1:
-      return <Icon name="leaderBoard1" className="w-10 h-10"></Icon>;
+      return <Icon name="leaderBoard1" className="!w-8 !h-8"></Icon>;
     case 2:
-      return <Icon name="leaderBoard2" className="w-10 h-10"></Icon>;
+      return <Icon name="leaderBoard2" className="!w-8 !h-8"></Icon>;
     case 3:
-      return <Icon name="leaderBoard3" className="w-10 h-10"></Icon>;
+      return <Icon name="leaderBoard3" className="!w-8 !h-8"></Icon>;
 
     default:
       return index;
