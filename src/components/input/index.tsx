@@ -1,7 +1,6 @@
 import { MessageSuccess } from "../message";
 import { Text } from "../text";
 import "./index.css";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useTranslation } from "react-i18next";
 export default function Input({
   button = { show: true },
@@ -22,9 +21,34 @@ export default function Input({
     copyText?: string;
     onClick?: () => void;
     show?: boolean;
+    className?: string;
   };
 }) {
   const { t } = useTranslation();
+
+  const handleCopyInviteLink = async (url: string) => {
+    const inviteLink = url;
+
+    try {
+      await navigator.clipboard.writeText(inviteLink);
+      MessageSuccess(t("message.copy.success"));
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+      // Fallback: manually select and copy the text (for older browsers)
+      const textArea = document.createElement("textarea");
+      textArea.value = inviteLink;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        MessageSuccess(t("message.copy.success"));
+      } catch (err) {
+        console.error("Fallback: Oops, unable to copy", err);
+      }
+      document.body.removeChild(textArea);
+    }
+  };
   return (
     <div
       className="input-group relative form-control !grid"
@@ -47,16 +71,17 @@ export default function Input({
       />
       {button && button.show ? (
         button.copy ? (
-          <CopyToClipboard
-            text={button?.copyText || ""}
-            onCopy={() => MessageSuccess(t("message.copy.success"))}
+          <button
+            className="transition-transform duration-300 ease-in-out transform hover:scale-105 active:scale-[1.12]"
+            onClick={() => handleCopyInviteLink(button?.copyText || "")}
           >
-            <button>
-              <Text>{button?.text}</Text>
-            </button>
-          </CopyToClipboard>
+            <Text>{button?.text}</Text>
+          </button>
         ) : (
-          <button onClick={() => button.onClick && button.onClick()}>
+          <button
+            className="transition-transform duration-300 ease-in-out transform hover:scale-105 active:scale-[1.12]"
+            onClick={() => button.onClick && button.onClick()}
+          >
             <Text>{button?.text}</Text>
           </button>
         )

@@ -8,7 +8,7 @@ body {
 }
 
 body {
-  @apply grid grid-flow-row grid-rows-[calc(100%-5rem),auto];
+  @apply grid grid-flow-row grid-rows-[calc(100%-6rem),auto];
 }
 
 .pi-war-text-color {
@@ -35,7 +35,7 @@ body {
 }
 
 .MuiBottomNavigation-root {
-  @apply !h-[5rem];
+  @apply !h-[6rem];
 }
 
 .hide-scrollbar {
@@ -53,4 +53,14 @@ body {
 
 .MuiBottomNavigationAction-label {
   font-size: 12px !important;
+}
+
+.bnt-box {
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transform: scale(1);
+  &:active {
+      transform: scale(1.03);
+  }
+
 }
