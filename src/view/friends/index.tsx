@@ -34,60 +34,53 @@ export default function Friends() {
       <Share open={open} onHide={() => setOpen(false)} url={shareUrl} />
       <Box>
         <div className="grid grid-flow-row grid-rows-[1fr,auto] h-full relative">
-          <div class="min-h-[calc(100vh-14rem)]">
-            <div className="grid w-full gap-6 overflow-hidden h-fit">
-              <div className="grid gap-6 w-100 justify-items-center text-center">
-                <Title className="whitespace-pre-line text-center">
-                  {nav?.[2]}
-                </Title>
-                <Text className="text-color mt-[-1rem]">
-                  {t("friends.title")}
-                </Text>
-              </div>
-              <HeaderTitle className="text-left w-full">
-                {friendRank.total || 0} {t("public.friends")}
-              </HeaderTitle>
-              {friendRank.friends &&
-                friendRank.friends.length > 0 &&
-                friendRank.friends.map((item: any, index: number) => (
-                  <CardHeader
-                    key={index}
-                    className="w-full !p-0"
-                    avatar={
-                      <Avatar
-                        name={
-                          (item.invited_by_userName &&
-                            item.invited_by_userName
-                              .slice(0, 2)
-                              .toUpperCase()) ||
-                          ""
-                        }
-                        bg={stringToColor(item.invited_by_userName)}
-                        color={
-                          getTextColorForBackground(item.invited_by_userName)
-                            .textColor
-                        }
-                      />
-                    }
-                    action={
-                      <Text>
-                        +{semicolon(item.reward_amount || 0)}&nbsp;PIS
-                      </Text>
-                    }
-                    title={<Text>{item.invited_by_userName || ""}</Text>}
-                  />
-                ))}
+          <div className="grid w-full gap-6 overflow-hidden h-fit">
+            <div className="grid gap-6 w-100 justify-items-center text-center pb-[70px]">
+              <Title className="whitespace-pre-line text-center">
+                {nav?.[2]}
+              </Title>
+              <Text className="text-color mt-[-1rem]">
+                {t("friends.title")}
+              </Text>
             </div>
-            <Loader />
+            <HeaderTitle className="text-left w-full">
+              {friendRank.total || 0} {t("public.friends")}
+            </HeaderTitle>
+            {friendRank.friends &&
+              friendRank.friends.length > 0 &&
+              friendRank.friends.map((item: any, index: number) => (
+                <CardHeader
+                  key={index}
+                  className="w-full !p-0"
+                  avatar={
+                    <Avatar
+                      name={
+                        (item.invited_by_userName &&
+                          item.invited_by_userName.slice(0, 2).toUpperCase()) ||
+                        ""
+                      }
+                      bg={stringToColor(item.invited_by_userName)}
+                      color={
+                        getTextColorForBackground(item.invited_by_userName)
+                          .textColor
+                      }
+                    />
+                  }
+                  action={
+                    <Text>+{semicolon(item.reward_amount || 0)}&nbsp;PIS</Text>
+                  }
+                  title={<Text>{item.invited_by_userName || ""}</Text>}
+                />
+              ))}
           </div>
-
-          <div className="w-full bg-[#0b141a] sticky bottom-[0] z-1 h-[70px] flex items-center">
-            <Button onClick={() => setOpen(true)} className="w-full">
-              {t("public.inviteFriends")}
-            </Button>
-          </div>
+          <Loader />
         </div>
       </Box>
+      <div className="w-full bg-[#0b141a]  sticky  bottom-[0rem] z-1 h-[70px] flex items-center px-4">
+        <Button onClick={() => setOpen(true)} className="w-full">
+          {t("public.inviteFriends")}
+        </Button>
+      </div>
     </>
   );
 }
