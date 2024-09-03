@@ -9,7 +9,5 @@ git remote add origin $remote_url
 
 git pull 
 
-read -p "分支名: " branch 
-
-git branch --set-upstream-to=origin/$branch main
+git branch --set-upstream-to=origin/main main
 
