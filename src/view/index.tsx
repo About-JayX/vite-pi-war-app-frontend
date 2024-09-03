@@ -10,8 +10,7 @@ import { Card } from 'react-bootstrap'
 import Loader from '@/components/loader'
 import { useState } from 'preact/hooks'
 import Icon from '@/components/icon'
-import PullToRefresh from 'react-pull-to-refresh'
-
+import { PullRefresh, Toast } from 'react-vant'
 export default function Home() {
   // @ts-ignore
   const [loaderStatus, setLoaderStatus] = useState<boolean>(false)
@@ -93,60 +92,74 @@ export default function Home() {
       )
     })
   }
-
+  const onRefresh = (showToast: any) => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        if (showToast) {
+          Toast.info('刷新成功')
+        }
+        resolve(true)
+      }, 1000)
+    })
+  }
   return (
     <>
-      <Container maxWidth="xl" className="p-4">
-        <div className="grid gap-6 w-100 justify-items-center home-bg">
-          <div className="bg" />
-          <div className="home-bg-1" />
-          <div className="home-bg-2" />
-          <div className="home-bg-3" />
-          <div className="grid gap-6 justify-items-center z-[1]">
-            <div className="pi-war-home-logo w-[14rem] h-[14rem]">
-              <div className="logo-1" />
-              <div className="logo-2" />
-              <div className="logo-3" />
+      <PullRefresh
+        onRefresh={() => onRefresh(true)}
+        onRefreshEnd={() => console.log('onRefreshEnd')}
+      >
+        <Container maxWidth="xl" className="p-4">
+          <div className="grid gap-6 w-100 justify-items-center home-bg">
+            <div className="bg" />
+            <div className="home-bg-1" />
+            <div className="home-bg-2" />
+            <div className="home-bg-3" />
+            <div className="grid gap-6 justify-items-center z-[1]">
+              <div className="pi-war-home-logo w-[14rem] h-[14rem]">
+                <div className="logo-1" />
+                <div className="logo-2" />
+                <div className="logo-3" />
+              </div>
+              <Title className="pi-war-text-color mt-[-1rem]">
+                {semicolon(
+                  (userReward &&
+                    userReward.userAccountInfo &&
+                    userReward.userAccountInfo.gold) ||
+                    0
+                )}
+                &nbsp;PIS
+              </Title>
             </div>
-            <Title className="pi-war-text-color mt-[-1rem]">
-              {semicolon(
-                (userReward &&
-                  userReward.userAccountInfo &&
-                  userReward.userAccountInfo.gold) ||
-                  0
-              )}
-              &nbsp;PIS
-            </Title>
+            <Card className="w-full card binding-card-bg">
+              <CardContent className="text-center !pb-0">
+                <Text className="whitespace-pre-line">{t('home.text')}</Text>
+              </CardContent>
+              <CardActions className="gap-2">
+                {homeBntLang.map((item: any, index: number) => (
+                  <Button
+                    key={index}
+                    className="!m-0"
+                    onClick={() => {
+                      window.open(item.url)
+                    }}
+                  >
+                    {item.name}
+                  </Button>
+                ))}
+              </CardActions>
+            </Card>
+            <HeaderTitle className="text-left w-full">
+              {t('public.myRewards')}
+            </HeaderTitle>
+            {userReward &&
+            userReward.activityLogs &&
+            userReward.activityLogs.length
+              ? rewardLogs()
+              : ''}
+            <Loader />
           </div>
-          <Card className="w-full card binding-card-bg">
-            <CardContent className="text-center !pb-0">
-              <Text className="whitespace-pre-line">{t('home.text')}</Text>
-            </CardContent>
-            <CardActions className="gap-2">
-              {homeBntLang.map((item: any, index: number) => (
-                <Button
-                  key={index}
-                  className="!m-0"
-                  onClick={() => {
-                    window.open(item.url)
-                  }}
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </CardActions>
-          </Card>
-          <HeaderTitle className="text-left w-full">
-            {t('public.myRewards')}
-          </HeaderTitle>
-          {userReward &&
-          userReward.activityLogs &&
-          userReward.activityLogs.length
-            ? rewardLogs()
-            : ''}
-          <Loader />
-        </div>
-      </Container>
+        </Container>
+      </PullRefresh>
     </>
   )
 }
