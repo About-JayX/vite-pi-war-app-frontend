@@ -16,7 +16,6 @@ import { semicolon } from '@/utils'
 import { FaRegPaste } from 'react-icons/fa6'
 import Button from '@/components/button'
 import Loader from '@/components/loader'
-import PullToRefresh from 'react-pull-to-refresh'
 
 export default function Airdrops() {
   const { t } = useTranslation()
