@@ -132,7 +132,7 @@ export const initData = async (
         : await item.callback()
 
       if (result.success) {
-        re({ name: item.name, result: result.data })
+        re({ name: item.name, result: result.data, params: item.params })
       } else {
         re({ name: item.name, result: null })
       }
@@ -173,11 +173,13 @@ export const initData = async (
         break
       }
       case 'inviteRank': {
-        dispatch(updateInviteRank(item.result))
+        const nResult = Object.assign(item.params, item.result)
+        dispatch(updateInviteRank(nResult))
         break
       }
       case 'friendRank': {
-        dispatch(updateFriendRank(item.result))
+        const nResult = Object.assign(item.params, item.result)
+        dispatch(updateFriendRank(nResult))
         break
       }
       case 'bindPid': {

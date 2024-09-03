@@ -21,26 +21,7 @@ export const TelegramContext = createContext<{
   }
 }>({})
 
-const initInfo = import.meta.env.DEV
-  ? {
-      initData:
-        'user=%7B%22id%22%3A6350461487%2C%22first_name%22%3A%22Jay%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22About_JayX%22%2C%22language_code%22%3A%22zh-hans%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-7615271304887599165&chat_type=sender&auth_date=1725265651&hash=215de290da2d334c7d5294076e5bf25b4902cfbe61959ba5a699b637f99f27a2',
-      initDataUnsafe: {
-        user: {
-          id: 6350461487,
-          first_name: 'Jay',
-          last_name: '',
-          username: 'About_JayX',
-          language_code: 'zh-hans',
-          allows_write_to_pm: true,
-        },
-        chat_instance: '-7615271304887599165',
-        chat_type: 'sender',
-        auth_date: '1725265651',
-        hash: '215de290da2d334c7d5294076e5bf25b4902cfbe61959ba5a699b637f99f27a2',
-      },
-    }
-  : {}
+const initInfo = JSON.parse(import.meta.env.VITE_TELEGRAM_INFO || {})
 
 export const Telegram = ({ children }: { children?: React.ReactNode }) => {
   // const useViewport = useViewportRaw(true)?.result;

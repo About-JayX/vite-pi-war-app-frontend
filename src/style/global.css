@@ -63,12 +63,10 @@ body {
   &:active {
     transform: scale(1.03);
   }
-
 }
 
 .rv-pull-refresh {
   @apply mt-[-5rem] h-screen overflow-y-scroll;
-
 }
 
 .rv-pull-refresh::-webkit-scrollbar {
