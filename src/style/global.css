@@ -66,11 +66,8 @@ body {
 }
 
 .rv-pull-refresh {
-  @apply mt-[-5rem] h-screen overflow-y-scroll;
-}
+  @apply  h-[calc(100vh-6rem)] overflow-y-scroll;
 
-.rv-pull-refresh::-webkit-scrollbar {
-  display: none;
 }
 
 * {
