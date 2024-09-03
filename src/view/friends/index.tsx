@@ -9,7 +9,6 @@ import Loader from '@/components/loader'
 import Share from './share'
 import { useState } from 'preact/hooks'
 import { Avatar } from '../leaderboard'
-import PullToRefresh from 'react-pull-to-refresh'
 
 export default function Friends() {
   const { t } = useTranslation()
