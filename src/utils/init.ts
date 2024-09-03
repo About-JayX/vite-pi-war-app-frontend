@@ -93,7 +93,7 @@ export const initData = async (
       callback: api.user.inviteRankAPI,
       params: {
         page: 1,
-        pageSize: 500,
+        pageSize: 10,
       },
     },
     {
@@ -101,7 +101,7 @@ export const initData = async (
       callback: api.user.friendRankAPI,
       params: {
         page: 1,
-        pageSize: 500,
+        pageSize: 10,
       },
     },
     {
