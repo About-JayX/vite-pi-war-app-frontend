@@ -112,17 +112,12 @@ export default function Friends() {
             <Loader />
           </div>
 
-          <div className="w-full bg-[#0b141a] sticky bottom-[0] z-1 h-[70px] flex items-center">
-            <Button onClick={() => setOpen(true)} className="w-full">
-              {t('public.inviteFriends')}
-            </Button>
-          </div>
           <Loader />
         </div>
       </Box>
       <div className="w-full bg-[#0b141a]  sticky  bottom-[-1px] z-1 h-[70px] flex items-center px-4">
         <Button onClick={() => setOpen(true)} className="w-full">
-          {t("public.inviteFriends")}
+          {t('public.inviteFriends')}
         </Button>
       </div>
     </>
