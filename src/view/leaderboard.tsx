@@ -147,6 +147,7 @@ export default function Leaderboard() {
           {inviteRank.total || 0} {t('public.holders')}
         </HeaderTitle>
         <List
+          loadingText={t('message.refresh.loading')}
           offset={100}
           onLoad={loadData}
           finished={finished}

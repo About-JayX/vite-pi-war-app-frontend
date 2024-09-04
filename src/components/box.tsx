@@ -18,6 +18,7 @@ export default function Box({ children }: { children?: React.ReactNode }) {
       console.log(error, 'err_')
     }
   }
+
   return (
     <PullRefresh
       onRefresh={() => onRefresh()}

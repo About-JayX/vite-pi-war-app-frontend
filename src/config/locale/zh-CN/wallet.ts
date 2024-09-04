@@ -1,4 +1,4 @@
 export default {
-    title: '连接钱包',
+    title: '連接錢包',
     text: '選擇錢包，進行連接并绑定'
 };

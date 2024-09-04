@@ -72,6 +72,7 @@ export default function Friends() {
                 {friendRank.total || 0} {t('public.friends')}
               </HeaderTitle>
               <List
+                loadingText={t('message.refresh.loading')}
                 onLoad={loadData}
                 finished={finished}
                 className="grid gap-6 w-100 justify-items-center"
