@@ -277,7 +277,7 @@ const Steps = ({
                   className="w-100"
                   onClick={() => onChange && onChange(2)}
                 >
-                  Continue
+                  {t('steps.continue')}
                 </Button>
               )}
           </div>

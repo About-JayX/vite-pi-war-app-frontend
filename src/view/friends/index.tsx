@@ -76,7 +76,6 @@ export default function Friends() {
                 finished={finished}
                 className="grid gap-6 w-100 justify-items-center"
               >
-                {' '}
                 {friendRank.friends &&
                   friendRank.friends.length > 0 &&
                   friendRank.friends.map((item: any, index: number) => (
