@@ -93,13 +93,14 @@ const Steps = ({
         (result.data && result.data.authToken) || ''
       )
 
-      !result.data.isNewUser &&
-        (await initData(dispatch, postData, () => {
-          setInitLock(false)
-        }))
+      // !result.data.isNewUser &&
+      //   (await initData(dispatch, postData, () => {
+      //     setInitLock(false)
+      //   }))
 
-      result.data.isNewUser && onChange && onChange(1)
-      dispatch(updateNewUser(result.data && result.data.isNewUser))
+      // result.data.isNewUser && 
+      onChange && onChange(1)
+      // dispatch(updateNewUser(result.data && result.data.isNewUser))
     } catch (error) {
       console.log(error, 'error_')
     }
@@ -312,7 +313,7 @@ const Steps = ({
               {t('steps.yearAgo')}
             </Text>
           </div>
-          <Text className="whitespace-pre-line">
+          <Text className="whitespace-pre-line mb-8">
             {/* @ts-ignore */}
             {t('steps.steps3.text2', { returnObjects: true })?.[0]}{' '}
             {user?.id || ''}. {'\n'} {/* @ts-ignore */}
@@ -404,11 +405,11 @@ const Steps = ({
                 </defs>
               </svg>
             </div>
-            <Text className="!text-[1.6rem]">
+            <Text className="!text-[1.6rem] mt-6">
               {semicolon(telegramUserData.gold) || 0} PIS
             </Text>
           </div>
-          <div className="whitespace-pre-line">{t('steps.steps4.text2')}</div>
+          <div className="whitespace-pre-line mb-6">{t('steps.steps4.text2')}</div>
           <div class="!bg-black m-[-1rem]  w-full sticky bottom-0 z-1 !mb-2">
             <Button
               className="w-100"
