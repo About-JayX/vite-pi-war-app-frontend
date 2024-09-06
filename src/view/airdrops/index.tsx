@@ -112,7 +112,7 @@ export default function Airdrops() {
               data={[
                 { label: 'SOL', value: 'Solana' },
                 { label: 'ETH/BSC', value: 'ETH/BSC' },
-                { label: 'Pi NET', value: 'PiBrowser' },
+                { label: 'Pi', value: 'PiBrowser' },
               ]}
             />
             {bindingMethod === 'Solana' || bindingMethod === 'ETH/BSC' ? (
