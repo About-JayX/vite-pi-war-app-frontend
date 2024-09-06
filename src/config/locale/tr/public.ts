@@ -19,8 +19,10 @@ export default {
     bntText: "Pi War 𝜋",
   },
   bindWallet: "Cüzdanı Bağla",
-  copyInviteLink: "Kopyala",
-  shareInviteLink: "Paylaş",
+  copyInviteLink: "Davet Linkini Kopyala",
+  shareInviteLink: "Davet Linkini Paylaş",
   bindingRewards: "Bağlama Ödülleri",
-  bindingCode: "Bağlama Kodu Girin",
+  bindingCode: "Bağlama Kodunu Girin",
+  erc20WalletBinding: "ERC20 Cüzdan Bağlama",
+  solanaWalletBinding: "Solana Cüzdan Bağlama",
 };

@@ -60,14 +60,30 @@ body {
   font-size: 11px !important;
 }
 
+@keyframes bnt-start {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .bnt-box {
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transform: scale(1);
   cursor: pointer;
-  &:active,
-  &:hover {
-    transform: scale(1.026);
+
+
+  &:active {
+    animation: bnt-start 0.5s ease forwards;
+    -webkit-animation: bnt-start 0.5s ease forwards;
   }
 }
 

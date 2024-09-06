@@ -19,8 +19,10 @@ export default {
     bntText: "Pi War 𝜋",
   },
   bindWallet: "ผูกที่อยู่",
-  copyInviteLink: "คัดลอก",
-  shareInviteLink: "แชร์",
+  copyInviteLink: "คัดลอกลิงก์เชิญ",
+  shareInviteLink: "แชร์ลิงก์เชิญ",
   bindingRewards: "รางวัลการผูก",
   bindingCode: "กรอกรหัสผูก",
+  erc20WalletBinding: "ผูกกระเป๋าเงิน ERC20",
+  solanaWalletBinding: "ผูกกระเป๋าเงิน Solana",
 };

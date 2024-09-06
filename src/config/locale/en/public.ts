@@ -23,4 +23,6 @@ export default {
   shareInviteLink: "Share",
   bindingRewards: "Binding Rewards",
   bindingCode: "Enter Binding Code",
+  erc20WalletBinding: "Erc20 Wallet Binding",
+  solanaWalletBinding: "Solana Wallet Binding",
 };
