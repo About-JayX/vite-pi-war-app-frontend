@@ -1,18 +1,18 @@
-'use client'
-import { Text } from '../text'
+"use client";
+import { Text } from "../text";
 // import { Text } from "../text";
-import './index.css'
+import "./index.css";
 
 const BntBox = ({
   children,
   onClick,
-  className = '',
+  className = "",
   disabled = false,
 }: {
-  children?: React.ReactNode
-  onClick?: () => void
-  className?: string
-  disabled?: boolean
+  children?: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+  disabled?: boolean;
 }) => {
   return (
     <div
@@ -143,23 +143,29 @@ const BntBox = ({
         <Text className="!text-[14px]">{children}</Text>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default function Button({
   children,
   onClick,
-  className = '',
+  className = "",
   disabled = false,
+  loading = false,
 }: {
-  children?: React.ReactNode
-  onClick?: () => void
-  className?: string
-  disabled?: boolean
+  children?: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+  disabled?: boolean;
+  loading?: boolean;
 }) {
   return (
-    <BntBox onClick={onClick} className={className} disabled={disabled}>
-      {children}
+    <BntBox
+      onClick={loading ? () => {} : onClick}
+      className={className}
+      disabled={loading || disabled}
+    >
+      {loading ? <div className="loader w-[26px] h-[26px]" /> : children}
     </BntBox>
-  )
+  );
 }
