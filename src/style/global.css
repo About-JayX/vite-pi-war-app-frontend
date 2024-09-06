@@ -40,7 +40,7 @@ body {
 
 .MuiButtonBase-root,
 .MuiTouchRipple-root {
-  @apply !bg-transparent;
+  @apply hidden;
 }
 
 .hide-scrollbar {
@@ -57,16 +57,17 @@ body {
 }
 
 .MuiBottomNavigationAction-label {
-  font-size: 12px !important;
+  font-size: 11px !important;
 }
 
 .bnt-box {
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transform: scale(1);
-
-  &:active {
-    transform: scale(1.03);
+  cursor: pointer;
+  &:active,
+  &:hover {
+    transform: scale(1.026);
   }
 }
 
