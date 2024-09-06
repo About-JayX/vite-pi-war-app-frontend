@@ -30,7 +30,3 @@ export interface IfindPid {}
 export interface IfindAddress {
   type: string
 }
-
-export interface IbindPid {
-  pid: string
-}

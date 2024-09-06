@@ -1,6 +1,5 @@
 import request from '@/request'
 import {
-  IbindPid,
   IfindAddress,
   IfindPid,
   IFriendRank,
@@ -31,16 +30,9 @@ export const friendRankAPI = (data?: IFriendRank) =>
 export const findAddressAPI = (data?: IfindAddress) =>
   request.post('/authorize-Bind/find-address', data)
 
-export const findPidAPI = (data?: IfindPid) =>
-  request.post('/authorize-Bind/find-pid', data)
+export const findCodeAPI = (data?: IfindPid) =>
+  request.post('/authorize-Bind/find-code', data)
 
-export const bindPidAPI = (data?: IbindPid) =>
-  request.post('/authorize-Bind/bind-pid', data)
-
-export const bindWallentAPI = (
-  type?: string,
-  data?: string,
-  token?: string
-) => {
-  return `${import.meta.env.VITE_WEBAPP_URL}?t=${type}&c=${data}&v=${token}`
+export const bindWallentAPI = (code?: string) => {
+  return `${import.meta.env.VITE_WEBAPP_URL}?&v=${code}`
 }

@@ -105,23 +105,9 @@ export const initData = async (
       },
     },
     {
-      name: 'bindPid',
-      callback: api.user.findPidAPI,
+      name: 'bindCode',
+      callback: api.user.findCodeAPI,
       params: '',
-    },
-    {
-      name: 'ercAddress',
-      callback: api.user.findAddressAPI,
-      params: {
-        type: 'erc20',
-      },
-    },
-    {
-      name: 'solAddress',
-      callback: api.user.findAddressAPI,
-      params: {
-        type: 'solana',
-      },
     },
   ]
 
@@ -140,7 +126,7 @@ export const initData = async (
   })
 
   const results = await Promise.all(pReqls)
-  const bindStatus: any = {}
+  let bindStatus: any = {}
   results.forEach((item: any) => {
     switch (item.name) {
       case 'userFun': {
@@ -182,22 +168,13 @@ export const initData = async (
         dispatch(updateFriendRank(nResult))
         break
       }
-      case 'bindPid': {
-        bindStatus.pid = item.result || null
-        break
-      }
-      case 'ercAddress': {
-        bindStatus.erc = item.result || null
-        break
-      }
-      case 'solAddress': {
-        bindStatus.sol = item.result || null
+      case 'bindCode': {
+        bindStatus = item.result
         break
       }
 
       default: {
         console.log('not found')
-
         break
       }
     }
