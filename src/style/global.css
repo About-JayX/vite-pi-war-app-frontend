@@ -8,7 +8,7 @@ body {
 }
 
 body {
-  @apply grid grid-flow-row grid-rows-[calc(100%-6rem)_auto];
+  @apply grid grid-flow-row grid-rows-[calc(100%-5rem)_auto];
 }
 
 .pi-war-text-color {
@@ -35,7 +35,12 @@ body {
 }
 
 .MuiBottomNavigation-root {
-  @apply !h-[6rem];
+  @apply !h-[5rem];
+}
+
+.MuiButtonBase-root,
+.MuiTouchRipple-root {
+  @apply !bg-transparent;
 }
 
 .hide-scrollbar {
@@ -66,7 +71,7 @@ body {
 }
 
 .rv-pull-refresh {
-  @apply  h-[calc(100vh-6rem)] overflow-y-scroll;
+  @apply h-[calc(100vh-6rem)] overflow-y-scroll;
 
 }
 
