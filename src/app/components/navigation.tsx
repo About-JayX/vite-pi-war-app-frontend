@@ -45,10 +45,12 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
     path: `/:lang(${Object.keys(lang).join("|")})${route.path}`,
   }));
 
-  const [value, setValue] = useState(getPathWithoutLang(router[0].path));
-
+  const [value, setValue] = useState(router[0].path);
+  
   // 获取路径中的语言部分
   function getPathWithoutLang(path: any) {
+   
+    
     const parts = path.split("/");
     return "/" + parts.slice(2).join("/");
   }
@@ -57,6 +59,8 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
     <BottomNavigation
       value={value}
       onChange={(_event, newValue) => {
+        console.log("newValue",newValue);
+        
         const filteredValue = getPathWithoutLang(newValue);
         route(filteredValue, true);
         setValue(filteredValue);
