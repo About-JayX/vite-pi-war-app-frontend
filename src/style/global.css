@@ -8,7 +8,7 @@ body {
 }
 
 body {
-  @apply grid grid-flow-row grid-rows-[calc(100%-5rem)_auto];
+  @apply grid grid-flow-row grid-rows-[calc(100%-4rem)_auto] pb-[env(safe-area-inset-bottom)];
 }
 
 .pi-war-text-color {
@@ -35,12 +35,12 @@ body {
 }
 
 .MuiBottomNavigation-root {
-  @apply !h-[5rem];
+  @apply !h-[4rem];
 }
 
 .MuiButtonBase-root,
 .MuiTouchRipple-root {
-  @apply hidden;
+  /* @apply hidden; */
 }
 
 .hide-scrollbar {

@@ -14,7 +14,7 @@ export default {
   update: "Updating",
   updateText: "Pi War App is updating...",
   telegram: {
-    text: "Please open in Telegram",
+    text: "Please Open In Telegram",
     url: "https://t.me/pi_war_bot/app",
     bntText: "Pi War 𝜋",
   },
@@ -23,6 +23,6 @@ export default {
   shareInviteLink: "Share",
   bindingRewards: "Binding Rewards",
   bindingCode: "Enter Binding Code",
-  erc20WalletBinding: "Erc20 Wallet Binding",
-  solanaWalletBinding: "Solana Wallet Binding",
+  erc20WalletBinding: "EVM Wallet Binding",
+  solanaWalletBinding: "SOL Wallet Binding",
 };

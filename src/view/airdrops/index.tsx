@@ -112,7 +112,7 @@ export default function Airdrops() {
               data={[
                 { label: 'SOL', value: 'Solana' },
                 { label: 'ETH/BSC', value: 'ETH/BSC' },
-                { label: 'Pi NET', value: 'PiBrowser' },
+                { label: 'Pi', value: 'PiBrowser' },
               ]}
             />
             {bindingMethod === 'Solana' || bindingMethod === 'ETH/BSC' ? (
@@ -167,7 +167,7 @@ export default function Airdrops() {
                     <div className="grid self-center">
                       <Text>
                         {item.key === 'Erc20 Wallet Binding' &&
-                          t('public.erc20WalletBinding')}{' '}
+                          t('public.erc20WalletBinding')}
                         {item.key === 'Solana Wallet Binding' &&
                           t('public.solanaWalletBinding')}
                       </Text>

@@ -43,7 +43,9 @@ export default function Wallet({
       text: "Bitget",
       src: "/bitget.png",
       click: () => {
-        window.open(`https://bkcode.vip?action=dapp&url=${encodeURIComponent(getUrl())}`);
+        window.open(
+          `https://bkcode.vip?action=dapp&url=${encodeURIComponent(getUrl())}`
+        );
       },
     },
     {
@@ -52,6 +54,17 @@ export default function Wallet({
       click: () => {
         window.open(
           `https://phantom.app/ul/browse/${encodeURIComponent(
+            getUrl()
+          )}?ref=${encodeURIComponent(getUrl())}`
+        );
+      },
+    },
+    {
+      text: "Solflare",
+      src: "/solflare.png",
+      click: () => {
+        window.open(
+          `https://solflare.com/ul/v1/browse/${encodeURIComponent(
             getUrl()
           )}?ref=${encodeURIComponent(getUrl())}`
         );
@@ -70,17 +83,7 @@ export default function Wallet({
         window.open(`tpdapp://open?params=${url}`);
       },
     },
-    {
-      text: "Solflare",
-      src: "/solflare.png",
-      click: () => {
-        window.open(
-          `https://solflare.com/ul/v1/browse/${encodeURIComponent(
-            getUrl()
-          )}?ref=${encodeURIComponent(getUrl())}`
-        );
-      },
-    },
+
     {
       text: "copy",
       src: "/copy.png",
@@ -103,6 +106,8 @@ export default function Wallet({
               .filter((item) =>
                 bindingMethod === "ETH/BSC"
                   ? item.text !== "Phantom" && item.text !== "Solflare"
+                  : item || bindingMethod === "Solana"
+                  ? item.text !== "MateMask"
                   : item
               )
               .map((item, index) => (
