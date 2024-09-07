@@ -3,30 +3,30 @@
 //   useMiniAppRaw,
 //   useViewportRaw,
 // } from "@telegram-apps/sdk-react";
-import { createContext, Fragment } from 'preact'
-import { useContext, useEffect, useMemo, useState } from 'preact/hooks'
-import type { ITelegramUser, IWebApp } from '@/provider/telegram/type'
+import { createContext, Fragment } from "preact";
+import { useContext, useEffect, useMemo, useState } from "preact/hooks";
+import type { ITelegramUser, IWebApp } from "@/provider/telegram/type";
 
 export const TelegramContext = createContext<{
-  webApp?: IWebApp
-  user?: ITelegramUser
+  webApp?: IWebApp;
+  user?: ITelegramUser;
   postData?: {
-    initData: string
+    initData: string;
     initDataUnsafe: {
-      query_id: string
-      user: ITelegramUser
-      auth_date: string
-      hash: string
-    }
-  }
-}>({})
-const initInfo = JSON.parse(import.meta.env.VITE_TELEGRAM_INFO || '{}')
+      query_id: string;
+      user: ITelegramUser;
+      auth_date: string;
+      hash: string;
+    };
+  };
+}>({});
+const initInfo = JSON.parse(import.meta.env.VITE_TELEGRAM_INFO || "{}");
 export const Telegram = ({ children }: { children?: React.ReactNode }) => {
   // const useViewport = useViewportRaw(true)?.result;
   // const useMiniApp = useMiniAppRaw(true)?.result;
 
-  const [webApp, setWebApp] = useState<IWebApp | null>(null)
-  const [scriptLoaded, setScriptLoaded] = useState(false)
+  const [webApp, setWebApp] = useState<IWebApp | null>(null);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   // useEffect(() => {
   //   if (useViewport) {
@@ -36,25 +36,27 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
   // }, [useViewport, useMiniApp]);
 
   useEffect(() => {
-    let app = (window as any).Telegram?.WebApp
+    let app = (window as any).Telegram?.WebApp;
 
-    app = { ...app, ...initInfo } //测试
-
+    app = { ...app, ...initInfo }; //测试
+    
     if (app && app.ready) {
+      console.log("app",app);
+      
       // app.requestWriteAccess()
       // app.setBackgroundColor('#000000')
       // app.setHeaderColor('#000000')
-      app.setHeaderColor('#141C2D')
-      app.ready()
-      app.expand()
+      app.setHeaderColor("#141C2D");
+      app.ready();
+      app.expand();
       // const container: any = document.querySelector('.html')
 
       // container.addEventListener('scroll', () => {
       //   app.expand() // 确保窗口始终固定
       // })
-      setWebApp(app)
+      setWebApp(app);
     }
-  }, [scriptLoaded])
+  }, [scriptLoaded]);
 
   const value = useMemo(() => {
     return webApp
@@ -66,8 +68,8 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
             initDataUnsafe: webApp.initDataUnsafe,
           },
         }
-      : {}
-  }, [webApp])
+      : {};
+  }, [webApp]);
 
   return (
     <Fragment>
@@ -80,15 +82,15 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
         {webApp ? children : <Fragment />}
       </TelegramContext.Provider>
     </Fragment>
-  )
-}
+  );
+};
 
 export default function TelegramProvider({
   children,
 }: {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }) {
-  return <Telegram>{children}</Telegram>
+  return <Telegram>{children}</Telegram>;
 }
 
-export const useTelegram = () => useContext(TelegramContext)
+export const useTelegram = () => useContext(TelegramContext);

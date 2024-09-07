@@ -7,5 +7,8 @@ export default {
         pulling: "Tarik ke bawah untuk menyegar...",
         release: "Lepaskan untuk menyegar...",
         loading: "Memuatkan..."
-    }
+    },
+    piBrowser:{
+        error:"Binding code error"
+      }
 };

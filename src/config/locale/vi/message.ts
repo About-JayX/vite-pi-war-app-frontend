@@ -7,5 +7,8 @@ export default {
         pulling: "Kéo xuống để làm mới...",
         release: "Nhả để làm mới...",
         loading: "Đang tải..."
-    }
+    },
+    piBrowser:{
+        error:"Binding code error"
+      }
 };

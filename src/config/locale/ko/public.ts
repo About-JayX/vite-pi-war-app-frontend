@@ -25,5 +25,6 @@ export default {
   bindingCode: "바인딩 코드를 입력하세요",
   erc20WalletBinding: "EVM 지갑 바인딩",
   solanaWalletBinding: "SOL 지갑 바인딩",
-  pidBinding:"Pid Binding"
+  pidBinding:"Pid Binding",
+  bind:"Bind"
 };

@@ -25,5 +25,6 @@ export default {
   bindingCode: "輸入綁定碼",
   erc20WalletBinding: "EVM 錢包綁定",
   solanaWalletBinding: "SOL 錢包綁定",
-  pidBinding:"Pid Binding"
+  pidBinding: "Pid Binding",
+  bind: "Bind",
 };

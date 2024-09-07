@@ -8,4 +8,7 @@ export default {
     release: "Release to refresh...",
     loading: "Loading...",
   },
+  piBrowser:{
+    error:"Binding code error"
+  }
 };
