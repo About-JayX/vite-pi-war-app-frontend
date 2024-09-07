@@ -77,7 +77,7 @@ export default function Navigation({ onClick }: { onClick?: () => void }) {
               label={itme.name}
               value={itme.path}
               icon={itme.icon}
-              className={`!pb-[env(safe-area-inset-bottom)] !text-white ${
+              className={`!pb-[10px] !text-white ${
                 value === getPathWithoutLang(itme.path)
                   ? "opacity-100"
                   : "opacity-50"
