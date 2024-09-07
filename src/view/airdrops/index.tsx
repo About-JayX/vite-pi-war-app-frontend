@@ -2,7 +2,6 @@ import Input from "@/components/input";
 import { Text } from "@/components/text";
 import { HeaderTitle, Title } from "@/components/title";
 import { useAppSelector } from "@/store/hook";
-import { Container } from "@material-ui/core";
 import { useEffect, useState } from "preact/hooks";
 import { useTranslation } from "react-i18next";
 import api from "@/api";
@@ -13,7 +12,6 @@ import Icon from "@/components/icon";
 import SuccessPng from "@/assets/icon/success.png";
 import SuccessaPng from "@/assets/icon/success-a.png";
 import { semicolon } from "@/utils";
-import { FaRegPaste } from "react-icons/fa6";
 import Button from "@/components/button";
 import Loader from "@/components/loader";
 import Box from "@/components/box";
@@ -23,10 +21,11 @@ export default function Airdrops() {
   const { t } = useTranslation();
   // const { uid } = props?.searchParams
   const [bindingMethod, setBindingMethod] = useState<string>("Solana");
-  const [input, setInput] = useState<string>("");
+
   const { bindStatus, userReward } = useAppSelector((state) => state.user);
   const [walletOpen, setWalletOpen] = useState(false);
   const [bdLog, setBdLog] = useState([]);
+  const [bindpiModal,setBindpiModal] = useState(false)
 
   useEffect(() => {
     if (Object.keys(userReward).length) {
@@ -45,21 +44,7 @@ export default function Airdrops() {
   const getAddress = () => {
     return bindingMethod === "Solana" ? bindStatus.Sonala : bindStatus.Erc20;
   };
-  const onPaste = async () => {
-    try {
-      const pastedText = await navigator.clipboard.readText();
-
-      setInput(pastedText);
-
-      // if (!tSolAddress.test(pastedText)) {
-      //   MessageError("Binding Success");
-      // }
-      // 进行你需要的操作，例如更新状态或执行其他逻辑
-    } catch (err) {
-      console.error("Failed to read clipboard contents:", err);
-      // 处理错误情况，例如显示用户提示或执行备用方案
-    }
-  };
+  
 
   const ellipsisMiddle = (
     text: string,
@@ -85,7 +70,7 @@ export default function Airdrops() {
         getUrl={getUrl}
         bindingMethod={bindingMethod}
       />
-      <PiModal />
+      <PiModal open={bindpiModal} bindStatus={bindStatus} getUrl={getUrl} onHide={setBindpiModal}/>
       <Box>
         <div className="grid gap-6 w-100 justify-items-center text-center">
           <Title>{t("public.airdrops")}</Title>
@@ -143,20 +128,9 @@ export default function Airdrops() {
               )
             ) : (
               <>
-                <Input
-                  value={bindStatus.Pid ? bindStatus.Pid : input}
-                  disabled={bindStatus.Pid || false}
-                  placeholder={t("public.bindingCode")}
-                  onChange={(event) => {
-                    setInput(event.target.value);
-                  }}
-                  button={{
-                    // text: <FaRegPaste />,
-                    text: <div className="loader w-4 h-4" />,
-                    onClick: () => onPaste(),
-                    show: !bindStatus.Pid,
-                  }}
-                />
+                <Button onClick={() => setBindpiModal(true)}>
+                  {t("public.bind")}
+                </Button>
               </>
             )}
           </div>

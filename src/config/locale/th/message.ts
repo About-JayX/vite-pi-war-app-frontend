@@ -7,5 +7,8 @@ export default {
         pulling: "ดึงลงเพื่อรีเฟรช...",
         release: "ปล่อยเพื่อรีเฟรช...",
         loading: "กำลังโหลด..."
-    }
+    },
+    piBrowser:{
+        error:"Binding code error"
+      }
 };

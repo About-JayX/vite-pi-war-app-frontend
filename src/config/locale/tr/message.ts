@@ -7,5 +7,8 @@ export default {
         pulling: "Yenilemek için aşağı çekin...",
         release: "Yenilemek için bırakın...",
         loading: "Yükleniyor..."
-    }
+    },
+    piBrowser:{
+        error:"Binding code error"
+      }
 };

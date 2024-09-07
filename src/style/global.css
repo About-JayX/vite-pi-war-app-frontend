@@ -4,7 +4,8 @@
 
 html,
 body {
-  @apply overflow-hidden h-[calc(100vh-env(safe-area-inset-bottom))] !bg-black !text-white pb-[env(safe-area-inset-bottom)];
+  @apply overflow-hidden h-[calc(100vh-env(safe-area-inset-bottom))] !bg-black !text-white;
+  /* background: linear-gradient(180deg, #141C2D 0%, #0B1319 100%); */
 }
 
 body {
@@ -88,7 +89,7 @@ body {
 }
 
 .rv-pull-refresh {
-  @apply h-[calc(100vh-6rem)] overflow-y-scroll;
+  @apply h-[calc(100vh-4rem)] overflow-y-scroll;
 
 }
 

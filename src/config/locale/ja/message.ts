@@ -8,4 +8,7 @@ export default {
     release: "離して更新...",
     loading: "読み込み中...",
   },
+  piBrowser:{
+    error:"Binding code error"
+  }
 };

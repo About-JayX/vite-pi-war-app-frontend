@@ -25,5 +25,6 @@ export default {
   bindingCode: "ใส่รหัสการผูก",
   erc20WalletBinding: "ผูกกระเป๋า EVM",
   solanaWalletBinding: "ผูกกระเป๋า SOL",
-  pidBinding:"Pid Binding"
+  pidBinding:"Pid Binding",
+  bind:"Bind"
 };
