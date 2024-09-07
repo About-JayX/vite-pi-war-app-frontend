@@ -167,7 +167,7 @@ export default function Airdrops() {
                     <div className="grid self-center">
                       <Text>
                         {item.key === 'Erc20 Wallet Binding' &&
-                          t('public.erc20WalletBinding')}{' '}
+                          t('public.erc20WalletBinding')}
                         {item.key === 'Solana Wallet Binding' &&
                           t('public.solanaWalletBinding')}
                       </Text>
