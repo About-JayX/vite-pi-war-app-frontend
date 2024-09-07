@@ -25,4 +25,5 @@ export default {
   bindingCode: "Nhập mã liên kết",
   erc20WalletBinding: "Liên kết Ví EVM",
   solanaWalletBinding: "Liên kết Ví SOL",
+  pidBinding:"Pid Binding"
 };

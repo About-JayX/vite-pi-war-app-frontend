@@ -25,4 +25,5 @@ export default {
   bindingCode: "バインドコードを入力",
   erc20WalletBinding: "EVM ウォレットのバインド",
   solanaWalletBinding: "SOL ウォレットのバインド",
+  pidBinding:"Pid Binding"
 };

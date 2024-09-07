@@ -25,4 +25,5 @@ export default {
   bindingCode: "Bağlantı Kodunu Gir",
   erc20WalletBinding: "EVM Cüzdan Bağlantısı",
   solanaWalletBinding: "SOL Cüzdan Bağlantısı",
+  pidBinding:"Pid Binding"
 };

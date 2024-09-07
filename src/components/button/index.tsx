@@ -140,7 +140,7 @@ const BntBox = ({
         </svg>
       </div>
       <div className="absolute w-full h-full p-2 grid items-center justify-items-center">
-        <Text className="!text-[14px]">{children}</Text>
+        <Text className="!text-base">{children}</Text>
       </div>
     </div>
   );

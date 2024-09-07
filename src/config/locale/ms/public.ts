@@ -25,4 +25,5 @@ export default {
   bindingCode: "Masukkan Kod Pautan",
   erc20WalletBinding: "Pautan Dompet EVM",
   solanaWalletBinding: "Pautan Dompet SOL",
+  pidBinding:"Pid Binding"
 };

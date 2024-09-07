@@ -25,4 +25,5 @@ export default {
   bindingCode: "Enter Binding Code",
   erc20WalletBinding: "EVM Wallet Binding",
   solanaWalletBinding: "SOL Wallet Binding",
+  pidBinding:"Pid Binding"
 };
