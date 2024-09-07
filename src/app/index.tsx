@@ -315,7 +315,7 @@ const Steps = ({
               {t("steps.yearAgo")}
             </Text>
           </div>
-          <div className="grid gap-1">
+          <div className="grid gap-1 mb-6">
             <Text className="whitespace-pre-line !text-xl">
               {/* @ts-ignore */}
               {t("steps.steps3.text2", { returnObjects: true })?.[1]

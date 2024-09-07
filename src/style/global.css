@@ -8,7 +8,7 @@ body {
 }
 
 body {
-  @apply grid grid-flow-row grid-rows-[calc(100%-4rem)_auto] pb-[env(safe-area-inset-bottom)];
+  @apply grid grid-flow-row grid-rows-[calc(100%-4rem)_auto];
 }
 
 .pi-war-text-color {
@@ -99,4 +99,12 @@ body {
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+.modal-content{
+  @apply !z-10
+}
+
+.modal-header{
+  @apply !text-[rgba(255,255,255,0.65)]
 }
