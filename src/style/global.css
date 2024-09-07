@@ -4,8 +4,8 @@
 
 html,
 body {
-  @apply overflow-hidden h-[calc(100vh-env(safe-area-inset-bottom))] !text-white;
-  background: linear-gradient(180deg, #141C2D 0%, #0B1319 100%);
+  @apply overflow-hidden h-[calc(100vh-env(safe-area-inset-bottom))] !bg-black !text-white;
+  /* background: linear-gradient(180deg, #141C2D 0%, #0B1319 100%); */
 }
 
 body {
