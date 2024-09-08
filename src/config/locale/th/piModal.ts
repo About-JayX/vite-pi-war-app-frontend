@@ -1,8 +1,8 @@
 export default {
-  title: "Pi Browser",
-  text: "确认是否绑定",
-  piText:'点击跳转 PI 浏览器绑定',
-  ok: "Ok",
-  bindFunction1:"绑定方法-1",
-  bindFunction2:"绑定方法-2"
-};
+  title: 'Pi Browser',
+  text: 'ยืนยันว่าจะผูกหรือไม่',
+  piText: 'คลิกเพื่อไปที่ PI Browser เพื่อผูก',
+  ok: 'ตกลง',
+  bindFunction1: 'วิธีการผูก 1',
+  bindFunction2: 'วิธีการผูก 2',
+}

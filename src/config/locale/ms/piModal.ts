@@ -1,8 +1,8 @@
 export default {
-  title: "Pi Browser",
-  text: "确认是否绑定",
-  piText:'点击跳转 PI 浏览器绑定',
-  ok: "Ok",
-  bindFunction1:"绑定方法-1",
-  bindFunction2:"绑定方法-2"
-};
+  title: 'Pelayar Pi',
+  text: 'Sahkan sama ada untuk mengikat',
+  piText: 'Klik untuk lompat ke PI Browser untuk mengikat',
+  ok: 'Ok',
+  bindFunction1: 'Kaedah Pengikatan 1',
+  bindFunction2: 'Kaedah Pengikatan 2',
+}
