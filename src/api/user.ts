@@ -33,6 +33,9 @@ export const findAddressAPI = (data?: IfindAddress) =>
 export const findCodeAPI = (data?: IfindPid) =>
   request.post('/authorize-Bind/find-code', data)
 
+export const bindPidAPI = (data?: any) =>
+  request.post(`/authorize-Bind/bind-pid`, data)
+
 export const bindWallentAPI = (code?: string) => {
   return `${import.meta.env.VITE_WEBAPP_URL}?&v=${code}`
 }

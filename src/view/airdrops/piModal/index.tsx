@@ -1,13 +1,16 @@
-import Button from "@/components/button";
-import Icon from "@/components/icon";
-import Input from "@/components/input";
-import { MessageError } from "@/components/message";
-import Modals from "@/components/modal";
-import { Text } from "@/components/text";
-import { Title } from "@/components/title";
-import { useEffect, useState } from "preact/hooks";
-import { useTranslation } from "react-i18next";
-import { FaRegPaste } from "react-icons/fa6";
+import { bindPidAPI, findCodeAPI } from '@/api/user'
+import Button from '@/components/button'
+import Icon from '@/components/icon'
+import Input from '@/components/input'
+import { MessageError, MessageSuccess } from '@/components/message'
+import Modals from '@/components/modal'
+import { Text } from '@/components/text'
+import { Title } from '@/components/title'
+import { useAppDispatch } from '@/store/hook'
+import { updateBindStatus } from '@/store/user'
+import { useEffect, useState } from 'preact/hooks'
+import { useTranslation } from 'react-i18next'
+import { FaRegPaste } from 'react-icons/fa6'
 
 export default function PiBrowserModal({
   open = true,
@@ -15,96 +18,110 @@ export default function PiBrowserModal({
   bindStatus,
   getUrl,
 }: {
-  open?: boolean;
-  bindStatus: any;
-  onHide?: (status: boolean) => void;
-  getUrl?: () => void;
+  open?: boolean
+  bindStatus: any
+  onHide?: (status: boolean) => void
+  getUrl?: () => void
 }) {
-  const { t } = useTranslation();
+  const dispatch = useAppDispatch()
+  const { t } = useTranslation()
 
-  const [input, setInput] = useState<string>("");
-  const [load, setLoad] = useState(false);
-  const [codeStatus, setCodeStatus] = useState(false);
-  const [status, setStatus] = useState(false);
+  const [input, setInput] = useState<string>('')
+  const [load, setLoad] = useState(false)
+  const [codeStatus, setCodeStatus] = useState(false)
+  const [status, setStatus] = useState(false)
 
-  const url: any = getUrl && getUrl();
+  const url: any = getUrl && getUrl()
 
   const onPaste = async () => {
-    setLoad(true);
-    setCodeStatus(true);
+    setLoad(true)
     try {
-      const pastedText = await navigator.clipboard.readText();
-
-      setInput(pastedText);
+      const pastedText = await navigator.clipboard.readText()
+      setInput(pastedText)
 
       // if (!tSolAddress.test(pastedText)) {
       //   MessageError("Binding Success");
       // }
       // 进行你需要的操作，例如更新状态或执行其他逻辑
-
-      setCodeStatus(true);
-
-      MessageError(t("message.piBrowser"));
     } catch (err) {
-      console.error("Failed to read clipboard contents:", err);
+      console.error('Failed to read clipboard contents:', err)
+      MessageError(t('message.piBrowser.error'))
       // 处理错误情况，例如显示用户提示或执行备用方案
     }
-  };
+    setLoad(false)
+  }
 
+  const bindPid = async () => {
+    setStatus(true)
+
+    try {
+      const result = await bindPidAPI({ code: bindStatus.Code, pid: input })
+      if (result.success) {
+        MessageSuccess('bind success')
+        dispatch(updateBindStatus({ ...bindStatus, Code: input }))
+      } else {
+        MessageError('bind error')
+      }
+    } catch (error) {
+      MessageError('bind error')
+    }
+  }
   return (
     <Modals
       open={open}
       onHide={() => {
-        onHide && onHide(false);
-        setInput("");
-        setLoad(false);
-        setCodeStatus(false);
-        setStatus(false);
+        onHide && onHide(false)
+        setInput('')
+        setLoad(false)
+        setCodeStatus(false)
+        setStatus(false)
       }}
-      title={t("piModal.title")}
+      title={t('piModal.title')}
       body={
         <div className="grid gap-4 w-full items-center justify-items-center">
           {codeStatus ? (
             <div className="w-full grid gap-2 text-center">
               <Title className="!text-[1rem] !text-[#48B7F2]">
-                {t("piModal.text")}
+                {t('piModal.text')}
               </Title>
-              <Text className="!font-normal">(20xd2111d2f15465464656)</Text>
+              <Text className="!font-normal">({input.trim()})</Text>
               <Button
                 className="mt-[16px]"
-                onClick={() => setStatus(true)}
+                onClick={() => {
+                  bindPid()
+                }}
                 loading={status}
               >
-                {t("piModal.ok")}
+                {t('piModal.ok')}
               </Button>
             </div>
           ) : (
             <>
               <Text className="text-[#A7BBCA]">
-                {t("piModal.bindFunction1")}
+                {t('piModal.bindFunction1')}
               </Text>
               <a
                 href={
-                  url.startsWith("https://")
-                    ? url.replace("https://", "pi://")
+                  url.startsWith('https://')
+                    ? url.replace('https://', 'pi://')
                     : url
                 }
                 target="_blank"
               >
                 <Text className="flex items-center text-[#48B7F2]">
-                  {t("piModal.piText")} <Icon name="link" />
+                  {t('piModal.piText')} <Icon name="link" />
                 </Text>
               </a>
               <div className="border-[#A7BBCA] border-1 border-dashed w-full border-x-0 border-b-0 opacity-50" />
               <Text className="text-[#A7BBCA]">
-                {t("piModal.bindFunction2")}
+                {t('piModal.bindFunction2')}
               </Text>
               <Input
                 value={bindStatus.Pid ? bindStatus.Pid : input}
                 disabled={bindStatus.Pid || false}
-                placeholder={t("public.bindingCode")}
-                onChange={(event) => {
-                  setInput(event.target.value);
+                placeholder={t('public.bindingCode')}
+                onChange={event => {
+                  setInput(event.target.value)
                 }}
                 button={{
                   text: load ? (
@@ -116,10 +133,17 @@ export default function PiBrowserModal({
                   show: !bindStatus.Pid,
                 }}
               />
+              <Button
+                onClick={() => {
+                  setCodeStatus(true)
+                }}
+              >
+                bind
+              </Button>
             </>
           )}
         </div>
       }
     />
-  );
+  )
 }
