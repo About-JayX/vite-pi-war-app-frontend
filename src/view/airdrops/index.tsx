@@ -132,11 +132,13 @@ export default function Airdrops() {
               )
             ) : (
               <>
-                (
-                <Button onClick={() => setBindpiModal(true)}>
-                  {t('public.bind')}
-                </Button>
-                )
+                {bindStatus.Pid ? (
+                  <Text>{bindStatus.Pid}</Text>
+                ) : (
+                  <Button onClick={() => setBindpiModal(true)}>
+                    {t('public.bind')}
+                  </Button>
+                )}
               </>
             )}
           </div>
