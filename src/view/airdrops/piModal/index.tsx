@@ -59,7 +59,7 @@ export default function PiBrowserModal({
 
       if (result.success) {
         MessageSuccess('bind success')
-        dispatch(updateBindStatus({ ...bindStatus, Code: input }))
+        dispatch(updateBindStatus({ ...bindStatus, Pid: input }))
       } else {
         MessageError('bind error')
       }
