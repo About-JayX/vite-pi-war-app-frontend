@@ -6,6 +6,7 @@ import { MessageError, MessageSuccess } from '@/components/message'
 import Modals from '@/components/modal'
 import { Text } from '@/components/text'
 import { Title } from '@/components/title'
+import { useTelegram } from '@/provider/telegram'
 import { useAppDispatch } from '@/store/hook'
 import { updateBindStatus } from '@/store/user'
 import { useEffect, useState } from 'preact/hooks'
@@ -30,14 +31,16 @@ export default function PiBrowserModal({
   const [load, setLoad] = useState(false)
   const [codeStatus, setCodeStatus] = useState(false)
   const [status, setStatus] = useState(false)
-
+  const { webApp } = useTelegram() as any
   const url: any = getUrl && getUrl()
 
   const onPaste = async () => {
     setLoad(true)
     try {
-      const pastedText = await navigator.clipboard.readText()
-      setInput(pastedText)
+      const result = webApp && (await webApp.readTextFromClipboard())
+      console.log(result, '?')
+
+      // setInput(pastedText)
 
       // if (!tSolAddress.test(pastedText)) {
       //   MessageError("Binding Success");
@@ -60,12 +63,12 @@ export default function PiBrowserModal({
       if (result.success) {
         MessageSuccess('bind success')
         dispatch(updateBindStatus({ ...bindStatus, Pid: input }))
+        setCodeStatus(false)
+        onHide && onHide(false)
       } else {
         MessageError('bind error')
       }
     } catch (error) {
-      console.log(error, '???')
-
       MessageError('bind error')
     }
     setStatus(false)
