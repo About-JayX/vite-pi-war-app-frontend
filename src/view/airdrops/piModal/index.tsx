@@ -37,8 +37,10 @@ export default function PiBrowserModal({
   const onPaste = async () => {
     setLoad(true)
     try {
-      const result = webApp && (await webApp.readTextFromClipboard())
-      console.log(result, '?')
+      webApp &&
+        webApp.readTextFromClipboard((data: any) => {
+          console.log(data, 'data_')
+        })
 
       // setInput(pastedText)
 
