@@ -56,6 +56,7 @@ export default function PiBrowserModal({
 
     try {
       const result = await bindPidAPI({ code: bindStatus.Code, pid: input })
+
       if (result.success) {
         MessageSuccess('bind success')
         dispatch(updateBindStatus({ ...bindStatus, Code: input }))
@@ -63,8 +64,11 @@ export default function PiBrowserModal({
         MessageError('bind error')
       }
     } catch (error) {
+      console.log(error, '???')
+
       MessageError('bind error')
     }
+    setStatus(false)
   }
   return (
     <Modals
@@ -130,7 +134,8 @@ export default function PiBrowserModal({
                     <FaRegPaste />
                   ),
                   onClick: () => onPaste(),
-                  show: !bindStatus.Pid,
+                  show: true,
+                  // !bindStatus.Pid
                 }}
               />
               <Button
@@ -138,7 +143,7 @@ export default function PiBrowserModal({
                   setCodeStatus(true)
                 }}
               >
-                bind
+                {t('public.bind')}
               </Button>
             </>
           )}
