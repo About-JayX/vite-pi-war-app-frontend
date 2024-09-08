@@ -39,7 +39,7 @@ export default function PiBrowserModal({
     try {
       webApp &&
         webApp.readTextFromClipboard((data: any) => {
-          console.log(data, 'data_')
+          setInput(data)
         })
 
       // setInput(pastedText)
@@ -49,8 +49,6 @@ export default function PiBrowserModal({
       // }
       // 进行你需要的操作，例如更新状态或执行其他逻辑
     } catch (err) {
-      console.error('Failed to read clipboard contents:', err)
-      MessageError(t('message.piBrowser.error'))
       // 处理错误情况，例如显示用户提示或执行备用方案
     }
     setLoad(false)
@@ -63,15 +61,15 @@ export default function PiBrowserModal({
       const result = await bindPidAPI({ code: bindStatus.Code, pid: input })
 
       if (result.success) {
-        MessageSuccess('bind success')
+        MessageSuccess(t('message.bind.success'))
         dispatch(updateBindStatus({ ...bindStatus, Pid: input }))
         setCodeStatus(false)
         onHide && onHide(false)
       } else {
-        MessageError('bind error')
+        MessageError(t('message.bind.fail'))
       }
     } catch (error) {
-      MessageError('bind error')
+      MessageError(t('message.bind.fail'))
     }
     setStatus(false)
   }
