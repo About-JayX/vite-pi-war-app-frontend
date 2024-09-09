@@ -117,7 +117,7 @@ export default function PiBrowserModal({
               >
                 <Text
                   className="items-center text-[#48B7F2]"
-                  style={{ display: "ruby" }}
+                  style={{ display: "block", }}
                 >
                   {t("piModal.piText")} <Icon name="link" />
                 </Text>
