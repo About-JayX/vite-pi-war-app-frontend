@@ -1,11 +1,12 @@
-// import {
-//   SDKProvider,
-//   useMiniAppRaw,
-//   useViewportRaw,
-// } from "@telegram-apps/sdk-react";
+import {
+  SDKProvider,
+  useMiniAppRaw,
+  useViewportRaw,
+  useSwipeBehaviorRaw,
+} from "@telegram-apps/sdk-react";
 import { createContext, Fragment } from "preact";
 import { useContext, useEffect, useMemo, useState } from "preact/hooks";
-import type { ITelegramUser, IWebApp } from "@/provider/telegram/type";
+import type { ITelegramUser, IWebApp } from "./type";
 
 export const TelegramContext = createContext<{
   webApp?: IWebApp;
@@ -20,40 +21,30 @@ export const TelegramContext = createContext<{
     };
   };
 }>({});
+
 const initInfo = JSON.parse(import.meta.env.VITE_TELEGRAM_INFO || "{}");
+
 export const Telegram = ({ children }: { children?: React.ReactNode }) => {
-  // const useViewport = useViewportRaw(true)?.result;
-  // const useMiniApp = useMiniAppRaw(true)?.result;
+  const useViewport = useViewportRaw(true)?.result;
+  const useMiniApp = useMiniAppRaw(true)?.result;
+  const useSwipeBehavior = useSwipeBehaviorRaw(true)?.result;
+
+  useEffect(() => {
+    if (useViewport) {
+      // 设置小程序Header颜色
+      useMiniApp?.setHeaderColor("#141C2D");
+      // 禁用小程序向下滑动
+      useSwipeBehavior?.disableVerticalSwipe();
+    }
+  }, [useViewport, useMiniApp]);
 
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   if (useViewport) {
-  //     useMiniApp?.setHeaderColor("#000000");
-  //     useMiniApp?.setBgColor("#000000");
-  //   }
-  // }, [useViewport, useMiniApp]);
-
   useEffect(() => {
     let app = (window as any).Telegram?.WebApp;
-
-    app = { ...app, ...initInfo }; //测试
-    
+    app = { ...app, ...initInfo };
     if (app && app.ready) {
-      console.log("app",app);
-      
-      // app.requestWriteAccess()
-      // app.setBackgroundColor('#000000')
-      // app.setHeaderColor('#000000')
-      // app.setHeaderColor("#141C2D");
-      app.ready();
-      app.expand();
-      // const container: any = document.querySelector('.html')
-
-      // container.addEventListener('scroll', () => {
-      //   app.expand() // 确保窗口始终固定
-      // })
       setWebApp(app);
     }
   }, [scriptLoaded]);
@@ -70,18 +61,15 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
         }
       : {};
   }, [webApp]);
-
   return (
-    <Fragment>
-      <TelegramContext.Provider value={value}>
-        <script
-          src="https://telegram.org/js/telegram-web-app.js"
-          async={true}
-          onLoad={() => setScriptLoaded(true)}
-        />
-        {webApp ? children : <Fragment />}
-      </TelegramContext.Provider>
-    </Fragment>
+    <TelegramContext.Provider value={value}>
+      <script
+        src="https://telegram.org/js/telegram-web-app.js"
+        async={true}
+        onLoad={() => setScriptLoaded(true)}
+      />
+      {webApp ? children : <Fragment />}
+    </TelegramContext.Provider>
   );
 };
 
@@ -90,7 +78,11 @@ export default function TelegramProvider({
 }: {
   children?: React.ReactNode;
 }) {
-  return <Telegram>{children}</Telegram>;
+  return (
+    <SDKProvider debug>
+      <Telegram>{children}</Telegram>
+    </SDKProvider>
+  );
 }
 
 export const useTelegram = () => useContext(TelegramContext);
