@@ -134,16 +134,16 @@ export default function PiBrowserModal({
                 onChange={event => {
                   setInput(event.target.value)
                 }}
-                button={{
-                  text: load ? (
-                    <div className="loader w-4 h-4" />
-                  ) : (
-                    <FaRegPaste />
-                  ),
-                  onClick: () => onPaste(),
-                  show: true,
-                  // !bindStatus.Pid
-                }}
+                // button={{
+                //   text: load ? (
+                //     <div className="loader w-4 h-4" />
+                //   ) : (
+                //     <FaRegPaste />
+                //   ),
+                //   onClick: () => onPaste(),
+                //   show: true,
+                //   // !bindStatus.Pid
+                // }}
               />
               <Button
                 onClick={() => {
