@@ -45,6 +45,9 @@ export const Telegram = ({ children }: { children?: React.ReactNode }) => {
     let app = (window as any).Telegram?.WebApp;
     app = { ...app, ...initInfo };
     if (app && app.ready) {
+      app.setHeaderColor("#141C2D")
+      app.ready();
+      app.expand();
       setWebApp(app);
     }
   }, [scriptLoaded]);
