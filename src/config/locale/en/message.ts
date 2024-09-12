@@ -9,7 +9,7 @@ export default {
     loading: 'Loading...',
   },
   piBrowser: {
-    error: 'Binding code error',
+    error: 'Binding Code Error',
   },
   bind: {
     success: 'Bind Success',

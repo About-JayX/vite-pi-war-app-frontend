@@ -1,18 +1,18 @@
 export default {
   copy: {
-    success: 'Salinan Berjaya',
+    success: 'Salin berjaya',
   },
   refresh: {
-    success: 'Penyegaran Berjaya',
+    success: 'Segar semula berjaya',
     pulling: 'Tarik ke bawah untuk menyegar...',
     release: 'Lepaskan untuk menyegar...',
-    loading: 'Memuatkan...',
+    loading: 'Sedang memuat...',
   },
   piBrowser: {
-    error: 'Binding code error',
+    error: 'Ralat kod pengikatan',
   },
   bind: {
-    success: 'Berjaya Pautkan',
-    fail: 'Gagal Pautkan',
+    success: 'Pengikatan berjaya',
+    fail: 'Pengikatan gagal',
   },
 }

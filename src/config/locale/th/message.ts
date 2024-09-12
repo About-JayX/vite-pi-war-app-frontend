@@ -9,10 +9,10 @@ export default {
     loading: 'กำลังโหลด...',
   },
   piBrowser: {
-    error: 'Binding code error',
+    error: 'ข้อผิดพลาดรหัสการผูก',
   },
   bind: {
-    success: 'ผูกสำเร็จ',
-    fail: 'ผูกล้มเหลว',
+    success: 'การผูกสำเร็จ',
+    fail: 'การผูกล้มเหลว',
   },
 }
