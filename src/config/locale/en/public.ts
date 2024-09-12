@@ -2,7 +2,7 @@ export default {
   myRewards: 'My Rewards',
   telegramPremium: 'Premium Account',
   accountAge: 'Account Age',
-  invitedFriends: 'Invite & Shares',
+  invitedFriends: 'Invite & Share',
   leaderboard: 'Leaderboard',
   holders: 'Holders',
   friends: 'Friends',
@@ -14,7 +14,7 @@ export default {
   update: 'Updating',
   updateText: 'Pi War App is updating...',
   telegram: {
-    text: 'Please Open In Telegram',
+    text: 'Please open in Telegram',
     url: 'https://t.me/pi_war_bot/app',
     bntText: 'Pi War 𝜋',
   },
@@ -25,6 +25,6 @@ export default {
   bindingCode: 'Enter Binding Code',
   erc20WalletBinding: 'EVM Wallet Binding',
   solanaWalletBinding: 'SOL Wallet Binding',
-  pidBinding: 'Pid Binding',
+  pidBinding: 'Pi Network Binding',
   bind: 'Bind',
 }

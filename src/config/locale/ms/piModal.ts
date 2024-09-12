@@ -1,8 +1,8 @@
 export default {
-  title: 'Pelayar Pi',
-  text: 'Sahkan sama ada untuk mengikat',
-  piText: 'Klik untuk lompat ke PI Browser untuk mengikat',
-  ok: 'Ok',
-  bindFunction1: 'Kaedah Pengikatan 1',
-  bindFunction2: 'Kaedah Pengikatan 2',
+  title: 'Pautkan Pi Network',
+  text: 'Sahkan jika telah dipautkan',
+  piText: 'Alihkan ke Pi Browser untuk pautkan',
+  ok: 'Sahkan',
+  bindFunction1: 'Kaedah Pautan Satu',
+  bindFunction2: 'Kaedah Pautan Dua',
 }
