@@ -31,12 +31,14 @@
       user-select: none !important;
       touch-action: none !important;
     } */
-     *{
+    * {
       -webkit-touch-callout: none;
-     }
+    }
   </style>
   <script>
-
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
 
     document.addEventListener(
       "touchstart",
