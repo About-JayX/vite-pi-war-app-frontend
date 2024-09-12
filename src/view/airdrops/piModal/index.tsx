@@ -40,7 +40,7 @@ export default function PiBrowserModal({
       const result =
         webApp &&
         (await webApp.readTextFromClipboard((data: any) => {
-          MessageSuccess(data)
+          console.log(data, '????')
           setInput(data)
         }))
 
@@ -121,7 +121,7 @@ export default function PiBrowserModal({
               >
                 <Text
                   className="items-center text-[#48B7F2]"
-                  style={{ display: "block", }}
+                  style={{ display: 'block' }}
                 >
                   {t('piModal.piText')} <Icon name="link" />
                 </Text>
