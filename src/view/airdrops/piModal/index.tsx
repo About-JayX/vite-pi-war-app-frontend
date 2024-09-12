@@ -38,13 +38,9 @@ export default function PiBrowserModal({
     setLoad(true)
     try {
       webApp &&
-        webApp
-          .readTextFromClipboard((a: any, b: any, c: any, d: any) => {
-            console.log(a, b, c, d, 'data')
-          })
-          .then((res: any) => {
-            console.log(res, 'res_')
-          })
+        webApp.readTextFromClipboard((a: any, b: any, c: any, d: any) => {
+          console.log(a, b, c, d, 'data')
+        })
 
       // if (!tSolAddress.test(pastedText)) {
       //   MessageError("Binding Success");
