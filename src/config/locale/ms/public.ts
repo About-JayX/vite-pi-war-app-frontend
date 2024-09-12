@@ -22,7 +22,7 @@ export default {
   copyInviteLink: 'Salin',
   shareInviteLink: 'Kongsi',
   bindingRewards: 'Ganjaran Pautan',
-  bindingCode: 'Masukkan Kod Pautan',
+  bindingCode: 'Tekan lama untuk tampal kod',
   erc20WalletBinding: 'Pautan Dompet EVM',
   solanaWalletBinding: 'Pautan Dompet SOL',
   pidBinding: 'Pautan Pi Network',
