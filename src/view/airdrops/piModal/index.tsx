@@ -39,10 +39,10 @@ export default function PiBrowserModal({
     try {
       webApp &&
         webApp
-          .readTextFromClipboard((a, b, c, d) => {
+          .readTextFromClipboard((a: any, b: any, c: any, d: any) => {
             console.log(a, b, c, d, 'data')
           })
-          .then(res => {
+          .then((res: any) => {
             console.log(res, 'res_')
           })
 
