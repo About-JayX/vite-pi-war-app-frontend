@@ -37,16 +37,11 @@ export default function PiBrowserModal({
   const onPaste = async () => {
     setLoad(true)
     try {
-      const result =
-        webApp &&
-        (await webApp.readTextFromClipboard((data: any) => {
+      webApp &&
+        webApp.readTextFromClipboard((data: any) => {
           console.log(data, 'data')
           setInput(data)
-        }))
-
-      console.log(result, 'result_')
-
-      // setInput(pastedText)
+        })
 
       // if (!tSolAddress.test(pastedText)) {
       //   MessageError("Binding Success");
