@@ -1,8 +1,8 @@
 export default {
-  title: 'Pi Tarayıcı',
-  text: 'Bağlamak isteyip istemediğinizi onaylayın',
-  piText: 'Bağlamak için PI Tarayıcıya atlamak için tıklayın',
-  ok: 'Tamam',
-  bindFunction1: 'Bağlama Yöntemi 1',
-  bindFunction2: 'Bağlama Yöntemi 2',
+  title: 'Pi Network Bağla',
+  text: 'Bağlandığını onayla',
+  piText: 'Bağlamak için Pi Tarayıcısına yönlendir',
+  ok: 'Onayla',
+  bindFunction1: 'Bağlama Yöntemi Bir',
+  bindFunction2: 'Bağlama Yöntemi İki',
 }
