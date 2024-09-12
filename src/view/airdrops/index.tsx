@@ -136,7 +136,7 @@ export default function Airdrops() {
                   <div className="bind-wallet">
                     <div className="bind-wallet-container">
                       <Icon name="piNetwork" />
-                      <Text>{ellipsisMiddle(bindStatus.Pid, 12)}</Text>
+                      <Text>{ellipsisMiddle(bindStatus.Pid, 9)}</Text>
                       <img src={SuccessaPng} alt="" />
                     </div>
                   </div>

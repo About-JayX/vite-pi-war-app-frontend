@@ -40,11 +40,12 @@ export default function PiBrowserModal({
       const result =
         webApp &&
         (await webApp.readTextFromClipboard((data: any) => {
-          console.log(data, '????')
+          console.log(data, 'data')
           setInput(data)
         }))
 
-      MessageSuccess(result)
+      console.log(result, 'result_')
+
       // setInput(pastedText)
 
       // if (!tSolAddress.test(pastedText)) {
@@ -52,6 +53,8 @@ export default function PiBrowserModal({
       // }
       // 进行你需要的操作，例如更新状态或执行其他逻辑
     } catch (err) {
+      console.log(err, 'err_')
+
       MessageSuccess(err as string)
       // 处理错误情况，例如显示用户提示或执行备用方案
     }
