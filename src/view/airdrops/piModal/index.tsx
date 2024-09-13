@@ -38,7 +38,7 @@ export default function PiBrowserModal({
   const onPaste = async () => {
     webApp &&
       webApp.onEvent &&
-      webApp.onEvent('clipboardTextReceived', (data: any) => {
+      webApp.onEvent('clipboard_text_received', (data: any) => {
         console.log(data, 'received_')
       })
     webApp &&
