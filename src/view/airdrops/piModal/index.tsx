@@ -35,12 +35,14 @@ export default function PiBrowserModal({
   const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
   useEffect(() => {
-    webApp && webApp.onEvent('settingsButtonClicked', ()=>{
-      console.log("测试测试——");
-      
-    })
+    webApp &&
+      webApp.onEvent('settingsButtonClicked', () => {
+        console.log('测试测试——')
+      })
   }, [webApp])
   const onPaste = async () => {
+    console.log(webApp.SettingsButton, 'SettingsButton')
+
     webApp &&
       webApp.onEvent &&
       webApp.onEvent('clipboard_text_received', (data: any) => {
