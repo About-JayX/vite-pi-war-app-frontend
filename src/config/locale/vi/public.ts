@@ -22,7 +22,7 @@ export default {
   copyInviteLink: 'Sao chép',
   shareInviteLink: 'Chia sẻ',
   bindingRewards: 'Phần thưởng liên kết',
-  bindingCode: 'Nhập mã liên kết',
+  bindingCode: 'Nhấn giữ để dán mã',
   erc20WalletBinding: 'Liên kết ví EVM',
   solanaWalletBinding: 'Liên kết ví SOL',
   pidBinding: 'Liên kết Pi Network',

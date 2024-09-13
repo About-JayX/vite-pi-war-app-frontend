@@ -1,18 +1,18 @@
 export default {
   copy: {
-    success: 'Kopyalama Başarılı',
+    success: 'Kopyalama başarılı',
   },
   refresh: {
-    success: 'Yenileme Başarılı',
+    success: 'Yenileme başarılı',
     pulling: 'Yenilemek için aşağı çekin...',
     release: 'Yenilemek için bırakın...',
     loading: 'Yükleniyor...',
   },
   piBrowser: {
-    error: 'Binding code error',
+    error: 'Bağlama kodu hatası',
   },
   bind: {
-    success: 'Bağlama Başarılı',
-    fail: 'Bağlama Başarısız',
+    success: 'Bağlama başarılı',
+    fail: 'Bağlama başarısız',
   },
 }

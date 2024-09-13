@@ -1,18 +1,18 @@
 export default {
   copy: {
-    success: 'コピーに成功しました',
+    success: 'コピー成功',
   },
   refresh: {
-    success: '更新に成功しました',
+    success: '更新成功',
     pulling: '引き下げて更新...',
     release: '離して更新...',
     loading: '読み込み中...',
   },
   piBrowser: {
-    error: 'Binding code error',
+    error: 'バインディングコードエラー',
   },
   bind: {
-    success: 'バインドに成功しました',
-    fail: 'バインドに失敗しました',
+    success: 'バインディング成功',
+    fail: 'バインディング失敗',
   },
 }

@@ -22,7 +22,7 @@ export default {
   copyInviteLink: 'คัดลอก',
   shareInviteLink: 'แชร์',
   bindingRewards: 'รางวัลการผูกบัญชี',
-  bindingCode: 'กรอกรหัสการผูกบัญชี',
+  bindingCode: 'กดค้างเพื่อวางรหัส',
   erc20WalletBinding: 'ผูกกระเป๋า EVM',
   solanaWalletBinding: 'ผูกกระเป๋า SOL',
   pidBinding: 'ผูกบัญชี Pi Network',

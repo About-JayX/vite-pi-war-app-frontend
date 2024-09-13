@@ -22,7 +22,7 @@ export default {
   copyInviteLink: 'コピー',
   shareInviteLink: 'シェア',
   bindingRewards: 'バインディングリワード',
-  bindingCode: 'バインディングコードを入力',
+  bindingCode: '長押しでコードを貼り付け',
   erc20WalletBinding: 'EVMウォレットのバインド',
   solanaWalletBinding: 'SOLウォレットのバインド',
   pidBinding: 'Piネットワークのバインド',

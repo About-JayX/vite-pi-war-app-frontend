@@ -1,5 +1,5 @@
 export default {
-  myRewards: '我的獎勵',
+  myRewards: '我的獎勳',
   telegramPremium: '高級帳號',
   accountAge: '帳號年齡',
   invitedFriends: '邀請分享',
@@ -10,7 +10,7 @@ export default {
   airdrops: '空投',
   tasks: '任務',
   copy: '複製',
-  paste: '貼上',
+  paste: '粘貼',
   update: '更新中',
   updateText: 'Pi War 應用正在更新...',
   telegram: {
@@ -21,8 +21,8 @@ export default {
   bindWallet: '綁定地址',
   copyInviteLink: '複製',
   shareInviteLink: '分享',
-  bindingRewards: '綁定獎勵',
-  bindingCode: '輸入綁定碼',
+  bindingRewards: '綁定獎勳',
+  bindingCode: '長按手動粘貼綁定碼',
   erc20WalletBinding: 'EVM 錢包綁定',
   solanaWalletBinding: 'SOL 錢包綁定',
   pidBinding: 'Pi 網絡綁定',

@@ -9,7 +9,7 @@ export default {
     loading: '加載中...',
   },
   piBrowser: {
-    error: 'Binding code error',
+    error: '绑定碼错误',
   },
   bind: {
     success: '綁定成功',

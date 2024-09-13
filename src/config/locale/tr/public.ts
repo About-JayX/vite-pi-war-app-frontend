@@ -22,7 +22,7 @@ export default {
   copyInviteLink: 'Kopyala',
   shareInviteLink: 'Paylaş',
   bindingRewards: 'Bağlantı Ödülleri',
-  bindingCode: 'Bağlantı Kodunu Girin',
+  bindingCode: 'Kodu yapıştırmak için basılı tutun',
   erc20WalletBinding: 'EVM Cüzdan Bağlama',
   solanaWalletBinding: 'SOL Cüzdan Bağlama',
   pidBinding: 'Pi Network Bağlama',
