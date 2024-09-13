@@ -35,6 +35,8 @@ export default function PiBrowserModal({
   const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
   const handlerMessage = (data: any) => {
+    alert(data.data)
+
     const result = JSON.parse(data.data)
     if (result.eventType === 'clipboard_text_received') {
       let data = ''
@@ -43,7 +45,6 @@ export default function PiBrowserModal({
       }
       setInput(data)
       MessageSuccess('粘贴成功_')
-      console.log(data, 'data_ 剪切板事件')
     }
   }
   useEffect(() => {
