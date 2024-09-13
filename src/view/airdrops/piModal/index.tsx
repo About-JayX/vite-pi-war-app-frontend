@@ -38,8 +38,9 @@ export default function PiBrowserModal({
     setLoad(true)
     try {
       console.log(navigator.clipboard, 'navigator.clipboard')
-      const result = await navigator.clipboard.writeText('1234')
-      console.log(result, '??')
+      const read1 = await navigator.clipboard.read()
+      const read2 = await navigator.clipboard.readText()
+      console.log(read1, read2, '??')
 
       webApp &&
         webApp.readTextFromClipboard((a: any, b: any, c: any, d: any) => {
