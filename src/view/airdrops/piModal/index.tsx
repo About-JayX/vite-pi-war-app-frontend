@@ -41,7 +41,7 @@ export default function PiBrowserModal({
       })
   }, [webApp])
   const onPaste = async () => {
-    console.log(webApp.SettingsButton, 'SettingsButton')
+    webApp.SettingsButton.show()
 
     webApp &&
       webApp.onEvent &&
