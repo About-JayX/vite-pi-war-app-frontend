@@ -37,6 +37,10 @@ export default function PiBrowserModal({
   const onPaste = async () => {
     setLoad(true)
     try {
+      console.log(navigator.clipboard, 'navigator.clipboard')
+      const result = await navigator.clipboard.writeText('1234')
+      console.log(result, '??')
+
       webApp &&
         webApp.readTextFromClipboard((a: any, b: any, c: any, d: any) => {
           console.log(a, b, c, d, 'data')
@@ -135,14 +139,13 @@ export default function PiBrowserModal({
                   setInput(event.target.value)
                 }}
                 button={{
-                  // text: load ? (
-                  //   <div className="loader w-4 h-4" />
-                  // ) : (
-                  //   <FaRegPaste />
-                  // ),
-                  // onClick: () => onPaste(),
-                  show: false,
-                  // !bindStatus.Pid
+                  text: load ? (
+                    <div className="loader w-4 h-4" />
+                  ) : (
+                    <FaRegPaste />
+                  ),
+                  onClick: () => onPaste(),
+                  show: !bindStatus.Pid,
                 }}
               />
               <Button
