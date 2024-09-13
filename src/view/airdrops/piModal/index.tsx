@@ -35,14 +35,12 @@ export default function PiBrowserModal({
   const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
 
-  useEffect(() => {
+  const onPaste = async () => {
     webApp &&
       webApp.onEvent &&
       webApp.onEvent('clipboardTextReceived', (data: any) => {
-        console.log(data, '?')
+        console.log(data, 'received_')
       })
-  }, [webApp])
-  const onPaste = async () => {
     webApp &&
       webApp.readTextFromClipboard((data: any) => {
         console.log(data, 'paste_')
