@@ -34,25 +34,25 @@ export default function PiBrowserModal({
   const { webApp } = useTelegram() as any
   const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
-  const handlerMessage = (data: any) => {
-    alert(JSON.stringify(data))
+  // const handlerMessage = (data: any) => {
+  //   alert(JSON.stringify(data))
 
-    const result = JSON.parse(data.data)
-    if (result.eventType === 'clipboard_text_received') {
-      let data = ''
-      if (result.eventData && result.eventData.data) {
-        data = result.eventData.data
-      }
-      setInput(data)
-      MessageSuccess('粘贴成功_')
-    }
-  }
-  useEffect(() => {
-    window.addEventListener('message', handlerMessage)
-  }, [webApp])
-  const onPaste = async () => {
-    webApp && webApp.readTextFromClipboard()
-  }
+  //   const result = JSON.parse(data.data)
+  //   if (result.eventType === 'clipboard_text_received') {
+  //     let data = ''
+  //     if (result.eventData && result.eventData.data) {
+  //       data = result.eventData.data
+  //     }
+  //     setInput(data)
+  //     MessageSuccess('粘贴成功_')
+  //   }
+  // }
+  // useEffect(() => {
+  //   window.addEventListener('message', handlerMessage)
+  // }, [webApp])
+  // const onPaste = async () => {
+  //   webApp && webApp.readTextFromClipboard()
+  // }
 
   const bindPid = async () => {
     setStatus(true)
@@ -140,8 +140,8 @@ export default function PiBrowserModal({
                   ) : (
                     <FaRegPaste />
                   ),
-                  onClick: () => onPaste(),
-                  show: !bindStatus.Pid,
+                  // onClick: () => onPaste(),
+                  show: false,
                 }}
               />
               <Button
