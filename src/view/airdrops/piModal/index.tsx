@@ -34,7 +34,12 @@ export default function PiBrowserModal({
   const { webApp } = useTelegram() as any
   const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
-
+  useEffect(() => {
+    webApp && webApp.onEvent('settingsButtonClicked', ()=>{
+      console.log("测试测试——");
+      
+    })
+  }, [webApp])
   const onPaste = async () => {
     webApp &&
       webApp.onEvent &&
