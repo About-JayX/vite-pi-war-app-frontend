@@ -36,19 +36,21 @@ export default function PiBrowserModal({
   const url: any = getUrl && getUrl()
   const handlerMessage = (data: any) => {
     const result = JSON.parse(data.data)
-    console.log(result, 'result_')
     if (result.eventType === 'clipboard_text_received') {
-      console.log(result.data ? result.data : '暂无数据', 'none Data_')
+      let data = ''
+      if (result.eventData && result.eventData.data) {
+        data = result.eventData.data
+      }
+      setInput(data)
+      MessageSuccess('粘贴成功_')
+      console.log(data, 'data_ 剪切板事件')
     }
   }
   useEffect(() => {
     window.addEventListener('message', handlerMessage)
   }, [webApp])
   const onPaste = async () => {
-    webApp &&
-      webApp.readTextFromClipboard((data: any) => {
-        console.log(data, 'paste_')
-      })
+    webApp && webApp.readTextFromClipboard()
   }
 
   const bindPid = async () => {
