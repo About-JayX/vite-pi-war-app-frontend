@@ -34,34 +34,26 @@ export default function PiBrowserModal({
   const { webApp } = useTelegram() as any
   const url: any = getUrl && getUrl()
 
-  const onPaste = async () => {
-    setLoad(true)
-    try {
-      console.log(navigator.clipboard, 'navigator.clipboard')
-      const result = navigator.permissions
-      console.log(result, 'reslut_')
+  // const onPaste = async () => {
+  //   setLoad(true)
+  //   try {
+  //     webApp &&
+  //       webApp.readTextFromClipboard((a: any, b: any, c: any, d: any) => {
+  //         console.log(a, b, c, d, 'data')
+  //       })
 
-      const read2 = await navigator.clipboard.readText()
+  //     // if (!tSolAddress.test(pastedText)) {
+  //     //   MessageError("Binding Success");
+  //     // }
+  //     // 进行你需要的操作，例如更新状态或执行其他逻辑
+  //   } catch (err) {
+  //     console.log(err, 'err_')
 
-      console.log(read2, '?read2')
-
-      webApp &&
-        webApp.readTextFromClipboard((a: any, b: any, c: any, d: any) => {
-          console.log(a, b, c, d, 'data')
-        })
-
-      // if (!tSolAddress.test(pastedText)) {
-      //   MessageError("Binding Success");
-      // }
-      // 进行你需要的操作，例如更新状态或执行其他逻辑
-    } catch (err) {
-      console.log(err, 'err_')
-
-      MessageSuccess(err as string)
-      // 处理错误情况，例如显示用户提示或执行备用方案
-    }
-    setLoad(false)
-  }
+  //     MessageSuccess(err as string)
+  //     // 处理错误情况，例如显示用户提示或执行备用方案
+  //   }
+  //   setLoad(false)
+  // }
 
   const bindPid = async () => {
     setStatus(true)
@@ -148,8 +140,8 @@ export default function PiBrowserModal({
                   ) : (
                     <FaRegPaste />
                   ),
-                  onClick: () => onPaste(),
-                  show: !bindStatus.Pid,
+                  // onClick: () => onPaste(),
+                  show: false, //!bindStatus.Pid
                 }}
               />
               <Button
