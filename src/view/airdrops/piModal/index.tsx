@@ -35,7 +35,7 @@ export default function PiBrowserModal({
   const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
   const handlerMessage = (data: any) => {
-    alert(data.data)
+    alert(JSON.stringify(data))
 
     const result = JSON.parse(data.data)
     if (result.eventType === 'clipboard_text_received') {
