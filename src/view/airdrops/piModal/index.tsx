@@ -9,7 +9,7 @@ import { Title } from '@/components/title'
 import { useTelegram } from '@/provider/telegram'
 import { useAppDispatch } from '@/store/hook'
 import { updateBindStatus } from '@/store/user'
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
 import { FaRegPaste } from 'react-icons/fa6'
 
@@ -32,28 +32,22 @@ export default function PiBrowserModal({
   const [codeStatus, setCodeStatus] = useState(false)
   const [status, setStatus] = useState(false)
   const { webApp } = useTelegram() as any
+  const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
 
-  // const onPaste = async () => {
-  //   setLoad(true)
-  //   try {
-  //     webApp &&
-  //       webApp.readTextFromClipboard((a: any, b: any, c: any, d: any) => {
-  //         console.log(a, b, c, d, 'data')
-  //       })
-
-  //     // if (!tSolAddress.test(pastedText)) {
-  //     //   MessageError("Binding Success");
-  //     // }
-  //     // 进行你需要的操作，例如更新状态或执行其他逻辑
-  //   } catch (err) {
-  //     console.log(err, 'err_')
-
-  //     MessageSuccess(err as string)
-  //     // 处理错误情况，例如显示用户提示或执行备用方案
-  //   }
-  //   setLoad(false)
-  // }
+  useEffect(() => {
+    webApp &&
+      webApp.onEvent &&
+      webApp.onEvent('clipboardTextReceived', (data: any) => {
+        console.log(data, '?')
+      })
+  }, [webApp])
+  const onPaste = async () => {
+    webApp &&
+      webApp.readTextFromClipboard((data: any) => {
+        console.log(data, 'paste_')
+      })
+  }
 
   const bindPid = async () => {
     setStatus(true)
@@ -128,6 +122,7 @@ export default function PiBrowserModal({
                 {t('piModal.bindFunction2')}
               </Text>
               <Input
+                ref={inputRef}
                 value={bindStatus.Pid ? bindStatus.Pid : input}
                 disabled={bindStatus.Pid || false}
                 placeholder={t('public.bindingCode')}
@@ -140,8 +135,8 @@ export default function PiBrowserModal({
                   ) : (
                     <FaRegPaste />
                   ),
-                  // onClick: () => onPaste(),
-                  show: false, //!bindStatus.Pid
+                  onClick: () => onPaste(),
+                  show: !bindStatus.Pid,
                 }}
               />
               <Button
