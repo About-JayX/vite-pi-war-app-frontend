@@ -35,7 +35,11 @@ export default function PiBrowserModal({
   const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
   const handlerMessage = (data: any) => {
-    console.log(data, 'data_')
+    const result = JSON.parse(data.data)
+    console.log(result, 'result_')
+    if (result.eventType === 'clipboard_text_received') {
+      console.log(result.data ? result.data : '暂无数据', 'none Data_')
+    }
   }
   useEffect(() => {
     window.addEventListener('message', handlerMessage)
