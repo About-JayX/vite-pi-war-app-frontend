@@ -1,9 +1,9 @@
 export default {
-  title: 'Pi Networkをバインド',
+  title: 'Pi Network をバインド',
   text: 'バインドを確認する',
-  piText: 'Piブラウザにリダイレクトしてバインドする',
+  piText: 'Pi ブラウザにリダイレクトしてバインド',
   ok: '確認',
-  bindText: 'バインド方法は2つあります',
-  bindFunction1: 'バインド方法 一',
-  bindFunction2: 'バインド方法 二',
+  bindText: 'バインドコードをバインド',
+  bindFunction1: 'バインド方法 1',
+  bindFunction2: 'バインド方法 2',
 }

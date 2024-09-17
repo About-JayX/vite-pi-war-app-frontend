@@ -1,9 +1,9 @@
 export default {
-  title: 'Pautkan Pi Network',
-  text: 'Sahkan jika telah dipautkan',
-  piText: 'Alihkan ke Pi Browser untuk pautkan',
+  title: 'Paut Pi Network',
+  text: 'Sahkan pautan',
+  piText: 'Alihkan ke pelayar Pi untuk pautan',
   ok: 'Sahkan',
-  bindText: 'Terdapat dua cara untuk pautkan',
-  bindFunction1: 'Kaedah Pautan Satu',
-  bindFunction2: 'Kaedah Pautan Dua',
+  bindText: 'Pautan Kod Paut',
+  bindFunction1: 'Kaedah Pautan 1',
+  bindFunction2: 'Kaedah Pautan 2',
 }
