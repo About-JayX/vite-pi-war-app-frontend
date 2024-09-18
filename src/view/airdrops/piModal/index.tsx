@@ -49,7 +49,15 @@ export default function PiBrowserModal({
   // const onPaste = async () => {
   //   webApp && webApp.readTextFromClipboard()
   // }
+  // const inputFocus = (e: FocusEvent) => {
+  //   const element: any = e.target
 
+  //   element.setAttribute('readonly', true)
+
+  //   setTimeout(() => {
+  //     element.removeAttribute('readonly')
+  //   }, 1)
+  // }
   const bindPid = async () => {
     setStatus(true)
 
@@ -108,6 +116,7 @@ export default function PiBrowserModal({
                 onChange={event => {
                   setInput(event.target.value)
                 }}
+                // onFocus={inputFocus}
                 button={{
                   text: t('public.bind'),
                   onClick: () => {
