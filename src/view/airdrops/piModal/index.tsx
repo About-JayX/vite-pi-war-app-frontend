@@ -6,6 +6,7 @@ import { MessageError, MessageSuccess } from '@/components/message'
 import Modals from '@/components/modal'
 import { Text } from '@/components/text'
 import { Title } from '@/components/title'
+import useResetPage from '@/provider/usePage'
 import { useAppDispatch } from '@/store/hook'
 import { updateBindStatus } from '@/store/user'
 import { useEffect, useRef, useState } from 'preact/hooks'
@@ -22,6 +23,7 @@ export default function PiBrowserModal({
   onHide?: (status: boolean) => void
   getUrl?: () => void
 }) {
+  useResetPage()
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
 
@@ -30,6 +32,15 @@ export default function PiBrowserModal({
   const [status, setStatus] = useState(false)
   const inputRef = useRef<any>(null)
   const url: any = getUrl && getUrl()
+  const preventDefault = (e: any) => {
+    e.preventDefault()
+  }
+  useEffect(() => {
+    open &&
+      document
+        .getElementsByTagName('body')[0]
+        .addEventListener('touchmove', preventDefault, { passive: false })
+  }, [open])
   // const handlerMessage = (data: any) => {
   //   alert(JSON.stringify(data))
 

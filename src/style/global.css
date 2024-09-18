@@ -81,7 +81,6 @@ body {
   transform: scale(1);
   cursor: pointer;
 
-
   &:active {
     animation: bnt-start 0.5s ease forwards;
     -webkit-animation: bnt-start 0.5s ease forwards;
@@ -90,7 +89,6 @@ body {
 
 .rv-pull-refresh {
   @apply h-[calc(100vh-4rem)] overflow-y-scroll;
-
 }
 
 * {
@@ -102,10 +100,17 @@ body {
   display: none;
 }
 
-.modal-content{
-  @apply !z-10
+.modal-content {
+  @apply !z-10;
 }
 
-.modal-header{
-  @apply !text-[rgba(255,255,255,0.65)]
+.modal-header {
+  @apply !text-[rgba(255,255,255,0.65)];
+}
+
+.inTouch {
+  -webkit-overflow-scrolling: auto;
+}
+.noTouch {
+  -webkit-overflow-scrolling: touch;
 }
