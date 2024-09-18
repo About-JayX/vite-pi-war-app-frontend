@@ -1,15 +1,15 @@
-import { bindPidAPI, findCodeAPI } from "@/api/user";
-import Button from "@/components/button";
-import Icon from "@/components/icon";
-import Input from "@/components/input";
-import { MessageError, MessageSuccess } from "@/components/message";
-import Modals from "@/components/modal";
-import { Text } from "@/components/text";
-import { Title } from "@/components/title";
-import { useAppDispatch } from "@/store/hook";
-import { updateBindStatus } from "@/store/user";
-import { useRef, useState } from "preact/hooks";
-import { useTranslation } from "react-i18next";
+import { bindPidAPI, findCodeAPI } from '@/api/user'
+import Button from '@/components/button'
+import Icon from '@/components/icon'
+import Input from '@/components/input'
+import { MessageError, MessageSuccess } from '@/components/message'
+import Modals from '@/components/modal'
+import { Text } from '@/components/text'
+import { Title } from '@/components/title'
+import { useAppDispatch } from '@/store/hook'
+import { updateBindStatus } from '@/store/user'
+import { useRef, useState } from 'preact/hooks'
+import { useTranslation } from 'react-i18next'
 
 export default function PiBrowserModal({
   open = false,
@@ -17,19 +17,19 @@ export default function PiBrowserModal({
   bindStatus,
   getUrl,
 }: {
-  open?: boolean;
-  bindStatus: any;
-  onHide?: (status: boolean) => void;
-  getUrl?: () => void;
+  open?: boolean
+  bindStatus: any
+  onHide?: (status: boolean) => void
+  getUrl?: () => void
 }) {
-  const dispatch = useAppDispatch();
-  const { t } = useTranslation();
+  const dispatch = useAppDispatch()
+  const { t } = useTranslation()
 
-  const [input, setInput] = useState<string>("");
-  const [codeStatus, setCodeStatus] = useState(false);
-  const [status, setStatus] = useState(false);
-  const inputRef = useRef<any>(null);
-  const url: any = getUrl && getUrl();
+  const [input, setInput] = useState<string>('')
+  const [codeStatus, setCodeStatus] = useState(false)
+  const [status, setStatus] = useState(false)
+  const inputRef = useRef<any>(null)
+  const url: any = getUrl && getUrl()
   // const handlerMessage = (data: any) => {
   //   alert(JSON.stringify(data))
 
@@ -51,67 +51,67 @@ export default function PiBrowserModal({
   // }
 
   const bindPid = async () => {
-    setStatus(true);
+    setStatus(true)
 
     try {
-      const result = await bindPidAPI({ code: bindStatus.Code, pid: input });
+      const result = await bindPidAPI({ code: bindStatus.Code, pid: input })
 
       if (result.success) {
-        MessageSuccess(t("message.bind.success"));
-        dispatch(updateBindStatus({ ...bindStatus, Pid: input }));
-        setCodeStatus(false);
-        onHide && onHide(false);
+        MessageSuccess(t('message.bind.success'))
+        dispatch(updateBindStatus({ ...bindStatus, Pid: input }))
+        setCodeStatus(false)
+        onHide && onHide(false)
       } else {
-        MessageError(t("message.bind.fail"));
+        MessageError(t('message.bind.fail'))
       }
     } catch (error) {
-      MessageError(t("message.bind.fail"));
+      MessageError(t('message.bind.fail'))
     }
-    setStatus(false);
-  };
+    setStatus(false)
+  }
   return (
     <Modals
       open={open}
       onHide={() => {
-        onHide && onHide(false);
-        setInput("");
-        setCodeStatus(false);
-        setStatus(false);
+        onHide && onHide(false)
+        setInput('')
+        setCodeStatus(false)
+        setStatus(false)
       }}
-      title={t("piModal.title")}
+      title={t('piModal.title')}
       body={
         <div className="grid gap-3 w-full items-center justify-items-center">
           {codeStatus ? (
             <div className="w-full grid gap-2 text-center">
               <Title className="!text-[1rem] !text-[#48B7F2]">
-                {t("piModal.text")}
+                {t('piModal.text')}
               </Title>
               <Text className="!font-normal">({input.trim()})</Text>
               <Button
                 className="mt-[16px]"
                 onClick={() => {
-                  bindPid();
+                  bindPid()
                 }}
                 loading={status}
               >
-                {t("piModal.ok")}
+                {t('piModal.ok')}
               </Button>
             </div>
           ) : (
             <>
-              <Text className="text-[#A7BBCA]">{t("piModal.bindText")}</Text>
+              <Text className="text-[#A7BBCA]">{t('piModal.bindText')}</Text>
               <Input
                 ref={inputRef}
                 value={bindStatus.Pid ? bindStatus.Pid : input}
                 disabled={bindStatus.Pid || false}
-                placeholder={t("public.bindingCode")}
-                onChange={(event) => {
-                  setInput(event.target.value);
+                placeholder={t('public.bindingCode')}
+                onChange={event => {
+                  setInput(event.target.value)
                 }}
                 button={{
-                  text: t("public.bind"),
+                  text: t('public.bind'),
                   onClick: () => {
-                    setCodeStatus(true);
+                    setCodeStatus(true)
                   },
                   show: Boolean(bindStatus.Pid ? bindStatus.Pid : input),
                 }}
@@ -119,15 +119,15 @@ export default function PiBrowserModal({
               <div className="border-[#A7BBCA] border-1 border-dashed w-full border-x-0 border-b-0 opacity-50" />
               <a
                 href={
-                  url.startsWith("https://")
-                    ? url.replace("https://", "pi://")
+                  url.startsWith('https://')
+                    ? url.replace('https://', 'pi://')
                     : url
                 }
                 target="_blank"
                 className="w-full"
               >
                 <Button>
-                  {t("piModal.piText")} <Icon name="link" />
+                  {t('piModal.piText')} <Icon name="link" />
                 </Button>
               </a>
             </>
@@ -135,5 +135,5 @@ export default function PiBrowserModal({
         </div>
       }
     />
-  );
+  )
 }

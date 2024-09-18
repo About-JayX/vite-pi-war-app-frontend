@@ -73,6 +73,7 @@ const Input = forwardRef(
         }}
       >
         <input
+          readOnly
           ref={inputRef}
           onFocus={event => {
             onFocus(event)

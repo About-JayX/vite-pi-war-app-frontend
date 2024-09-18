@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
-import preact from '@preact/preset-vite';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
-import path from 'path';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import { defineConfig } from 'vite'
+import preact from '@preact/preset-vite'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
+import path from 'path'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 export default defineConfig({
   plugins: [
@@ -23,7 +23,14 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  server:{
-    host:true
-  }
-});
+
+  server: {
+    host: true,
+    proxy: {
+      '/api': {
+        changeOrigin: true,
+        target: 'https://tg.slerf.yachts',
+      },
+    },
+  },
+})
