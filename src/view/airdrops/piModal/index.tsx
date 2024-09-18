@@ -8,7 +8,7 @@ import { Text } from '@/components/text'
 import { Title } from '@/components/title'
 import { useAppDispatch } from '@/store/hook'
 import { updateBindStatus } from '@/store/user'
-import { useRef, useState } from 'preact/hooks'
+import { useEffect, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
 
 export default function PiBrowserModal({
@@ -77,6 +77,14 @@ export default function PiBrowserModal({
     }
     setStatus(false)
   }
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [open])
   return (
     <Modals
       open={open}

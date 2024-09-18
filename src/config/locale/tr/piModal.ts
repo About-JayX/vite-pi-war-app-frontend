@@ -1,9 +1,9 @@
 export default {
-  title: 'Pi Network Bağla',
-  text: 'Bağlandığını onayla',
-  piText: 'Bağlamak için Pi Tarayıcısına yönlendir',
+  title: 'Pi Network\'u Bağla',
+  text: 'Bağlanmayı Onayla',
+  piText: 'Bağlanmak için Pi tarayıcısına yönlendir',
   ok: 'Onayla',
-  bindText: 'Bağlamanın iki yolu var',
-  bindFunction1: 'Bağlama Yöntemi Bir',
-  bindFunction2: 'Bağlama Yöntemi İki',
+  bindText: 'Bağlanma Kodu Bağla',
+  bindFunction1: 'Bağlama Yöntemi 1',
+  bindFunction2: 'Bağlama Yöntemi 2',
 }

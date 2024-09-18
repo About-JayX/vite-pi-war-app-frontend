@@ -1,9 +1,9 @@
 export default {
   title: 'Bind Pi Network',
-  text: 'Confirm if bound',
-  piText: 'Redirect to Pi Browser for binding',
+  text: 'Confirm binding',
+  piText: 'Redirect to Pi browser for binding',
   ok: 'Confirm',
-  bindText:'There are two ways to bind',
-  bindFunction1: 'Binding Method One',
-  bindFunction2: 'Binding Method Two',
+  bindText: 'Bind Code Binding',
+  bindFunction1: 'Binding Method 1',
+  bindFunction2: 'Binding Method 2',
 }
