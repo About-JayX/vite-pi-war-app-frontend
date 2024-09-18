@@ -40,6 +40,12 @@ export default function PiBrowserModal({
       document
         .getElementsByTagName('body')[0]
         .addEventListener('touchmove', preventDefault, { passive: false })
+    !open &&
+      document
+        .getElementsByTagName('body')[0]
+        .removeEventListener('touchmove', preventDefault, {
+          passive: false,
+        } as any)
   }, [open])
   // const handlerMessage = (data: any) => {
   //   alert(JSON.stringify(data))
