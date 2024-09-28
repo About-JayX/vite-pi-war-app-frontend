@@ -76,6 +76,7 @@ export default function Airdrops() {
         onHide={setBindpiModal}
       />
       <Box>
+        <input type="file"></input>
         <div className="grid gap-6 w-100 justify-items-center text-center">
           <Title>{t('public.airdrops')}</Title>
           <Text className="text-color mt-[-1rem]">{t('binding.text')}</Text>
