@@ -32,7 +32,7 @@ export const OpenConnectWalletModals = ({
       title={t("piModal.copy.title")}
       body={
         <div className="grid gap-3 w-full items-center justify-items-center">
-          <Text className="text-[#A7BBCA]">{t("piModal.copy.text")}</Text>
+          <Text className="text-[#A7BBCA] !font-normal">{t("piModal.copy.text")}</Text>
           <Input
             value={t("piModal.copy.url")}
             disabled
