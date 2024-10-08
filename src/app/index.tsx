@@ -481,7 +481,7 @@ export function App() {
           body={<Text>{t("public.updateText")}</Text>}
           title={<HeaderTitle>{t("public.update")}</HeaderTitle>}
         />
-        {!isNewUser ? (
+        {/* {!isNewUser ? (
           <>
             <Box
               className={`overflow-hidden overflow-y-scroll h-full z-1`}
@@ -504,7 +504,9 @@ export function App() {
           </>
         ) : (
           <Steps status={stepsm} onChange={e => setSteps(e)} />
-        )}
+        )} */}
+        <RouterProvider />
+        <Navigation onClick={() => setTransitionAnimation(false)} />
       </Fragment>
       <Animation />
     </Container>
