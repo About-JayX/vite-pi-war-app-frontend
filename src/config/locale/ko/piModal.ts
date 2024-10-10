@@ -6,9 +6,9 @@ export default {
   bindText: '바인딩 코드 바인딩',
   bindFunction1: '바인딩 방법 1',
   bindFunction2: '바인딩 방법 2',
-  copy:{
-    title:'Pi Browser',
-    text:'复制以下链接到钱包或浏览器打开',
-    url:'ttps://x.com/Space_Pi_War'
-  }
+  copy: {
+    title: '파이 브라우저',
+    text: '아래 링크를 지갑이나 브라우저에 복사하여 열어주세요',
+    url: 'https://x.com/Space_Pi_War',
+  },
 }

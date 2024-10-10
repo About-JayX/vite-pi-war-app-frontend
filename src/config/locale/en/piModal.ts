@@ -6,9 +6,9 @@ export default {
   bindText: 'Bind Code Binding',
   bindFunction1: 'Binding Method 1',
   bindFunction2: 'Binding Method 2',
-  copy:{
-    title:'Pi Browser',
-    text:'复制以下链接到钱包或浏览器打开',
-    url:'ttps://x.com/Space_Pi_War'
-  }
+  copy: {
+    title: 'Pi Browser',
+    text: 'Copy the link below to open in your wallet or browser',
+    url: 'https://x.com/Space_Pi_War',
+  },
 }

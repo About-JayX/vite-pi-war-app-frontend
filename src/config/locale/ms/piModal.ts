@@ -6,9 +6,9 @@ export default {
   bindText: 'Pautan Kod Paut',
   bindFunction1: 'Kaedah Pautan 1',
   bindFunction2: 'Kaedah Pautan 2',
-  copy:{
-    title:'Pi Browser',
-    text:'复制以下链接到钱包或浏览器打开',
-    url:'ttps://x.com/Space_Pi_War'
-  }
+  copy: {
+    title: 'Pelayar Pi',
+    text: 'Salin pautan di bawah untuk dibuka dalam dompet atau pelayar anda',
+    url: 'https://x.com/Space_Pi_War',
+  },
 }
