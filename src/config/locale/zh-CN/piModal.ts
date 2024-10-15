@@ -1,14 +1,15 @@
 export default {
   title: '綁定 Pi Network',
-  text: '確認是否綁定',
-  piText: '跳轉到 Pi 瀏覽器綁定',
+  text: '確認綁定',
+  piText: '跳轉至 Pi 瀏覽器進行綁定',
   ok: '確認',
-  bindText: '綁定码綁定',
-  bindFunction1: '綁定方法 一',
-  bindFunction2: '綁定方法 二',
+  bindText: '綁定碼綁定',
+  clickText: "點擊跳轉至瀏覽器或錢包打開",
+  bindFunction1: '綁定方法 1',
+  bindFunction2: '綁定方法 2',
   copy: {
     title: 'Pi 瀏覽器',
-    text: '複製以下鏈接到錢包或瀏覽器打開',
+    text: '複製以下鏈接以在您的錢包或瀏覽器中打開',
     url: 'https://x.com/Space_Pi_War',
   },
 }
