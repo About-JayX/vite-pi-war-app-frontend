@@ -131,7 +131,7 @@ const Steps = ({
   }, [])
   useEffect(() => {
     login()
-  }, [])
+  }, [postData])
   const loadPrigress = (
     progress: number,
     setProgress: (value: number) => void,
