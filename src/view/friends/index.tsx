@@ -54,7 +54,7 @@ export default function Friends() {
     }
   }, [friendRank, finished])
   return (
-    <>
+    <div>
       <Share open={open} onHide={() => setOpen(false)} url={shareUrl} />
       <Box>
         <div className="grid grid-flow-row grid-rows-[1fr,auto] h-full relative">
@@ -120,6 +120,6 @@ export default function Friends() {
           {t('public.inviteFriends')}
         </Button>
       </div>
-    </>
+    </div>
   )
 }
