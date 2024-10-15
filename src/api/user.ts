@@ -37,5 +37,5 @@ export const bindPidAPI = (data?: any) =>
   request.post(`/authorize-Bind/bind-pid`, data)
 
 export const bindWallentAPI = (code?: string) => {
-  return `${import.meta.env.VITE_WEBAPP_URL}?&v=${code}`
+  return `${import.meta.env.VITE_WEBAPP_URL}/pi?&v=${code}`
 }

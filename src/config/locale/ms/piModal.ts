@@ -1,14 +1,15 @@
 export default {
-  title: 'Paut Pi Network',
+  title: 'Pautkan Pi Network',
   text: 'Sahkan pautan',
-  piText: 'Alihkan ke pelayar Pi untuk pautan',
+  piText: 'Alihkan ke penyemak imbas Pi untuk pautan',
   ok: 'Sahkan',
-  bindText: 'Pautan Kod Paut',
+  bindText: 'Pautan Kod Pautan',
+  clickText: "Lompat ke penyemak imbas atau dompet untuk buka",
   bindFunction1: 'Kaedah Pautan 1',
   bindFunction2: 'Kaedah Pautan 2',
   copy: {
-    title: 'Pelayar Pi',
-    text: 'Salin pautan di bawah untuk dibuka dalam dompet atau pelayar anda',
+    title: 'Penyemak Imbas Pi',
+    text: 'Salin pautan di bawah untuk buka dalam dompet atau penyemak imbas anda',
     url: 'https://x.com/Space_Pi_War',
   },
 }

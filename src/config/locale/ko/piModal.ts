@@ -1,14 +1,15 @@
 export default {
-  title: 'Pi 네트워크 바인딩',
-  text: '바인딩 여부 확인',
-  piText: 'Pi 브라우저로 이동하여 바인딩',
+  title: 'Pi 네트워크 연결',
+  text: '연결 확인',
+  piText: '연결을 위해 Pi 브라우저로 리디렉션',
   ok: '확인',
-  bindText: '바인딩 코드 바인딩',
-  bindFunction1: '바인딩 방법 1',
-  bindFunction2: '바인딩 방법 2',
+  bindText: '코드 연결',
+  clickText: "브라우저 또는 지갑으로 이동하여 열기",
+  bindFunction1: '연결 방법 1',
+  bindFunction2: '연결 방법 2',
   copy: {
-    title: '파이 브라우저',
-    text: '아래 링크를 지갑이나 브라우저에 복사하여 열어주세요',
+    title: 'Pi 브라우저',
+    text: '아래 링크를 복사하여 지갑 또는 브라우저에서 열기',
     url: 'https://x.com/Space_Pi_War',
   },
 }

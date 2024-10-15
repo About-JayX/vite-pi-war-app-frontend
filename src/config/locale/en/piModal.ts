@@ -4,6 +4,7 @@ export default {
   piText: 'Redirect to Pi browser for binding',
   ok: 'Confirm',
   bindText: 'Bind Code Binding',
+  clickText:"Jump to browser or wallet to open",
   bindFunction1: 'Binding Method 1',
   bindFunction2: 'Binding Method 2',
   copy: {

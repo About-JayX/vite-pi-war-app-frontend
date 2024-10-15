@@ -1,14 +1,15 @@
 export default {
-  title: "Pi Network'u Bağla",
-  text: 'Bağlanmayı Onayla',
-  piText: 'Bağlanmak için Pi tarayıcısına yönlendir',
+  title: 'Pi Network Bağla',
+  text: 'Bağlamayı Onayla',
+  piText: 'Bağlama için Pi tarayıcısına yönlendirme',
   ok: 'Onayla',
-  bindText: 'Bağlanma Kodu Bağla',
+  bindText: 'Bağlama Kodu ile Bağla',
+  clickText: "Tarayıcıya veya cüzdana gitmek için tıkla",
   bindFunction1: 'Bağlama Yöntemi 1',
   bindFunction2: 'Bağlama Yöntemi 2',
   copy: {
-    title: 'Pi Tarayıcı',
-    text: 'Aşağıdaki bağlantıyı cüzdanınızda veya tarayıcınızda açmak için kopyalayın',
+    title: 'Pi Tarayıcısı',
+    text: 'Aşağıdaki bağlantıyı kopyalayarak cüzdanınızda veya tarayıcınızda açın',
     url: 'https://x.com/Space_Pi_War',
   },
 }
